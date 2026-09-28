@@ -1,0 +1,2139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Antennes Patch & HFSS | Sara Messaoudi</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =========================================================
+           PAGE PROJET — ANTENNES HFSS
+        ========================================================= */
+
+        .project-page {
+            padding: 70px 0 100px;
+        }
+
+        .project-page .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 25px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 45px;
+            color: #193753;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .project-hero {
+            margin-bottom: 55px;
+        }
+
+        .project-category {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: #55738d;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .project-hero h1 {
+            margin: 0 0 12px;
+            font-size: clamp(2.1rem, 5vw, 3.5rem);
+            line-height: 1.1;
+            color: #193753;
+        }
+
+        .project-hero h2 {
+            margin: 0 0 22px;
+            color: #55738d;
+            font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+            font-weight: 500;
+        }
+
+        .project-intro {
+            max-width: 900px;
+            font-size: 1.08rem;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-top: 25px;
+        }
+
+        .project-tags span {
+            padding: 7px 13px;
+            border: 1px solid #d8e0e6;
+            border-radius: 20px;
+            background: #f7f9fa;
+            color: #40566a;
+            font-size: 0.82rem;
+        }
+
+        /* =========================================================
+           IMAGE PRINCIPALE
+        ========================================================= */
+
+        .project-main-image {
+            margin: 45px 0 75px;
+        }
+
+        .project-main-image img {
+            width: 100%;
+            max-height: 560px;
+            object-fit: cover;
+            border-radius: 14px;
+            display: block;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+        }
+
+        .image-caption {
+            margin-top: 10px;
+            color: #777;
+            font-size: 0.82rem;
+            text-align: center;
+        }
+
+        /* =========================================================
+           SECTIONS
+        ========================================================= */
+
+        .project-section {
+            margin-bottom: 75px;
+        }
+
+        .section-number {
+            color: #7890a2;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .project-section h3 {
+            margin: 0 0 20px;
+            color: #193753;
+            font-size: 1.75rem;
+        }
+
+        .project-section p {
+            max-width: 900px;
+            color: #444;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        /* =========================================================
+           ARCHITECTURE
+        ========================================================= */
+
+        .architecture {
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .architecture-block {
+            flex: 1 1 160px;
+            min-height: 105px;
+            padding: 20px 16px;
+            border: 1px solid #dbe3e8;
+            border-radius: 12px;
+            background: #f8fafb;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .architecture-block strong {
+            color: #193753;
+            font-size: 0.95rem;
+            margin-bottom: 7px;
+        }
+
+        .architecture-block span {
+            color: #666;
+            font-size: 0.82rem;
+            line-height: 1.45;
+        }
+
+        .architecture-arrow {
+            display: flex;
+            align-items: center;
+            color: #7890a2;
+            font-size: 1.3rem;
+        }
+
+        /* =========================================================
+           TECHNICAL CARDS
+        ========================================================= */
+
+        .technical-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .technical-card {
+            padding: 25px;
+            border: 1px solid #dce4e9;
+            border-radius: 13px;
+            background: #fff;
+        }
+
+        .technical-card h4 {
+            margin: 0 0 12px;
+            color: #193753;
+            font-size: 1.05rem;
+        }
+
+        .technical-card p {
+            margin: 0;
+            font-size: 0.92rem;
+            line-height: 1.7;
+        }
+
+        /* =========================================================
+           HIGHLIGHT
+        ========================================================= */
+
+        .highlight-box {
+            margin: 30px 0;
+            padding: 28px;
+            border-radius: 13px;
+            background: #f5f8fa;
+        }
+
+        .highlight-box strong {
+            color: #193753;
+        }
+
+        /* =========================================================
+           RESULTS
+        ========================================================= */
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-top: 30px;
+        }
+
+        .result-card {
+            padding: 25px 20px;
+            border: 1px solid #dce4e9;
+            border-radius: 12px;
+            text-align: center;
+            background: #fff;
+        }
+
+        .result-value {
+            display: block;
+            margin-bottom: 8px;
+            color: #193753;
+            font-size: 1.55rem;
+            font-weight: 700;
+        }
+
+        .result-label {
+            color: #666;
+            font-size: 0.85rem;
+            line-height: 1.45;
+        }
+
+        /* =========================================================
+           COMPARISON
+        ========================================================= */
+
+        .comparison-table {
+            width: 100%;
+            margin-top: 30px;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 15px;
+            border: 1px solid #dce4e9;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: #f5f7f9;
+            color: #193753;
+            font-weight: 700;
+        }
+
+        .comparison-table td {
+            color: #555;
+        }
+
+        /* =========================================================
+           GALLERY
+        ========================================================= */
+
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .project-gallery figure {
+            margin: 0;
+        }
+
+        .project-gallery img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 12px;
+            display: block;
+            background: #f2f4f6;
+        }
+
+        .project-gallery figcaption {
+            margin-top: 9px;
+            font-size: 0.8rem;
+            color: #777;
+        }
+
+        /* =========================================================
+           CODE / DATA
+        ========================================================= */
+
+        .code-title {
+            margin-top: 35px;
+            margin-bottom: 10px;
+            color: #193753;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .code-block {
+            margin: 15px 0 30px;
+            padding: 22px;
+            border-radius: 12px;
+            background: #17232e;
+            color: #e8eef2;
+            overflow-x: auto;
+            font-family: "Courier New", monospace;
+            font-size: 0.82rem;
+            line-height: 1.6;
+        }
+
+        /* =========================================================
+           LINKS
+        ========================================================= */
+
+        .project-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .project-link {
+            display: inline-block;
+            padding: 12px 20px;
+            border-radius: 8px;
+            background: #193753;
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .project-link.secondary {
+            background: #eef2f5;
+            color: #193753;
+        }
+
+        .project-link:hover {
+            opacity: 0.88;
+        }
+
+        /* =========================================================
+           FIN
+        ========================================================= */
+
+        .project-end {
+            margin-top: 90px;
+            padding-top: 30px;
+            border-top: 1px solid #dfe5e9;
+        }
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 800px) {
+
+            .technical-grid,
+            .project-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .architecture {
+                flex-direction: column;
+            }
+
+            .architecture-arrow {
+                justify-content: center;
+                transform: rotate(90deg);
+            }
+
+            .comparison-table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            .project-page {
+                padding-top: 45px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- =========================================================
+         HEADER
+    ========================================================= -->
+
+    <header class="header">
+
+        <div class="container">
+
+            <a href="index.html" class="logo">
+                Sara Messaoudi
+            </a>
+
+            <nav class="nav">
+                <a href="index.html#projets">Projets</a>
+                <a href="index.html#experience">Expérience</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================================
+         PAGE PROJET
+    ========================================================= -->
+
+    <main class="project-page">
+
+        <div class="container">
+
+            <a href="index.html#projets" class="back-link">
+                ← Retour aux projets
+            </a>
+
+
+            <!-- =================================================
+                 HERO
+            ================================================= -->
+
+            <section class="project-hero">
+
+                <span class="project-category">
+                    ANTENNES · HYPERFRÉQUENCES · HFSS · 2025–2026
+                </span>
+
+                <h1>
+                    Étude, simulation et caractérisation d'antennes patch
+                </h1>
+
+                <h2>
+                    Patch élémentaire, réseau 2×2 et polarisation circulaire
+                </h2>
+
+                <p class="project-intro">
+                    Conception et simulation électromagnétique 3D sous
+                    Ansys HFSS de plusieurs antennes imprimées, suivies
+                    d'une caractérisation expérimentale en chambre
+                    anéchoïde. Le projet compare les performances simulées
+                    et mesurées en termes d'adaptation, de gain,
+                    de directivité, de diagrammes de rayonnement et de
+                    polarisation.
+                </p>
+
+                <div class="project-tags">
+                    <span>Ansys HFSS</span>
+                    <span>Antennes Patch</span>
+                    <span>Réseau 2×2</span>
+                    <span>Polarisation RHCP</span>
+                    <span>S11</span>
+                    <span>Chambre anéchoïde</span>
+                    <span>Ant32</span>
+                    <span>Bande X</span>
+                    <span>2,4 GHz</span>
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 IMAGE PRINCIPALE
+            ================================================= -->
+
+            <div class="project-main-image">
+
+                <img
+                    src="images/antennas-hfss/ensemble-antennes.jpg"
+                    alt="Antennes patch simulées et caractérisées expérimentalement"
+                >
+
+                <div class="image-caption">
+                    Étude comparative des antennes patch, du réseau 2×2
+                    et de l'antenne à polarisation circulaire
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 01 — LE PROJET
+            ================================================= -->
+
+            <section class="project-section">
+
+                <div class="section-number">01 — LE PROJET</div>
+
+                <h3>
+                    De la modélisation électromagnétique à la mesure réelle
+                </h3>
+
+                <p>
+                    Ce projet réalisé dans le cadre du module
+                    <strong>Antennes</strong> à l'Université Paris Nanterre
+                    porte sur la conception et la caractérisation
+                    expérimentale d'antennes imprimées micro-ruban.
+                </p>
+
+                <p>
+                    Trois architectures ont été étudiées : une antenne patch
+                    élémentaire en bande X, un réseau de quatre patchs
+                    disposés en configuration <strong>2×2</strong> et une
+                    antenne patch à polarisation circulaire fonctionnant
+                    autour de 2,4 GHz.
+                </p>
+
+                <p>
+                    L'objectif était de confronter les performances obtenues
+                    par simulation électromagnétique sous HFSS aux résultats
+                    réellement mesurés en chambre anéchoïde.
+                </p>
+
+            </section>
+
+
+            <!-- =================================================
+                 02 — ARCHITECTURE DU PROJET
+            ================================================= -->
+
+            <section class="project-section">
+
+                <div class="section-number">02 — CHAÎNE D'ÉTUDE</div>
+
+                <h3>
+                    Une démarche allant de la conception à la validation
+                </h3>
+
+                <div class="architecture">
+
+                    <div class="architecture-block">
+
+                        <strong>MODÉLISATION</strong>
+
+                        <span>
+                            Géométrie 3D<br>
+                            Substrat + cuivre
+                        </span>
+
+                    </div>
+
+                    <div class="architecture-arrow">
+                        →
+                    </div>
+
+                    <div class="architecture-block">
+
+                        <strong>HFSS</strong>
+
+                        <span>
+                            Solveur FEM<br>
+                            + Sweep fréquentiel
+                        </span>
+
+                    </div>
+
+                    <div class="architecture-arrow">
+                        →
+                    </div>
+
+                    <div class="architecture-block">
+
+                        <strong>PARAMÈTRES S</strong>
+
+                        <span>
+                            S11 + fréquence<br>
+                            de résonance
+                        </span>
+
+                    </div>
+
+                    <div class="architecture-arrow">
+                        →
+                    </div>
+
+                    <div class="architecture-block">
+
+                        <strong>CHAMP LOINTAIN</strong>
+
+                        <span>
+                            Gain + directivité<br>
+                            Diagrammes 2D / 3D
+                        </span>
+
+                    </div>
+
+                    <div class="architecture-arrow">
+                        →
+                    </div>
+
+                    <div class="architecture-block">
+
+                        <strong>MESURE</strong>
+
+                        <span>
+                            Chambre anéchoïde<br>
+                            + Ant32
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 03 — MATÉRIAUX
+            ================================================= -->
+
+            <section class="project-section">
+
+                <div class="section-number">03 — CONCEPTION</div>
+
+                <h3>
+                    Modélisation des antennes sous Ansys HFSS
+                </h3>
+
+                <p>
+                    Les antennes sont modélisées en trois dimensions sous
+                    <strong>Ansys HFSS 2025 R1</strong>. La structure repose
+                    sur un substrat diélectrique Arlon DiClad 880™ avec
+                    une permittivité relative de
+                    <strong>ε<sub>r</sub> = 2,2</strong> et une épaisseur
+                    de <strong>1,5 mm</strong>.
+                </p>
+
+                <div class="technical-grid">
+
+                    <div class="technical-card">
+
+                        <h4>Substrat</h4>
+
+                        <p>
+                            Arlon DiClad 880™, ε<sub>r</sub> = 2,2,
+                            épaisseur T = 1,5 mm.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Conducteur</h4>
+
+                        <p>
+                            Patch métallique et plan de masse modélisés
+                            comme conducteurs parfaits (PEC).
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Alimentation</h4>
+
+                        <p>
+                            Excitation par câble et connecteur coaxial
+                            caractéristique 50 Ω.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Espace de propagation</h4>
+
+                        <p>
+                            Domaine extérieur avec condition aux limites
+                            de type Radiation pour reproduire la propagation
+                            dans l'espace libre.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 04 — SIMULATION
+            ================================================= -->
+
+            <section class="project-section">
+
+                <div class="section-number">04 — SIMULATION HFSS</div>
+
+                <h3>
+                    Extraction des performances électromagnétiques
+                </h3>
+
+                <p>
+                    Après construction de la géométrie, les conditions aux
+                    limites et l'excitation coaxiale sont définies avant
+                    de lancer le solveur électromagnétique.
+                </p>
+
+                <p>
+                    Un balayage fréquentiel de type
+                    <strong>Fast Sweep</strong> permet d'identifier les
+                    fréquences de résonance et les bandes dans lesquelles
+                    le coefficient de réflexion respecte la condition
+                    d'adaptation
+                    <strong>S<sub>11</sub> &lt; −10 dB</strong>.
+                </p>
+
+                <div class="architecture">
+
+                    <div class="architecture-block">
+
+                        <strong>Géométrie</strong>
+
+                        <span>
+                            Patch + substrat<br>
+                            + plan de masse
+                        </span>
+
+                    </div>
+
+                    <div class="architecture-arrow">
+                        →
+                    </div>
+
+                    <div class="architecture-block">
+
+                        <strong>Boundary</strong>
+
+                        <span>
+                            PEC + Radiation
+                        </span>
+
+                    </div>
+
+                    <div class="architecture-arrow">
+                        →
+                    </div>
+
+                    <div class="architecture-block">
+
+                        <strong>Excitation</strong>
+
+                        <span>
+                            Port coaxial 50 Ω
+                        </span>
+
+                    </div>
+
+                    <div class="architecture-arrow">
+                        →
+                    </div>
+
+                    <div class="architecture-block">
+
+                        <strong>Solver</strong>
+
+                        <span>
+                            FEM + Fast Sweep
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 05 — PATCH SIMPLE
+            ================================================= -->
+
+            <section class="project-section">
+
+                <div class="section-number">05 — PATCH ÉLÉMENTAIRE</div>
+
+                <h3>
+                    Antenne patch en bande X
+                </h3>
+
+                <p>
+                    La première structure étudiée est une antenne patch
+                    élémentaire fonctionnant autour de 10 GHz. La simulation
+                    permet d'étudier son adaptation, son rayonnement et
+                    son diagramme de directivité.
+                </p>
+
+                <div class="results-grid">
+
+                    <div class="result-card">
+
+                        <span class="result-value">
+                            10,15 GHz
+                        </span>
+
+                        <span class="result-label">
+                            Fréquence de résonance optimale
+                        </span>
+
+                    </div>
+
+
+                    <div class="result-card">
+
+                        <span class="result-value">
+                            −15,78 dB
+                        </span>
+
+                        <span class="result-label">
+                            Minimum de S11
+                        </span>
+
+                    </div>
+
+
+                    <div class="result-card">
+
+                        <span class="result-value">
+                            9,8–10,5 GHz
+                        </span>
+
+                        <span class="result-label">
+                            Bande adaptée à −10 dB
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="highlight-box">
+
+                    <strong>Résultat :</strong>
+
+                    <p>
+                        La simulation montre une adaptation optimale autour
+                        de 10,15 GHz avec un minimum de
+                        S<sub>11</sub> de −15,78 dB.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 06 — RÉSEAU 2x2
+            ================================================= -->
+
+            <section class="project-section">
+
+                <div class="section-number">06 — RÉSEAU 2×2</div>
+
+                <h3>
+                    Augmenter la directivité grâce à un réseau de patchs
+                </h3>
+
+                <p>
+                    Quatre éléments patch identiques sont associés afin
+                    de former un réseau 2×2. L'objectif est d'obtenir une
+                    concentration plus importante de l'énergie dans la
+                    direction principale de rayonnement.
+                </p>
+
+                <p>
+                    Le réseau permet ainsi d'augmenter la directivité par
+                    rapport à une antenne patch élémentaire, au prix d'une
+                    architecture d'alimentation et d'un couplage mutuel
+                    plus complexes.
+                </p>
+
+                <div class="results-grid">
+
+                    <div class="result-card">
+
+                        <span class="result-value">
+                            10,06 GHz
+                        </span>
+
+                        <span class="result-label">
+                            Fréquence de résonance
+                        </span>
+
+                    </div>
+
+
+                    <div class="result-card">
+
+                        <span class="result-value">
+                            −26,38 dB
+                        </span>
+
+                        <span class="result-label">
+                            Minimum de S11
+                        </span>
+
+                    </div>
+
+
+                    <div class="result-card">
+
+                        <span class="result-value">
+                            2×2
+                        </span>
+
+                        <span class="result-label">
+                            Nombre d'éléments rayonnants
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <p>
+                    Les diagrammes de rayonnement montrent un lobe principal
+                    plus concentré que celui obtenu avec le patch isolé.
+                </p>
+
+            </section>
+
+
+            <!-- =================================================
+                 07 — POLARISATION CIRCULAIRE
+            ================================================= -->
+
+            <section class="project-section">
+
+                <div class="section-number">07 — POLARISATION CIRCULAIRE</div>
+
+                <h3>
+                    Génération d'une polarisation RHCP à 2,4 GHz
+                </h3>
+
+                <p>
+                    Une troisième structure est conçue pour fonctionner
+                    autour de 2,4 GHz avec une polarisation circulaire.
+                    Deux coins opposés du patch sont tronqués afin de créer
+                    les conditions nécessaires au déphasage entre les deux
+                    composantes orthogonales du champ.
+                </p>
+
+                <p>
+                    La comparaison des composantes
+                    <strong>RHCP</strong> et <strong>LHCP</strong> permet
+                    d'évaluer la qualité de la polarisation obtenue.
+                </p>
+
+                <div class="technical-grid">
+
+                    <div class="technical-card">
+
+                        <h4>Troncatures</h4>
+
+                        <p>
+                            Deux coins opposés sont tronqués pour perturber
+                            les modes propres du patch.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Déphasage</h4>
+
+                        <p>
+                            La géométrie favorise deux composantes
+                            orthogonales présentant un déphasage proche
+                            de 90°.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>RHCP</h4>
+
+                        <p>
+                            La composante de polarisation circulaire droite
+                            domine dans l'axe principal autour de la
+                            fréquence de fonctionnement.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Axial Ratio</h4>
+
+                        <p>
+                            Le rapport axial est utilisé pour caractériser
+                            la qualité de la polarisation circulaire.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="results-grid">
+
+                    <div class="result-card">
+
+                        <span class="result-value">
+                            2,48 GHz
+                        </span>
+
+                        <span class="result-label">
+                            Fréquence de résonance
+                        </span>
+
+                    </div>
+
+
+                    <div class="result-card">
+
+                        <span class="result-value">
+                            −17,8 dB
+                        </span>
+
+                        <span class="result-label">
+                            Minimum de S11
+                        </span>
+
+                    </div>
+
+
+                    <div class="result-card">
+
+                        <span class="result-value">
+                            2,44–2,49 GHz
+                        </span>
+
+                        <span class="result-label">
+                            Bande d'adaptation observée
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 08 — CHAMP LOINTAIN
+            ================================================= -->
+
+            <section class="project-section">
+
+                <div class="section-number">08 — RAYONNEMENT</div>
+
+                <h3>
+                    Diagrammes 2D et 3D en champ lointain
+                </h3>
+
+                <p>
+                    Les simulations HFSS permettent également d'extraire les
+                    champs lointains afin d'étudier la distribution spatiale
+                    de l'énergie rayonnée.
+                </p>
+
+                <div class="technical-grid">
+
+                    <div class="technical-card">
+
+                        <h4>Plan E</h4>
+
+                        <p>
+                            Analyse du diagramme de rayonnement dans le plan
+                            électrique principal.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Plan H</h4>
+
+                        <p>
+                            Analyse de la directivité dans le plan magnétique
+                            principal.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Diagramme 3D</h4>
+
+                        <p>
+                            Visualisation globale du rayonnement et du lobe
+                            principal de l'antenne.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Ouverture à −3 dB</h4>
+
+                        <p>
+                            Mesure de la largeur du faisceau principal à
+                            mi-puissance.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 09 — CHAMBRE ANÉCHOÏDE
+            ================================================= -->
+
+            <section class="project-section">
+
+                <div class="section-number">09 — MESURE EXPÉRIMENTALE</div>
+
+                <h3>
+                    Caractérisation des antennes en chambre anéchoïde
+                </h3>
+
+                <p>
+                    Les antennes conçues et simulées ont ensuite été
+                    caractérisées expérimentalement en chambre anéchoïde.
+                    Cette étape permet de confronter les résultats issus
+                    du modèle électromagnétique aux performances d'un
+                    dispositif réel.
+                </p>
+
+                <div class="architecture">
+
+                    <div class="architecture-block">
+
+                        <strong>ANTENNE</strong>
+
+                        <span>
+                            Dispositif sous test
+                        </span>
+
+                    </div>
+
+                    <div class="architecture-arrow">
+                        →
+                    </div>
+
+                    <div class="architecture-block">
+
+                        <strong>CHAMBRE</strong>
+
+                        <span>
+                            Environnement absorbant
+                        </span>
+
+                    </div>
+
+                    <div class="architecture-arrow">
+                        →
+                    </div>
+
+                    <div class="architecture-block">
+
+                        <strong>ACQUISITION</strong>
+
+                        <span>
+                            Mesure d'amplitude
+                        </span>
+
+                    </div>
+
+                    <div class="architecture-arrow">
+                        →
+                    </div>
+
+                    <div class="architecture-block">
+
+                        <strong>ANT32</strong>
+
+                        <span>
+                            Enregistrement des données
+                        </span>
+
+                    </div>
+
+                    <div class="architecture-arrow">
+                        →
+                    </div>
+
+                    <div class="architecture-block">
+
+                        <strong>ANALYSE</strong>
+
+                        <span>
+                            Comparaison HFSS / mesure
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 10 — DONNÉES
+            ================================================= -->
+
+            <section class="project-section">
+
+                <div class="section-number">10 — TRAITEMENT DES DONNÉES</div>
+
+                <h3>
+                    Extraction et comparaison des mesures
+                </h3>
+
+                <p>
+                    Les données expérimentales enregistrées sous Ant32 sont
+                    exportées afin d'être traitées et comparées aux résultats
+                    obtenus avec HFSS.
+                </p>
+
+                <p>
+                    Les fichiers d'amplitude sont exploités pour reconstruire
+                    les diagrammes expérimentaux et superposer les courbes
+                    aux résultats simulés.
+                </p>
+
+                <div class="technical-grid">
+
+                    <div class="technical-card">
+
+                        <h4>Données .amp</h4>
+
+                        <p>
+                            Extraction des mesures d'amplitude issues de la
+                            campagne expérimentale.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Excel</h4>
+
+                        <p>
+                            Organisation, traitement et superposition des
+                            données simulées et mesurées.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Comparaison S11</h4>
+
+                        <p>
+                            Comparaison des fréquences de résonance et des
+                            niveaux d'adaptation.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Polarisation</h4>
+
+                        <p>
+                            Comparaison des composantes RHCP/LHCP et analyse
+                            du rapport axial.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 11 — COMPARAISON
+            ================================================= -->
+
+            <section class="project-section">
+
+                <div class="section-number">11 — RÉSULTATS COMPARATIFS</div>
+
+                <h3>
+                    Simulation contre mesure expérimentale
+                </h3>
+
+                <p>
+                    La confrontation des résultats permet d'évaluer
+                    l'influence des conditions réelles de fabrication et
+                    de mesure sur les performances des antennes.
+                </p>
+
+                <table class="comparison-table">
+
+                    <thead>
+
+                        <tr>
+                            <th>Structure</th>
+                            <th>Fréquence optimale</th>
+                            <th>Résultat d'adaptation</th>
+                            <th>Caractéristique principale</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+                                Patch élémentaire X
+                            </td>
+
+                            <td>
+                                10,15 GHz
+                            </td>
+
+                            <td>
+                                S11 = −15,78 dB
+                            </td>
+
+                            <td>
+                                Rayonnement directif
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Réseau patch 2×2 X
+                            </td>
+
+                            <td>
+                                10,06 GHz
+                            </td>
+
+                            <td>
+                                S11 = −26,38 dB
+                            </td>
+
+                            <td>
+                                Directivité accrue
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Patch circulaire
+                            </td>
+
+                            <td>
+                                2,48 GHz
+                            </td>
+
+                            <td>
+                                S11 = −17,8 dB
+                            </td>
+
+                            <td>
+                                Polarisation RHCP
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </section>
+
+
+            <!-- =================================================
+                 12 — VISUELS HFSS
+            ================================================= -->
+
+            <section class="project-section">
+
+                <div class="section-number">12 — MODÈLES HFSS</div>
+
+                <h3>
+                    Modélisation des différentes architectures
+                </h3>
+
+                <div class="project-gallery">
+
+                    <figure>
+
+                        <img
+                            src="images/antennas-hfss/patch-hfss.jpg"
+                            alt="Modèle HFSS du patch élémentaire"
+                        >
+
+                        <figcaption>
+                            Modélisation 3D du patch élémentaire sous HFSS.
+                        </figcaption>
+
+                    </figure>
+
+
+                    <figure>
+
+                        <img
+                            src="images/antennas-hfss/reseau-2x2-hfss.jpg"
+                            alt="Modèle HFSS du réseau 2x2"
+                        >
+
+                        <figcaption>
+                            Modélisation du réseau de quatre patchs.
+                        </figcaption>
+
+                    </figure>
+
+
+                    <figure>
+
+                        <img
+                            src="images/antennas-hfss/patch-circulaire-hfss.jpg"
+                            alt="Patch à polarisation circulaire"
+                        >
+
+                        <figcaption>
+                            Patch avec troncatures pour la polarisation circulaire.
+                        </figcaption>
+
+                    </figure>
+
+
+                    <figure>
+
+                        <img
+                            src="images/antennas-hfss/s11-hfss.jpg"
+                            alt="Courbe S11 sous HFSS"
+                        >
+
+                        <figcaption>
+                            Exemple de courbe S11 issue de la simulation HFSS.
+                        </figcaption>
+
+                    </figure>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 13 — MESURES
+            ================================================= -->
+
+            <section class="project-section">
+
+                <div class="section-number">13 — CAMPAGNE EXPÉRIMENTALE</div>
+
+                <h3>
+                    Passage de la simulation à la caractérisation réelle
+                </h3>
+
+                <div class="project-gallery">
+
+                    <figure>
+
+                        <img
+                            src="images/antennas-hfss/chambre-anechoide.jpg"
+                            alt="Mesure d'une antenne en chambre anéchoïde"
+                        >
+
+                        <figcaption>
+                            Caractérisation expérimentale en chambre anéchoïde.
+                        </figcaption>
+
+                    </figure>
+
+
+                    <figure>
+
+                        <img
+                            src="images/antennas-hfss/ant32.jpg"
+                            alt="Logiciel Ant32 pour les mesures d'antenne"
+                        >
+
+                        <figcaption>
+                            Acquisition des données sous Ant32.
+                        </figcaption>
+
+                    </figure>
+
+
+                    <figure>
+
+                        <img
+                            src="images/antennas-hfss/rayonnement-2d.jpg"
+                            alt="Diagramme de rayonnement 2D"
+                        >
+
+                        <figcaption>
+                            Diagramme de rayonnement mesuré.
+                        </figcaption>
+
+                    </figure>
+
+
+                    <figure>
+
+                        <img
+                            src="images/antennas-hfss/comparaison-mesure-simulation.jpg"
+                            alt="Comparaison simulation mesure"
+                        >
+
+                        <figcaption>
+                            Superposition des résultats simulés et mesurés.
+                        </figcaption>
+
+                    </figure>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 14 — ÉCARTS
+            ================================================= -->
+
+            <section class="project-section">
+
+                <div class="section-number">14 — ANALYSE DES ÉCARTS</div>
+
+                <h3>
+                    Pourquoi les mesures diffèrent-elles des simulations ?
+                </h3>
+
+                <p>
+                    Les simulations HFSS reposent sur un modèle numérique
+                    dont les paramètres géométriques et matériaux peuvent
+                    être idéalisés. La réalisation expérimentale introduit
+                    plusieurs phénomènes supplémentaires.
+                </p>
+
+                <div class="technical-grid">
+
+                    <div class="technical-card">
+
+                        <h4>Pertes diélectriques</h4>
+
+                        <p>
+                            Les pertes réelles du substrat peuvent modifier
+                            le rendement et le gain par rapport au modèle
+                            idéal.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Tolérances d'usinage</h4>
+
+                        <p>
+                            De petites variations géométriques peuvent
+                            déplacer la fréquence de résonance.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Câble RF</h4>
+
+                        <p>
+                            Le connecteur et le câble coaxial peuvent
+                            perturber légèrement les caractéristiques
+                            électriques et le rayonnement.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Réflexions résiduelles</h4>
+
+                        <p>
+                            L'environnement de mesure réel peut conserver
+                            certaines réflexions malgré l'utilisation d'une
+                            chambre anéchoïde.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="highlight-box">
+
+                    <strong>Observation expérimentale :</strong>
+
+                    <p>
+                        Les mesures présentent notamment une dégradation
+                        partielle du gain, un élargissement du faisceau et
+                        une augmentation du rapport axial par rapport aux
+                        résultats idéalisés de simulation.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 15 — POLARISATION
+            ================================================= -->
+
+            <section class="project-section">
+
+                <div class="section-number">15 — ANALYSE DE POLARISATION</div>
+
+                <h3>
+                    RHCP, LHCP et rapport axial
+                </h3>
+
+                <p>
+                    Pour l'antenne à polarisation circulaire, les composantes
+                    <strong>RHCP</strong> et <strong>LHCP</strong> sont
+                    étudiées afin de vérifier la polarisation obtenue dans
+                    la direction principale.
+                </p>
+
+                <div class="architecture">
+
+                    <div class="architecture-block">
+
+                        <strong>Champ E</strong>
+
+                        <span>
+                            Deux composantes<br>
+                            orthogonales
+                        </span>
+
+                    </div>
+
+                    <div class="architecture-arrow">
+                        →
+                    </div>
+
+                    <div class="architecture-block">
+
+                        <strong>Déphasage 90°</strong>
+
+                        <span>
+                            Création de la<br>
+                            polarisation circulaire
+                        </span>
+
+                    </div>
+
+                    <div class="architecture-arrow">
+                        →
+                    </div>
+
+                    <div class="architecture-block">
+
+                        <strong>RHCP / LHCP</strong>
+
+                        <span>
+                            Décomposition du<br>
+                            champ rayonné
+                        </span>
+
+                    </div>
+
+                    <div class="architecture-arrow">
+                        →
+                    </div>
+
+                    <div class="architecture-block">
+
+                        <strong>Axial Ratio</strong>
+
+                        <span>
+                            Évaluation de la<br>
+                            qualité de polarisation
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 16 — DIFFICULTÉS
+            ================================================= -->
+
+            <section class="project-section">
+
+                <div class="section-number">16 — DIFFICULTÉS RENCONTRÉES</div>
+
+                <h3>
+                    Maîtriser les écarts entre modèle et expérience
+                </h3>
+
+                <p>
+                    La principale difficulté du projet réside dans la
+                    confrontation entre un modèle électromagnétique contrôlé
+                    et un système physique soumis aux tolérances de
+                    fabrication et aux conditions expérimentales.
+                </p>
+
+                <p>
+                    L'interprétation des différences entre les diagrammes
+                    simulés et mesurés nécessite donc de prendre en compte
+                    simultanément le matériau, les connecteurs, le câble,
+                    l'alignement mécanique et les conditions de mesure.
+                </p>
+
+            </section>
+
+
+            <!-- =================================================
+                 17 — RESPONSABILITÉS
+            ================================================= -->
+
+            <section class="project-section">
+
+                <div class="section-number">17 — MA CONTRIBUTION</div>
+
+                <h3>
+                    De la conception numérique à la mesure expérimentale
+                </h3>
+
+                <p>
+                    Dans ce projet, j'ai pris en charge les principales
+                    étapes de la chaîne de caractérisation :
+                </p>
+
+                <div class="technical-grid">
+
+                    <div class="technical-card">
+
+                        <h4>Modélisation 3D</h4>
+
+                        <p>
+                            Création et paramétrisation des géométries
+                            d'antennes sous Ansys HFSS.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Simulation EM</h4>
+
+                        <p>
+                            Configuration des simulations, balayages
+                            fréquentiels et extraction des paramètres
+                            électromagnétiques.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Mesures en chambre</h4>
+
+                        <p>
+                            Réalisation des campagnes de caractérisation
+                            expérimentale des antennes.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Traitement des données</h4>
+
+                        <p>
+                            Exploitation des fichiers d'amplitude,
+                            comparaison simulation/mesure et rédaction
+                            des comptes rendus.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 18 — OUTILS
+            ================================================= -->
+
+            <section class="project-section">
+
+                <div class="section-number">18 — OUTILS & TECHNOLOGIES</div>
+
+                <h3>
+                    Environnement de conception et de mesure
+                </h3>
+
+                <div class="technical-grid">
+
+                    <div class="technical-card">
+
+                        <h4>Ansys HFSS 2025 R1</h4>
+
+                        <p>
+                            Modélisation 3D, méthode des éléments finis,
+                            simulation des paramètres S et calcul des
+                            champs lointains.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Ant32</h4>
+
+                        <p>
+                            Acquisition et exploitation des mesures
+                            réalisées en chambre anéchoïde.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Microsoft Excel</h4>
+
+                        <p>
+                            Traitement des données expérimentales et
+                            superposition des résultats simulés et mesurés.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Hyperfréquences</h4>
+
+                        <p>
+                            Analyse S11, diagrammes de rayonnement,
+                            directivité, gain, polarisation et rapport axial.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 19 — PERSPECTIVES
+            ================================================= -->
+
+            <section class="project-section">
+
+                <div class="section-number">19 — PERSPECTIVES</div>
+
+                <h3>
+                    Amélioration de la modélisation et de la conception
+                </h3>
+
+                <div class="technical-grid">
+
+                    <div class="technical-card">
+
+                        <h4>Modèle HFSS réaliste</h4>
+
+                        <p>
+                            Intégrer explicitement les tangentes de pertes,
+                            les pertes conductrices et les caractéristiques
+                            réelles des connecteurs.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Réseau d'alimentation</h4>
+
+                        <p>
+                            Optimiser les lignes d'alimentation du réseau
+                            2×2 afin de réduire le couplage mutuel entre
+                            les éléments.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Mesure</h4>
+
+                        <p>
+                            Améliorer le centrage et l'alignement mécanique
+                            de l'antenne dans la chambre anéchoïde.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Optimisation automatique</h4>
+
+                        <p>
+                            Utiliser les outils d'optimisation HFSS pour
+                            ajuster automatiquement les dimensions aux
+                            fréquences cibles.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 20 — COMPÉTENCES
+            ================================================= -->
+
+            <section class="project-section">
+
+                <div class="section-number">20 — COMPÉTENCES MOBILISÉES</div>
+
+                <h3>
+                    Conception RF, simulation électromagnétique et mesure
+                </h3>
+
+                <div class="technical-grid">
+
+                    <div class="technical-card">
+
+                        <h4>Conception d'antennes</h4>
+
+                        <p>
+                            Antennes patch, réseaux d'antennes et
+                            polarisation circulaire.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Simulation électromagnétique</h4>
+
+                        <p>
+                            Modélisation 3D et méthode des éléments finis
+                            avec Ansys HFSS.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Mesures RF</h4>
+
+                        <p>
+                            Caractérisation en chambre anéchoïde et
+                            acquisition de diagrammes de rayonnement.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Analyse expérimentale</h4>
+
+                        <p>
+                            Comparaison simulation/mesure, analyse des
+                            écarts, gain, directivité, S11 et polarisation.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 21 — RESSOURCES
+            ================================================= -->
+
+            <section class="project-section">
+
+                <div class="section-number">21 — RESSOURCES</div>
+
+                <h3>
+                    Rapports et résultats expérimentaux
+                </h3>
+
+                <p>
+                    Les comptes rendus regroupent les modèles HFSS, les
+                    paramètres de simulation, les résultats S11, les
+                    diagrammes de rayonnement, les mesures en chambre
+                    anéchoïde et l'analyse comparative des résultats.
+                </p>
+
+                <div class="project-links">
+
+                    <a
+                        href="documents/rapport-antennes-hfss.pdf"
+                        class="project-link"
+                        target="_blank"
+                    >
+                        Voir le rapport PDF
+                    </a>
+
+                    <a
+                        href="#"
+                        class="project-link secondary"
+                        target="_blank"
+                    >
+                        GitHub du projet
+                    </a>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 FIN
+            ================================================= -->
+
+            <div class="project-end">
+
+                <a href="index.html#projets" class="back-link">
+                    ← Retour à tous les projets
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================= -->
+
+    <footer class="footer">
+
+        <div class="container">
+
+            <p>
+                © Sara Messaoudi — Ingénieure en électronique
+            </p>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>

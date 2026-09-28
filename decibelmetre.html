@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Décibelmètre — Sara Messaoudi</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* ==================================================
+           PAGE PROJET
+        ================================================== */
+
+        .project-page {
+            padding: 80px 0;
+        }
+
+        .project-page .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 25px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 40px;
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .back-link:hover {
+            color: #000;
+        }
+
+        /* HERO */
+
+        .project-hero {
+            margin-bottom: 60px;
+        }
+
+        .project-category {
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        .project-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            line-height: 1.15;
+        }
+
+        .project-hero h2 {
+            font-size: 1.35rem;
+            font-weight: 400;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .project-intro {
+            max-width: 850px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        .project-tags span {
+            padding: 8px 14px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #555;
+        }
+
+        /* IMAGE PRINCIPALE */
+
+        .project-main-image {
+            margin: 50px 0 80px;
+        }
+
+        .project-main-image img {
+            width: 100%;
+            max-height: 600px;
+            object-fit: cover;
+            border-radius: 12px;
+            display: block;
+        }
+
+        /* SECTIONS */
+
+        .project-section {
+            margin-bottom: 80px;
+        }
+
+        .project-section-number {
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .project-section h3 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+        }
+
+        .project-section p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #444;
+            max-width: 900px;
+        }
+
+        /* LISTES */
+
+        .project-list {
+            padding-left: 20px;
+            max-width: 900px;
+        }
+
+        .project-list li {
+            margin-bottom: 12px;
+            line-height: 1.7;
+            color: #444;
+        }
+
+        /* ARCHITECTURE */
+
+        .architecture {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 35px;
+        }
+
+        .architecture-block {
+            padding: 20px;
+            min-width: 150px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background: #fafafa;
+            font-weight: 600;
+        }
+
+        .architecture-arrow {
+            font-size: 1.5rem;
+            color: #888;
+        }
+
+        /* CARTES TECHNIQUES */
+
+        .technical-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .technical-card {
+            padding: 25px;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+        }
+
+        .technical-card h4 {
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+        }
+
+        .technical-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* GALERIE */
+
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 35px;
+        }
+
+        .project-gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            display: block;
+        }
+
+        /* CODE */
+
+        .code-block {
+            background: #111;
+            color: #eee;
+            padding: 25px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin-top: 25px;
+        }
+
+        .code-block pre {
+            margin: 0;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* RESSOURCES */
+
+        .project-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .project-button {
+            display: inline-block;
+            padding: 13px 22px;
+            border: 1px solid #222;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #222;
+            transition: 0.3s;
+        }
+
+        .project-button:hover {
+            background: #222;
+            color: white;
+        }
+
+        /* FIN */
+
+        .project-end {
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid #ddd;
+        }
+
+        @media (max-width: 700px) {
+
+            .project-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .project-hero h2 {
+                font-size: 1.1rem;
+            }
+
+            .project-section h3 {
+                font-size: 1.6rem;
+            }
+
+            .architecture {
+                flex-direction: column;
+            }
+
+            .architecture-arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- ==================================================
+         HEADER
+    ================================================== -->
+
+    <header>
+        <nav>
+            <div class="logo">
+                Sara Messaoudi
+            </div>
+
+            <div class="nav-links">
+                <a href="index.html#projets">Projets</a>
+                <a href="index.html#experience">Expérience</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+
+    <!-- ==================================================
+         PAGE PROJET
+    ================================================== -->
+
+    <main class="project-page">
+
+        <div class="container">
+
+            <a href="index.html#projets" class="back-link">
+                ← Retour aux projets
+            </a>
+
+
+            <!-- ==================================================
+                 HERO
+            ================================================== -->
+
+            <section class="project-hero">
+
+                <div class="project-category">
+                    MINI-PROJET / ÉLECTROACOUSTIQUE / USTHB
+                </div>
+
+                <h1>
+                    Décibelmètre
+                </h1>
+
+                <h2>
+                    Conception et réalisation d'un décibelmètre numérique portable
+                </h2>
+
+                <p class="project-intro">
+                    Conception et réalisation d'un sonomètre numérique portable
+                    capable de mesurer le niveau de pression acoustique ambiant,
+                    d'afficher le niveau sonore en décibels et d'indiquer
+                    visuellement les différents niveaux de risque sonore.
+                </p>
+
+                <div class="project-tags">
+                    <span>Arduino Uno</span>
+                    <span>ATmega328P</span>
+                    <span>Arduino IDE</span>
+                    <span>C/C++</span>
+                    <span>Microphone électret</span>
+                    <span>Préamplificateur</span>
+                    <span>LCD 16×2</span>
+                    <span>I2C</span>
+                    <span>Traitement du signal</span>
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 IMAGE PRINCIPALE
+            ================================================== -->
+
+            <div class="project-main-image">
+
+                <img
+                    src="images/decibelmetre/montage-global.jpg"
+                    alt="Prototype du décibelmètre">
+
+            </div>
+
+
+            <!-- ==================================================
+                 01 - LE PROJET
+            ================================================== -->
+
+            <section class="project-section">
+
+                <div class="project-section-number">
+                    01 — LE PROJET
+                </div>
+
+                <h3>
+                    Mesurer le niveau sonore ambiant
+                </h3>
+
+                <p>
+                    Ce mini-projet réalisé dans le cadre du module
+                    <strong>Électroacoustique</strong> à l'USTHB porte sur
+                    la conception et la réalisation d'un décibelmètre
+                    numérique portable.
+                </p>
+
+                <p>
+                    L'objectif était de développer une chaîne de mesure
+                    permettant de transformer les variations de pression
+                    acoustique captées par un microphone en une information
+                    numérique exprimée en décibels.
+                </p>
+
+                <p>
+                    Le système permet également de distinguer plusieurs
+                    niveaux sonores grâce à un affichage LCD et à trois LED
+                    indiquant le niveau de danger associé au bruit mesuré.
+                </p>
+
+            </section>
+
+
+            <!-- ==================================================
+                 02 - ARCHITECTURE
+            ================================================== -->
+
+            <section class="project-section">
+
+                <div class="project-section-number">
+                    02 — ARCHITECTURE
+                </div>
+
+                <h3>
+                    Chaîne de mesure
+                </h3>
+
+                <p>
+                    Le système repose sur une chaîne de mesure analogique
+                    puis numérique. Le microphone produit un signal de
+                    faible amplitude qui est conditionné avant d'être
+                    envoyé vers l'entrée analogique de l'Arduino.
+                </p>
+
+                <div class="architecture">
+
+                    <div class="architecture-block">
+                        Microphone
+                        <br>
+                        électret
+                    </div>
+
+                    <div class="architecture-arrow">
+                        →
+                    </div>
+
+                    <div class="architecture-block">
+                        Préamplificateur
+                        <br>
+                        analogique
+                    </div>
+
+                    <div class="architecture-arrow">
+                        →
+                    </div>
+
+                    <div class="architecture-block">
+                        Arduino Uno
+                        <br>
+                        ADC
+                    </div>
+
+                    <div class="architecture-arrow">
+                        →
+                    </div>
+
+                    <div class="architecture-block">
+                        Calcul
+                        <br>
+                        du niveau dB
+                    </div>
+
+                    <div class="architecture-arrow">
+                        →
+                    </div>
+
+                    <div class="architecture-block">
+                        LCD
+                        <br>
+                        + LED
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 03 - TECHNIQUE
+            ================================================== -->
+
+            <section class="project-section">
+
+                <div class="project-section-number">
+                    03 — TECHNIQUE
+                </div>
+
+                <h3>
+                    Principaux éléments techniques
+                </h3>
+
+                <div class="technical-grid">
+
+                    <div class="technical-card">
+
+                        <h4>
+                            Acquisition acoustique
+                        </h4>
+
+                        <p>
+                            Une capsule microphone électret capte les
+                            variations de pression acoustique et génère
+                            un signal électrique analogique de faible
+                            amplitude.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>
+                            Conditionnement
+                        </h4>
+
+                        <p>
+                            Un étage de préamplification analogique
+                            réalisé sur plaque perforée augmente
+                            l'amplitude du signal afin de permettre
+                            son exploitation par l'Arduino.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>
+                            Conversion A/N
+                        </h4>
+
+                        <p>
+                            Le signal conditionné est acquis par
+                            l'entrée analogique de l'Arduino Uno
+                            puis converti en valeur numérique.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>
+                            Affichage
+                        </h4>
+
+                        <p>
+                            Le niveau sonore calculé est affiché
+                            en temps réel sur un écran LCD 16×2
+                            avec communication I2C.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>
+                            Indication lumineuse
+                        </h4>
+
+                        <p>
+                            Trois LED permettent d'identifier
+                            rapidement le niveau sonore : vert,
+                            orange ou rouge.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>
+                            Seuil d'alerte
+                        </h4>
+
+                        <p>
+                            Une LED rouge est activée lorsque le
+                            niveau sonore dépasse le seuil de
+                            85 dB.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 04 - CAPTEUR
+            ================================================== -->
+
+            <section class="project-section">
+
+                <div class="project-section-number">
+                    04 — CAPTEUR & PRÉAMPLIFICATION
+                </div>
+
+                <h3>
+                    Conditionnement du signal microphone
+                </h3>
+
+                <p>
+                    Les premiers essais ont été réalisés avec un capteur
+                    acoustique commercial de type <strong>KY-038</strong>.
+                    Cependant, le signal directement fourni par le
+                    microphone était trop faible pour obtenir une
+                    exploitation satisfaisante par l'Arduino.
+                </p>
+
+                <p>
+                    Un module de préamplification analogique dédié a donc
+                    été développé à partir du principe du KY-038, avec
+                    l'ajout d'un étage d'amplification permettant
+                    d'augmenter l'amplitude du signal acoustique.
+                </p>
+
+                <p>
+                    Le circuit a ensuite été réalisé sur
+                    <strong>plaque perforée</strong> et intégré au
+                    prototype final.
+                </p>
+
+            </section>
+
+
+            <!-- ==================================================
+                 GALERIE PREAMPLIFICATEUR
+            ================================================== -->
+
+            <section class="project-section">
+
+                <div class="project-gallery">
+
+                    <img
+                        src="images/decibelmetre/preamplificateur.jpg"
+                        alt="Préamplificateur analogique">
+
+                    <img
+                        src="images/decibelmetre/circuit-microphone.jpg"
+                        alt="Circuit de conditionnement du microphone">
+
+                    <img
+                        src="images/decibelmetre/plaque-perforee.jpg"
+                        alt="Montage sur plaque perforée">
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 05 - TRAITEMENT
+            ================================================== -->
+
+            <section class="project-section">
+
+                <div class="project-section-number">
+                    05 — TRAITEMENT DU SIGNAL
+                </div>
+
+                <h3>
+                    Conversion en niveau sonore
+                </h3>
+
+                <p>
+                    Après amplification, le signal analogique est transmis
+                    à l'Arduino Uno. Le microcontrôleur réalise la
+                    conversion analogique-numérique puis exploite la
+                    tension mesurée pour estimer le niveau sonore.
+                </p>
+
+                <p>
+                    La relation utilisée pour exprimer le rapport de
+                    tension sous forme logarithmique est basée sur :
+                </p>
+
+                <div class="technical-card">
+
+                    <p>
+                        <strong>
+                            dB = 20 log₁₀(V<sub>mes</sub> / V<sub>ref</sub>)
+                        </strong>
+                    </p>
+
+                </div>
+
+                <p>
+                    Les mesures sont ensuite lissées afin d'obtenir un
+                    affichage plus stable et d'éviter des variations
+                    trop rapides du niveau affiché.
+                </p>
+
+            </section>
+
+
+            <!-- ==================================================
+                 06 - PROGRAMMATION
+            ================================================== -->
+
+            <section class="project-section">
+
+                <div class="project-section-number">
+                    06 — PROGRAMMATION
+                </div>
+
+                <h3>
+                    Acquisition et classification
+                </h3>
+
+                <p>
+                    Le programme Arduino assure l'acquisition du signal,
+                    son traitement, le calcul du niveau sonore ainsi que
+                    la gestion de l'écran LCD et des LED d'état.
+                </p>
+
+                <div class="code-block">
+
+<pre><code>// Lecture de l'entrée analogique
+int valeur = analogRead(A0);
+
+// Conversion en tension
+float tension = valeur * (5.0 / 1023.0);
+
+// Calcul du niveau sonore
+float niveau_dB =
+    20.0 * log10(tension / Vref);
+
+// Affichage
+lcd.setCursor(0, 0);
+lcd.print("Niveau : ");
+lcd.print(niveau_dB);
+lcd.print(" dB");</code></pre>
+
+                </div>
+
+                <p>
+                    Le principe de classification utilisé dans le projet
+                    repose sur trois zones :
+                </p>
+
+                <ul class="project-list">
+
+                    <li>
+                        <strong>Moins de 60 dB :</strong>
+                        environnement calme.
+                    </li>
+
+                    <li>
+                        <strong>60 à 85 dB :</strong>
+                        niveau sonore modéré.
+                    </li>
+
+                    <li>
+                        <strong>Au-delà de 85 dB :</strong>
+                        niveau élevé avec activation de l'alerte rouge.
+                    </li>
+
+                </ul>
+
+            </section>
+
+
+            <!-- ==================================================
+                 07 - AFFICHAGE
+            ================================================== -->
+
+            <section class="project-section">
+
+                <div class="project-section-number">
+                    07 — AFFICHAGE & ALERTES
+                </div>
+
+                <h3>
+                    Lecture instantanée du niveau sonore
+                </h3>
+
+                <p>
+                    L'interface utilisateur repose sur un écran
+                    <strong>LCD 16×2</strong> permettant d'afficher
+                    directement le niveau sonore mesuré.
+                </p>
+
+                <p>
+                    Trois LED complètent l'affichage numérique afin de
+                    fournir une indication visuelle immédiate :
+                </p>
+
+                <div class="technical-grid">
+
+                    <div class="technical-card">
+
+                        <h4>
+                            LED verte
+                        </h4>
+
+                        <p>
+                            Niveau inférieur à 60 dB :
+                            environnement calme.
+                        </p>
+
+                    </div>
+
+                    <div class="technical-card">
+
+                        <h4>
+                            LED orange
+                        </h4>
+
+                        <p>
+                            Niveau compris entre 60 et 85 dB :
+                            bruit modéré.
+                        </p>
+
+                    </div>
+
+                    <div class="technical-card">
+
+                        <h4>
+                            LED rouge
+                        </h4>
+
+                        <p>
+                            Niveau supérieur à 85 dB :
+                            niveau sonore élevé.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 08 - PROTOTYPE
+            ================================================== -->
+
+            <section class="project-section">
+
+                <div class="project-section-number">
+                    08 — PROTOTYPE
+                </div>
+
+                <h3>
+                    Assemblage et intégration
+                </h3>
+
+                <p>
+                    Après la validation des différents blocs, les
+                    composants ont été assemblés dans un boîtier
+                    plastique compact afin de réaliser un prototype
+                    portable.
+                </p>
+
+                <p>
+                    L'intégration regroupe le microphone, le module de
+                    préamplification, l'Arduino Uno, l'écran LCD et
+                    les trois LED indicatrices.
+                </p>
+
+                <div class="project-gallery">
+
+                    <img
+                        src="images/decibelmetre/montage-interne.jpg"
+                        alt="Montage électronique interne">
+
+                    <img
+                        src="images/decibelmetre/prototype.jpg"
+                        alt="Prototype du décibelmètre">
+
+                    <img
+                        src="images/decibelmetre/boitier.jpg"
+                        alt="Décibelmètre dans son boîtier">
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 09 - TESTS
+            ================================================== -->
+
+            <section class="project-section">
+
+                <div class="project-section-number">
+                    09 — TESTS & RÉSULTATS
+                </div>
+
+                <h3>
+                    Validation expérimentale
+                </h3>
+
+                <p>
+                    Le prototype a été testé sous différents niveaux
+                    de bruit afin de vérifier la réactivité du système,
+                    l'affichage du niveau sonore et le fonctionnement
+                    des seuils lumineux.
+                </p>
+
+                <div class="technical-grid">
+
+                    <div class="technical-card">
+
+                        <h4>
+                            48 dB
+                        </h4>
+
+                        <p>
+                            Niveau calme — affichage
+                            <strong>“Quite”</strong>.
+                        </p>
+
+                    </div>
+
+                    <div class="technical-card">
+
+                        <h4>
+                            72 dB
+                        </h4>
+
+                        <p>
+                            Niveau modéré — affichage
+                            <strong>“Moderate”</strong>.
+                        </p>
+
+                    </div>
+
+                    <div class="technical-card">
+
+                        <h4>
+                            86 dB
+                        </h4>
+
+                        <p>
+                            Niveau élevé — affichage
+                            <strong>“High”</strong> et activation
+                            de la LED rouge.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <p>
+                    La plage de mesure obtenue se situe approximativement
+                    entre <strong>20 dB et plus de 100 dB</strong>,
+                    avec une alerte visuelle réactive à partir de
+                    85 dB.
+                </p>
+
+            </section>
+
+
+            <!-- ==================================================
+                 10 - RÉSULTATS VISUELS
+            ================================================== -->
+
+            <section class="project-section">
+
+                <div class="project-gallery">
+
+                    <img
+                        src="images/decibelmetre/test-48db.jpg"
+                        alt="Test à 48 dB">
+
+                    <img
+                        src="images/decibelmetre/test-72db.jpg"
+                        alt="Test à 72 dB">
+
+                    <img
+                        src="images/decibelmetre/test-86db.jpg"
+                        alt="Test à 86 dB">
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 11 - COMPOSANTS
+            ================================================== -->
+
+            <section class="project-section">
+
+                <div class="project-section-number">
+                    11 — COMPOSANTS
+                </div>
+
+                <h3>
+                    Matériel utilisé
+                </h3>
+
+                <ul class="project-list">
+
+                    <li>
+                        <strong>Arduino Uno / ATmega328P</strong>
+                        pour le traitement numérique.
+                    </li>
+
+                    <li>
+                        <strong>Microphone condensateur / capsule
+                        électret</strong> pour l'acquisition acoustique.
+                    </li>
+
+                    <li>
+                        <strong>Préamplificateur analogique</strong>
+                        réalisé sur plaque perforée.
+                    </li>
+
+                    <li>
+                        <strong>Écran LCD 16×2</strong> pour l'affichage
+                        du niveau sonore.
+                    </li>
+
+                    <li>
+                        <strong>Interface I2C</strong> pour la
+                        communication avec l'écran.
+                    </li>
+
+                    <li>
+                        <strong>LED verte, orange et rouge</strong>
+                        pour les indications de niveau.
+                    </li>
+
+                    <li>
+                        Potentiomètre de sensibilité, résistances,
+                        condensateurs et composants d'amplification.
+                    </li>
+
+                    <li>
+                        Plaque perforée et boîtier plastique.
+                    </li>
+
+                </ul>
+
+            </section>
+
+
+            <!-- ==================================================
+                 12 - LIMITATIONS
+            ================================================== -->
+
+            <section class="project-section">
+
+                <div class="project-section-number">
+                    12 — LIMITATIONS
+                </div>
+
+                <h3>
+                    Difficultés rencontrées
+                </h3>
+
+                <p>
+                    La principale difficulté rencontrée concernait la
+                    très faible amplitude du signal fourni directement
+                    par le microphone.
+                </p>
+
+                <p>
+                    Le développement d'un étage de préamplification
+                    supplémentaire a donc été nécessaire afin d'adapter
+                    le signal à la dynamique d'acquisition de l'Arduino.
+                </p>
+
+                <p>
+                    Cette étape a également nécessité des essais
+                    pratiques pour obtenir un conditionnement suffisamment
+                    stable avant le traitement numérique.
+                </p>
+
+            </section>
+
+
+            <!-- ==================================================
+                 13 - PERSPECTIVES
+            ================================================== -->
+
+            <section class="project-section">
+
+                <div class="project-section-number">
+                    13 — PERSPECTIVES
+                </div>
+
+                <h3>
+                    Améliorations possibles
+                </h3>
+
+                <ul class="project-list">
+
+                    <li>
+                        Ajouter des filtres de pondération
+                        <strong>A, B et C</strong>.
+                    </li>
+
+                    <li>
+                        Améliorer la calibration avec un
+                        <strong>sonomètre étalon</strong>.
+                    </li>
+
+                    <li>
+                        Ajouter une mémorisation des mesures sur
+                        <strong>carte SD</strong>.
+                    </li>
+
+                    <li>
+                        Améliorer la précision de la mesure RMS
+                        et la stabilité du signal.
+                    </li>
+
+                    <li>
+                        Développer une interface de suivi des mesures
+                        pour l'analyse de l'environnement sonore.
+                    </li>
+
+                </ul>
+
+            </section>
+
+
+            <!-- ==================================================
+                 14 - RESSOURCES
+            ================================================== -->
+
+            <section class="project-section">
+
+                <div class="project-section-number">
+                    14 — RESSOURCES
+                </div>
+
+                <h3>
+                    Documentation du projet
+                </h3>
+
+                <p>
+                    Le rapport présente l'étude de la chaîne de mesure
+                    acoustique, la conception du préamplificateur,
+                    la programmation Arduino, l'assemblage du prototype
+                    ainsi que les essais expérimentaux.
+                </p>
+
+                <div class="project-links">
+
+                    <a
+                        href="#"
+                        class="project-button"
+                        target="_blank">
+                        GitHub →
+                    </a>
+
+                    <a
+                        href="documents/rapport-decibelmetre.pdf"
+                        class="project-button"
+                        target="_blank">
+                        Voir le rapport PDF →
+                    </a>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 FIN
+            ================================================== -->
+
+            <div class="project-end">
+
+                <a
+                    href="index.html#projets"
+                    class="back-link">
+
+                    ← Retour aux projets
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+</body>
+</html>

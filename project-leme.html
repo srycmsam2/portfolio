@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Métasurface programmable — Sara Messaoudi</title>
+
+    <!-- Ton CSS principal -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Petit CSS spécifique à cette page -->
+    <style>
+
+        /* =========================================================
+           PAGE PROJET
+        ========================================================= */
+
+        .project-page {
+            padding: 120px 0 80px;
+        }
+
+        .project-back {
+            display: inline-block;
+            margin-bottom: 45px;
+            text-decoration: none;
+        }
+
+        .project-hero {
+            max-width: 950px;
+            margin-bottom: 70px;
+        }
+
+        .project-hero .project-category {
+            margin-bottom: 15px;
+        }
+
+        .project-hero h1 {
+            font-size: clamp(42px, 6vw, 72px);
+            line-height: 1.05;
+            margin-bottom: 20px;
+        }
+
+        .project-hero h2 {
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 30px;
+        }
+
+        .project-hero-description {
+            max-width: 800px;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+
+        /* =========================================================
+           IMAGE PRINCIPALE
+        ========================================================= */
+
+        .project-main-image {
+            width: 100%;
+            margin: 50px 0 80px;
+        }
+
+        .project-main-image img {
+            width: 100%;
+            max-height: 600px;
+            object-fit: cover;
+            display: block;
+            border-radius: 4px;
+        }
+
+        .image-caption {
+            margin-top: 12px;
+            font-size: 14px;
+            opacity: 0.65;
+        }
+
+
+        /* =========================================================
+           INTRO
+        ========================================================= */
+
+        .project-section {
+            max-width: 1000px;
+            margin: 0 auto 90px;
+        }
+
+        .project-section-label {
+            font-size: 13px;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            opacity: 0.65;
+        }
+
+        .project-section h2 {
+            font-size: 34px;
+            margin-bottom: 25px;
+        }
+
+        .project-section p {
+            font-size: 17px;
+            line-height: 1.8;
+            margin-bottom: 18px;
+        }
+
+
+        /* =========================================================
+           TAGS
+        ========================================================= */
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .project-tags span {
+            padding: 8px 14px;
+            border: 1px solid currentColor;
+            border-radius: 30px;
+            font-size: 13px;
+        }
+
+
+        /* =========================================================
+           ARCHITECTURE
+        ========================================================= */
+
+        .architecture {
+            margin-top: 35px;
+            padding: 30px;
+            border: 1px solid rgba(128,128,128,0.3);
+            overflow-x: auto;
+        }
+
+        .architecture-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            min-width: 700px;
+        }
+
+        .architecture-block {
+            padding: 18px 20px;
+            border: 1px solid currentColor;
+            text-align: center;
+            min-width: 130px;
+        }
+
+        .architecture-arrow {
+            font-size: 22px;
+        }
+
+
+        /* =========================================================
+           TECHNICAL CARDS
+        ========================================================= */
+
+        .technical-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 35px;
+        }
+
+        .technical-card {
+            padding: 25px;
+            border: 1px solid rgba(128,128,128,0.3);
+        }
+
+        .technical-card strong {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 8px;
+            opacity: 0.65;
+        }
+
+        .technical-card span {
+            font-size: 20px;
+        }
+
+
+        /* =========================================================
+           GALERIE
+        ========================================================= */
+
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 35px;
+        }
+
+        .project-gallery figure {
+            margin: 0;
+        }
+
+        .project-gallery img {
+            width: 100%;
+            display: block;
+            border-radius: 3px;
+        }
+
+        .project-gallery figcaption {
+            margin-top: 10px;
+            font-size: 13px;
+            opacity: 0.65;
+        }
+
+
+        /* =========================================================
+           CODE
+        ========================================================= */
+
+        .code-block {
+            margin-top: 30px;
+            overflow-x: auto;
+            background: #111;
+            color: #eee;
+            padding: 25px;
+            border-radius: 4px;
+        }
+
+        .code-block pre {
+            margin: 0;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 14px;
+            line-height: 1.65;
+            white-space: pre;
+        }
+
+        .code-title {
+            margin-top: 45px;
+            margin-bottom: 10px;
+            font-size: 19px;
+        }
+
+
+        /* =========================================================
+           LIENS
+        ========================================================= */
+
+        .project-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 35px;
+        }
+
+        .project-button {
+            display: inline-block;
+            padding: 14px 22px;
+            border: 1px solid currentColor;
+            text-decoration: none;
+            transition: 0.2s ease;
+        }
+
+        .project-button:hover {
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================================================
+           FOOTER PROJECT
+        ========================================================= */
+
+        .project-end {
+            max-width: 1000px;
+            margin: 100px auto 0;
+            padding-top: 40px;
+            border-top: 1px solid rgba(128,128,128,0.3);
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 800px) {
+
+            .technical-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .architecture-flow {
+                justify-content: flex-start;
+            }
+
+            .project-page {
+                padding-top: 90px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         NAVIGATION
+    ========================================================= -->
+
+    <header>
+
+        <div class="container">
+
+            <nav>
+
+                <a href="index.html" class="logo">
+                    Sara Messaoudi
+                </a>
+
+                <div class="nav-links">
+
+                    <a href="index.html#projets">
+                        Projets
+                    </a>
+
+                    <a href="index.html#experience">
+                        Expérience
+                    </a>
+
+                    <a href="index.html#contact">
+                        Contact
+                    </a>
+
+                </div>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================================
+         CONTENU DU PROJET
+    ========================================================= -->
+
+    <main class="project-page">
+
+        <div class="container">
+
+
+            <!-- RETOUR -->
+
+            <a href="index.html#projets" class="project-back">
+                ← Retour aux projets
+            </a>
+
+
+
+            <!-- =================================================
+                 HERO
+            ================================================= -->
+
+            <section class="project-hero">
+
+                <p class="project-category">
+                    RECHERCHE / LEME
+                </p>
+
+                <h1>
+                    Métasurface programmable
+                </h1>
+
+                <h2>
+                    Guidage d'une machine mobile en entrepôt
+                    via vision par ordinateur
+                </h2>
+
+                <p class="project-hero-description">
+
+                    Développement d'un système combinant vision par ordinateur,
+                    calcul de profils de phase et commande électronique d'une
+                    métasurface programmable afin d'orienter un faisceau
+                    électromagnétique vers une cible mobile.
+
+                </p>
+
+
+                <div class="project-tags">
+
+                    <span>Python</span>
+                    <span>OpenCV</span>
+                    <span>ArUco</span>
+                    <span>Raspberry Pi</span>
+                    <span>DAC</span>
+                    <span>RF</span>
+                    <span>10 GHz</span>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 IMAGE PRINCIPALE
+            ================================================= -->
+
+            <section class="project-main-image">
+
+                <!--
+                    REMPLACE cette image par ta vraie photo.
+
+                    Exemple :
+                    images/leme/montage-global.jpg
+                -->
+
+                <img
+                    src="images/leme/montage-global.jpg"
+                    alt="Montage expérimental du projet LEME"
+                >
+
+                <p class="image-caption">
+                    Montage expérimental du système de guidage par métasurface programmable.
+                </p>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 LE PROJET
+            ================================================= -->
+
+            <section class="project-section">
+
+                <p class="project-section-label">
+                    01 — LE PROJET
+                </p>
+
+                <h2>
+                    Objectif
+                </h2>
+
+                <p>
+
+                    Le travail réalisé au sein du Laboratoire d'Électromagnétisme,
+                    Mécanique et Électronique (LEME) porte sur le développement
+                    d'une métasurface programmable destinée au guidage d'une
+                    machine mobile en environnement d'entrepôt.
+
+                </p>
+
+                <p>
+
+                    Le système utilise une caméra pour détecter une cible munie
+                    d'un marqueur ArUco. La position de cette cible permet de
+                    déterminer un angle de réflexion. Cet angle est ensuite utilisé
+                    pour calculer le profil de phase nécessaire à la métasurface,
+                    puis les tensions de commande appliquées à ses cellules.
+
+                </p>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 ARCHITECTURE
+            ================================================= -->
+
+            <section class="project-section">
+
+                <p class="project-section-label">
+                    02 — ARCHITECTURE
+                </p>
+
+                <h2>
+                    Fonctionnement du système
+                </h2>
+
+                <p>
+
+                    La chaîne de commande relie la vision par ordinateur au
+                    contrôle électronique de la métasurface.
+
+                </p>
+
+
+                <div class="architecture">
+
+                    <div class="architecture-flow">
+
+                        <div class="architecture-block">
+                            Caméra
+                        </div>
+
+                        <div class="architecture-arrow">
+                            →
+                        </div>
+
+                        <div class="architecture-block">
+                            ArUco
+                        </div>
+
+                        <div class="architecture-arrow">
+                            →
+                        </div>
+
+                        <div class="architecture-block">
+                            Calcul de θ
+                        </div>
+
+                        <div class="architecture-arrow">
+                            →
+                        </div>
+
+                        <div class="architecture-block">
+                            Profil de phase
+                        </div>
+
+                        <div class="architecture-arrow">
+                            →
+                        </div>
+
+                        <div class="architecture-block">
+                            Phase → tension
+                        </div>
+
+                        <div class="architecture-arrow">
+                            →
+                        </div>
+
+                        <div class="architecture-block">
+                            Raspberry Pi
+                        </div>
+
+                        <div class="architecture-arrow">
+                            →
+                        </div>
+
+                        <div class="architecture-block">
+                            DAC
+                        </div>
+
+                        <div class="architecture-arrow">
+                            →
+                        </div>
+
+                        <div class="architecture-block">
+                            Métasurface
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 DETAILS TECHNIQUES
+            ================================================= -->
+
+            <section class="project-section">
+
+                <p class="project-section-label">
+                    03 — TECHNIQUE
+                </p>
+
+                <h2>
+                    Quelques caractéristiques
+                </h2>
+
+
+                <div class="technical-grid">
+
+
+                    <div class="technical-card">
+
+                        <strong>
+                            FRÉQUENCE
+                        </strong>
+
+                        <span>
+                            10 GHz
+                        </span>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <strong>
+                            MÉTASURFACE
+                        </strong>
+
+                        <span>
+                            30 colonnes
+                        </span>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <strong>
+                            COMMANDE
+                        </strong>
+
+                        <span>
+                            0 → 20 V
+                        </span>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <strong>
+                            PAS DE TENSION
+                        </strong>
+
+                        <span>
+                            0,2 V
+                        </span>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <strong>
+                            VISION
+                        </strong>
+
+                        <span>
+                            OpenCV / ArUco
+                        </span>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <strong>
+                            CALCUL
+                        </strong>
+
+                        <span>
+                            Raspberry Pi
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 MONTAGE / PHOTOS
+            ================================================= -->
+
+            <section class="project-section">
+
+                <p class="project-section-label">
+                    04 — MONTAGE
+                </p>
+
+                <h2>
+                    Banc expérimental
+                </h2>
+
+                <p>
+
+                    Cette partie sera consacrée aux photographies réelles du
+                    montage, de la métasurface et de l'électronique de commande.
+
+                </p>
+
+
+                <div class="project-gallery">
+
+
+                    <figure>
+
+                        <img
+                            src="images/leme/metasurface.jpg"
+                            alt="Métasurface programmable"
+                        >
+
+                        <figcaption>
+                            Métasurface programmable
+                        </figcaption>
+
+                    </figure>
+
+
+                    <figure>
+
+                        <img
+                            src="images/leme/raspberry-dac.jpg"
+                            alt="Raspberry Pi et électronique de commande"
+                        >
+
+                        <figcaption>
+                            Raspberry Pi et électronique de commande
+                        </figcaption>
+
+                    </figure>
+
+
+                    <figure>
+
+                        <img
+                            src="images/leme/camera-aruco.jpg"
+                            alt="Détection du marqueur ArUco"
+                        >
+
+                        <figcaption>
+                            Détection de la cible par caméra
+                        </figcaption>
+
+                    </figure>
+
+
+                    <figure>
+
+                        <img
+                            src="images/leme/banc-experimental.jpg"
+                            alt="Banc expérimental"
+                        >
+
+                        <figcaption>
+                            Banc expérimental
+                        </figcaption>
+
+                    </figure>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 VISION PAR ORDINATEUR
+            ================================================= -->
+
+            <section class="project-section">
+
+                <p class="project-section-label">
+                    05 — VISION
+                </p>
+
+                <h2>
+                    Détection de la cible
+                </h2>
+
+                <p>
+
+                    La caméra détecte un marqueur ArUco. À partir de sa position
+                    dans l'image et de la pose estimée, le programme calcule
+                    l'angle θ utilisé pour la commande de la métasurface.
+
+                </p>
+
+
+                <h3 class="code-title">
+                    Extrait Python — détection ArUco
+                </h3>
+
+
+                <div class="code-block">
+
+<pre><code>corners, ids, _ = self.detector.detectMarkers(frame)
+
+if ids is None:
+
+    cv2.putText(
+        frame,
+        "ArUco non detecte",
+        (30, 40),
+        cv2.FONT_HERSHEY_SIMPLEX,
+        0.8,
+        (0, 0, 255),
+        2
+    )
+
+    cv2.imshow("camera", frame)
+    return None
+
+cv2.aruco.drawDetectedMarkers(
+    frame,
+    corners,
+    ids
+)
+
+rvecs, tvecs, _ = cv2.aruco.estimatePoseSingleMarkers(
+    corners,
+    MARKER_SIZE_M,
+    self.cameraMatrix,
+    self.distCoeffs
+)
+
+x = tvecs[0][0][0]
+z = tvecs[0][0][2]
+
+theta = round(
+    np.degrees(np.arctan2(x, z)),
+    2
+)</code></pre>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 PROFIL DE PHASE
+            ================================================= -->
+
+            <section class="project-section">
+
+                <p class="project-section-label">
+                    06 — ÉLECTROMAGNÉTISME
+                </p>
+
+                <h2>
+                    Calcul du profil de phase
+                </h2>
+
+                <p>
+
+                    Le profil de phase est calculé à partir de l'angle de
+                    réflexion demandé. Le programme travaille à 10 GHz et
+                    utilise les positions des 30 colonnes de la métasurface.
+
+                </p>
+
+
+                <h3 class="code-title">
+                    Extrait Python — profil de réflexion généralisé
+                </h3>
+
+
+                <div class="code-block">
+
+<pre><code>class MetasurfacePhaseController:
+
+    def __init__(self):
+
+        self.c = 3e8
+        self.freq = 10e9
+        self.lmd = self.c / self.freq
+
+        self.x = np.arange(
+            -87,
+            88,
+            6
+        ) / 1000
+
+
+    def GeneralizedReflectionProfile(
+        self,
+        ang_reflect,
+        ang_incid=0
+    ):
+
+        ni = 1
+        nr = 1
+
+        sin_term = (
+            nr * math.sin(
+                math.radians(ang_reflect)
+            )
+            -
+            ni * math.sin(
+                math.radians(ang_incid)
+            )
+        )
+
+        phi = (
+            360.0 / self.lmd
+        ) * sin_term * self.x
+
+        phi = wrap_phase_deg(phi)
+
+        return phi</code></pre>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 PHASE -> TENSION
+            ================================================= -->
+
+            <section class="project-section">
+
+                <p class="project-section-label">
+                    07 — COMMANDE
+                </p>
+
+                <h2>
+                    Conversion phase → tension
+                </h2>
+
+                <p>
+
+                    Une fois le profil de phase calculé, chaque valeur est
+                    associée à la tension expérimentale correspondant au
+                    meilleur rapprochement avec la courbe de phase mesurée.
+
+                </p>
+
+
+                <h3 class="code-title">
+                    Extrait Python — recherche de la tension correspondante
+                </h3>
+
+
+                <div class="code-block">
+
+<pre><code>for i in range(len(PHI)):
+
+    min_error = float("inf")
+    best_index = 0
+
+    for j in range(len(phase_curve)):
+
+        d = abs(
+            PHI[i] - phase_curve[j]
+        )
+
+        if d < min_error:
+
+            min_error = d
+            best_index = j
+
+    realphase[i] = phase_curve[best_index]
+
+    voltagelist[i] = voltage_axis[best_index]
+
+    magnitude[i] = mag_curve[best_index]
+
+    phase_error[i] = min_error
+
+return voltagelist</code></pre>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 RESULTATS
+            ================================================= -->
+
+            <section class="project-section">
+
+                <p class="project-section-label">
+                    08 — RÉSULTATS
+                </p>
+
+                <h2>
+                    Validation expérimentale
+                </h2>
+
+                <p>
+
+                    Les essais expérimentaux ont permis d'étudier le
+                    comportement de la métasurface pour différentes positions
+                    de la cible et différentes stratégies de quantification
+                    de la commande.
+
+                </p>
+
+
+                <div class="project-gallery">
+
+
+                    <figure>
+
+                        <img
+                            src="images/leme/resultat-angle.jpg"
+                            alt="Résultat expérimental selon l'angle"
+                        >
+
+                        <figcaption>
+                            Résultat expérimental selon l'angle de la cible
+                        </figcaption>
+
+                    </figure>
+
+
+                    <figure>
+
+                        <img
+                            src="images/leme/resultat-bits.jpg"
+                            alt="Comparaison des commandes"
+                        >
+
+                        <figcaption>
+                            Comparaison des commandes quantifiées
+                        </figcaption>
+
+                    </figure>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 LIENS
+            ================================================= -->
+
+            <section class="project-section">
+
+                <p class="project-section-label">
+                    09 — RESSOURCES
+                </p>
+
+                <h2>
+                    Code et documentation
+                </h2>
+
+                <p>
+
+                    Le code source complet et le rapport détaillé seront
+                    ajoutés ici.
+
+                </p>
+
+
+                <div class="project-links">
+
+
+                    <!-- GitHub : on remplacera # quand ton GitHub sera prêt -->
+
+                    <a
+                        href="#"
+                        class="project-button"
+                    >
+                        GitHub — bientôt
+                    </a>
+
+
+                    <!--
+                        Le PDF sera placé dans :
+
+                        documents/rapport-leme.pdf
+                    -->
+
+                    <a
+                        href="documents/rapport-leme.pdf"
+                        class="project-button"
+                        target="_blank"
+                    >
+                        📄 Consulter le rapport PDF
+                    </a>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 FIN
+            ================================================= -->
+
+            <div class="project-end">
+
+                <a
+                    href="index.html#projets"
+                    class="project-link"
+                >
+                    ← Retour à tous les projets
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+
+</body>
+
+</html>

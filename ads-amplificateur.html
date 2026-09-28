@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Amplificateur HF sous ADS — Sara Messaoudi</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* ==================================================
+           PAGE PROJET
+        ================================================== */
+
+        .project-page {
+            padding: 80px 0;
+        }
+
+        .project-page .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 25px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 40px;
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .back-link:hover {
+            color: #000;
+        }
+
+        /* HERO */
+
+        .project-hero {
+            margin-bottom: 60px;
+        }
+
+        .project-category {
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        .project-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            line-height: 1.15;
+        }
+
+        .project-hero h2 {
+            font-size: 1.35rem;
+            font-weight: 400;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .project-intro {
+            max-width: 850px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        .project-tags span {
+            padding: 8px 14px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #555;
+        }
+
+        /* IMAGE PRINCIPALE */
+
+        .project-main-image {
+            margin: 50px 0 80px;
+        }
+
+        .project-main-image img {
+            width: 100%;
+            max-height: 600px;
+            object-fit: cover;
+            border-radius: 12px;
+            display: block;
+        }
+
+        /* SECTIONS */
+
+        .project-section {
+            margin-bottom: 80px;
+        }
+
+        .project-section-number {
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .project-section h3 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+        }
+
+        .project-section p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #444;
+            max-width: 900px;
+        }
+
+        /* LISTES */
+
+        .project-list {
+            padding-left: 20px;
+            max-width: 900px;
+        }
+
+        .project-list li {
+            margin-bottom: 12px;
+            line-height: 1.7;
+            color: #444;
+        }
+
+        /* ARCHITECTURE */
+
+        .architecture {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 35px;
+        }
+
+        .architecture-block {
+            padding: 20px;
+            min-width: 145px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background: #fafafa;
+            font-weight: 600;
+        }
+
+        .architecture-arrow {
+            font-size: 1.5rem;
+            color: #888;
+        }
+
+        /* CARTES TECHNIQUES */
+
+        .technical-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .technical-card {
+            padding: 25px;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+        }
+
+        .technical-card h4 {
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+        }
+
+        .technical-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* FORMULES */
+
+        .formula-box {
+            margin: 30px 0;
+            padding: 25px;
+            background: #fafafa;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-family: "Times New Roman", serif;
+            font-size: 1.1rem;
+            line-height: 2;
+            overflow-x: auto;
+        }
+
+        /* GALERIE */
+
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 35px;
+        }
+
+        .project-gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            display: block;
+        }
+
+        /* CODE */
+
+        .code-block {
+            background: #111;
+            color: #eee;
+            padding: 25px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin-top: 25px;
+        }
+
+        .code-block pre {
+            margin: 0;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* RESSOURCES */
+
+        .project-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .project-button {
+            display: inline-block;
+            padding: 13px 22px;
+            border: 1px solid #222;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #222;
+            transition: 0.3s;
+        }
+
+        .project-button:hover {
+            background: #222;
+            color: white;
+        }
+
+        /* FIN */
+
+        .project-end {
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid #ddd;
+        }
+
+        @media (max-width: 700px) {
+
+            .project-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .project-hero h2 {
+                font-size: 1.1rem;
+            }
+
+            .project-section h3 {
+                font-size: 1.6rem;
+            }
+
+            .architecture {
+                flex-direction: column;
+            }
+
+            .architecture-arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- ==================================================
+         HEADER
+    ================================================== -->
+
+    <header>
+
+        <nav>
+
+            <div class="logo">
+                Sara Messaoudi
+            </div>
+
+            <div class="nav-links">
+                <a href="index.html#projets">Projets</a>
+                <a href="index.html#experience">Expérience</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ==================================================
+         PAGE PROJET
+    ================================================== -->
+
+    <main class="project-page">
+
+        <div class="container">
+
+            <a href="index.html#projets" class="back-link">
+                ← Retour aux projets
+            </a>
+
+
+            <!-- ==================================================
+                 HERO
+            ================================================== -->
+
+            <section class="project-hero">
+
+                <div class="project-category">
+                    HYPERFRÉQUENCES / ADS / MASTER 1
+                </div>
+
+                <h1>
+                    Amplificateur HF sous ADS
+                </h1>
+
+                <h2>
+                    Conception et simulation d'un amplificateur hyperfréquence à 6 GHz
+                </h2>
+
+                <p class="project-intro">
+                    Étude et conception assistée par ordinateur d'un
+                    amplificateur hyperfréquence basé sur un transistor
+                    GaAs FET ATF-13284. L'étude porte sur la stabilité
+                    du transistor, l'analyse des paramètres S, les
+                    cercles de stabilité et de gain sur l'Abaque de
+                    Smith ainsi que la synthèse de réseaux
+                    d'adaptation LC permettant d'obtenir un gain
+                    de 10 dB à 6 GHz.
+                </p>
+
+                <div class="project-tags">
+
+                    <span>ADS 2009</span>
+                    <span>Hyperfréquences</span>
+                    <span>6 GHz</span>
+                    <span>Paramètres S</span>
+                    <span>Abaque de Smith</span>
+                    <span>Facteur de Rollet</span>
+                    <span>ATF-13284</span>
+                    <span>Adaptation LC</span>
+                    <span>S-Parameters</span>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 IMAGE PRINCIPALE
+            ================================================== -->
+
+            <div class="project-main-image">
+
+                <img
+                    src="images/ads-amplificateur/schema-global.jpg"
+                    alt="Amplificateur hyperfréquence simulé sous ADS">
+
+            </div>
+
+
+            <!-- ==================================================
+                 01 - LE PROJET
+            ================================================== -->
+
+            <section class="project-section">
+
+                <div class="project-section-number">
+                    01 — LE PROJET
+                </div>
+
+                <h3>
+                    Concevoir un amplificateur à 6 GHz
+                </h3>
+
+                <p>
+                    Ce devoir maison réalisé dans le cadre du module
+                    <strong>Hyperfréquences</strong> en Master 1
+                    Instrumentation à l'USTHB porte sur la conception
+                    et la simulation d'un amplificateur HF à
+                    <strong>6 GHz</strong>.
+                </p>
+
+                <p>
+                    L'objectif est de partir des paramètres S d'un
+                    transistor hyperfréquence afin d'étudier sa
+                    stabilité, de déterminer les conditions
+                    d'adaptation nécessaires et de synthétiser les
+                    réseaux d'entrée et de sortie permettant d'obtenir
+                    le gain recherché.
+                </p>
+
+                <p>
+                    L'ensemble de l'étude a été réalisé sous
+                    <strong>Agilent ADS 2009</strong>, depuis la
+                    modélisation du transistor jusqu'à la validation
+                    finale par simulation S-Parameters.
+                </p>
+
+            </section>
+
+
+            <!-- ==================================================
+                 02 - ARCHITECTURE
+            ================================================== -->
+
+            <section class="project-section">
+
+                <div class="project-section-number">
+                    02 — ARCHITECTURE
+                </div>
+
+                <h3>
+                    Structure de l'amplificateur
+                </h3>
+
+                <p>
+                    L'amplificateur est constitué d'un transistor
+                    GaAs FET entouré de deux réseaux d'adaptation.
+                    L'objectif de ces réseaux est de transformer les
+                    impédances de la source et de la charge
+                    de 50 Ω vers les conditions d'adaptation
+                    déterminées à partir des paramètres S.
+                </p>
+
+                <div class="architecture">
+
+                    <div class="architecture-block">
+                        Source
+                        <br>
+                        50 Ω
+                    </div>
+
+                    <div class="architecture-arrow">
+                        →
+                    </div>
+
+                    <div class="architecture-block">
+                        Adaptation
+                        <br>
+                        LC entrée
+                    </div>
+
+                    <div class="architecture-arrow">
+                        →
+                    </div>
+
+                    <div class="architecture-block">
+                        ATF-13284
+                        <br>
+                        GaAs FET
+                    </div>
+
+                    <div class="architecture-arrow">
+                        →
+                    </div>
+
+                    <div class="architecture-block">
+                        Adaptation
+                        <br>
+                        LC sortie
+                    </div>
+
+                    <div class="architecture-arrow">
+                        →
+                    </div>
+
+                    <div class="architecture-block">
+                        Charge
+                        <br>
+                        50 Ω
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 03 - PARAMETRES S
+            ================================================== -->
+
+            <section class="project-section">
+
+                <div class="project-section-number">
+                    03 — PARAMÈTRES S
+                </div>
+
+                <h3>
+                    Caractérisation du transistor
+                </h3>
+
+                <p>
+                    La conception commence par l'étude de la matrice
+                    des paramètres S du transistor
+                    <strong>ATF-13284</strong> à la fréquence de
+                    fonctionnement de 6 GHz.
+                </p>
+
+                <p>
+                    Ces paramètres permettent de caractériser le
+                    comportement du transistor en termes de réflexion
+                    et de transmission et constituent la base du
+                    calcul des conditions de stabilité et
+                    d'adaptation.
+                </p>
+
+                <div class="technical-grid">
+
+                    <div class="technical-card">
+
+                        <h4>
+                            Transistor
+                        </h4>
+
+                        <p>
+                            GaAs FET Agilent ATF-13284.
+                        </p>
+
+                    </div>
+
+                    <div class="technical-card">
+
+                        <h4>
+                            Fréquence
+                        </h4>
+
+                        <p>
+                            Fréquence de conception :
+                            <strong>6.00 GHz</strong>.
+                        </p>
+
+                    </div>
+
+                    <div class="technical-card">
+
+                        <h4>
+                            Polarisation
+                        </h4>
+
+                        <p>
+                            V<sub>DS</sub> = 4 V et
+                            I<sub>D</sub> = 40 mA.
+                        </p>
+
+                    </div>
+
+                    <div class="technical-card">
+
+                        <h4>
+                            Terminaisons
+                        </h4>
+
+                        <p>
+                            Source et charge de référence :
+                            <strong>50 Ω</strong>.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 04 - STABILITE
+            ================================================== -->
+
+            <section class="project-section">
+
+                <div class="project-section-number">
+                    04 — STABILITÉ
+                </div>
+
+                <h3>
+                    Analyse du facteur de Rollet
+                </h3>
+
+                <p>
+                    Avant de rechercher les conditions de gain,
+                    la stabilité du transistor est étudiée à partir
+                    de sa matrice S.
+                </p>
+
+                <p>
+                    Le <strong>facteur de Rollet K</strong> et le
+                    déterminant de la matrice S sont calculés afin
+                    de déterminer le domaine de stabilité du
+                    transistor.
+                </p>
+
+                <div class="formula-box">
+
+                    Δ = S<sub>11</sub>S<sub>22</sub>
+                    − S<sub>12</sub>S<sub>21</sub>
+
+                    <br><br>
+
+                    K =
+                    (1 − |S<sub>11</sub>|² − |S<sub>22</sub>|²
+                    + |Δ|²)
+                    /
+                    (2|S<sub>12</sub>S<sub>21</sub>|)
+
+                </div>
+
+                <p>
+                    L'étude théorique donne un facteur de stabilité
+                    de <strong>K = 0.353</strong>, tandis que la
+                    simulation sous ADS donne
+                    <strong>K = 0.780</strong>.
+                </p>
+
+                <p>
+                    Dans les deux cas, K reste inférieur à 1 :
+                    le transistor présente donc une
+                    <strong>stabilité conditionnelle</strong> à la
+                    fréquence étudiée.
+                </p>
+
+            </section>
+
+
+            <!-- ==================================================
+                 05 - ABAQUE DE SMITH
+            ================================================== -->
+
+            <section class="project-section">
+
+                <div class="project-section-number">
+                    05 — ABAQUE DE SMITH
+                </div>
+
+                <h3>
+                    Cercles de stabilité et de gain
+                </h3>
+
+                <p>
+                    Les résultats analytiques sont ensuite reportés
+                    sur l'<strong>Abaque de Smith</strong> à l'aide
+                    des outils de simulation ADS.
+                </p>
+
+                <p>
+                    Les cercles de stabilité permettent d'identifier
+                    les régions dans lesquelles les coefficients de
+                    réflexion de la source et de la charge doivent
+                    être sélectionnés afin de conserver un
+                    fonctionnement stable.
+                </p>
+
+                <p>
+                    Un cercle de gain constant correspondant à
+                    <strong>G<sub>p</sub> = 10 dB</strong> est
+                    également déterminé.
+                </p>
+
+                <div class="project-gallery">
+
+                    <img
+                        src="images/ads-amplificateur/abaque-smith.jpg"
+                        alt="Abaque de Smith avec cercles de stabilité">
+
+                    <img
+                        src="images/ads-amplificateur/cercle-gain.jpg"
+                        alt="Cercle de gain constant à 10 dB">
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 06 - GAIN
+            ================================================== -->
+
+            <section class="project-section">
+
+                <div class="project-section-number">
+                    06 — GAIN
+                </div>
+
+                <h3>
+                    Choix du gain de conception
+                </h3>
+
+                <p>
+                    Le gain maximal théorique du transistor est
+                    évalué à environ
+                    <strong>15.521 dB</strong>.
+                </p>
+
+                <p>
+                    Cependant, en raison de la stabilité conditionnelle
+                    du transistor, le gain maximal ne constitue pas
+                    nécessairement une condition de fonctionnement
+                    stable.
+                </p>
+
+                <p>
+                    Le choix est donc porté sur un gain de conception
+                    de <strong>10 dB</strong>, correspondant à une
+                    région identifiée sur l'Abaque de Smith tout en
+                    respectant les contraintes de stabilité.
+                </p>
+
+                <div class="technical-grid">
+
+                    <div class="technical-card">
+
+                        <h4>
+                            Gain maximal
+                        </h4>
+
+                        <p>
+                            MaxGain1 =
+                            <strong>15.521 dB</strong>.
+                        </p>
+
+                    </div>
+
+                    <div class="technical-card">
+
+                        <h4>
+                            Gain de conception
+                        </h4>
+
+                        <p>
+                            G<sub>p</sub> =
+                            <strong>10.000 dB</strong>.
+                        </p>
+
+                    </div>
+
+                    <div class="technical-card">
+
+                        <h4>
+                            Fréquence
+                        </h4>
+
+                        <p>
+                            <strong>6.000 GHz</strong>.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 07 - ADAPTATION
+            ================================================== -->
+
+            <section class="project-section">
+
+                <div class="project-section-number">
+                    07 — ADAPTATION D'IMPÉDANCE
+                </div>
+
+                <h3>
+                    Synthèse des réseaux d'adaptation
+                </h3>
+
+                <p>
+                    Une fois les coefficients de réflexion
+                    <strong>Γ<sub>S</sub></strong> et
+                    <strong>Γ<sub>L</sub></strong> déterminés,
+                    les impédances correspondantes sont calculées
+                    afin de concevoir les réseaux d'adaptation
+                    d'entrée et de sortie.
+                </p>
+
+                <div class="technical-grid">
+
+                    <div class="technical-card">
+
+                        <h4>
+                            Impédance d'entrée
+                        </h4>
+
+                        <p>
+                            Z<sub>in</sub> =
+                            <strong>22.156 + j15.041 Ω</strong>
+                        </p>
+
+                    </div>
+
+                    <div class="technical-card">
+
+                        <h4>
+                            Impédance de sortie
+                        </h4>
+
+                        <p>
+                            Z<sub>out</sub> =
+                            <strong>287.628 + j235.935 Ω</strong>
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <p>
+                    L'adaptation est réalisée à l'aide de
+                    quadripôles LC à éléments localisés.
+                </p>
+
+            </section>
+
+
+            <!-- ==================================================
+                 08 - RESEAUX LC
+            ================================================== -->
+
+            <section class="project-section">
+
+                <div class="project-section-number">
+                    08 — RÉSEAUX LC
+                </div>
+
+                <h3>
+                    Synthèse des cellules d'adaptation
+                </h3>
+
+                <p>
+                    Les réseaux d'adaptation sont constitués de
+                    condensateurs et d'inductances dimensionnés à
+                    partir des conditions d'impédance déterminées
+                    précédemment.
+                </p>
+
+                <div class="technical-grid">
+
+                    <div class="technical-card">
+
+                        <h4>
+                            Adaptation d'entrée
+                        </h4>
+
+                        <p>
+                            L<sub>1</sub> =
+                            <strong>1.128 nH</strong>
+                            <br>
+                            C<sub>1</sub> =
+                            <strong>502.88 fF</strong>
+                        </p>
+
+                    </div>
+
+                    <div class="technical-card">
+
+                        <h4>
+                            Adaptation de sortie
+                        </h4>
+
+                        <p>
+                            L<sub>2</sub> =
+                            <strong>3.036 nH</strong>
+                            <br>
+                            C<sub>2</sub> =
+                            <strong>130.81 fF</strong>
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="project-gallery">
+
+                    <img
+                        src="images/ads-amplificateur/schema-adaptation-entree.jpg"
+                        alt="Réseau d'adaptation d'entrée sous ADS">
+
+                    <img
+                        src="images/ads-amplificateur/schema-adaptation-sortie.jpg"
+                        alt="Réseau d'adaptation de sortie sous ADS">
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 09 - SCHEMA ADS
+            ================================================== -->
+
+            <section class="project-section">
+
+                <div class="project-section-number">
+                    09 — SIMULATION ADS
+                </div>
+
+                <h3>
+                    Modélisation du circuit complet
+                </h3>
+
+                <p>
+                    Le circuit complet est ensuite construit dans
+                    <strong>ADS 2009</strong> en intégrant le
+                    transistor ATF-13284, les réseaux LC d'entrée
+                    et de sortie ainsi que les terminaisons 50 Ω.
+                </p>
+
+                <p>
+                    Les simulations S-Parameters permettent de
+                    vérifier le comportement du circuit final autour
+                    de la fréquence de conception.
+                </p>
+
+                <div class="project-gallery">
+
+                    <img
+                        src="images/ads-amplificateur/schema-ads.jpg"
+                        alt="Schéma complet sous ADS">
+
+                    <img
+                        src="images/ads-amplificateur/sparameters.jpg"
+                        alt="Simulation S-Parameters sous ADS">
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 10 - RESULTATS
+            ================================================== -->
+
+            <section class="project-section">
+
+                <div class="project-section-number">
+                    10 — RÉSULTATS
+                </div>
+
+                <h3>
+                    Validation à 6 GHz
+                </h3>
+
+                <p>
+                    La simulation finale confirme le fonctionnement
+                    du circuit adapté à la fréquence de conception.
+                </p>
+
+                <div class="technical-grid">
+
+                    <div class="technical-card">
+
+                        <h4>
+                            Fréquence
+                        </h4>
+
+                        <p>
+                            <strong>6.000 GHz</strong>
+                        </p>
+
+                    </div>
+
+                    <div class="technical-card">
+
+                        <h4>
+                            Gain obtenu
+                        </h4>
+
+                        <p>
+                            PwrGain1 =
+                            <strong>10.000 dB</strong>
+                        </p>
+
+                    </div>
+
+                    <div class="technical-card">
+
+                        <h4>
+                            Gain maximal
+                        </h4>
+
+                        <p>
+                            MaxGain1 =
+                            <strong>15.521 dB</strong>
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <p>
+                    Le résultat obtenu correspond précisément au gain
+                    de conception de 10 dB à 6 GHz après insertion des
+                    réseaux d'adaptation.
+                </p>
+
+                <div class="project-gallery">
+
+                    <img
+                        src="images/ads-amplificateur/courbe-gain.jpg"
+                        alt="Courbe du gain à 6 GHz">
+
+                    <img
+                        src="images/ads-amplificateur/resultat-final.jpg"
+                        alt="Résultat de simulation final">
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 11 - METHODOLOGIE
+            ================================================== -->
+
+            <section class="project-section">
+
+                <div class="project-section-number">
+                    11 — MÉTHODOLOGIE
+                </div>
+
+                <h3>
+                    De l'analyse théorique à la simulation
+                </h3>
+
+                <ul class="project-list">
+
+                    <li>
+                        Calcul du déterminant Δ et du facteur de
+                        stabilité de Rollet K.
+                    </li>
+
+                    <li>
+                        Détermination du gain maximal et des
+                        paramètres des cercles de stabilité.
+                    </li>
+
+                    <li>
+                        Tracé des cercles de stabilité et de gain
+                        constant sur l'Abaque de Smith.
+                    </li>
+
+                    <li>
+                        Sélection du point de fonctionnement
+                        correspondant à un gain de 10 dB.
+                    </li>
+
+                    <li>
+                        Détermination des coefficients de réflexion
+                        Γ<sub>S</sub> et Γ<sub>L</sub>.
+                    </li>
+
+                    <li>
+                        Calcul des impédances d'entrée et de sortie.
+                    </li>
+
+                    <li>
+                        Synthèse des réseaux d'adaptation LC.
+                    </li>
+
+                    <li>
+                        Validation finale par simulation
+                        S-Parameters sous ADS.
+                    </li>
+
+                </ul>
+
+            </section>
+
+
+            <!-- ==================================================
+                 12 - DIFFICULTE
+            ================================================== -->
+
+            <section class="project-section">
+
+                <div class="project-section-number">
+                    12 — DIFFICULTÉ PRINCIPALE
+                </div>
+
+                <h3>
+                    Compromis entre gain et stabilité
+                </h3>
+
+                <p>
+                    La principale contrainte de la conception provient
+                    de la <strong>stabilité conditionnelle</strong>
+                    du transistor ATF-13284 à 6 GHz.
+                </p>
+
+                <p>
+                    Avec un facteur K inférieur à 1, il n'est pas
+                    possible de sélectionner arbitrairement les
+                    conditions d'adaptation pour atteindre le gain
+                    maximal théorique sans prendre en compte le
+                    risque d'instabilité.
+                </p>
+
+                <p>
+                    L'étude des cercles de stabilité sur l'Abaque
+                    de Smith permet ainsi de sélectionner une zone
+                    de fonctionnement adaptée au gain recherché
+                    de 10 dB.
+                </p>
+
+            </section>
+
+
+            <!-- ==================================================
+                 13 - OUTILS
+            ================================================== -->
+
+            <section class="project-section">
+
+                <div class="project-section-number">
+                    13 — OUTILS
+                </div>
+
+                <h3>
+                    Environnement de conception
+                </h3>
+
+                <div class="technical-grid">
+
+                    <div class="technical-card">
+
+                        <h4>
+                            ADS 2009
+                        </h4>
+
+                        <p>
+                            Advanced Design System utilisé pour la
+                            modélisation, la conception et la
+                            simulation du circuit HF.
+                        </p>
+
+                    </div>
+
+                    <div class="technical-card">
+
+                        <h4>
+                            Smith Chart Utility
+                        </h4>
+
+                        <p>
+                            Utilisé pour l'étude graphique des
+                            coefficients de réflexion, de la stabilité
+                            et de l'adaptation d'impédance.
+                        </p>
+
+                    </div>
+
+                    <div class="technical-card">
+
+                        <h4>
+                            S-Parameters
+                        </h4>
+
+                        <p>
+                            Simulation du comportement du transistor
+                            et validation du gain du circuit final.
+                        </p>
+
+                    </div>
+
+                    <div class="technical-card">
+
+                        <h4>
+                            AC Simulation
+                        </h4>
+
+                        <p>
+                            Analyse de la réponse du circuit autour
+                            de la fréquence de fonctionnement.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 14 - PERSPECTIVES
+            ================================================== -->
+
+            <section class="project-section">
+
+                <div class="project-section-number">
+                    14 — PERSPECTIVES
+                </div>
+
+                <h3>
+                    Vers une réalisation physique
+                </h3>
+
+                <ul class="project-list">
+
+                    <li>
+                        Optimisation automatique des paramètres
+                        de conception directement sous ADS.
+                    </li>
+
+                    <li>
+                        Optimisation des réseaux d'adaptation pour
+                        améliorer le compromis gain/stabilité.
+                    </li>
+
+                    <li>
+                        Remplacement des éléments localisés par
+                        des structures <strong>microstrip</strong>.
+                    </li>
+
+                    <li>
+                        Réalisation physique d'un amplificateur
+                        hyperfréquence fonctionnant à 6 GHz.
+                    </li>
+
+                    <li>
+                        Caractérisation expérimentale du circuit
+                        réalisé et comparaison avec les résultats
+                        de simulation.
+                    </li>
+
+                </ul>
+
+            </section>
+
+
+            <!-- ==================================================
+                 15 - RESSOURCES
+            ================================================== -->
+
+            <section class="project-section">
+
+                <div class="project-section-number">
+                    15 — RESSOURCES
+                </div>
+
+                <h3>
+                    Documentation du projet
+                </h3>
+
+                <p>
+                    Le compte rendu rassemble l'étude analytique du
+                    transistor, les paramètres S, les calculs de
+                    stabilité, les tracés sur l'Abaque de Smith,
+                    la synthèse des réseaux LC et les résultats
+                    des simulations ADS à 6 GHz.
+                </p>
+
+                <div class="project-links">
+
+                    <a
+                        href="#"
+                        class="project-button"
+                        target="_blank">
+                        GitHub →
+                    </a>
+
+                    <a
+                        href="documents/rapport-ads-amplificateur.pdf"
+                        class="project-button"
+                        target="_blank">
+                        Voir le rapport PDF →
+                    </a>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 FIN
+            ================================================== -->
+
+            <div class="project-end">
+
+                <a
+                    href="index.html#projets"
+                    class="back-link">
+
+                    ← Retour aux projets
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+</body>
+</html>

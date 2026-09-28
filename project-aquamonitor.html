@@ -1,0 +1,1727 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Micro-Ferme Aquaponique — Sara Messaoudi</title>
+
+    <!-- Ton CSS principal -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- CSS spécifique à cette page -->
+    <style>
+
+        /* =========================================================
+           PAGE PROJET
+        ========================================================= */
+
+        .project-page {
+            padding: 120px 0 80px;
+        }
+
+        .project-back {
+            display: inline-block;
+            margin-bottom: 45px;
+            text-decoration: none;
+        }
+
+        .project-hero {
+            max-width: 950px;
+            margin-bottom: 70px;
+        }
+
+        .project-hero .project-category {
+            margin-bottom: 15px;
+        }
+
+        .project-hero h1 {
+            font-size: clamp(42px, 6vw, 72px);
+            line-height: 1.05;
+            margin-bottom: 20px;
+        }
+
+        .project-hero h2 {
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 30px;
+        }
+
+        .project-hero-description {
+            max-width: 800px;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+
+        /* =========================================================
+           IMAGE PRINCIPALE
+        ========================================================= */
+
+        .project-main-image {
+            width: 100%;
+            margin: 50px 0 80px;
+        }
+
+        .project-main-image img {
+            width: 100%;
+            max-height: 600px;
+            object-fit: cover;
+            display: block;
+            border-radius: 4px;
+        }
+
+        .image-caption {
+            margin-top: 12px;
+            font-size: 14px;
+            opacity: 0.65;
+        }
+
+
+        /* =========================================================
+           SECTIONS
+        ========================================================= */
+
+        .project-section {
+            max-width: 1000px;
+            margin: 0 auto 90px;
+        }
+
+        .project-section-label {
+            font-size: 13px;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            opacity: 0.65;
+        }
+
+        .project-section h2 {
+            font-size: 34px;
+            margin-bottom: 25px;
+        }
+
+        .project-section h3 {
+            font-size: 22px;
+            margin-top: 35px;
+            margin-bottom: 15px;
+        }
+
+        .project-section p {
+            font-size: 17px;
+            line-height: 1.8;
+            margin-bottom: 18px;
+        }
+
+
+        /* =========================================================
+           TAGS
+        ========================================================= */
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .project-tags span {
+            padding: 8px 14px;
+            border: 1px solid currentColor;
+            border-radius: 30px;
+            font-size: 13px;
+        }
+
+
+        /* =========================================================
+           ARCHITECTURE
+        ========================================================= */
+
+        .architecture {
+            margin-top: 35px;
+            padding: 30px;
+            border: 1px solid rgba(128,128,128,0.3);
+            overflow-x: auto;
+        }
+
+        .architecture-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            min-width: 700px;
+        }
+
+        .architecture-block {
+            padding: 18px 20px;
+            border: 1px solid currentColor;
+            text-align: center;
+            min-width: 130px;
+        }
+
+        .architecture-arrow {
+            font-size: 22px;
+        }
+
+
+        /* =========================================================
+           TECHNICAL CARDS
+        ========================================================= */
+
+        .technical-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 35px;
+        }
+
+        .technical-card {
+            padding: 25px;
+            border: 1px solid rgba(128,128,128,0.3);
+        }
+
+        .technical-card strong {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 8px;
+            opacity: 0.65;
+        }
+
+        .technical-card span {
+            font-size: 20px;
+        }
+
+
+        /* =========================================================
+           GALERIE
+        ========================================================= */
+
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 35px;
+        }
+
+        .project-gallery figure {
+            margin: 0;
+        }
+
+        .project-gallery img {
+            width: 100%;
+            display: block;
+            border-radius: 3px;
+        }
+
+        .project-gallery figcaption {
+            margin-top: 10px;
+            font-size: 13px;
+            opacity: 0.65;
+        }
+
+
+        /* =========================================================
+           CODE
+        ========================================================= */
+
+        .code-block {
+            margin-top: 30px;
+            overflow-x: auto;
+            background: #111;
+            color: #eee;
+            padding: 25px;
+            border-radius: 4px;
+        }
+
+        .code-block pre {
+            margin: 0;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 14px;
+            line-height: 1.65;
+            white-space: pre;
+        }
+
+        .code-title {
+            margin-top: 45px;
+            margin-bottom: 10px;
+            font-size: 19px;
+        }
+
+
+        /* =========================================================
+           LISTE TECHNIQUE
+        ========================================================= */
+
+        .technical-list {
+            margin-top: 30px;
+            padding-left: 20px;
+        }
+
+        .technical-list li {
+            margin-bottom: 12px;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+
+        /* =========================================================
+           LIENS
+        ========================================================= */
+
+        .project-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 35px;
+        }
+
+        .project-button {
+            display: inline-block;
+            padding: 14px 22px;
+            border: 1px solid currentColor;
+            text-decoration: none;
+            transition: 0.2s ease;
+        }
+
+        .project-button:hover {
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================================================
+           FOOTER PROJECT
+        ========================================================= */
+
+        .project-end {
+            max-width: 1000px;
+            margin: 100px auto 0;
+            padding-top: 40px;
+            border-top: 1px solid rgba(128,128,128,0.3);
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 800px) {
+
+            .technical-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .architecture-flow {
+                justify-content: flex-start;
+            }
+
+            .project-page {
+                padding-top: 90px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         NAVIGATION
+    ========================================================= -->
+
+    <header>
+
+        <div class="container">
+
+            <nav>
+
+                <a href="index.html" class="logo">
+                    Sara Messaoudi
+                </a>
+
+                <div class="nav-links">
+
+                    <a href="index.html#projets">
+                        Projets
+                    </a>
+
+                    <a href="index.html#experience">
+                        Expérience
+                    </a>
+
+                    <a href="index.html#contact">
+                        Contact
+                    </a>
+
+                </div>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================================
+         CONTENU DU PROJET
+    ========================================================= -->
+
+    <main class="project-page">
+
+        <div class="container">
+
+
+            <!-- RETOUR -->
+
+            <a href="index.html#projets" class="project-back">
+                ← Retour aux projets
+            </a>
+
+
+
+            <!-- =================================================
+                 HERO
+            ================================================= -->
+
+            <section class="project-hero">
+
+                <p class="project-category">
+                    PROJET DE FIN D'ÉTUDES / USTHB
+                </p>
+
+                <h1>
+                    Micro-Ferme Aquaponique
+                </h1>
+
+                <h2>
+                    Réalisation d’une Micro-Ferme Aquaponie Autonome et Télécommandée en Serre
+                </h2>
+
+                <p class="project-hero-description">
+
+                    Conception et réalisation d'une micro-ferme aquaponique
+                    autonome combinant aquaculture et culture hydroponique
+                    selon la technique NFT. Le système intègre une chaîne
+                    électronique multi-paramètres, une supervision locale
+                    et une interface Web accessible à distance via Wi-Fi.
+
+                </p>
+
+
+                <div class="project-tags">
+
+                    <span>Aquaponie NFT</span>
+                    <span>IoT</span>
+                    <span>ATMega328P</span>
+                    <span>ESP32</span>
+                    <span>Wi-Fi</span>
+                    <span>I2C</span>
+                    <span>EasyEDA</span>
+                    <span>PCB</span>
+                    <span>Arduino C/C++</span>
+                    <span>Impression 3D</span>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 IMAGE PRINCIPALE
+            ================================================= -->
+
+            <section class="project-main-image">
+
+                <!--
+                    Place ici ta vraie photo principale.
+
+                    Exemple :
+                    images/aquamonitor/installation-serre.jpg
+                -->
+
+                <img
+                    src="images/aquamonitor/installation-serre.jpg"
+                    alt="Micro-ferme aquaponique installée dans la serre expérimentale"
+                >
+
+                <p class="image-caption">
+                    Prototype de la micro-ferme aquaponique installé dans la serre expérimentale du laboratoire LINS.
+                </p>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 LE PROJET
+            ================================================= -->
+
+            <section class="project-section">
+
+                <p class="project-section-label">
+                    01 — LE PROJET
+                </p>
+
+                <h2>
+                    Objectif
+                </h2>
+
+                <p>
+
+                    Ce projet de fin d'études, réalisé dans le cadre du Master
+                    en Électronique, spécialité Instrumentation à l'USTHB,
+                    porte sur la conception et la réalisation d'une micro-ferme
+                    aquaponique autonome et télécommandée.
+
+                </p>
+
+                <p>
+
+                    Le système associe l'aquaculture et l'hydroponie selon la
+                    technique NFT (Nutrient Film Technique). L'objectif est de
+                    créer un environnement contrôlé permettant de surveiller
+                    en continu les paramètres physico-chimiques de l'eau afin
+                    de maintenir l'équilibre nécessaire à la croissance des
+                    poissons et des plantes.
+
+                </p>
+
+                <p>
+
+                    Une chaîne électronique multi-paramètres permet de mesurer
+                    le pH, la température, la conductivité électrique,
+                    l'oxygène dissous et la turbidité. Les mesures sont
+                    traitées localement puis transmises à une interface Web
+                    grâce à une architecture basée sur des microcontrôleurs
+                    ATMega328P et ESP32.
+
+                </p>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 ARCHITECTURE
+            ================================================= -->
+
+            <section class="project-section">
+
+                <p class="project-section-label">
+                    02 — ARCHITECTURE
+                </p>
+
+                <h2>
+                    Fonctionnement du système
+                </h2>
+
+                <p>
+
+                    L'architecture globale est organisée autour de cinq
+                    fonctions principales : acquisition et conditionnement,
+                    traitement local, affichage, communication Web et
+                    commande des équipements.
+
+                </p>
+
+
+                <div class="architecture">
+
+                    <div class="architecture-flow">
+
+                        <div class="architecture-block">
+                            Capteurs
+                        </div>
+
+                        <div class="architecture-arrow">
+                            →
+                        </div>
+
+                        <div class="architecture-block">
+                            Conditionnement
+                        </div>
+
+                        <div class="architecture-arrow">
+                            →
+                        </div>
+
+                        <div class="architecture-block">
+                            ATMega328P
+                        </div>
+
+                        <div class="architecture-arrow">
+                            →
+                        </div>
+
+                        <div class="architecture-block">
+                            OLED / I2C
+                        </div>
+
+                        <div class="architecture-arrow">
+                            →
+                        </div>
+
+                        <div class="architecture-block">
+                            ESP32
+                        </div>
+
+                        <div class="architecture-arrow">
+                            →
+                        </div>
+
+                        <div class="architecture-block">
+                            Wi-Fi
+                        </div>
+
+                        <div class="architecture-arrow">
+                            →
+                        </div>
+
+                        <div class="architecture-block">
+                            Interface Web
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <h3>
+                    Commande des équipements
+                </h3>
+
+                <p>
+
+                    Un second module ESP32 reçoit les consignes de commande
+                    et pilote les relais associés aux équipements de la
+                    ferme, notamment la pompe 12 V et le système de chauffage.
+
+                </p>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 DETAILS TECHNIQUES
+            ================================================= -->
+
+            <section class="project-section">
+
+                <p class="project-section-label">
+                    03 — TECHNIQUE
+                </p>
+
+                <h2>
+                    Quelques caractéristiques
+                </h2>
+
+
+                <div class="technical-grid">
+
+
+                    <div class="technical-card">
+
+                        <strong>
+                            MICROCONTRÔLEUR
+                        </strong>
+
+                        <span>
+                            ATMega328P
+                        </span>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <strong>
+                            COMMUNICATION
+                        </strong>
+
+                        <span>
+                            I2C / Wi-Fi
+                        </span>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <strong>
+                            PARAMÈTRES MESURÉS
+                        </strong>
+
+                        <span>
+                            5 paramètres
+                        </span>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <strong>
+                            CAPTEURS
+                        </strong>
+
+                        <span>
+                            pH / T° / EC / DO / Turbidité
+                        </span>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <strong>
+                            SUPERVISION
+                        </strong>
+
+                        <span>
+                            ESP32 / Web
+                        </span>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <strong>
+                            CONCEPTION PCB
+                        </strong>
+
+                        <span>
+                            EasyEDA
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 CAPTEURS
+            ================================================= -->
+
+            <section class="project-section">
+
+                <p class="project-section-label">
+                    04 — INSTRUMENTATION
+                </p>
+
+                <h2>
+                    Chaîne de mesure
+                </h2>
+
+                <p>
+
+                    La chaîne d'instrumentation repose sur cinq capteurs
+                    permettant de suivre en continu l'état physico-chimique
+                    de l'eau.
+
+                </p>
+
+
+                <div class="technical-grid">
+
+
+                    <div class="technical-card">
+
+                        <strong>
+                            pH
+                        </strong>
+
+                        <span>
+                            Acidité / alcalinité
+                        </span>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <strong>
+                            TEMPÉRATURE
+                        </strong>
+
+                        <span>
+                            Température de l'eau
+                        </span>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <strong>
+                            CONDUCTIVITÉ
+                        </strong>
+
+                        <span>
+                            EC / ~700 µS/cm
+                        </span>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <strong>
+                            OXYGÈNE DISSOUS
+                        </strong>
+
+                        <span>
+                            Sonde électrochimique
+                        </span>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <strong>
+                            TURBIDITÉ
+                        </strong>
+
+                        <span>
+                            Qualité optique de l'eau
+                        </span>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <strong>
+                            ACQUISITION
+                        </strong>
+
+                        <span>
+                            CAN / multiplexage
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <h3>
+                    Conditionnement des signaux
+                </h3>
+
+                <p>
+
+                    Chaque chaîne de mesure possède un circuit de
+                    conditionnement adapté au type de capteur. Plusieurs
+                    amplificateurs opérationnels sont utilisés, notamment
+                    les LM324L, LM358NG, CA3140E et OPA241PA.
+
+                </p>
+
+                <p>
+
+                    Le multiplexeur analogique CD4052BM permet de gérer
+                    plusieurs voies de mesure avant leur acquisition par
+                    le microcontrôleur.
+
+                </p>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 MONTAGE / PHOTOS
+            ================================================= -->
+
+            <section class="project-section">
+
+                <p class="project-section-label">
+                    05 — RÉALISATION
+                </p>
+
+                <h2>
+                    Montage expérimental
+                </h2>
+
+                <p>
+
+                    La réalisation combine la structure mécanique de la
+                    ferme aquaponique, l'électronique de mesure et de
+                    commande ainsi que le système de supervision.
+
+                </p>
+
+
+                <div class="project-gallery">
+
+
+                    <figure>
+
+                        <img
+                            src="images/aquamonitor/ferme-aquaponique.jpg"
+                            alt="Structure de la micro-ferme aquaponique"
+                        >
+
+                        <figcaption>
+                            Structure de la micro-ferme aquaponique
+                        </figcaption>
+
+                    </figure>
+
+
+                    <figure>
+
+                        <img
+                            src="images/aquamonitor/pcb.jpg"
+                            alt="Carte électronique PCB"
+                        >
+
+                        <figcaption>
+                            Carte électronique de contrôle
+                        </figcaption>
+
+                    </figure>
+
+
+                    <figure>
+
+                        <img
+                            src="images/aquamonitor/pcb-3d.jpg"
+                            alt="Routage 3D de la carte PCB sous EasyEDA"
+                        >
+
+                        <figcaption>
+                            Routage et modélisation 3D du PCB sous EasyEDA
+                        </figcaption>
+
+                    </figure>
+
+
+                    <figure>
+
+                        <img
+                            src="images/aquamonitor/boitier-3d.jpg"
+                            alt="Boîtier électronique imprimé en 3D"
+                        >
+
+                        <figcaption>
+                            Boîtier de protection conçu en impression 3D
+                        </figcaption>
+
+                    </figure>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 PCB
+            ================================================= -->
+
+            <section class="project-section">
+
+                <p class="project-section-label">
+                    06 — ÉLECTRONIQUE
+                </p>
+
+                <h2>
+                    Carte de contrôle
+                </h2>
+
+                <p>
+
+                    Une carte électronique sur mesure a été conçue afin de
+                    regrouper les différentes chaînes de mesure, le
+                    microcontrôleur principal et les interfaces de
+                    communication.
+
+                </p>
+
+                <p>
+
+                    Le schéma électronique et le routage du PCB ont été
+                    réalisés sous EasyEDA avant la fabrication et
+                    l'intégration de la carte dans le système.
+
+                </p>
+
+
+                <h3 class="code-title">
+                    Principaux composants
+                </h3>
+
+
+                <ul class="technical-list">
+
+                    <li>
+                        ATMega328P pour l'acquisition et le traitement local
+                    </li>
+
+                    <li>
+                        CD4052BM pour le multiplexage des voies analogiques
+                    </li>
+
+                    <li>
+                        LM324L, LM358NG, CA3140E et OPA241PA pour le conditionnement
+                    </li>
+
+                    <li>
+                        Écran OLED pour l'affichage local
+                    </li>
+
+                    <li>
+                        Wemos S2 mini / ESP32 pour la communication Wi-Fi
+                    </li>
+
+                    <li>
+                        Module relais pour la commande des équipements
+                    </li>
+
+                    <li>
+                        Régulateur LM7806 pour l'alimentation
+                    </li>
+
+                </ul>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 PROGRAMMATION ATMega
+            ================================================= -->
+
+            <section class="project-section">
+
+                <p class="project-section-label">
+                    07 — PROGRAMMATION
+                </p>
+
+                <h2>
+                    Acquisition et traitement
+                </h2>
+
+                <p>
+
+                    Le programme embarqué sur l'ATMega328P assure
+                    l'acquisition des différentes voies, la conversion des
+                    valeurs issues du CAN, le traitement des mesures et la
+                    communication avec l'écran OLED et le module ESP32.
+
+                </p>
+
+
+                <h3 class="code-title">
+                    Exemple C/C++ — acquisition d'une voie analogique
+                </h3>
+
+
+                <div class="code-block">
+
+<pre><code>int rawValue;
+
+rawValue = analogRead(sensorPin);
+
+float voltage =
+    (rawValue * VREF) / ADC_MAX;
+
+float value =
+    calibration(voltage);
+
+Serial.println(value);</code></pre>
+
+                </div>
+
+
+                <h3>
+                    Étalonnage des capteurs
+                </h3>
+
+                <p>
+
+                    Chaque capteur a été étalonné individuellement à partir
+                    de mesures de référence. Les données expérimentales ont
+                    ensuite été exploitées sous MATLAB afin d'obtenir les
+                    courbes et équations d'étalonnage nécessaires à la
+                    conversion des mesures.
+
+                </p>
+
+
+                <h3 class="code-title">
+                    Exemple de conversion calibrée
+                </h3>
+
+
+                <div class="code-block">
+
+<pre><code>float calibratedValue;
+
+calibratedValue =
+    a * voltage * voltage
+    + b * voltage
+    + c;
+
+return calibratedValue;</code></pre>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 COMMUNICATION I2C
+            ================================================= -->
+
+            <section class="project-section">
+
+                <p class="project-section-label">
+                    08 — COMMUNICATION
+                </p>
+
+                <h2>
+                    I2C et supervision Web
+                </h2>
+
+                <p>
+
+                    L'ATMega328P communique avec l'écran OLED et le module
+                    ESP32 via le bus I2C. Le module ESP32 récupère les
+                    données de mesure et assure leur transmission sans fil
+                    vers l'interface Web.
+
+                </p>
+
+                <p>
+
+                    Cette architecture permet de séparer le traitement
+                    local des mesures de la partie communication et
+                    supervision à distance.
+
+                </p>
+
+
+                <h3 class="code-title">
+                    Exemple C/C++ — communication I2C
+                </h3>
+
+
+                <div class="code-block">
+
+<pre><code>#include &lt;Wire.h&gt;
+
+void setup() {
+
+    Wire.begin();
+
+}
+
+void sendValue(float value) {
+
+    Wire.beginTransmission(0x08);
+
+    Wire.write(
+        (byte)value
+    );
+
+    Wire.endTransmission();
+
+}</code></pre>
+
+                </div>
+
+
+                <h3>
+                    Supervision Wi-Fi
+                </h3>
+
+                <p>
+
+                    L'ESP32 assure la communication Wi-Fi et permet
+                    d'accéder aux données depuis une interface Web.
+                    Les informations mesurées peuvent ainsi être
+                    consultées à distance.
+
+                </p>
+
+
+                <div class="project-gallery">
+
+                    <figure>
+
+                        <img
+                            src="images/aquamonitor/interface-web.jpg"
+                            alt="Interface Web de supervision"
+                        >
+
+                        <figcaption>
+                            Interface Web de supervision des paramètres de l'eau
+                        </figcaption>
+
+                    </figure>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 COMMANDE
+            ================================================= -->
+
+            <section class="project-section">
+
+                <p class="project-section-label">
+                    09 — COMMANDE
+                </p>
+
+                <h2>
+                    Pilotage des équipements
+                </h2>
+
+                <p>
+
+                    Un second module ESP32 reçoit les consignes et commande
+                    les équipements de la ferme par l'intermédiaire de
+                    relais. Cette architecture permet d'automatiser
+                    certaines fonctions essentielles du système.
+
+                </p>
+
+
+                <div class="architecture">
+
+                    <div class="architecture-flow">
+
+                        <div class="architecture-block">
+                            Interface Web
+                        </div>
+
+                        <div class="architecture-arrow">
+                            →
+                        </div>
+
+                        <div class="architecture-block">
+                            Wi-Fi
+                        </div>
+
+                        <div class="architecture-arrow">
+                            →
+                        </div>
+
+                        <div class="architecture-block">
+                            ESP32
+                        </div>
+
+                        <div class="architecture-arrow">
+                            →
+                        </div>
+
+                        <div class="architecture-block">
+                            Relais
+                        </div>
+
+                        <div class="architecture-arrow">
+                            →
+                        </div>
+
+                        <div class="architecture-block">
+                            Pompe / Chauffage
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <h3>
+                    Régulation à seuils
+                </h3>
+
+                <p>
+
+                    La commande des équipements repose sur des seuils
+                    définis à partir des paramètres mesurés. Lorsque les
+                    conditions de fonctionnement sortent des plages
+                    définies, le système peut activer ou désactiver les
+                    équipements associés.
+
+                </p>
+
+
+                <h3 class="code-title">
+                    Exemple C/C++ — commande d'un relais
+                </h3>
+
+
+                <div class="code-block">
+
+<pre><code>if (temperature &lt; TEMP_MIN) {
+
+    digitalWrite(
+        RELAY_HEATER,
+        HIGH
+    );
+
+}
+
+else if (temperature &gt; TEMP_MAX) {
+
+    digitalWrite(
+        RELAY_HEATER,
+        LOW
+    );
+
+}</code></pre>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 IMPRESSION 3D
+            ================================================= -->
+
+            <section class="project-section">
+
+                <p class="project-section-label">
+                    10 — CONCEPTION MÉCANIQUE
+                </p>
+
+                <h2>
+                    Boîtier électronique
+                </h2>
+
+                <p>
+
+                    Afin de protéger l'électronique contre l'environnement
+                    de la serre, un boîtier compact a été conçu puis
+                    fabriqué par impression 3D.
+
+                </p>
+
+                <p>
+
+                    Le boîtier permet de regrouper la carte de contrôle,
+                    les connexions et les différents éléments électroniques
+                    tout en facilitant l'intégration du système sur la
+                    structure de la ferme.
+
+                </p>
+
+
+                <div class="project-gallery">
+
+                    <figure>
+
+                        <img
+                            src="images/aquamonitor/boitier-3d.jpg"
+                            alt="Boîtier électronique imprimé en 3D"
+                        >
+
+                        <figcaption>
+                            Boîtier de protection conçu et imprimé en 3D
+                        </figcaption>
+
+                    </figure>
+
+
+                    <figure>
+
+                        <img
+                            src="images/aquamonitor/electronique-boitier.jpg"
+                            alt="Électronique intégrée dans le boîtier"
+                        >
+
+                        <figcaption>
+                            Intégration de l'électronique dans le boîtier
+                        </figcaption>
+
+                    </figure>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 ETALONNAGE
+            ================================================= -->
+
+            <section class="project-section">
+
+                <p class="project-section-label">
+                    11 — ÉTALONNAGE
+                </p>
+
+                <h2>
+                    Calibration des capteurs
+                </h2>
+
+                <p>
+
+                    Chaque chaîne de mesure a fait l'objet d'un étalonnage
+                    individuel à partir de mesures comparatives réalisées
+                    avec des appareils de référence.
+
+                </p>
+
+                <p>
+
+                    Les résultats expérimentaux ont été analysés sous
+                    MATLAB afin de déterminer les courbes d'étalonnage et
+                    les équations permettant d'améliorer la précision des
+                    mesures.
+
+                </p>
+
+
+                <div class="project-gallery">
+
+
+                    <figure>
+
+                        <img
+                            src="images/aquamonitor/calibration-ph.jpg"
+                            alt="Courbe d'étalonnage du capteur de pH"
+                        >
+
+                        <figcaption>
+                            Exemple de courbe d'étalonnage
+                        </figcaption>
+
+                    </figure>
+
+
+                    <figure>
+
+                        <img
+                            src="images/aquamonitor/calibration-ec.jpg"
+                            alt="Courbe d'étalonnage de la conductivité"
+                        >
+
+                        <figcaption>
+                            Étalonnage du capteur de conductivité
+                        </figcaption>
+
+                    </figure>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 RESULTATS
+            ================================================= -->
+
+            <section class="project-section">
+
+                <p class="project-section-label">
+                    12 — RÉSULTATS
+                </p>
+
+                <h2>
+                    Validation expérimentale
+                </h2>
+
+                <p>
+
+                    Le prototype a été assemblé puis testé dans la serre
+                    expérimentale du laboratoire LINS. Les essais ont
+                    permis de valider le fonctionnement global de la chaîne
+                    d'acquisition, de traitement et de supervision.
+
+                </p>
+
+                <p>
+
+                    Les mesures des capteurs ont été comparées à des
+                    instruments étalons, notamment le Consort C4010, afin
+                    d'évaluer leur précision et leur répétabilité.
+
+                </p>
+
+
+                <div class="technical-grid">
+
+
+                    <div class="technical-card">
+
+                        <strong>
+                            CONDUCTIVITÉ
+                        </strong>
+
+                        <span>
+                            ≈ 700 µS/cm
+                        </span>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <strong>
+                            COMMUNICATION
+                        </strong>
+
+                        <span>
+                            I2C fluide
+                        </span>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <strong>
+                            SUPERVISION
+                        </strong>
+
+                        <span>
+                            Wi-Fi / Web
+                        </span>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <strong>
+                            ÉTALONNAGE
+                        </strong>
+
+                        <span>
+                            Haute précision
+                        </span>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <strong>
+                            VALIDATION
+                        </strong>
+
+                        <span>
+                            Serre expérimentale
+                        </span>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <strong>
+                            PROTOTYPE
+                        </strong>
+
+                        <span>
+                            Fonctionnel
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 DIFFICULTES
+            ================================================= -->
+
+            <section class="project-section">
+
+                <p class="project-section-label">
+                    13 — DÉFIS TECHNIQUES
+                </p>
+
+                <h2>
+                    Conditionnement des signaux
+                </h2>
+
+                <p>
+
+                    L'une des principales difficultés du projet concernait
+                    le conditionnement des signaux issus des capteurs,
+                    notamment celui de l'oxygène dissous.
+
+                </p>
+
+                <p>
+
+                    La mesure de l'oxygène dissous repose sur une sonde à
+                    électrode de Clark générant des courants extrêmement
+                    faibles, de l'ordre de quelques dizaines de
+                    nanoampères. Le conditionnement et l'amplification de
+                    ce signal nécessitent donc une conception électronique
+                    particulièrement sensible aux perturbations et aux
+                    erreurs de mesure.
+
+                </p>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 PERSPECTIVES
+            ================================================= -->
+
+            <section class="project-section">
+
+                <p class="project-section-label">
+                    14 — PERSPECTIVES
+                </p>
+
+                <h2>
+                    Évolutions possibles
+                </h2>
+
+                <p>
+
+                    Plusieurs améliorations peuvent être envisagées pour
+                    faire évoluer le prototype vers un système encore plus
+                    autonome et intelligent.
+
+                </p>
+
+
+                <ul class="technical-list">
+
+                    <li>
+                        Automatisation avancée des paramètres de la ferme.
+                    </li>
+
+                    <li>
+                        Amélioration de la supervision et du contrôle à distance.
+                    </li>
+
+                    <li>
+                        Ajout de modèles prédictifs pour anticiper les
+                        variations des paramètres de l'eau.
+                    </li>
+
+                    <li>
+                        Intégration de modèles permettant de détecter ou
+                        prédire certaines maladies des plantes.
+                    </li>
+
+                </ul>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 RESSOURCES
+            ================================================= -->
+
+            <section class="project-section">
+
+                <p class="project-section-label">
+                    15 — RESSOURCES
+                </p>
+
+                <h2>
+                    Code et documentation
+                </h2>
+
+                <p>
+
+                    Le code source, les documents techniques et le mémoire
+                    complet du projet pourront être consultés à partir des
+                    ressources ci-dessous.
+
+                </p>
+
+
+                <div class="project-links">
+
+
+                    <!--
+                        Remplace # par ton futur dépôt GitHub.
+                    -->
+
+                    <a
+                        href="#"
+                        class="project-button"
+                    >
+                        GitHub — bientôt
+                    </a>
+
+
+                    <!--
+                        Place ton mémoire ici :
+                        documents/rapport-aquamonitor.pdf
+                    -->
+
+                    <a
+                        href="documents/rapport-aquamonitor.pdf"
+                        class="project-button"
+                        target="_blank"
+                    >
+                        📄 Consulter le mémoire PDF
+                    </a>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 FIN
+            ================================================= -->
+
+            <div class="project-end">
+
+                <a
+                    href="index.html#projets"
+                    class="project-link"
+                >
+                    ← Retour à tous les projets
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+
+</body>
+
+</html>

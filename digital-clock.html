@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Horloge numérique FPGA | Sara Messaoudi</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =========================================================
+           PAGE PROJET — HORLOGE FPGA / VHDL
+        ========================================================= */
+
+        .project-page {
+            padding: 70px 0 100px;
+        }
+
+        .project-page .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 25px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 45px;
+            color: #193753;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .project-hero {
+            margin-bottom: 55px;
+        }
+
+        .project-category {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: #55738d;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .project-hero h1 {
+            margin: 0 0 12px;
+            font-size: clamp(2.1rem, 5vw, 3.5rem);
+            line-height: 1.1;
+            color: #193753;
+        }
+
+        .project-hero h2 {
+            margin: 0 0 22px;
+            color: #55738d;
+            font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+            font-weight: 500;
+        }
+
+        .project-intro {
+            max-width: 850px;
+            font-size: 1.08rem;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-top: 25px;
+        }
+
+        .project-tags span {
+            padding: 7px 13px;
+            border: 1px solid #d8e0e6;
+            border-radius: 20px;
+            background: #f7f9fa;
+            color: #40566a;
+            font-size: 0.82rem;
+        }
+
+        /* =========================================================
+           IMAGE PRINCIPALE
+        ========================================================= */
+
+        .project-main-image {
+            margin: 45px 0 75px;
+        }
+
+        .project-main-image img {
+            width: 100%;
+            max-height: 560px;
+            object-fit: cover;
+            border-radius: 14px;
+            display: block;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+        }
+
+        .image-caption {
+            margin-top: 10px;
+            color: #777;
+            font-size: 0.82rem;
+            text-align: center;
+        }
+
+        /* =========================================================
+           SECTIONS
+        ========================================================= */
+
+        .project-section {
+            margin-bottom: 75px;
+        }
+
+        .section-number {
+            color: #7890a2;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .project-section h3 {
+            margin: 0 0 20px;
+            color: #193753;
+            font-size: 1.75rem;
+        }
+
+        .project-section p {
+            max-width: 900px;
+            color: #444;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        /* =========================================================
+           ARCHITECTURE
+        ========================================================= */
+
+        .architecture {
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .architecture-block {
+            flex: 1 1 160px;
+            min-height: 105px;
+            padding: 20px 16px;
+            border: 1px solid #dbe3e8;
+            border-radius: 12px;
+            background: #f8fafb;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .architecture-block strong {
+            color: #193753;
+            font-size: 0.95rem;
+            margin-bottom: 7px;
+        }
+
+        .architecture-block span {
+            color: #666;
+            font-size: 0.82rem;
+            line-height: 1.45;
+        }
+
+        .architecture-arrow {
+            display: flex;
+            align-items: center;
+            color: #7890a2;
+            font-size: 1.3rem;
+        }
+
+        /* =========================================================
+           TECHNICAL CARDS
+        ========================================================= */
+
+        .technical-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .technical-card {
+            padding: 25px;
+            border: 1px solid #dce4e9;
+            border-radius: 13px;
+            background: #fff;
+        }
+
+        .technical-card h4 {
+            margin: 0 0 12px;
+            color: #193753;
+            font-size: 1.05rem;
+        }
+
+        .technical-card p {
+            margin: 0;
+            font-size: 0.92rem;
+            line-height: 1.7;
+        }
+
+        /* =========================================================
+           HIGHLIGHT
+        ========================================================= */
+
+        .highlight-box {
+            margin: 30px 0;
+            padding: 28px;
+            border-radius: 13px;
+            background: #f5f8fa;
+        }
+
+        .highlight-box strong {
+            color: #193753;
+        }
+
+        /* =========================================================
+           CODE
+        ========================================================= */
+
+        .code-title {
+            margin-top: 35px;
+            margin-bottom: 10px;
+            color: #193753;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .code-block {
+            margin: 15px 0 30px;
+            padding: 22px;
+            border-radius: 12px;
+            background: #17232e;
+            color: #e8eef2;
+            overflow-x: auto;
+            font-family: "Courier New", monospace;
+            font-size: 0.82rem;
+            line-height: 1.6;
+        }
+
+        /* =========================================================
+           GALLERY
+        ========================================================= */
+
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .project-gallery figure {
+            margin: 0;
+        }
+
+        .project-gallery img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 12px;
+            display: block;
+            background: #f2f4f6;
+        }
+
+        .project-gallery figcaption {
+            margin-top: 9px;
+            font-size: 0.8rem;
+            color: #777;
+        }
+
+        /* =========================================================
+           RESULTS
+        ========================================================= */
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-top: 30px;
+        }
+
+        .result-card {
+            padding: 25px 20px;
+            border: 1px solid #dce4e9;
+            border-radius: 12px;
+            text-align: center;
+            background: #fff;
+        }
+
+        .result-value {
+            display: block;
+            margin-bottom: 8px;
+            color: #193753;
+            font-size: 1.65rem;
+            font-weight: 700;
+        }
+
+        .result-label {
+            color: #666;
+            font-size: 0.85rem;
+            line-height: 1.45;
+        }
+
+        /* =========================================================
+           LINKS
+        ========================================================= */
+
+        .project-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .project-link {
+            display: inline-block;
+            padding: 12px 20px;
+            border-radius: 8px;
+            background: #193753;
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .project-link.secondary {
+            background: #eef2f5;
+            color: #193753;
+        }
+
+        .project-link:hover {
+            opacity: 0.88;
+        }
+
+        /* =========================================================
+           FIN
+        ========================================================= */
+
+        .project-end {
+            margin-top: 90px;
+            padding-top: 30px;
+            border-top: 1px solid #dfe5e9;
+        }
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 800px) {
+
+            .technical-grid,
+            .project-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .architecture {
+                flex-direction: column;
+            }
+
+            .architecture-arrow {
+                justify-content: center;
+                transform: rotate(90deg);
+            }
+
+            .project-page {
+                padding-top: 45px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- =========================================================
+         HEADER
+    ========================================================= -->
+
+    <header class="header">
+
+        <div class="container">
+
+            <a href="index.html" class="logo">
+                Sara Messaoudi
+            </a>
+
+            <nav class="nav">
+                <a href="index.html#projets">Projets</a>
+                <a href="index.html#experience">Expérience</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================================
+         PAGE PROJET
+    ========================================================= -->
+
+    <main class="project-page">
+
+        <div class="container">
+
+            <a href="index.html#projets" class="back-link">
+                ← Retour aux projets
+            </a>
+
+
+            <!-- =================================================
+                 HERO
+            ================================================= -->
+
+            <section class="project-hero">
+
+                <span class="project-category">
+                    FPGA · VHDL · MASTER 1 INSTRUMENTATION
+                </span>
+
+                <h1>
+                    Horloge numérique avec afficheurs 7 segments
+                </h1>
+
+                <h2>
+                    Conception, simulation et synthèse VHDL sur FPGA Xilinx
+                </h2>
+
+                <p class="project-intro">
+                    Conception d'une horloge numérique 24 heures en langage
+                    VHDL, synthétisable sur FPGA, avec division d'une
+                    horloge système de 50 MHz, compteurs BCD en cascade,
+                    décodage 7 segments et multiplexage temporel de quatre
+                    afficheurs.
+                </p>
+
+                <div class="project-tags">
+                    <span>VHDL</span>
+                    <span>FPGA</span>
+                    <span>Xilinx ISE</span>
+                    <span>RTL</span>
+                    <span>Compteurs BCD</span>
+                    <span>7 segments</span>
+                    <span>Multiplexage</span>
+                    <span>50 MHz</span>
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 IMAGE PRINCIPALE
+            ================================================= -->
+
+            <div class="project-main-image">
+
+                <img
+                    src="images/digital-clock/fpga-horloge.jpg"
+                    alt="Horloge numérique VHDL sur carte FPGA"
+                >
+
+                <div class="image-caption">
+                    Implémentation de l'horloge numérique sur carte FPGA
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 01 — LE PROJET
+            ================================================= -->
+
+            <section class="project-section">
+
+                <div class="section-number">01 — LE PROJET</div>
+
+                <h3>
+                    Concevoir une horloge numérique entièrement en logique
+                    programmable
+                </h3>
+
+                <p>
+                    L'objectif de ce projet était de concevoir une horloge
+                    numérique complète en VHDL puis de la synthétiser et
+                    l'implémenter sur une carte FPGA Xilinx.
+                </p>
+
+                <p>
+                    Le système reçoit une horloge de référence de
+                    <strong>50 MHz</strong> et doit générer une base de temps
+                    de 1 Hz permettant d'incrémenter successivement les
+                    secondes, les minutes puis les heures.
+                </p>
+
+                <p>
+                    L'affichage est réalisé sur quatre afficheurs 7 segments
+                    grâce à un multiplexage temporel. Une entrée de commande
+                    permet également de sélectionner le mode d'affichage
+                    entre <strong>Minute:Seconde</strong> et
+                    <strong>Heure:Minute</strong>.
+                </p>
+
+            </section>
+
+
+            <!-- =================================================
+                 02 — ARCHITECTURE
+            ================================================= -->
+
+            <section class="project-section">
+
+                <div class="section-number">02 — ARCHITECTURE</div>
+
+                <h3>
+                    Une architecture numérique structurée en plusieurs blocs
+                </h3>
+
+                <div class="architecture">
+
+                    <div class="architecture-block">
+
+                        <strong>CLK</strong>
+
+                        <span>
+                            Horloge système<br>
+                            50 MHz
+                        </span>
+
+                    </div>
+
+                    <div class="architecture-arrow">
+                        →
+                    </div>
+
+                    <div class="architecture-block">
+
+                        <strong>DIVISEUR</strong>
+
+                        <span>
+                            50 MHz → 1 Hz
+                        </span>
+
+                    </div>
+
+                    <div class="architecture-arrow">
+                        →
+                    </div>
+
+                    <div class="architecture-block">
+
+                        <strong>COMPTEURS BCD</strong>
+
+                        <span>
+                            Secondes<br>
+                            Minutes<br>
+                            Heures
+                        </span>
+
+                    </div>
+
+                    <div class="architecture-arrow">
+                        →
+                    </div>
+
+                    <div class="architecture-block">
+
+                        <strong>DÉCODEUR</strong>
+
+                        <span>
+                            BCD → 7 segments
+                        </span>
+
+                    </div>
+
+                    <div class="architecture-arrow">
+                        →
+                    </div>
+
+                    <div class="architecture-block">
+
+                        <strong>MULTIPLEXAGE</strong>
+
+                        <span>
+                            4 afficheurs
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 03 — DIVISEUR
+            ================================================= -->
+
+            <section class="project-section">
+
+                <div class="section-number">03 — DIVISION D'HORLOGE</div>
+
+                <h3>
+                    Transformer 50 MHz en une base de temps de 1 Hz
+                </h3>
+
+                <p>
+                    Le FPGA fonctionne avec une horloge système de
+                    <strong>50 MHz</strong>. Pour faire avancer l'horloge
+                    numérique d'une seconde à chaque cycle, il faut produire
+                    une impulsion de synchronisation à 1 Hz.
+                </p>
+
+                <p>
+                    Un compteur interne compte les cycles de l'horloge
+                    système. Après
+                    <strong>25 000 000 cycles</strong>, son état est inversé,
+                    permettant d'obtenir une période correspondant à une
+                    fréquence de 1 Hz.
+                </p>
+
+                <div class="highlight-box">
+
+                    <strong>Principe :</strong>
+
+                    <p>
+                        50 000 000 Hz → division numérique → signal de
+                        synchronisation à 1 Hz → incrémentation des secondes.
+                    </p>
+
+                </div>
+
+                <div class="code-title">
+                    Exemple de logique VHDL du diviseur
+                </div>
+
+                <div class="code-block">
+<pre>
+if rising_edge(clk) then
+
+    if reset = '1' then
+        counter <= 0;
+        clk_1hz <= '0';
+
+    elsif counter = 24999999 then
+        counter <= 0;
+        clk_1hz <= not clk_1hz;
+
+    else
+        counter <= counter + 1;
+
+    end if;
+
+end if;
+</pre>
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 04 — COMPTEURS BCD
+            ================================================= -->
+
+            <section class="project-section">
+
+                <div class="section-number">04 — COMPTEURS BCD</div>
+
+                <h3>
+                    Chaînage des secondes, minutes et heures
+                </h3>
+
+                <p>
+                    La base de temps à 1 Hz pilote une chaîne de compteurs
+                    BCD. Chaque digit possède une limite correspondant au
+                    format de l'heure numérique.
+                </p>
+
+                <div class="technical-grid">
+
+                    <div class="technical-card">
+
+                        <h4>Secondes</h4>
+
+                        <p>
+                            Les secondes évoluent de 00 à 59 avant de revenir
+                            à 00 et d'incrémenter le compteur des minutes.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Minutes</h4>
+
+                        <p>
+                            Les minutes suivent le même principe, avec un
+                            cycle de 00 à 59 avant l'incrémentation des heures.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Heures</h4>
+
+                        <p>
+                            Le compteur des heures couvre la plage complète
+                            de 00 à 23 afin de respecter le format 24 heures.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Reset</h4>
+
+                        <p>
+                            Une entrée de réinitialisation permet de remettre
+                            l'ensemble des compteurs à l'état initial.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="code-title">
+                    Exemple de cascade de comptage
+                </div>
+
+                <div class="code-block">
+<pre>
+if rising_edge(clk_1hz) then
+
+    if reset = '1' then
+
+        sec_unit <= 0;
+        sec_tens <= 0;
+        min_unit <= 0;
+        min_tens <= 0;
+        hour_unit <= 0;
+        hour_tens <= 0;
+
+    elsif sec_unit = 9 then
+
+        sec_unit <= 0;
+
+        if sec_tens = 5 then
+
+            sec_tens <= 0;
+
+            if min_unit = 9 then
+
+                min_unit <= 0;
+
+                if min_tens = 5 then
+                    min_tens <= 0;
+
+                    if hour_unit = 9 then
+                        hour_unit <= 0;
+                        hour_tens <= hour_tens + 1;
+                    else
+                        hour_unit <= hour_unit + 1;
+                    end if;
+
+                else
+                    min_tens <= min_tens + 1;
+                end if;
+
+            else
+                min_unit <= min_unit + 1;
+            end if;
+
+        else
+            sec_tens <= sec_tens + 1;
+        end if;
+
+    else
+        sec_unit <= sec_unit + 1;
+    end if;
+
+end if;
+</pre>
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 05 — MODE HOUR
+            ================================================= -->
+
+            <section class="project-section">
+
+                <div class="section-number">05 — SÉLECTION DU MODE</div>
+
+                <h3>
+                    Une entrée pour adapter l'information affichée
+                </h3>
+
+                <p>
+                    La carte utilise quatre afficheurs physiques. Le design
+                    prévoit donc une entrée de commande
+                    <strong>hour</strong> permettant de sélectionner la partie
+                    de l'heure à afficher.
+                </p>
+
+                <div class="architecture">
+
+                    <div class="architecture-block">
+
+                        <strong>hour = 0</strong>
+
+                        <span>
+                            Affichage<br>
+                            Minutes : Secondes
+                        </span>
+
+                    </div>
+
+                    <div class="architecture-arrow">
+                        ↔
+                    </div>
+
+                    <div class="architecture-block">
+
+                        <strong>hour = 1</strong>
+
+                        <span>
+                            Affichage<br>
+                            Heures : Minutes
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <p>
+                    Cette solution permet d'utiliser quatre afficheurs tout
+                    en conservant les six digits nécessaires pour représenter
+                    séparément heures, minutes et secondes.
+                </p>
+
+            </section>
+
+
+            <!-- =================================================
+                 06 — 7 SEGMENTS
+            ================================================= -->
+
+            <section class="project-section">
+
+                <div class="section-number">06 — DÉCODAGE 7 SEGMENTS</div>
+
+                <h3>
+                    Transformer chaque digit BCD en motif d'affichage
+                </h3>
+
+                <p>
+                    Les valeurs BCD produites par les compteurs sont ensuite
+                    converties en motifs correspondant aux segments
+                    <strong>A à G</strong> ainsi qu'au point décimal.
+                </p>
+
+                <div class="technical-grid">
+
+                    <div class="technical-card">
+
+                        <h4>Entrée</h4>
+
+                        <p>
+                            Valeur numérique codée en BCD correspondant au
+                            digit à afficher.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Décodage</h4>
+
+                        <p>
+                            Une logique de type ROM / table de correspondance
+                            associe chaque chiffre au motif des segments.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Sortie</h4>
+
+                        <p>
+                            Bus <strong>segments(7:0)</strong> commandant les
+                            segments A-G et le point décimal.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Afficheur</h4>
+
+                        <p>
+                            Quatre afficheurs 7 segments à anodes communes
+                            sont utilisés pour l'affichage multiplexé.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="code-title">
+                    Exemple de table de décodage
+                </div>
+
+                <div class="code-block">
+<pre>
+case digit is
+
+    when "0000" => segments <= "11000000"; -- 0
+    when "0001" => segments <= "11111001"; -- 1
+    when "0010" => segments <= "10100100"; -- 2
+    when "0011" => segments <= "10110000"; -- 3
+    when "0100" => segments <= "10011001"; -- 4
+    when "0101" => segments <= "10010010"; -- 5
+    when "0110" => segments <= "10000010"; -- 6
+    when "0111" => segments <= "11111000"; -- 7
+    when "1000" => segments <= "10000000"; -- 8
+    when "1001" => segments <= "10010000"; -- 9
+
+    when others =>
+        segments <= "11111111";
+
+end case;
+</pre>
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 07 — MULTIPLEXAGE
+            ================================================= -->
+
+            <section class="project-section">
+
+                <div class="section-number">07 — MULTIPLEXAGE</div>
+
+                <h3>
+                    Piloter quatre afficheurs avec un même bus de segments
+                </h3>
+
+                <p>
+                    Les quatre afficheurs partagent le même bus de segments.
+                    Le FPGA active rapidement une seule anode à la fois tout
+                    en appliquant le motif correspondant au digit sélectionné.
+                </p>
+
+                <p>
+                    La commutation étant suffisamment rapide, l'œil humain
+                    perçoit les quatre afficheurs comme étant allumés
+                    simultanément.
+                </p>
+
+                <div class="architecture">
+
+                    <div class="architecture-block">
+
+                        <strong>Digit 1</strong>
+
+                        <span>
+                            Anode 1 active
+                        </span>
+
+                    </div>
+
+                    <div class="architecture-arrow">
+                        →
+                    </div>
+
+                    <div class="architecture-block">
+
+                        <strong>Digit 2</strong>
+
+                        <span>
+                            Anode 2 active
+                        </span>
+
+                    </div>
+
+                    <div class="architecture-arrow">
+                        →
+                    </div>
+
+                    <div class="architecture-block">
+
+                        <strong>Digit 3</strong>
+
+                        <span>
+                            Anode 3 active
+                        </span>
+
+                    </div>
+
+                    <div class="architecture-arrow">
+                        →
+                    </div>
+
+                    <div class="architecture-block">
+
+                        <strong>Digit 4</strong>
+
+                        <span>
+                            Anode 4 active
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <p>
+                    Cette technique réduit fortement le nombre de sorties
+                    nécessaires sur le FPGA par rapport à une commande
+                    totalement indépendante des quatre afficheurs.
+                </p>
+
+            </section>
+
+
+            <!-- =================================================
+                 08 — TESTBENCH
+            ================================================= -->
+
+            <section class="project-section">
+
+                <div class="section-number">08 — SIMULATION</div>
+
+                <h3>
+                    Vérification comportementale avec un testbench VHDL
+                </h3>
+
+                <p>
+                    Avant l'implémentation matérielle, le comportement du
+                    système a été vérifié avec un testbench
+                    <strong>digital_clock_tb.tbw</strong>.
+                </p>
+
+                <p>
+                    La simulation permet notamment d'observer le reset,
+                    la génération de la base de temps, l'évolution des
+                    compteurs et les signaux de commande des afficheurs.
+                </p>
+
+                <div class="code-title">
+                    Structure simplifiée d'un testbench
+                </div>
+
+                <div class="code-block">
+<pre>
+architecture behavior of digital_clock_tb is
+
+    signal clk   : std_logic := '0';
+    signal reset : std_logic := '0';
+    signal hour  : std_logic := '0';
+
+begin
+
+    -- Génération de l'horloge
+    clk <= not clk after 10 ns;
+
+    -- Instance du design
+    DUT : entity work.digital_clock
+        port map (
+            clk      => clk,
+            reset    => reset,
+            hour     => hour,
+            anode    => anode,
+            segments => segments
+        );
+
+    -- Séquence de test
+    process
+    begin
+
+        reset <= '1';
+        wait for 100 ns;
+
+        reset <= '0';
+
+        wait for 10 ms;
+
+        hour <= '1';
+
+        wait;
+
+    end process;
+
+end behavior;
+</pre>
+                </div>
+
+                <p>
+                    Le code présenté ici est une représentation simplifiée
+                    de la structure du testbench pour illustrer la démarche
+                    de simulation.
+                </p>
+
+            </section>
+
+
+            <!-- =================================================
+                 09 — RTL
+            ================================================= -->
+
+            <section class="project-section">
+
+                <div class="section-number">09 — SYNTHÈSE RTL</div>
+
+                <h3>
+                    Vérification de l'architecture logique générée
+                </h3>
+
+                <p>
+                    Après vérification syntaxique, le design VHDL a été
+                    synthétisé avec Xilinx ISE. Le
+                    <strong>RTL Viewer</strong> permet de visualiser la
+                    structure logique résultante avant l'implémentation
+                    sur la carte.
+                </p>
+
+                <div class="project-gallery">
+
+                    <figure>
+
+                        <img
+                            src="images/digital-clock/rtl-schematic.jpg"
+                            alt="Schéma RTL de l'horloge numérique"
+                        >
+
+                        <figcaption>
+                            Schéma logique RTL généré par Xilinx ISE.
+                        </figcaption>
+
+                    </figure>
+
+
+                    <figure>
+
+                        <img
+                            src="images/digital-clock/simulation.jpg"
+                            alt="Chronogramme de simulation VHDL"
+                        >
+
+                        <figcaption>
+                            Chronogramme issu de la simulation comportementale.
+                        </figcaption>
+
+                    </figure>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 10 — CONTRAINTES
+            ================================================= -->
+
+            <section class="project-section">
+
+                <div class="section-number">10 — CONTRAINTES FPGA</div>
+
+                <h3>
+                    Affectation des entrées et sorties physiques
+                </h3>
+
+                <p>
+                    Une fois la logique validée, les signaux VHDL doivent
+                    être associés aux broches physiques de la carte FPGA.
+                    Cette étape est réalisée à l'aide du fichier de
+                    contraintes <strong>.ucf</strong>.
+                </p>
+
+                <div class="technical-grid">
+
+                    <div class="technical-card">
+
+                        <h4>Horloge</h4>
+
+                        <p>
+                            Affectation de l'entrée correspondant au signal
+                            d'horloge système de 50 MHz.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Reset</h4>
+
+                        <p>
+                            Association du bouton de réinitialisation à
+                            l'entrée logique correspondante.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Mode Hour</h4>
+
+                        <p>
+                            Association de l'interrupteur de sélection du
+                            mode d'affichage.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Affichage</h4>
+
+                        <p>
+                            Affectation des bus
+                            <strong>anode(3:0)</strong> et
+                            <strong>segments(7:0)</strong> aux sorties
+                            physiques.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 11 — RÉSULTATS
+            ================================================= -->
+
+            <section class="project-section">
+
+                <div class="section-number">11 — RÉSULTATS</div>
+
+                <h3>
+                    Validation de la simulation et de l'implémentation
+                </h3>
+
+                <p>
+                    La simulation comportementale a permis de vérifier le
+                    fonctionnement de la chaîne de comptage et des signaux
+                    d'affichage. Le design a ensuite été synthétisé puis
+                    implémenté sur la carte FPGA.
+                </p>
+
+                <div class="results-grid">
+
+                    <div class="result-card">
+
+                        <span class="result-value">
+                            50 MHz
+                        </span>
+
+                        <span class="result-label">
+                            Fréquence de l'horloge système
+                        </span>
+
+                    </div>
+
+
+                    <div class="result-card">
+
+                        <span class="result-value">
+                            1 Hz
+                        </span>
+
+                        <span class="result-label">
+                            Base de temps pour le comptage
+                        </span>
+
+                    </div>
+
+
+                    <div class="result-card">
+
+                        <span class="result-value">
+                            24 h
+                        </span>
+
+                        <span class="result-label">
+                            Cycle complet de 00:00:00 à 23:59:59
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="highlight-box">
+
+                    <strong>Validation finale :</strong>
+
+                    <p>
+                        Le fonctionnement de l'horloge a été validé par
+                        simulation sous Xilinx ISE puis par implémentation
+                        pratique sur la carte FPGA.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 12 — VISUELS
+            ================================================= -->
+
+            <section class="project-section">
+
+                <div class="section-number">12 — VISUELS DU PROJET</div>
+
+                <h3>
+                    De la description VHDL à l'implémentation matérielle
+                </h3>
+
+                <div class="project-gallery">
+
+                    <figure>
+
+                        <img
+                            src="images/digital-clock/bloc-vhdl.jpg"
+                            alt="Schéma bloc du composant VHDL"
+                        >
+
+                        <figcaption>
+                            Architecture fonctionnelle du composant VHDL.
+                        </figcaption>
+
+                    </figure>
+
+
+                    <figure>
+
+                        <img
+                            src="images/digital-clock/multiplexage.jpg"
+                            alt="Schéma du multiplexage des afficheurs"
+                        >
+
+                        <figcaption>
+                            Principe de multiplexage des quatre afficheurs.
+                        </figcaption>
+
+                    </figure>
+
+
+                    <figure>
+
+                        <img
+                            src="images/digital-clock/fpga-board.jpg"
+                            alt="Carte FPGA utilisée pour le projet"
+                        >
+
+                        <figcaption>
+                            Carte FPGA utilisée pour l'implémentation.
+                        </figcaption>
+
+                    </figure>
+
+
+                    <figure>
+
+                        <img
+                            src="images/digital-clock/affichage-7segments.jpg"
+                            alt="Affichage numérique sur afficheurs 7 segments"
+                        >
+
+                        <figcaption>
+                            Affichage de l'horloge sur les afficheurs 7 segments.
+                        </figcaption>
+
+                    </figure>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 13 — DIFFICULTÉS
+            ================================================= -->
+
+            <section class="project-section">
+
+                <div class="section-number">13 — DIFFICULTÉS RENCONTRÉES</div>
+
+                <h3>
+                    Synchronisation et gestion du multiplexage
+                </h3>
+
+                <p>
+                    Une des principales difficultés du projet était de gérer
+                    correctement la division de l'horloge système afin de
+                    produire une base de temps stable et synchrone.
+                </p>
+
+                <p>
+                    La seconde difficulté concernait le multiplexage des
+                    afficheurs. Le FPGA devait sélectionner rapidement chaque
+                    anode tout en maintenant le motif correspondant sur le
+                    bus de segments.
+                </p>
+
+                <p>
+                    Enfin, l'utilisation de seulement quatre afficheurs
+                    physiques nécessitait la mise en place d'un mode de
+                    commutation permettant d'afficher alternativement
+                    les différentes informations temporelles.
+                </p>
+
+            </section>
+
+
+            <!-- =================================================
+                 14 — OUTILS
+            ================================================= -->
+
+            <section class="project-section">
+
+                <div class="section-number">14 — OUTILS & TECHNOLOGIES</div>
+
+                <h3>
+                    Environnement de développement
+                </h3>
+
+                <div class="technical-grid">
+
+                    <div class="technical-card">
+
+                        <h4>VHDL</h4>
+
+                        <p>
+                            Description matérielle synthétisable de la logique
+                            numérique et des différents blocs fonctionnels.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Xilinx ISE</h4>
+
+                        <p>
+                            Vérification syntaxique, synthèse XST,
+                            simulation et génération de la logique RTL.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>RTL Viewer</h4>
+
+                        <p>
+                            Analyse de l'architecture logique obtenue après
+                            synthèse du design VHDL.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>FPGA Xilinx</h4>
+
+                        <p>
+                            Implémentation physique du système numérique
+                            et validation du fonctionnement de l'horloge.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 15 — PERSPECTIVES
+            ================================================= -->
+
+            <section class="project-section">
+
+                <div class="section-number">15 — PERSPECTIVES</div>
+
+                <h3>
+                    Vers une horloge FPGA plus complète
+                </h3>
+
+                <div class="technical-grid">
+
+                    <div class="technical-card">
+
+                        <h4>Réglage de l'heure</h4>
+
+                        <p>
+                            Ajouter des boutons permettant de régler
+                            directement les heures et les minutes.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Alarme</h4>
+
+                        <p>
+                            Ajouter une fonction d'alarme ou de réveil
+                            directement dans la logique VHDL.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Six digits</h4>
+
+                        <p>
+                            Étendre l'affichage pour présenter simultanément
+                            heures, minutes et secondes sur six afficheurs.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Fonctions supplémentaires</h4>
+
+                        <p>
+                            Ajouter un chronomètre, un compteur ou différents
+                            modes d'affichage pilotés par boutons.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 16 — COMPÉTENCES
+            ================================================= -->
+
+            <section class="project-section">
+
+                <div class="section-number">16 — COMPÉTENCES MOBILISÉES</div>
+
+                <h3>
+                    Conception numérique et logique programmable
+                </h3>
+
+                <div class="technical-grid">
+
+                    <div class="technical-card">
+
+                        <h4>Conception VHDL</h4>
+
+                        <p>
+                            Écriture d'une architecture matérielle
+                            synthétisable et structurée en plusieurs blocs.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Logique séquentielle</h4>
+
+                        <p>
+                            Compteurs, divisions de fréquence, resets,
+                            cascades de comptage et synchronisation.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>FPGA</h4>
+
+                        <p>
+                            Synthèse, visualisation RTL, contraintes de
+                            broches et implémentation sur cible Xilinx.
+                        </p>
+
+                    </div>
+
+
+                    <div class="technical-card">
+
+                        <h4>Simulation</h4>
+
+                        <p>
+                            Création d'un testbench et analyse de chronogrammes
+                            pour vérifier le comportement du système.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 17 — RESSOURCES
+            ================================================= -->
+
+            <section class="project-section">
+
+                <div class="section-number">17 — RESSOURCES</div>
+
+                <h3>
+                    Rapport et code VHDL
+                </h3>
+
+                <p>
+                    Le projet comprend le design VHDL de l'horloge,
+                    le testbench de simulation, les contraintes de broches
+                    ainsi que les résultats de synthèse et d'implémentation
+                    sur FPGA.
+                </p>
+
+                <div class="project-links">
+
+                    <a
+                        href="documents/rapport-horloge-fpga.pdf"
+                        class="project-link"
+                        target="_blank"
+                    >
+                        Voir le rapport PDF
+                    </a>
+
+                    <a
+                        href="#"
+                        class="project-link secondary"
+                        target="_blank"
+                    >
+                        GitHub du projet
+                    </a>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 FIN
+            ================================================= -->
+
+            <div class="project-end">
+
+                <a href="index.html#projets" class="back-link">
+                    ← Retour à tous les projets
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================= -->
+
+    <footer class="footer">
+
+        <div class="container">
+
+            <p>
+                © Sara Messaoudi — Ingénieure en électronique
+            </p>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>
