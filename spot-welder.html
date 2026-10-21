@@ -1,383 +1,431 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Machine à souder par pointe — Sara Messaoudi</title>
 
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* ==================================================
-           PAGE PROJET
-        ================================================== */
+        /* =========================================================
+           PAGE MACHINE À SOUDER — tout le style est ici, rien à ajouter
+           dans style.css
+        ========================================================= */
 
-        .project-page {
-            padding: 80px 0;
+        body {
+            background-color: #eaf4f8;
+            background-image:
+                radial-gradient(circle at 0% 25%, rgba(190, 232, 220, 0.55) 0, transparent 28%),
+                radial-gradient(circle at 100% 15%, rgba(205, 225, 240, 0.7) 0, transparent 30%),
+                radial-gradient(circle at 100% 65%, rgba(205, 225, 240, 0.6) 0, transparent 28%),
+                url("images/background-portfolio.png");
+            background-size: auto, auto, auto, cover;
+            background-attachment: fixed;
         }
 
-        .project-page .container {
-            max-width: 1100px;
-            margin: auto;
-            padding: 0 25px;
+        .proj-page {
+            width: min(1180px, 90%);
+            margin: 0 auto;
+            padding: 40px 0 45px; /* ← 1er chiffre = espace entre le haut du site et « Retour aux projets » */
         }
 
-        .back-link {
-            display: inline-block;
-            margin-bottom: 40px;
-            text-decoration: none;
-            color: #555;
-            font-weight: 500;
-            transition: 0.3s;
-        }
+        /* Bouton retour */
 
-        .back-link:hover {
-            color: #000;
-        }
-
-        /* ==================================================
-           HERO
-        ================================================== */
-
-        .project-hero {
-            margin-bottom: 60px;
-        }
-
-        .project-category {
-            font-size: 0.85rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #777;
-            margin-bottom: 15px;
-        }
-
-        .project-hero h1 {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            line-height: 1.15;
-        }
-
-        .project-hero h2 {
-            font-size: 1.35rem;
-            font-weight: 400;
-            color: #666;
+        .proj-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             margin-bottom: 25px;
+            padding: 10px 17px;
+            border-radius: 30px;
+            background: #e1f2ff;
+            border: 1px solid #b9dff5;
+            color: #193753;
+            font-size: 14px;
+            box-shadow: 0 3px 10px rgba(49, 93, 125, 0.08);
+            transition: 0.25s ease;
         }
 
-        .project-intro {
-            max-width: 850px;
-            font-size: 1.05rem;
-            line-height: 1.8;
-            color: #444;
+        .proj-back:hover {
+            background: #cce9fb;
+            transform: translateY(-2px);
         }
 
-        .project-tags {
+        /* Cartes */
+
+        .proj-card {
+            margin-bottom: 28px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 24px;
+            box-shadow: 0 12px 35px rgba(48, 91, 120, 0.09);
+            color: #182431;
+        }
+
+        .proj-category,
+        .proj-label {
+            color: #4f86ad;
+            font-size: 0.72rem;
+            letter-spacing: 0.17em;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .proj-card h1,
+        .proj-card h2 {
+            color: #0c3a57;
+        }
+
+        .proj-title {
+            font-size: 28px;
+            line-height: 1.2;
+            margin: 8px 0 16px;
+        }
+
+        .proj-card p {
+            color: #5d7284;
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 14px;
+        }
+
+        /* =========================
+           CARTE 1 : PRÉSENTATION
+        ========================= */
+
+        .proj-intro {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .proj-intro-image img {
+            width: 100%;
+            height: 390px;
+            object-fit: cover;
+            display: block;
+            border-radius: 18px;
+            background: #dce8ef; /* gris-bleu tant que la photo n'est pas ajoutée */
+        }
+
+        .proj-intro h1 {
+            font-size: clamp(34px, 4vw, 50px);
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            margin: 10px 0 14px;
+        }
+
+        .proj-intro h2 {
+            font-size: 20px;
+            line-height: 1.4;
+            font-weight: 500;
+            color: #12364d;
+            margin-bottom: 16px;
+        }
+
+        .proj-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 25px;
+            gap: 8px;
+            margin-top: 20px;
         }
 
-        .project-tags span {
-            padding: 8px 14px;
-            border: 1px solid #ddd;
+        .proj-tags span {
+            padding: 6px 11px;
             border-radius: 20px;
-            font-size: 0.85rem;
-            color: #555;
+            font-size: 12px;
+            background: #e5f5f2;
+            border: 1px solid #b9e5dc;
+            color: #245e60;
         }
 
-        /* ==================================================
-           IMAGE PRINCIPALE
-        ================================================== */
-
-        .project-main-image {
-            margin: 50px 0 80px;
+        .proj-tags span:nth-child(even) {
+            background: #e5f2ff;
+            border-color: #c2e0f7;
+            color: #214f75;
         }
 
-        .project-main-image img {
-            width: 100%;
-            max-height: 600px;
-            object-fit: cover;
-            border-radius: 12px;
-            display: block;
+        /* =========================
+           CARTE 2 : FONCTIONNEMENT
+        ========================= */
+
+        .proj-split {
+            display: grid;
+            grid-template-columns: 0.75fr 1.25fr;
+            align-items: start;
         }
 
-        /* ==================================================
-           SECTIONS
-        ================================================== */
-
-        .project-section {
-            margin-bottom: 80px;
+        .proj-text {
+            padding-right: 30px;
+            border-right: 1px solid #dfe9ef;
         }
 
-        .project-section-number {
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            color: #888;
-            margin-bottom: 10px;
+        .proj-side {
+            padding-left: 28px;
+            min-width: 0;
         }
 
-        .project-section h3 {
-            font-size: 2rem;
-            margin-bottom: 25px;
-        }
-
-        .project-section p {
-            font-size: 1rem;
-            line-height: 1.8;
-            color: #444;
-            max-width: 900px;
-        }
-
-        /* ==================================================
-           LISTES
-        ================================================== */
-
-        .project-list {
-            padding-left: 20px;
-            max-width: 900px;
-        }
-
-        .project-list li {
-            margin-bottom: 12px;
-            line-height: 1.7;
-            color: #444;
-        }
-
-        /* ==================================================
-           ARCHITECTURE
-        ================================================== */
-
-        .architecture {
+        .proj-flow {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 35px;
+            gap: 8px;
+            margin-bottom: 24px;
         }
 
-        .architecture-block {
-            padding: 20px;
-            min-width: 150px;
+        .proj-step {
+            padding: 7px 13px;
+            border-radius: 20px;
+            font-size: 12.5px;
+            background: #e5f5f2;
+            border: 1px solid #b9e5dc;
+            color: #245e60;
+        }
+
+        .proj-step:nth-of-type(even) {
+            background: #e5f2ff;
+            border-color: #c2e0f7;
+            color: #214f75;
+        }
+
+        .proj-arrow {
+            color: #7aa6c2;
+            font-size: 15px;
+        }
+
+        .proj-specs {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            background: linear-gradient(135deg, #eaf6f4, #eef6fb);
+            border: 1px solid #d5ebe8;
+            border-radius: 18px;
+            padding: 18px 22px;
+        }
+
+        .proj-spec {
             text-align: center;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            background: #fafafa;
-            font-weight: 600;
+            padding: 0 6px;
+            border-right: 1px solid #d3e4ea;
         }
 
-        .architecture-arrow {
-            font-size: 1.5rem;
-            color: #888;
+        .proj-spec:last-child {
+            border-right: none;
         }
 
-        /* ==================================================
-           CARTES TECHNIQUES
-        ================================================== */
-
-        .technical-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .technical-card {
-            padding: 25px;
-            border: 1px solid #ddd;
-            border-radius: 12px;
-        }
-
-        .technical-card h4 {
-            margin-bottom: 12px;
-            font-size: 1.05rem;
-        }
-
-        .technical-card p {
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* ==================================================
-           FORMULES
-        ================================================== */
-
-        .formula-box {
-            margin: 30px 0;
-            padding: 25px;
-            background: #fafafa;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            font-family: "Times New Roman", serif;
-            font-size: 1.15rem;
-            line-height: 2;
-            overflow-x: auto;
-        }
-
-        /* ==================================================
-           GALERIE
-        ================================================== */
-
-        .project-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 35px;
-        }
-
-        .project-gallery img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 10px;
+        .proj-spec span {
             display: block;
+            font-size: 10.5px;
+            letter-spacing: 0.12em;
+            font-weight: 700;
+            color: #4f86ad;
+            margin-bottom: 6px;
         }
 
-        /* ==================================================
-           RESSOURCES
-        ================================================== */
+        .proj-spec strong {
+            font-size: 16px;
+            color: #0c3a57;
+        }
 
-        .project-links {
+        /* =========================
+           CARTE 3 : GALERIE
+        ========================= */
+
+        .proj-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .proj-gallery figure {
+            margin: 0;
+            min-width: 0;
+        }
+
+        .proj-gallery img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            display: block;
+            border-radius: 12px;
+            background: #dce8ef;
+        }
+
+        .proj-gallery figcaption {
+            font-size: 12.5px;
+            line-height: 1.4;
+            color: #5d7284;
+            margin-top: 8px;
+        }
+
+        /* =========================
+           CARTE 4 : RÉSULTATS / PERSPECTIVES
+        ========================= */
+
+        .proj-two {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .proj-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .proj-list li {
+            position: relative;
+            padding: 9px 0 9px 22px;
+            color: #5d7284;
+            font-size: 15px;
+            line-height: 1.6;
+            border-bottom: 1px solid #e3edf2;
+        }
+
+        .proj-list li:last-child {
+            border-bottom: none;
+        }
+
+        .proj-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 17px;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #7fc8b8;
+        }
+
+        .proj-list li:nth-child(even)::before {
+            background: #7fb6e3;
+        }
+
+        /* =========================
+           CARTE 5 : CODE & GITHUB
+        ========================= */
+
+        .proj-code-head {
             display: flex;
+            align-items: center;
+            justify-content: space-between;
             flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 30px;
+            gap: 16px;
         }
 
-        .project-button {
+        .proj-btn {
             display: inline-block;
-            padding: 13px 22px;
-            border: 1px solid #222;
-            border-radius: 8px;
-            text-decoration: none;
-            color: #222;
-            transition: 0.3s;
+            padding: 11px 20px;
+            border-radius: 30px;
+            background: #e1f2ff;
+            border: 1px solid #b9dff5;
+            color: #193753;
+            font-size: 14px;
+            transition: 0.25s ease;
         }
 
-        .project-button:hover {
-            background: #222;
-            color: white;
+        .proj-btn:hover {
+            background: #cce9fb;
+            transform: translateY(-2px);
         }
 
-        /* ==================================================
-           FIN
-        ================================================== */
-
-        .project-end {
-            margin-top: 80px;
-            padding-top: 40px;
-            border-top: 1px solid #ddd;
+        .proj-gallery-4 {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
         }
 
-        /* ==================================================
-           RESPONSIVE
-        ================================================== */
+        .proj-gallery-4 img {
+            height: 105px;
+        }
 
-        @media (max-width: 700px) {
+        /* =========================
+           TÉLÉPHONE ET TABLETTE
+        ========================= */
 
-            .project-hero h1 {
-                font-size: 2.2rem;
+        @media (max-width: 800px) {
+
+            .proj-intro,
+            .proj-split,
+            .proj-two {
+                grid-template-columns: 1fr;
+                gap: 25px;
             }
 
-            .project-hero h2 {
-                font-size: 1.1rem;
+            .proj-intro-image img {
+                height: 300px;
             }
 
-            .project-section h3 {
-                font-size: 1.6rem;
+            .proj-text {
+                padding-right: 0;
+                border-right: none;
             }
 
-            .architecture {
-                flex-direction: column;
+            .proj-side {
+                padding-left: 0;
             }
 
-            .architecture-arrow {
-                transform: rotate(90deg);
+            .proj-specs {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 18px 0;
+            }
+
+            .proj-spec:nth-child(2n) {
+                border-right: none;
+            }
+
+            .proj-gallery,
+            .proj-gallery-4 {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .proj-gallery-4 img {
+                height: 130px;
+            }
+
+            .proj-gallery img {
+                height: 130px;
             }
         }
     </style>
 </head>
 
-
 <body>
 
-    <!-- ==================================================
-         HEADER
-    ================================================== -->
+    <main class="container leme-page">
 
-    <header>
+        <div class="project-topbar">
+    <a href="index.html#projet-06" class="project-back">← Retour aux projets</a>
 
-        <nav>
+    <a href="bioimpedance.html" class="project-nav-btn project-nav-next">
+        <span>PROJET SUIVANT →</span>
+        <strong>Système de mesure d impédance</strong>
+    </a>
+</div>
+        <!-- ===== CARTE 1 : PRÉSENTATION ===== -->
+        <section class="proj-card proj-intro">
 
-            <div class="logo">
-                Sara Messaoudi
+            <div class="proj-intro-image">
+                <img src="images/spot-welder/machine-complete.jpg" alt="Machine à souder par pointe réalisée au laboratoire">
             </div>
 
-            <div class="nav-links">
+            <div>
+                <p class="proj-category">GÉNIE ÉLECTRIQUE · INSTRUMENTATION · MASTER 1</p>
+                <h1>Machine à souder par pointe</h1>
+                <h2>Étude et réalisation d'un poste de soudage par résistance</h2>
 
-                <a href="index.html#projets">
-                    Projets
-                </a>
-
-                <a href="index.html#experience">
-                    Expérience
-                </a>
-
-                <a href="index.html#contact">
-                    Contact
-                </a>
-
-            </div>
-
-        </nav>
-
-    </header>
-
-
-    <!-- ==================================================
-         PAGE PROJET
-    ================================================== -->
-
-    <main class="project-page">
-
-        <div class="container">
-
-            <a href="index.html#projets" class="back-link">
-                ← Retour aux projets
-            </a>
-
-
-            <!-- ==================================================
-                 HERO
-            ================================================== -->
-
-            <section class="project-hero">
-
-                <div class="project-category">
-                    GÉNIE ÉLECTRIQUE / INSTRUMENTATION / MASTER 1
-                </div>
-
-                <h1>
-                    Machine à souder par pointe
-                </h1>
-
-                <h2>
-                    Étude et réalisation d'un poste de soudage par résistance
-                </h2>
-
-                <p class="project-intro">
-                    Conception et réalisation d'un prototype de machine
-                    à souder par points à partir d'un transformateur
-                    de four à micro-ondes modifié. Le système transforme
-                    la tension secteur en une très basse tension capable
-                    de fournir un courant secondaire très élevé afin de
-                    réaliser des points de soudure par effet Joule.
+                <p>
+                    Prototype de machine à souder par points réalisé à partir d'un
+                    transformateur de four à micro-ondes modifié : une très basse
+                    tension et un courant très élevé produisent des points de
+                    soudure par effet Joule.
                 </p>
 
-                <div class="project-tags">
-
+                <div class="proj-tags">
                     <span>Soudage par points</span>
                     <span>Transformateur</span>
                     <span>220 V AC</span>
@@ -387,974 +435,98 @@
                     <span>Électrodes cuivre</span>
                     <span>Instrumentation</span>
                     <span>Génie électrique</span>
+                </div>
+            </div>
 
+        </section>
+
+
+        <!-- ===== CARTE 2 : CONCEPTION ET RÉALISATION ===== -->
+        <section class="proj-card proj-split">
+
+            <div class="proj-text">
+                <p class="proj-category">CONCEPTION &amp; RÉALISATION</p>
+                <h2 class="proj-title">Du transformateur au point de soudure</h2>
+                <p>
+                    Le secondaire d'un transformateur de micro-ondes est remplacé
+                    par un câble de cuivre de forte section. Des électrodes en
+                    cuivre, commandées par une pédale, appliquent le courant sur
+                    les tôles pour former le point de soudure.
+                </p>
+            </div>
+
+            <div class="proj-side">
+
+                <div class="proj-specs" style="margin-bottom:24px;">
+                    <div class="proj-spec">
+                        <span>PRIMAIRE</span>
+                        <strong>220 V AC</strong>
+                    </div>
+                    <div class="proj-spec">
+                        <span>SECONDAIRE</span>
+                        <strong>2 → 4 V</strong>
+                    </div>
+                    <div class="proj-spec">
+                        <span>CÂBLE</span>
+                        <strong>50 mm²</strong>
+                    </div>
+                    <div class="proj-spec">
+                        <span>COURANT</span>
+                        <strong>Centaines d'A</strong>
+                    </div>
                 </div>
 
-            </section>
+                <div class="proj-gallery proj-gallery-4">
 
+                    <figure>
+                        <img src="images/spot-welder/transformateur.jpg" alt="Transformateur de micro-ondes">
+                        <figcaption>Transformateur de micro-ondes</figcaption>
+                    </figure>
 
-            <!-- ==================================================
-                 IMAGE PRINCIPALE
-            ================================================== -->
+                    <figure>
+                        <img src="images/spot-welder/electrodes-cuivre.jpg" alt="Électrodes en cuivre">
+                        <figcaption>Électrodes en cuivre</figcaption>
+                    </figure>
 
-            <div class="project-main-image">
+                    <figure>
+                        <img src="images/spot-welder/poste-final.jpg" alt="Poste de soudage finalisé">
+                        <figcaption>Poste de soudage finalisé</figcaption>
+                    </figure>
 
-                <img
-                    src="images/spot-welder/machine-complete.jpg"
-                    alt="Machine à souder par pointe réalisée au laboratoire">
+                    <figure>
+                        <img src="images/spot-welder/point-soudure.jpg" alt="Point de soudure sur tôle inox">
+                        <figcaption>Point de soudure sur tôle inox</figcaption>
+                    </figure>
+
+                </div>
 
             </div>
 
+        </section>
 
-            <!-- ==================================================
-                 01 - LE PROJET
-            ================================================== -->
 
-            <section class="project-section">
+        <!-- ===== CARTE 3 : DOCUMENTATION & GITHUB ===== -->
+        <section class="proj-card">
 
-                <div class="project-section-number">
-                    01 — LE PROJET
-                </div>
+            <p class="proj-category">CODE &amp; DOCUMENTATION</p>
 
-                <h3>
-                    Réaliser un poste de soudage économique
-                </h3>
+            <div class="proj-code-head">
 
-                <p>
-                    Ce mini-projet de Master 1 en Instrumentation à
-                    l'USTHB porte sur l'étude et la réalisation d'une
-                    <strong>machine à souder par points</strong>
-                    fonctionnelle et économique.
-                </p>
+                <h2 class="proj-title" style="margin:0;">Fichiers du projet</h2>
 
-                <p>
-                    Le principe consiste à assembler localement deux
-                    pièces métalliques sans apport de matière en faisant
-                    circuler un courant électrique très important à
-                    travers leur zone de contact.
-                </p>
-
-                <p>
-                    L'objectif était de réaliser au laboratoire un
-                    prototype capable de produire des points de soudure
-                    sur de fines tôles métalliques tout en utilisant
-                    des composants récupérés ou facilement disponibles.
-                </p>
-
-            </section>
-
-
-            <!-- ==================================================
-                 02 - PRINCIPE
-            ================================================== -->
-
-            <section class="project-section">
-
-                <div class="project-section-number">
-                    02 — PRINCIPE DE FONCTIONNEMENT
-                </div>
-
-                <h3>
-                    Soudage par résistance
-                </h3>
-
-                <p>
-                    Le soudage par points repose sur la conversion de
-                    l'énergie électrique en chaleur au niveau de la
-                    zone de contact entre les pièces métalliques.
-                </p>
-
-                <p>
-                    Les deux tôles sont maintenues entre deux électrodes
-                    en cuivre. Lorsqu'un courant très élevé traverse
-                    leur interface, la résistance électrique locale
-                    provoque un échauffement par <strong>effet Joule</strong>.
-                </p>
-
-                <p>
-                    Lorsque la température devient suffisamment élevée,
-                    une petite zone de métal fond puis se solidifie,
-                    formant ainsi un point de soudure.
-                </p>
-
-                <div class="formula-box">
-
-                    Q = R × I² × t
-
-                    <br><br>
-
-                    Q : énergie thermique générée
-
-                    <br>
-
-                    R : résistance électrique
-
-                    <br>
-
-                    I : courant de soudage
-
-                    <br>
-
-                    t : durée de l'impulsion
-
-                </div>
-
-            </section>
-
-
-            <!-- ==================================================
-                 03 - ARCHITECTURE
-            ================================================== -->
-
-            <section class="project-section">
-
-                <div class="project-section-number">
-                    03 — ARCHITECTURE
-                </div>
-
-                <h3>
-                    Chaîne de puissance
-                </h3>
-
-                <p>
-                    La machine est organisée autour de trois fonctions
-                    principales : la commande de l'alimentation,
-                    l'abaissement de la tension et l'application du
-                    courant de soudage sur les électrodes.
-                </p>
-
-                <div class="architecture">
-
-                    <div class="architecture-block">
-                        Secteur
-                        <br>
-                        220 V AC
-                    </div>
-
-                    <div class="architecture-arrow">
-                        →
-                    </div>
-
-                    <div class="architecture-block">
-                        Pédale
-                        <br>
-                        de commande
-                    </div>
-
-                    <div class="architecture-arrow">
-                        →
-                    </div>
-
-                    <div class="architecture-block">
-                        Transformateur
-                        <br>
-                        modifié
-                    </div>
-
-                    <div class="architecture-arrow">
-                        →
-                    </div>
-
-                    <div class="architecture-block">
-                        Secondaire
-                        <br>
-                        forte section
-                    </div>
-
-                    <div class="architecture-arrow">
-                        →
-                    </div>
-
-                    <div class="architecture-block">
-                        Électrodes
-                        <br>
-                        cuivre
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- ==================================================
-                 04 - TRANSFORMATEUR
-            ================================================== -->
-
-            <section class="project-section">
-
-                <div class="project-section-number">
-                    04 — TRANSFORMATEUR
-                </div>
-
-                <h3>
-                    Modification d'un transformateur de micro-ondes
-                </h3>
-
-                <p>
-                    Le cœur du système est un
-                    <strong>transformateur à fuite de flux magnétique</strong>
-                    récupéré d'un four à micro-ondes.
-                </p>
-
-                <p>
-                    L'enroulement secondaire d'origine a été retiré
-                    afin de le remplacer par un conducteur en cuivre
-                    souple de forte section.
-                </p>
-
-                <p>
-                    Le nouveau secondaire utilise un
-                    <strong>câble de masse de 50 mm²</strong> enroulé
-                    sur un nombre réduit de spires. Cette modification
-                    permet d'obtenir une tension secondaire très faible
-                    tout en autorisant la circulation d'un courant très
-                    important.
-                </p>
-
-                <div class="technical-grid">
-
-                    <div class="technical-card">
-
-                        <h4>
-                            Primaire
-                        </h4>
-
-                        <p>
-                            Alimentation secteur :
-                            <strong>220 V AC</strong>.
-                        </p>
-
-                    </div>
-
-                    <div class="technical-card">
-
-                        <h4>
-                            Secondaire
-                        </h4>
-
-                        <p>
-                            Très basse tension, de l'ordre de
-                            <strong>2 à 4 V</strong>.
-                        </p>
-
-                    </div>
-
-                    <div class="technical-card">
-
-                        <h4>
-                            Conducteur
-                        </h4>
-
-                        <p>
-                            Câble cuivre souple de section :
-                            <strong>50 mm²</strong>.
-                        </p>
-
-                    </div>
-
-                    <div class="technical-card">
-
-                        <h4>
-                            Courant
-                        </h4>
-
-                        <p>
-                            Courant secondaire très élevé,
-                            pouvant atteindre plusieurs centaines
-                            d'ampères.
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- ==================================================
-                 GALERIE TRANSFORMATEUR
-            ================================================== -->
-
-            <section class="project-section">
-
-                <div class="project-gallery">
-
-                    <img
-                        src="images/spot-welder/transformateur.jpg"
-                        alt="Transformateur de micro-ondes">
-
-                    <img
-                        src="images/spot-welder/secondaire.jpg"
-                        alt="Secondaire rebobiné avec câble cuivre">
-
-                    <img
-                        src="images/spot-welder/cable-50mm2.jpg"
-                        alt="Câble cuivre de 50 mm²">
-
-                </div>
-
-            </section>
-
-
-            <!-- ==================================================
-                 05 - RAPPORT DE TRANSFORMATION
-            ================================================== -->
-
-            <section class="project-section">
-
-                <div class="project-section-number">
-                    05 — TRANSFORMATION DE TENSION
-                </div>
-
-                <h3>
-                    Principe du transformateur
-                </h3>
-
-                <p>
-                    La réduction de la tension est liée au rapport
-                    entre le nombre de spires du primaire et du
-                    secondaire.
-                </p>
-
-                <div class="formula-box">
-
-                    V<sub>p</sub> / V<sub>s</sub>
-                    =
-                    N<sub>p</sub> / N<sub>s</sub>
-
-                    <br><br>
-
-                    V<sub>p</sub> : tension primaire
-
-                    <br>
-
-                    V<sub>s</sub> : tension secondaire
-
-                    <br>
-
-                    N<sub>p</sub> : nombre de spires primaire
-
-                    <br>
-
-                    N<sub>s</sub> : nombre de spires secondaire
-
-                </div>
-
-                <p>
-                    La diminution importante du nombre de spires au
-                    secondaire permet donc d'obtenir une très faible
-                    tension secondaire associée à un courant beaucoup
-                    plus important.
-                </p>
-
-            </section>
-
-
-            <!-- ==================================================
-                 06 - ELECTRODES
-            ================================================== -->
-
-            <section class="project-section">
-
-                <div class="project-section-number">
-                    06 — ÉLECTRODES
-                </div>
-
-                <h3>
-                    Conception des électrodes en cuivre
-                </h3>
-
-                <p>
-                    Les électrodes assurent simultanément la conduction
-                    du courant de soudage et l'application de la pression
-                    mécanique sur les tôles.
-                </p>
-
-                <p>
-                    Elles ont été réalisées en
-                    <strong>cuivre massif</strong>, matériau adapté à
-                    cette application grâce à sa bonne conductivité
-                    électrique et thermique.
-                </p>
-
-                <p>
-                    Le dimensionnement du diamètre des électrodes suit
-                    la relation indiquée dans le projet :
-                </p>
-
-                <div class="formula-box">
-
-                    D = 2e + 3 mm
-
-                    <br><br>
-
-                    D : diamètre de l'électrode
-
-                    <br>
-
-                    e : épaisseur de la tôle
-
-                </div>
-
-                <div class="project-gallery">
-
-                    <img
-                        src="images/spot-welder/electrodes-cuivre.jpg"
-                        alt="Électrodes en cuivre">
-
-                    <img
-                        src="images/spot-welder/support-electrodes.jpg"
-                        alt="Support des électrodes">
-
-                </div>
-
-            </section>
-
-
-            <!-- ==================================================
-                 07 - COMMANDE
-            ================================================== -->
-
-            <section class="project-section">
-
-                <div class="project-section-number">
-                    07 — COMMANDE
-                </div>
-
-                <h3>
-                    Déclenchement par pédale
-                </h3>
-
-                <p>
-                    Une <strong>pédale de commande au pied</strong>
-                    permet de déclencher l'alimentation du système de
-                    soudage.
-                </p>
-
-                <p>
-                    Cette commande permet à l'opérateur de maintenir
-                    ses mains disponibles pour positionner correctement
-                    les pièces entre les électrodes tout en contrôlant
-                    le déclenchement du courant de puissance.
-                </p>
-
-                <p>
-                    Le cycle de soudage nécessite notamment une maîtrise
-                    de la durée d'application du courant afin d'éviter
-                    un échauffement excessif ou une dégradation des
-                    pièces.
-                </p>
-
-                <div class="technical-card">
-
-                    <h4>
-                        Commande
-                    </h4>
-
-                    <p>
-                        Pédale de commande au pied utilisée comme
-                        interrupteur d'alimentation du circuit de
-                        puissance.
-                    </p>
-
-                </div>
-
-            </section>
-
-
-            <!-- ==================================================
-                 08 - CYCLE DE SOUDAGE
-            ================================================== -->
-
-            <section class="project-section">
-
-                <div class="project-section-number">
-                    08 — CYCLE DE SOUDAGE
-                </div>
-
-                <h3>
-                    Déroulement d'un point de soudure
-                </h3>
-
-                <p>
-                    Le procédé de soudage par résistance peut être
-                    décomposé en plusieurs phases successives.
-                </p>
-
-                <div class="architecture">
-
-                    <div class="architecture-block">
-                        Accostage
-                        <br>
-                        des électrodes
-                    </div>
-
-                    <div class="architecture-arrow">
-                        →
-                    </div>
-
-                    <div class="architecture-block">
-                        Application
-                        <br>
-                        du courant
-                    </div>
-
-                    <div class="architecture-arrow">
-                        →
-                    </div>
-
-                    <div class="architecture-block">
-                        Chauffage
-                        <br>
-                        par effet Joule
-                    </div>
-
-                    <div class="architecture-arrow">
-                        →
-                    </div>
-
-                    <div class="architecture-block">
-                        Forgeage
-                        <br>
-                        du point
-                    </div>
-
-                    <div class="architecture-arrow">
-                        →
-                    </div>
-
-                    <div class="architecture-block">
-                        Remontée
-                        <br>
-                        des électrodes
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- ==================================================
-                 09 - REALISATION
-            ================================================== -->
-
-            <section class="project-section">
-
-                <div class="project-section-number">
-                    09 — RÉALISATION
-                </div>
-
-                <h3>
-                    Assemblage du prototype
-                </h3>
-
-                <p>
-                    Après la modification du transformateur et la
-                    réalisation des électrodes, les différents éléments
-                    ont été assemblés afin de constituer le poste de
-                    soudage.
-                </p>
-
-                <p>
-                    Le prototype comprend le transformateur modifié,
-                    le secondaire en câble cuivre de forte section,
-                    les électrodes massives et la commande par pédale.
-                </p>
-
-                <div class="project-gallery">
-
-                    <img
-                        src="images/spot-welder/montage-transformateur.jpg"
-                        alt="Montage du transformateur">
-
-                    <img
-                        src="images/spot-welder/montage-global.jpg"
-                        alt="Assemblage du poste de soudage">
-
-                    <img
-                        src="images/spot-welder/poste-final.jpg"
-                        alt="Poste de soudage finalisé">
-
-                </div>
-
-            </section>
-
-
-            <!-- ==================================================
-                 10 - ESSAIS
-            ================================================== -->
-
-            <section class="project-section">
-
-                <div class="project-section-number">
-                    10 — ESSAIS
-                </div>
-
-                <h3>
-                    Validation pratique
-                </h3>
-
-                <p>
-                    Des essais ont été réalisés au laboratoire sur de
-                    fines tôles en acier inoxydable afin de vérifier
-                    la capacité du prototype à produire des points
-                    de soudure.
-                </p>
-
-                <p>
-                    Lors de l'application du courant, l'échauffement
-                    localisé au niveau de l'interface des tôles permet
-                    d'obtenir un point de fusion métallique.
-                </p>
-
-                <p>
-                    Les essais ont permis de valider expérimentalement
-                    le fonctionnement du poste et la réalisation de
-                    points de soudure résistants et homogènes.
-                </p>
-
-                <div class="project-gallery">
-
-                    <img
-                        src="images/spot-welder/test-soudure.jpg"
-                        alt="Essai de soudage par points">
-
-                    <img
-                        src="images/spot-welder/point-soudure.jpg"
-                        alt="Point de soudure sur tôle inox">
-
-                </div>
-
-            </section>
-
-
-            <!-- ==================================================
-                 11 - PERFORMANCES
-            ================================================== -->
-
-            <section class="project-section">
-
-                <div class="project-section-number">
-                    11 — PERFORMANCES
-                </div>
-
-                <h3>
-                    Caractéristiques obtenues
-                </h3>
-
-                <div class="technical-grid">
-
-                    <div class="technical-card">
-
-                        <h4>
-                            Alimentation
-                        </h4>
-
-                        <p>
-                            Secteur :
-                            <strong>220 V AC</strong>.
-                        </p>
-
-                    </div>
-
-                    <div class="technical-card">
-
-                        <h4>
-                            Secondaire
-                        </h4>
-
-                        <p>
-                            Très basse tension :
-                            environ <strong>2 à 4 V</strong>.
-                        </p>
-
-                    </div>
-
-                    <div class="technical-card">
-
-                        <h4>
-                            Courant
-                        </h4>
-
-                        <p>
-                            Courant secondaire très élevé,
-                            de l'ordre de plusieurs centaines
-                            d'ampères.
-                        </p>
-
-                    </div>
-
-                    <div class="technical-card">
-
-                        <h4>
-                            Matériau testé
-                        </h4>
-
-                        <p>
-                            Fines tôles en
-                            <strong>acier inoxydable</strong>.
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- ==================================================
-                 12 - LIMITATIONS
-            ================================================== -->
-
-            <section class="project-section">
-
-                <div class="project-section-number">
-                    12 — LIMITATIONS
-                </div>
-
-                <h3>
-                    Gestion de l'échauffement
-                </h3>
-
-                <p>
-                    Une difficulté importante rencontrée lors des
-                    sollicitations répétées concerne l'
-                    <strong>échauffement thermique</strong> rapide
-                    de l'ensemble du système.
-                </p>
-
-                <p>
-                    La durée d'application du courant doit donc être
-                    maîtrisée afin de limiter l'échauffement des
-                    composants et des électrodes.
-                </p>
-
-                <p>
-                    Dans le prototype réalisé, cette gestion était
-                    principalement effectuée manuellement par
-                    l'opérateur au moyen de la pédale de commande.
-                </p>
-
-            </section>
-
-
-            <!-- ==================================================
-                 13 - SECURITE
-            ================================================== -->
-
-            <section class="project-section">
-
-                <div class="project-section-number">
-                    13 — COMMANDE & SÉCURITÉ
-                </div>
-
-                <h3>
-                    Maîtrise du déclenchement
-                </h3>
-
-                <p>
-                    La présence d'une pédale permet de contrôler
-                    directement le déclenchement du circuit de
-                    puissance pendant les essais.
-                </p>
-
-                <p>
-                    Le projet met ainsi en évidence l'importance de
-                    la maîtrise de la durée de soudage dans un système
-                    utilisant un courant secondaire très élevé.
-                </p>
-
-            </section>
-
-
-            <!-- ==================================================
-                 14 - PERSPECTIVES
-            ================================================== -->
-
-            <section class="project-section">
-
-                <div class="project-section-number">
-                    14 — PERSPECTIVES
-                </div>
-
-                <h3>
-                    Vers une commande automatisée
-                </h3>
-
-                <ul class="project-list">
-
-                    <li>
-                        Ajouter une <strong>carte temporisatrice
-                        numérique</strong> afin de régler précisément
-                        la durée de l'impulsion de soudage.
-                    </li>
-
-                    <li>
-                        Utiliser un microcontrôleur pour contrôler
-                        le temps d'application du courant en
-                        millisecondes.
-                    </li>
-
-                    <li>
-                        Intégrer une commande de puissance adaptée,
-                        par exemple à base de <strong>TRIAC</strong>,
-                        pour automatiser le déclenchement.
-                    </li>
-
-                    <li>
-                        Ajouter un système de
-                        <strong>refroidissement actif</strong>
-                        des électrodes.
-                    </li>
-
-                    <li>
-                        Améliorer la répétabilité des points de
-                        soudure grâce à un contrôle précis du cycle.
-                    </li>
-
-                </ul>
-
-            </section>
-
-
-            <!-- ==================================================
-                 15 - COMPETENCES
-            ================================================== -->
-
-            <section class="project-section">
-
-                <div class="project-section-number">
-                    15 — COMPÉTENCES MOBILISÉES
-                </div>
-
-                <h3>
-                    Conception et réalisation
-                </h3>
-
-                <div class="technical-grid">
-
-                    <div class="technical-card">
-
-                        <h4>
-                            Électrotechnique
-                        </h4>
-
-                        <p>
-                            Transformateurs, rapport de transformation,
-                            alimentation secteur et conversion
-                            tension/courant.
-                        </p>
-
-                    </div>
-
-                    <div class="technical-card">
-
-                        <h4>
-                            Électronique de puissance
-                        </h4>
-
-                        <p>
-                            Gestion d'un circuit de puissance à très
-                            fort courant et très basse tension.
-                        </p>
-
-                    </div>
-
-                    <div class="technical-card">
-
-                        <h4>
-                            Réalisation pratique
-                        </h4>
-
-                        <p>
-                            Modification d'un transformateur,
-                            rebobinage, assemblage et essais.
-                        </p>
-
-                    </div>
-
-                    <div class="technical-card">
-
-                        <h4>
-                            Conception mécanique
-                        </h4>
-
-                        <p>
-                            Fabrication et dimensionnement des
-                            électrodes et intégration du support
-                            mécanique.
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- ==================================================
-                 16 - RESSOURCES
-            ================================================== -->
-
-            <section class="project-section">
-
-                <div class="project-section-number">
-                    16 — RESSOURCES
-                </div>
-
-                <h3>
-                    Documentation du projet
-                </h3>
-
-                <p>
-                    Le rapport présente l'étude du soudage par
-                    résistance, la modification du transformateur,
-                    le dimensionnement des électrodes, l'assemblage
-                    du prototype et les essais réalisés sur tôles
-                    métalliques.
-                </p>
-
-                <div class="project-links">
-
-                    <a
-                        href="#"
-                        class="project-button"
-                        target="_blank">
-                        GitHub →
-                    </a>
-
-                    <a
-                        href="documents/rapport-spot-welder.pdf"
-                        class="project-button"
-                        target="_blank">
-                        Voir le rapport PDF →
-                    </a>
-
-                </div>
-
-            </section>
-
-
-            <!-- ==================================================
-                 FIN
-            ================================================== -->
-
-            <div class="project-end">
-
-                <a
-                    href="index.html#projets"
-                    class="back-link">
-
-                    ← Retour aux projets
-
-                </a>
+                <!-- Remplace le # par le lien de ton GitHub -->
+                <a href="#" class="proj-btn" target="_blank">Voir le projet sur GitHub →</a>
 
             </div>
 
-        </div>
-
+        </section>
+        <div class="project-nav">
+       <a href="ads-amplificateur.html" class="project-nav-btn project-nav-next">
+        <span>PROJET SUIVANT →</span>
+        <strong> Amplificateur hyperfréquence</strong>
+    </a>
+</div>
     </main>
-
 
 </body>
 </html>

@@ -3,1486 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Bio-impédance 4 électrodes | Sara Messaoudi</title>
-
+    <title>Bio-impédance 4 électrodes — Sara Messaoudi</title>
     <link rel="stylesheet" href="style.css">
-
-    <style>
-        /* =========================================================
-           PAGE PROJET — BIO-IMPÉDANCE
-        ========================================================= */
-
-        .project-page {
-            padding: 70px 0 100px;
-        }
-
-        .project-page .container {
-            max-width: 1100px;
-            margin: auto;
-            padding: 0 25px;
-        }
-
-        .back-link {
-            display: inline-block;
-            margin-bottom: 45px;
-            color: #193753;
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 600;
-        }
-
-        .back-link:hover {
-            text-decoration: underline;
-        }
-
-        /* HERO */
-
-        .project-hero {
-            margin-bottom: 55px;
-        }
-
-        .project-category {
-            display: inline-block;
-            margin-bottom: 15px;
-            color: #55738d;
-            font-size: 0.82rem;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-        }
-
-        .project-hero h1 {
-            margin: 0 0 12px;
-            font-size: clamp(2.1rem, 5vw, 3.5rem);
-            line-height: 1.1;
-            color: #193753;
-        }
-
-        .project-hero h2 {
-            margin: 0 0 22px;
-            color: #55738d;
-            font-size: clamp(1.1rem, 2.5vw, 1.45rem);
-            font-weight: 500;
-        }
-
-        .project-intro {
-            max-width: 850px;
-            font-size: 1.08rem;
-            line-height: 1.8;
-            color: #444;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 9px;
-            margin-top: 25px;
-        }
-
-        .project-tags span {
-            padding: 7px 13px;
-            border: 1px solid #d8e0e6;
-            border-radius: 20px;
-            background: #f7f9fa;
-            color: #40566a;
-            font-size: 0.82rem;
-        }
-
-        /* HERO IMAGE */
-
-        .project-main-image {
-            margin: 45px 0 75px;
-        }
-
-        .project-main-image img {
-            width: 100%;
-            max-height: 560px;
-            object-fit: cover;
-            border-radius: 14px;
-            display: block;
-            box-shadow: 0 12px 35px rgba(0,0,0,0.08);
-        }
-
-        .image-caption {
-            margin-top: 10px;
-            color: #777;
-            font-size: 0.82rem;
-            text-align: center;
-        }
-
-        /* SECTIONS */
-
-        .project-section {
-            margin-bottom: 75px;
-        }
-
-        .section-number {
-            color: #7890a2;
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            margin-bottom: 8px;
-        }
-
-        .project-section h3 {
-            margin: 0 0 20px;
-            color: #193753;
-            font-size: 1.75rem;
-        }
-
-        .project-section p {
-            max-width: 900px;
-            color: #444;
-            line-height: 1.8;
-            margin-bottom: 16px;
-        }
-
-        /* ARCHITECTURE */
-
-        .architecture {
-            display: flex;
-            align-items: stretch;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 30px;
-        }
-
-        .architecture-block {
-            flex: 1 1 170px;
-            min-height: 100px;
-            padding: 20px 16px;
-            border: 1px solid #dbe3e8;
-            border-radius: 12px;
-            background: #f8fafb;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .architecture-block strong {
-            color: #193753;
-            font-size: 0.95rem;
-            margin-bottom: 7px;
-        }
-
-        .architecture-block span {
-            color: #666;
-            font-size: 0.82rem;
-            line-height: 1.45;
-        }
-
-        .architecture-arrow {
-            display: flex;
-            align-items: center;
-            color: #7890a2;
-            font-size: 1.3rem;
-        }
-
-        /* TECHNICAL CARDS */
-
-        .technical-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .technical-card {
-            padding: 25px;
-            border: 1px solid #dce4e9;
-            border-radius: 13px;
-            background: #fff;
-        }
-
-        .technical-card h4 {
-            margin: 0 0 12px;
-            color: #193753;
-            font-size: 1.05rem;
-        }
-
-        .technical-card p {
-            margin: 0;
-            font-size: 0.92rem;
-            line-height: 1.7;
-        }
-
-        /* FORMULA */
-
-        .formula-box {
-            margin: 25px 0;
-            padding: 25px;
-            border-radius: 12px;
-            background: #f5f7f9;
-            border-left: 4px solid #193753;
-            font-family: "Courier New", monospace;
-            color: #263b4d;
-            overflow-x: auto;
-        }
-
-        /* HIGHLIGHT */
-
-        .highlight-box {
-            margin: 30px 0;
-            padding: 28px;
-            border-radius: 13px;
-            background: #f5f8fa;
-        }
-
-        .highlight-box strong {
-            color: #193753;
-        }
-
-        /* GALLERY */
-
-        .project-gallery {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .project-gallery figure {
-            margin: 0;
-        }
-
-        .project-gallery img {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            border-radius: 12px;
-            display: block;
-            background: #f2f4f6;
-        }
-
-        .project-gallery figcaption {
-            margin-top: 9px;
-            font-size: 0.8rem;
-            color: #777;
-        }
-
-        /* CODE */
-
-        .code-block {
-            margin: 25px 0;
-            padding: 22px;
-            border-radius: 12px;
-            background: #17232e;
-            color: #e8eef2;
-            overflow-x: auto;
-            font-family: "Courier New", monospace;
-            font-size: 0.84rem;
-            line-height: 1.6;
-        }
-
-        /* RESULTS */
-
-        .results-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 18px;
-            margin-top: 30px;
-        }
-
-        .result-card {
-            padding: 25px 20px;
-            border: 1px solid #dce4e9;
-            border-radius: 12px;
-            text-align: center;
-            background: #fff;
-        }
-
-        .result-value {
-            display: block;
-            margin-bottom: 8px;
-            color: #193753;
-            font-size: 1.65rem;
-            font-weight: 700;
-        }
-
-        .result-label {
-            color: #666;
-            font-size: 0.85rem;
-            line-height: 1.45;
-        }
-
-        /* LINKS */
-
-        .project-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .project-link {
-            display: inline-block;
-            padding: 12px 20px;
-            border-radius: 8px;
-            background: #193753;
-            color: white;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        .project-link.secondary {
-            background: #eef2f5;
-            color: #193753;
-        }
-
-        .project-link:hover {
-            opacity: 0.88;
-        }
-
-        /* END */
-
-        .project-end {
-            margin-top: 90px;
-            padding-top: 30px;
-            border-top: 1px solid #dfe5e9;
-        }
-
-        /* RESPONSIVE */
-
-        @media (max-width: 800px) {
-
-            .technical-grid,
-            .project-gallery {
-                grid-template-columns: 1fr;
-            }
-
-            .results-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .architecture {
-                flex-direction: column;
-            }
-
-            .architecture-arrow {
-                justify-content: center;
-                transform: rotate(90deg);
-            }
-
-            .project-page {
-                padding-top: 45px;
-            }
-        }
-    </style>
 </head>
-
 
 <body>
 
-    <!-- =========================================================
-         HEADER
-    ========================================================= -->
+    <main class="container leme-page">
 
-    <header class="header">
-        <div class="container">
+        <div class="project-topbar">
+    <a href="index.html#projet-07" class="project-back">← Retour aux projets</a>
 
-            <a href="index.html" class="logo">
-                Sara Messaoudi
-            </a>
+    <a href="digital-clock.html" class="project-nav-btn project-nav-next">
+        <span>PROJET SUIVANT →</span>
+        <strong> Horloge numérique</strong>
+    </a>
+</div>
 
-            <nav class="nav">
-                <a href="index.html#projets">Projets</a>
-                <a href="index.html#experience">Expérience</a>
-                <a href="index.html#contact">Contact</a>
-            </nav>
+        <!-- ===== CARTE 1 : PRÉSENTATION ===== -->
+        <section class="aqua-slide aqua-card aqua-intro">
 
-        </div>
-    </header>
+            <div class="aqua-intro-image">
+                <img src="images/bioimpedance/systeme-complet.jpg" alt="Système de mesure de bio-impédance à quatre électrodes">
+            </div>
 
+            <div class="aqua-intro-text">
+                <p class="project-category">MINI-PROJET · MASTER 1 INSTRUMENTATION · USTHB</p>
+                <h1>Bio-impédance</h1>
+                <h2>Système portable de mesure tétrapolaire à 4 électrodes</h2>
 
-    <!-- =========================================================
-         PAGE PROJET
-    ========================================================= -->
-
-    <main class="project-page">
-
-        <div class="container">
-
-            <!-- RETOUR -->
-
-            <a href="index.html#projets" class="back-link">
-                ← Retour aux projets
-            </a>
-
-
-            <!-- =================================================
-                 HERO
-            ================================================= -->
-
-            <section class="project-hero">
-
-                <span class="project-category">
-                    MINI-PROJET · MASTER 1 INSTRUMENTATION · USTHB
-                </span>
-
-                <h1>
-                    Conception et réalisation d’un système de mesure de bio-impédance
-                </h1>
-
-                <h2>
-                    Mesure tétrapolaire à 4 électrodes basée sur l’AD5933
-                </h2>
-
-                <p class="project-intro">
-                    Conception d’un système portable de caractérisation de la
-                    bio-impédance de l’interface électrode/peau par balayage
-                    fréquentiel. Le dispositif associe une méthode de mesure
-                    tétrapolaire, un circuit frontal analogique (AFE), un
-                    convertisseur tension-courant et le circuit spécialisé
-                    AD5933 pour l’acquisition de l’impédance complexe.
+                <p>
+                    Mesure de la bio-impédance par balayage fréquentiel avec le circuit
+                    AD5933. La méthode à quatre électrodes sépare l'injection du courant
+                    de la mesure de tension et limite l'effet de la résistance de contact
+                    avec la peau.
                 </p>
 
                 <div class="project-tags">
-                    <span>Bio-impédance</span>
                     <span>AD5933</span>
                     <span>AFE</span>
                     <span>INA111</span>
                     <span>VCCS</span>
+                    <span>I2C</span>
                     <span>Arduino</span>
                     <span>Python</span>
                     <span>Ag/AgCl</span>
                 </div>
+            </div>
 
-            </section>
+        </section>
 
 
-            <!-- =================================================
-                 IMAGE PRINCIPALE
-            ================================================= -->
+        <!-- ===== CARTE 2 : FONCTIONNEMENT ===== -->
+        <section class="aqua-slide aqua-card leme-split">
 
-            <div class="project-main-image">
+            <div class="leme-text">
+                <p class="project-category">LE PROJET</p>
+                <h2>De l'excitation à l'impédance</h2>
+                <p>
+                    L'AD5933 génère un signal sinusoïdal qui est converti en courant
+                    puis injecté dans le tissu. La tension différentielle mesurée est
+                    amplifiée, numérisée et analysée par DFT pour obtenir la magnitude
+                    et la phase de l'impédance.
+                </p>
+            </div>
 
-                <img
-                    src="images/bioimpedance/systeme-complet.jpg"
-                    alt="Système de mesure de bio-impédance à quatre électrodes"
-                >
+            <div class="leme-side">
 
-                <div class="image-caption">
-                    Prototype portable de mesure de bio-impédance
+                <p class="leme-label">CHAÎNE DE MESURE</p>
+
+                <div class="leme-flow">
+                    <span class="leme-step">AD5933</span>
+                    <span class="leme-arrow">→</span>
+                    <span class="leme-step">Filtre HPF</span>
+                    <span class="leme-arrow">→</span>
+                    <span class="leme-step">VCCS</span>
+                    <span class="leme-arrow">→</span>
+                    <span class="leme-step">4 électrodes</span>
+                    <span class="leme-arrow">→</span>
+                    <span class="leme-step">INA111</span>
+                    <span class="leme-arrow">→</span>
+                    <span class="leme-step">ADC + DFT</span>
+                </div>
+
+                <div class="leme-specs">
+                    <div class="leme-spec">
+                        <span>FRÉQUENCE</span>
+                        <strong>5 → 100 kHz</strong>
+                    </div>
+                    <div class="leme-spec">
+                        <span>ADC</span>
+                        <strong>12 bits</strong>
+                    </div>
+                    <div class="leme-spec">
+                        <span>ÉLECTRODES</span>
+                        <strong>4 Ag/AgCl</strong>
+                    </div>
+                    <div class="leme-spec">
+                        <span>COURANT</span>
+                        <strong>&lt; 1 mA</strong>
+                    </div>
                 </div>
 
             </div>
 
+        </section>
 
-            <!-- =================================================
-                 01 — LE PROJET
-            ================================================= -->
 
-            <section class="project-section">
+        <!-- ===== CARTE 3 : MONTAGE ET RÉSULTATS ===== -->
+        <section class="aqua-slide aqua-card">
 
-                <div class="section-number">01 — LE PROJET</div>
+            <p class="project-category">MONTAGE &amp; RÉSULTATS</p>
+            <h2 class="leme-title">Du prototype à la validation</h2>
 
-                <h3>
-                    Mesurer la bio-impédance sans être limité par
-                    la résistance de contact
-                </h3>
+            <div class="leme-gallery">
 
-                <p>
-                    La bio-impédance caractérise l'opposition d'un tissu
-                    biologique au passage d'un courant électrique alternatif.
-                    Dans une mesure classique à deux électrodes, la résistance
-                    de contact entre les électrodes et la peau peut introduire
-                    une erreur importante.
-                </p>
+                <figure>
+                    <img src="images/bioimpedance/ad5933ebz.jpg" alt="Carte d'évaluation AD5933EBZ">
+                    <figcaption>Carte d'évaluation AD5933EBZ</figcaption>
+                </figure>
 
-                <p>
-                    Le projet consiste donc à développer une architecture
-                    tétrapolaire à quatre électrodes permettant de séparer
-                    l'injection du courant de la mesure de tension. Cette
-                    configuration réduit l'influence de l'impédance de contact
-                    sur la mesure.
-                </p>
+                <figure>
+                    <img src="images/bioimpedance/afe.jpg" alt="Circuit analogique AFE">
+                    <figcaption>Front-end analogique : filtre, VCCS et INA111</figcaption>
+                </figure>
 
-                <p>
-                    Le système a été conçu comme une alternative portable à
-                    des instruments de laboratoire plus coûteux, tout en
-                    conservant une acquisition fréquentielle permettant
-                    d'observer l'évolution de l'impédance complexe.
-                </p>
+                <figure>
+                    <img src="images/bioimpedance/boitier.jpg" alt="Boîtier du système de mesure">
+                    <figcaption>Intégration dans le boîtier portable</figcaption>
+                </figure>
 
-            </section>
+                <figure>
+                    <img src="images/bioimpedance/test-bras.jpg" alt="Mesure de bio-impédance sur le bras">
+                    <figcaption>Essai expérimental sur le bras humain</figcaption>
+                </figure>
 
+                <figure>
+                    <img src="images/bioimpedance/courbe-impedance.jpg" alt="Courbe d'impédance en fonction de la fréquence">
+                    <figcaption>Évolution de la magnitude de l'impédance</figcaption>
+                </figure>
 
-            <!-- =================================================
-                 02 — PRINCIPE
-            ================================================= -->
-
-            <section class="project-section">
-
-                <div class="section-number">02 — PRINCIPE DE MESURE</div>
-
-                <h3>
-                    Méthode tétrapolaire à 4 électrodes
-                </h3>
-
-                <p>
-                    Deux électrodes sont utilisées pour injecter un courant
-                    alternatif contrôlé dans le tissu. Deux électrodes
-                    indépendantes mesurent ensuite la différence de potentiel
-                    directement aux bornes de la zone étudiée.
-                </p>
-
-                <div class="architecture">
-
-                    <div class="architecture-block">
-                        <strong>I₁</strong>
-                        <span>Électrode d'injection</span>
-                    </div>
-
-                    <div class="architecture-arrow">→</div>
-
-                    <div class="architecture-block">
-                        <strong>TISSU</strong>
-                        <span>Interface électrode / peau</span>
-                    </div>
-
-                    <div class="architecture-arrow">→</div>
-
-                    <div class="architecture-block">
-                        <strong>I₂</strong>
-                        <span>Électrode d'injection</span>
-                    </div>
-
-                    <div class="architecture-block">
-                        <strong>V₁ / V₂</strong>
-                        <span>Deux électrodes de mesure différentielle</span>
-                    </div>
-
-                </div>
-
-                <div class="highlight-box">
-
-                    <strong>Principe essentiel :</strong>
-
-                    <p>
-                        les électrodes d'injection imposent le courant tandis
-                        que les électrodes de mesure prélèvent principalement
-                        la tension. La mesure de tension est ainsi moins
-                        sensible aux résistances de contact des électrodes.
-                    </p>
-
-                </div>
-
-            </section>
-
-
-            <!-- =================================================
-                 03 — ARCHITECTURE
-            ================================================= -->
-
-            <section class="project-section">
-
-                <div class="section-number">03 — ARCHITECTURE</div>
-
-                <h3>
-                    Une chaîne complète d'excitation, de conditionnement
-                    et d'acquisition
-                </h3>
-
-                <div class="architecture">
-
-                    <div class="architecture-block">
-                        <strong>AD5933</strong>
-                        <span>
-                            Génération du signal d'excitation
-                        </span>
-                    </div>
-
-                    <div class="architecture-arrow">→</div>
-
-                    <div class="architecture-block">
-                        <strong>HPF</strong>
-                        <span>
-                            Filtrage passe-haut
-                        </span>
-                    </div>
-
-                    <div class="architecture-arrow">→</div>
-
-                    <div class="architecture-block">
-                        <strong>VCCS</strong>
-                        <span>
-                            Conversion tension → courant
-                        </span>
-                    </div>
-
-                    <div class="architecture-arrow">→</div>
-
-                    <div class="architecture-block">
-                        <strong>4 ÉLECTRODES</strong>
-                        <span>
-                            Injection + mesure
-                        </span>
-                    </div>
-
-                    <div class="architecture-arrow">→</div>
-
-                    <div class="architecture-block">
-                        <strong>INA111</strong>
-                        <span>
-                            Amplification différentielle
-                        </span>
-                    </div>
-
-                    <div class="architecture-arrow">→</div>
-
-                    <div class="architecture-block">
-                        <strong>AD5933</strong>
-                        <span>
-                            ADC + DFT
-                        </span>
-                    </div>
-
-                </div>
-
-                <p>
-                    L'ensemble est alimenté par une architecture autonome
-                    rechargeable intégrant un TP4056, une batterie LiPo et
-                    un convertisseur Boost XL6009.
-                </p>
-
-            </section>
-
-
-            <!-- =================================================
-                 04 — AFE
-            ================================================= -->
-
-            <section class="project-section">
-
-                <div class="section-number">04 — CIRCUIT ANALOGIQUE AFE</div>
-
-                <h3>
-                    Conditionnement du signal et contrôle du courant
-                </h3>
-
-                <p>
-                    Le front-end analogique constitue l'interface entre le
-                    générateur AD5933 et les électrodes. Il permet d'adapter
-                    le signal d'excitation, de contrôler le courant injecté
-                    et d'amplifier la tension différentielle issue du tissu.
-                </p>
-
-                <div class="technical-grid">
-
-                    <div class="technical-card">
-
-                        <h4>Filtre passe-haut</h4>
-
-                        <p>
-                            Le filtre HPF élimine la composante continue et
-                            prépare le signal d'excitation avant son application
-                            au convertisseur tension-courant.
-                        </p>
-
-                    </div>
-
-
-                    <div class="technical-card">
-
-                        <h4>VCCS à TL071</h4>
-
-                        <p>
-                            Le TL071 est utilisé dans un convertisseur
-                            tension-courant permettant de contrôler le courant
-                            d'excitation injecté dans le tissu.
-                        </p>
-
-                    </div>
-
-
-                    <div class="technical-card">
-
-                        <h4>INA111</h4>
-
-                        <p>
-                            L'amplificateur d'instrumentation mesure la
-                            différence de potentiel entre les deux électrodes
-                            de mesure avec un fort rejet du mode commun.
-                        </p>
-
-                    </div>
-
-
-                    <div class="technical-card">
-
-                        <h4>Électrodes Ag/AgCl</h4>
-
-                        <p>
-                            Quatre électrodes commerciales à gel Ag/AgCl sont
-                            utilisées pour établir l'interface avec la peau
-                            lors des essais expérimentaux.
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- =================================================
-                 05 — AD5933
-            ================================================= -->
-
-            <section class="project-section">
-
-                <div class="section-number">05 — AD5933</div>
-
-                <h3>
-                    Génération et analyse numérique de l'impédance
-                </h3>
-
-                <p>
-                    Le cœur numérique du système repose sur l'AD5933,
-                    circuit spécialisé pour l'analyse d'impédance. Il génère
-                    le signal d'excitation, numérise le signal de réponse
-                    puis réalise une analyse fréquentielle numérique.
-                </p>
-
-                <div class="technical-grid">
-
-                    <div class="technical-card">
-
-                        <h4>Générateur DDS</h4>
-
-                        <p>
-                            L'AD5933 génère un signal sinusoïdal dont la
-                            fréquence est programmée pour réaliser le balayage
-                            fréquentiel.
-                        </p>
-
-                    </div>
-
-
-                    <div class="technical-card">
-
-                        <h4>ADC 12 bits</h4>
-
-                        <p>
-                            Le signal conditionné est converti par le
-                            convertisseur analogique-numérique intégré à
-                            l'AD5933.
-                        </p>
-
-                    </div>
-
-
-                    <div class="technical-card">
-
-                        <h4>DFT 1024 points</h4>
-
-                        <p>
-                            L'AD5933 extrait les composantes réelle et imaginaire
-                            du signal afin d'obtenir la magnitude et la phase
-                            de l'impédance.
-                        </p>
-
-                    </div>
-
-
-                    <div class="technical-card">
-
-                        <h4>Bus I²C</h4>
-
-                        <p>
-                            La configuration et la récupération des résultats
-                            sont réalisées via l'interface I²C du circuit.
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- =================================================
-                 06 — CALIBRATION
-            ================================================= -->
-
-            <section class="project-section">
-
-                <div class="section-number">06 — ÉTALONNAGE</div>
-
-                <h3>
-                    Calibration de la chaîne de mesure
-                </h3>
-
-                <p>
-                    Avant les essais biologiques, le système a été calibré
-                    à l'aide de composants passifs de référence afin de
-                    caractériser la réponse de la chaîne d'acquisition.
-                </p>
-
-                <div class="highlight-box">
-
-                    <p>
-                        Une résistance de calibration
-                        <strong>R<sub>cal</sub> = 10 kΩ</strong>
-                        et une résistance de rétroaction
-                        <strong>R<sub>FB</sub> = 200 kΩ</strong>
-                        sont utilisées pour déterminer le facteur de gain
-                        nécessaire à la conversion des données acquises.
-                    </p>
-
-                </div>
-
-                <p>
-                    La validation a notamment été réalisée avec une résistance
-                    de 10 kΩ et un condensateur de 10 nF avant de passer aux
-                    mesures sur le tissu humain.
-                </p>
-
-            </section>
-
-
-            <!-- =================================================
-                 07 — ALIMENTATION
-            ================================================= -->
-
-            <section class="project-section">
-
-                <div class="section-number">07 — ALIMENTATION AUTONOME</div>
-
-                <h3>
-                    Une alimentation rechargeable intégrée au prototype
-                </h3>
-
-                <p>
-                    Pour conserver une architecture portable, le système
-                    intègre une chaîne d'alimentation rechargeable composée
-                    d'une batterie LiPo, d'un module de charge TP4056 et
-                    d'un convertisseur Boost XL6009.
-                </p>
-
-                <div class="architecture">
-
-                    <div class="architecture-block">
-                        <strong>Batterie LiPo</strong>
-                        <span>Source d'énergie portable</span>
-                    </div>
-
-                    <div class="architecture-arrow">→</div>
-
-                    <div class="architecture-block">
-                        <strong>TP4056</strong>
-                        <span>Charge et protection</span>
-                    </div>
-
-                    <div class="architecture-arrow">→</div>
-
-                    <div class="architecture-block">
-                        <strong>XL6009</strong>
-                        <span>Conversion / élévation</span>
-                    </div>
-
-                    <div class="architecture-arrow">→</div>
-
-                    <div class="architecture-block">
-                        <strong>AFE + AD5933</strong>
-                        <span>Alimentation du système</span>
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- =================================================
-                 08 — ACQUISITION
-            ================================================= -->
-
-            <section class="project-section">
-
-                <div class="section-number">08 — ACQUISITION DES DONNÉES</div>
-
-                <h3>
-                    Arduino, Python et traitement des mesures
-                </h3>
-
-                <p>
-                    Une chaîne d'acquisition secondaire basée sur Arduino
-                    Uno permet de récupérer les données et de les transférer
-                    vers un ordinateur. Les données peuvent ensuite être
-                    sauvegardées et analysées sous Python.
-                </p>
-
-                <div class="technical-grid">
-
-                    <div class="technical-card">
-
-                        <h4>Arduino IDE</h4>
-
-                        <p>
-                            Programmation en C++ pour la communication avec
-                            le système d'acquisition et la récupération des
-                            mesures.
-                        </p>
-
-                    </div>
-
-
-                    <div class="technical-card">
-
-                        <h4>Python</h4>
-
-                        <p>
-                            Utilisation de Python 3 avec
-                            <strong>pandas</strong>,
-                            <strong>matplotlib</strong> et
-                            <strong>pyserial</strong> pour le traitement,
-                            la sauvegarde et la visualisation.
-                        </p>
-
-                    </div>
-
-
-                    <div class="technical-card">
-
-                        <h4>CSV / Excel</h4>
-
-                        <p>
-                            Export des résultats sous forme de données
-                            tabulaires afin de faciliter leur exploitation
-                            et leur comparaison.
-                        </p>
-
-                    </div>
-
-
-                    <div class="technical-card">
-
-                        <h4>AD5933 Eval Software</h4>
-
-                        <p>
-                            Configuration et exploration de la carte
-                            AD5933EBZ à l'aide de son logiciel d'évaluation.
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- =================================================
-                 09 — CODE PYTHON
-            ================================================= -->
-
-            <section class="project-section">
-
-                <div class="section-number">09 — TRAITEMENT DES DONNÉES</div>
-
-                <h3>
-                    Exemple d'analyse fréquentielle sous Python
-                </h3>
-
-                <p>
-                    Les données exportées peuvent être exploitées pour
-                    visualiser l'évolution de la magnitude de l'impédance
-                    en fonction de la fréquence.
-                </p>
-
-                <div class="code-block">
-<pre>
-import pandas as pd
-import matplotlib.pyplot as plt
-
-# Chargement des mesures
-data = pd.read_csv("mesures_bioimpedance.csv")
-
-frequence = data["frequency"]
-impedance = data["impedance"]
-
-# Tracé de l'impédance
-plt.figure(figsize=(8, 5))
-plt.plot(frequence, impedance, marker="o")
-
-plt.xlabel("Fréquence (Hz)")
-plt.ylabel("Impédance (Ohm)")
-plt.title("Évolution de la bio-impédance")
-
-plt.grid(True)
-plt.tight_layout()
-plt.show()
-</pre>
-                </div>
-
-                <p>
-                    Ce code constitue un exemple représentatif de la chaîne
-                    d'exploitation des données et non une reproduction
-                    intégrale du code source du projet.
-                </p>
-
-            </section>
-
-
-            <!-- =================================================
-                 10 — RÉSULTATS
-            ================================================= -->
-
-            <section class="project-section">
-
-                <div class="section-number">10 — RÉSULTATS EXPÉRIMENTAUX</div>
-
-                <h3>
-                    Validation sur composants passifs puis sur le bras humain
-                </h3>
-
-                <p>
-                    Après calibration sur des composants de référence,
-                    le prototype a été utilisé pour effectuer des mesures
-                    expérimentales sur le bras humain.
-                </p>
-
-                <div class="results-grid">
-
-                    <div class="result-card">
-
-                        <span class="result-value">
-                            5–100 kHz
-                        </span>
-
-                        <span class="result-label">
-                            Plage de balayage fréquentiel
-                        </span>
-
-                    </div>
-
-
-                    <div class="result-card">
-
-                        <span class="result-value">
-                            12 bits
-                        </span>
-
-                        <span class="result-label">
-                            Résolution du convertisseur ADC
-                        </span>
-
-                    </div>
-
-
-                    <div class="result-card">
-
-                        <span class="result-value">
-                            &lt; 1 mA
-                        </span>
-
-                        <span class="result-label">
-                            Courant d'injection maintenu sous le seuil défini
-                        </span>
-
-                    </div>
-
-                </div>
-
-                <div class="highlight-box">
-
-                    <p>
-                        Lors des mesures sur le bras, l'impédance observée
-                        diminue progressivement avec la fréquence, passant
-                        approximativement de
-                        <strong>60 kΩ à basse fréquence</strong> à environ
-                        <strong>47 kΩ à 100 kHz</strong>.
-                    </p>
-
-                </div>
-
-            </section>
-
-
-            <!-- =================================================
-                 11 — COURBES
-            ================================================= -->
-
-            <section class="project-section">
-
-                <div class="section-number">11 — ANALYSE DES MESURES</div>
-
-                <h3>
-                    Évolution de l'impédance et de la phase
-                </h3>
-
-                <div class="project-gallery">
-
-                    <figure>
-
-                        <img
-                            src="images/bioimpedance/courbe-impedance.jpg"
-                            alt="Courbe d'impédance en fonction de la fréquence"
-                        >
-
-                        <figcaption>
-                            Évolution de la magnitude de l'impédance.
-                        </figcaption>
-
-                    </figure>
-
-
-                    <figure>
-
-                        <img
-                            src="images/bioimpedance/courbe-phase.jpg"
-                            alt="Courbe de phase en fonction de la fréquence"
-                        >
-
-                        <figcaption>
-                            Évolution de la phase avec la fréquence.
-                        </figcaption>
-
-                    </figure>
-
-                </div>
-
-            </section>
-
-
-            <!-- =================================================
-                 12 — PROTOTYPE
-            ================================================= -->
-
-            <section class="project-section">
-
-                <div class="section-number">12 — RÉALISATION</div>
-
-                <h3>
-                    Intégration dans un boîtier portable
-                </h3>
-
-                <p>
-                    Après validation des différents étages électroniques,
-                    les éléments ont été intégrés dans un boîtier à trois
-                    niveaux afin de regrouper l'électronique d'acquisition,
-                    le conditionnement analogique et l'alimentation.
-                </p>
-
-                <div class="project-gallery">
-
-                    <figure>
-
-                        <img
-                            src="images/bioimpedance/ad5933ebz.jpg"
-                            alt="Carte d'évaluation AD5933EBZ"
-                        >
-
-                        <figcaption>
-                            Carte d'évaluation AD5933EBZ.
-                        </figcaption>
-
-                    </figure>
-
-
-                    <figure>
-
-                        <img
-                            src="images/bioimpedance/afe.jpg"
-                            alt="Circuit analogique AFE"
-                        >
-
-                        <figcaption>
-                            Front-end analogique : filtre, VCCS et INA111.
-                        </figcaption>
-
-                    </figure>
-
-
-                    <figure>
-
-                        <img
-                            src="images/bioimpedance/boitier.jpg"
-                            alt="Boîtier du système de mesure"
-                        >
-
-                        <figcaption>
-                            Intégration du système portable.
-                        </figcaption>
-
-                    </figure>
-
-
-                    <figure>
-
-                        <img
-                            src="images/bioimpedance/test-bras.jpg"
-                            alt="Mesure de bio-impédance sur le bras"
-                        >
-
-                        <figcaption>
-                            Essai expérimental sur le bras humain.
-                        </figcaption>
-
-                    </figure>
-
-                </div>
-
-            </section>
-
-
-            <!-- =================================================
-                 13 — DIFFICULTÉS
-            ================================================= -->
-
-            <section class="project-section">
-
-                <div class="section-number">13 — DIFFICULTÉS RENCONTRÉES</div>
-
-                <h3>
-                    Du prototype discret vers une architecture spécialisée
-                </h3>
-
-                <p>
-                    Une première version de l'impédancemètre avait été
-                    développée à partir de composants discrets comprenant
-                    notamment un oscillateur, un déphaseur et des
-                    multiplicateurs.
-                </p>
-
-                <p>
-                    Cette première architecture a révélé des problèmes
-                    d'instabilité et de régulation du courant injecté.
-                    L'utilisation du circuit spécialisé AD5933 a permis
-                    ensuite de simplifier et de fiabiliser la chaîne
-                    d'analyse fréquentielle.
-                </p>
-
-                <div class="highlight-box">
-
-                    <strong>Évolution de l'architecture :</strong>
-
-                    <p>
-                        Prototype discret → identification des instabilités
-                        → intégration de l'AD5933 → développement d'un AFE
-                        dédié → calibration → validation expérimentale.
-                    </p>
-
-                </div>
-
-            </section>
-
-
-            <!-- =================================================
-                 14 — COMPÉTENCES
-            ================================================= -->
-
-            <section class="project-section">
-
-                <div class="section-number">14 — COMPÉTENCES MOBILISÉES</div>
-
-                <h3>
-                    Électronique, instrumentation et traitement du signal
-                </h3>
-
-                <div class="technical-grid">
-
-                    <div class="technical-card">
-
-                        <h4>Instrumentation biomédicale</h4>
-
-                        <p>
-                            Bio-impédance, électrodes Ag/AgCl, mesure
-                            tétrapolaire et acquisition de signaux biologiques.
-                        </p>
-
-                    </div>
-
-
-                    <div class="technical-card">
-
-                        <h4>Électronique analogique</h4>
-
-                        <p>
-                            Filtres RC, VCCS, amplificateur d'instrumentation,
-                            conditionnement et alimentation.
-                        </p>
-
-                    </div>
-
-
-                    <div class="technical-card">
-
-                        <h4>Acquisition numérique</h4>
-
-                        <p>
-                            AD5933, ADC 12 bits, DFT, I²C, UART et transfert
-                            de données vers ordinateur.
-                        </p>
-
-                    </div>
-
-
-                    <div class="technical-card">
-
-                        <h4>Programmation & analyse</h4>
-
-                        <p>
-                            Arduino C++, Python, pandas, matplotlib,
-                            pyserial et exploitation de données CSV.
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- =================================================
-                 15 — PERSPECTIVES
-            ================================================= -->
-
-            <section class="project-section">
-
-                <div class="section-number">15 — PERSPECTIVES</div>
-
-                <h3>
-                    Vers un dispositif biomédical plus compact et connecté
-                </h3>
-
-                <p>
-                    Plusieurs améliorations peuvent être envisagées pour
-                    poursuivre le développement du prototype :
-                </p>
-
-                <div class="technical-grid">
-
-                    <div class="technical-card">
-
-                        <h4>Extension fréquentielle</h4>
-
-                        <p>
-                            Étendre la mesure vers des fréquences inférieures
-                            à 1 kHz afin d'élargir les possibilités de
-                            caractérisation.
-                        </p>
-
-                    </div>
-
-
-                    <div class="technical-card">
-
-                        <h4>Connectivité sans fil</h4>
-
-                        <p>
-                            Intégrer une liaison Bluetooth ou Wi-Fi pour
-                            transmettre les mesures vers une application
-                            distante.
-                        </p>
-
-                    </div>
-
-
-                    <div class="technical-card">
-
-                        <h4>Miniaturisation</h4>
-
-                        <p>
-                            Regrouper l'ensemble de l'AFE, de l'acquisition
-                            et de l'alimentation sur un PCB unique.
-                        </p>
-
-                    </div>
-
-
-                    <div class="technical-card">
-
-                        <h4>Interface utilisateur</h4>
-
-                        <p>
-                            Développer une interface dédiée pour visualiser
-                            directement les courbes d'impédance et de phase.
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- =================================================
-                 16 — RESSOURCES
-            ================================================= -->
-
-            <section class="project-section">
-
-                <div class="section-number">16 — RESSOURCES</div>
-
-                <h3>
-                    Rapport et projet
-                </h3>
-
-                <p>
-                    Le rapport présente la conception théorique, le
-                    développement de l'AFE, la configuration de l'AD5933,
-                    la calibration ainsi que les résultats expérimentaux.
-                </p>
-
-                <div class="project-links">
-
-                    <a
-                        href="documents/rapport-bioimpedance.pdf"
-                        class="project-link"
-                        target="_blank"
-                    >
-                        Voir le rapport PDF
-                    </a>
-
-                    <a
-                        href="#"
-                        class="project-link secondary"
-                        target="_blank"
-                    >
-                        GitHub du projet
-                    </a>
-
-                </div>
-
-            </section>
-
-
-            <!-- =================================================
-                 FIN
-            ================================================= -->
-
-            <div class="project-end">
-
-                <a href="index.html#projets" class="back-link">
-                    ← Retour à tous les projets
-                </a>
+                <figure>
+                    <img src="images/bioimpedance/courbe-phase.jpg" alt="Courbe de phase en fonction de la fréquence">
+                    <figcaption>Évolution de la phase avec la fréquence</figcaption>
+                </figure>
 
             </div>
 
-        </div>
+        </section>
+
+
+        <!-- ===== CARTE 4 : CODE ===== -->
+        <section class="aqua-slide aqua-card">
+
+            <p class="project-category">CODE &amp; DOCUMENTATION</p>
+
+            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+                <h2 class="leme-title" style="margin:0;">Extraits du code</h2>
+
+                <!-- Remplace le # par le lien de ton GitHub -->
+                <a href="#" class="leme-btn" target="_blank">Voir le code sur GitHub →</a>
+            </div>
+
+        </section>
+        <div class="project-nav">
+
+
+       <a href="spot-welder.html" class="project-nav-btn project-nav-next">
+        <span>PROJET SUIVANT →</span>
+        <strong>Machine à soudure par points</strong>
+    </a>
+    </div>
 
     </main>
-
-
-    <!-- =========================================================
-         FOOTER
-    ========================================================= -->
-
-    <footer class="footer">
-
-        <div class="container">
-
-            <p>
-                © Sara Messaoudi — Ingénieure en électronique
-            </p>
-
-        </div>
-
-    </footer>
 
 </body>
 </html>

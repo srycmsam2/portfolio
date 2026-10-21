@@ -2,424 +2,430 @@
 <html lang="fr">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Système d'irrigation automatique — Sara Messaoudi</title>
 
-    <!-- Ton CSS principal -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- CSS spécifique à cette page -->
     <style>
-
         /* =========================================================
-           PAGE PROJET
+           PAGE IRRIGATION — tout le style est ici, rien à ajouter
+           dans style.css
         ========================================================= */
 
-        .project-page {
-            padding: 120px 0 80px;
+        body {
+            background-color: #eaf4f8;
+            background-image:
+                radial-gradient(circle at 0% 25%, rgba(190, 232, 220, 0.55) 0, transparent 28%),
+                radial-gradient(circle at 100% 15%, rgba(205, 225, 240, 0.7) 0, transparent 30%),
+                radial-gradient(circle at 100% 65%, rgba(205, 225, 240, 0.6) 0, transparent 28%),
+                url("images/background-portfolio.png");
+            background-size: auto, auto, auto, cover;
+            background-attachment: fixed;
         }
 
-        .project-back {
-            display: inline-block;
-            margin-bottom: 45px;
-            text-decoration: none;
+        .irri-page {
+            width: min(1180px, 90%);
+            margin: 0 auto;
+            padding: 40px 0 45px;
         }
 
-        .project-hero {
-            max-width: 950px;
-            margin-bottom: 70px;
-        }
+        /* Bouton retour */
 
-        .project-hero .project-category {
-            margin-bottom: 15px;
-        }
-
-        .project-hero h1 {
-            font-size: clamp(42px, 6vw, 72px);
-            line-height: 1.05;
-            margin-bottom: 20px;
-        }
-
-        .project-hero h2 {
-            font-size: 24px;
-            font-weight: 400;
-            margin-bottom: 30px;
-        }
-
-        .project-hero-description {
-            max-width: 800px;
-            font-size: 18px;
-            line-height: 1.8;
-        }
-
-
-        /* =========================================================
-           IMAGE PRINCIPALE
-        ========================================================= */
-
-        .project-main-image {
-            width: 100%;
-            margin: 50px 0 80px;
-        }
-
-        .project-main-image img {
-            width: 100%;
-            max-height: 600px;
-            object-fit: cover;
-            display: block;
-            border-radius: 4px;
-        }
-
-        .image-caption {
-            margin-top: 12px;
-            font-size: 14px;
-            opacity: 0.65;
-        }
-
-
-        /* =========================================================
-           SECTIONS
-        ========================================================= */
-
-        .project-section {
-            max-width: 1000px;
-            margin: 0 auto 90px;
-        }
-
-        .project-section-label {
-            font-size: 13px;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-            opacity: 0.65;
-        }
-
-        .project-section h2 {
-            font-size: 34px;
-            margin-bottom: 25px;
-        }
-
-        .project-section h3 {
-            font-size: 22px;
-            margin-top: 35px;
-            margin-bottom: 15px;
-        }
-
-        .project-section p {
-            font-size: 17px;
-            line-height: 1.8;
-            margin-bottom: 18px;
-        }
-
-
-        /* =========================================================
-           TAGS
-        ========================================================= */
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 30px;
-        }
-
-        .project-tags span {
-            padding: 8px 14px;
-            border: 1px solid currentColor;
-            border-radius: 30px;
-            font-size: 13px;
-        }
-
-
-        /* =========================================================
-           ARCHITECTURE
-        ========================================================= */
-
-        .architecture {
-            margin-top: 35px;
-            padding: 30px;
-            border: 1px solid rgba(128,128,128,0.3);
-            overflow-x: auto;
-        }
-
-        .architecture-flow {
-            display: flex;
+        .irri-back {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            min-width: 700px;
-        }
-
-        .architecture-block {
-            padding: 18px 20px;
-            border: 1px solid currentColor;
-            text-align: center;
-            min-width: 130px;
-        }
-
-        .architecture-arrow {
-            font-size: 22px;
-        }
-
-
-        /* =========================================================
-           TECHNICAL CARDS
-        ========================================================= */
-
-        .technical-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-top: 35px;
-        }
-
-        .technical-card {
-            padding: 25px;
-            border: 1px solid rgba(128,128,128,0.3);
-        }
-
-        .technical-card strong {
-            display: block;
+            gap: 8px;
+            margin-bottom: 25px;
+            padding: 10px 17px;
+            border-radius: 30px;
+            background: #e1f2ff;
+            border: 1px solid #b9dff5;
+            color: #193753;
             font-size: 14px;
-            margin-bottom: 8px;
-            opacity: 0.65;
+            box-shadow: 0 3px 10px rgba(49, 93, 125, 0.08);
+            transition: 0.25s ease;
         }
 
-        .technical-card span {
-            font-size: 20px;
-        }
-
-
-        /* =========================================================
-           GALERIE
-        ========================================================= */
-
-        .project-gallery {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin-top: 35px;
-        }
-
-        .project-gallery figure {
-            margin: 0;
-        }
-
-        .project-gallery img {
-            width: 100%;
-            display: block;
-            border-radius: 3px;
-        }
-
-        .project-gallery figcaption {
-            margin-top: 10px;
-            font-size: 13px;
-            opacity: 0.65;
-        }
-
-
-        /* =========================================================
-           CODE
-        ========================================================= */
-
-        .code-block {
-            margin-top: 30px;
-            overflow-x: auto;
-            background: #111;
-            color: #eee;
-            padding: 25px;
-            border-radius: 4px;
-        }
-
-        .code-block pre {
-            margin: 0;
-            font-family: Consolas, Monaco, monospace;
-            font-size: 14px;
-            line-height: 1.65;
-            white-space: pre;
-        }
-
-        .code-title {
-            margin-top: 45px;
-            margin-bottom: 10px;
-            font-size: 19px;
-        }
-
-
-        /* =========================================================
-           LISTE TECHNIQUE
-        ========================================================= */
-
-        .technical-list {
-            margin-top: 30px;
-            padding-left: 20px;
-        }
-
-        .technical-list li {
-            margin-bottom: 12px;
-            font-size: 17px;
-            line-height: 1.7;
-        }
-
-
-        /* =========================================================
-           LIENS
-        ========================================================= */
-
-        .project-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 35px;
-        }
-
-        .project-button {
-            display: inline-block;
-            padding: 14px 22px;
-            border: 1px solid currentColor;
-            text-decoration: none;
-            transition: 0.2s ease;
-        }
-
-        .project-button:hover {
+        .irri-back:hover {
+            background: #cce9fb;
             transform: translateY(-2px);
         }
 
+        /* Cartes */
 
-        /* =========================================================
-           FOOTER PROJECT
-        ========================================================= */
-
-        .project-end {
-            max-width: 1000px;
-            margin: 100px auto 0;
-            padding-top: 40px;
-            border-top: 1px solid rgba(128,128,128,0.3);
+        .irri-card {
+            margin-bottom: 28px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 24px;
+            box-shadow: 0 12px 35px rgba(48, 91, 120, 0.09);
+            color: #182431;
         }
 
+        .irri-category,
+        .irri-label {
+            color: #4f86ad;
+            font-size: 0.72rem;
+            letter-spacing: 0.17em;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
 
-        /* =========================================================
-           RESPONSIVE
-        ========================================================= */
+        .irri-card h1,
+        .irri-card h2 {
+            color: #0c3a57;
+        }
+
+        .irri-title {
+            font-size: 28px;
+            line-height: 1.2;
+            margin: 8px 0 16px;
+        }
+
+        .irri-card p {
+            color: #5d7284;
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 14px;
+        }
+
+        /* =========================
+           CARTE 1 : PRÉSENTATION
+        ========================= */
+
+        .irri-intro {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .irri-intro-image img {
+            width: 100%;
+            height: 390px;
+            object-fit: cover;
+            display: block;
+            border-radius: 18px;
+            background: #dce8ef; /* gris-bleu tant que la photo n'est pas ajoutée */
+        }
+
+        .irri-intro h1 {
+            font-size: clamp(34px, 4vw, 50px);
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            margin: 10px 0 14px;
+        }
+
+        .irri-intro h2 {
+            font-size: 20px;
+            line-height: 1.4;
+            font-weight: 500;
+            color: #12364d;
+            margin-bottom: 16px;
+        }
+
+        .irri-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .irri-tags span {
+            padding: 6px 11px;
+            border-radius: 20px;
+            font-size: 12px;
+            background: #e5f5f2;
+            border: 1px solid #b9e5dc;
+            color: #245e60;
+        }
+
+        .irri-tags span:nth-child(even) {
+            background: #e5f2ff;
+            border-color: #c2e0f7;
+            color: #214f75;
+        }
+
+        /* =========================
+           CARTE 2 : FONCTIONNEMENT
+        ========================= */
+
+        .irri-split {
+            display: grid;
+            grid-template-columns: 0.75fr 1.25fr;
+            align-items: start;
+        }
+
+        .irri-text {
+            padding-right: 30px;
+            border-right: 1px solid #dfe9ef;
+        }
+
+        .irri-side {
+            padding-left: 28px;
+            min-width: 0;
+        }
+
+        .irri-flow {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .irri-step {
+            padding: 7px 13px;
+            border-radius: 20px;
+            font-size: 12.5px;
+            background: #e5f5f2;
+            border: 1px solid #b9e5dc;
+            color: #245e60;
+        }
+
+        .irri-step:nth-of-type(even) {
+            background: #e5f2ff;
+            border-color: #c2e0f7;
+            color: #214f75;
+        }
+
+        .irri-arrow {
+            color: #7aa6c2;
+            font-size: 15px;
+        }
+
+        .irri-specs {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            background: linear-gradient(135deg, #eaf6f4, #eef6fb);
+            border: 1px solid #d5ebe8;
+            border-radius: 18px;
+            padding: 18px 22px;
+        }
+
+        .irri-spec {
+            text-align: center;
+            padding: 0 6px;
+            border-right: 1px solid #d3e4ea;
+        }
+
+        .irri-spec:last-child {
+            border-right: none;
+        }
+
+        .irri-spec span {
+            display: block;
+            font-size: 10.5px;
+            letter-spacing: 0.12em;
+            font-weight: 700;
+            color: #4f86ad;
+            margin-bottom: 6px;
+        }
+
+        .irri-spec strong {
+            font-size: 16px;
+            color: #0c3a57;
+        }
+
+        /* =========================
+           CARTE 3 : GALERIE
+        ========================= */
+
+        .irri-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .irri-gallery figure {
+            margin: 0;
+            min-width: 0;
+        }
+
+        .irri-gallery img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            display: block;
+            border-radius: 12px;
+            background: #dce8ef;
+        }
+
+        .irri-gallery figcaption {
+            font-size: 12.5px;
+            line-height: 1.4;
+            color: #5d7284;
+            margin-top: 8px;
+        }
+
+        /* =========================
+           CARTE 4 : RÉSULTATS / PERSPECTIVES
+        ========================= */
+
+        .irri-two {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .irri-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .irri-list li {
+            position: relative;
+            padding: 9px 0 9px 22px;
+            color: #5d7284;
+            font-size: 15px;
+            line-height: 1.6;
+            border-bottom: 1px solid #e3edf2;
+        }
+
+        .irri-list li:last-child {
+            border-bottom: none;
+        }
+
+        .irri-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 17px;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #7fc8b8;
+        }
+
+        .irri-list li:nth-child(even)::before {
+            background: #7fb6e3;
+        }
+
+        /* =========================
+           CARTE 5 : CODE & GITHUB
+        ========================= */
+
+        .irri-code-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .irri-btn {
+            display: inline-block;
+            padding: 11px 20px;
+            border-radius: 30px;
+            background: #e1f2ff;
+            border: 1px solid #b9dff5;
+            color: #193753;
+            font-size: 14px;
+            transition: 0.25s ease;
+        }
+
+        .irri-btn:hover {
+            background: #cce9fb;
+            transform: translateY(-2px);
+        }
+
+        .irri-gallery-4 {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .irri-gallery-4 img {
+            height: 105px;
+        }
+
+        /* =========================
+           TÉLÉPHONE ET TABLETTE
+        ========================= */
 
         @media (max-width: 800px) {
 
-            .technical-grid {
+            .irri-intro,
+            .irri-split,
+            .irri-two {
                 grid-template-columns: 1fr;
+                gap: 25px;
             }
 
-            .project-gallery {
-                grid-template-columns: 1fr;
+            .irri-intro-image img {
+                height: 300px;
             }
 
-            .architecture-flow {
-                justify-content: flex-start;
+            .irri-text {
+                padding-right: 0;
+                border-right: none;
             }
 
-            .project-page {
-                padding-top: 90px;
+            .irri-side {
+                padding-left: 0;
             }
 
+            .irri-specs {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 18px 0;
+            }
+
+            .irri-spec:nth-child(2n) {
+                border-right: none;
+            }
+
+            .irri-gallery,
+            .irri-gallery-4 {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .irri-gallery-4 img {
+                height: 130px;
+            }
+
+            .irri-gallery img {
+                height: 130px;
+            }
         }
-
     </style>
-
 </head>
-
 
 <body>
 
+    <main class="container leme-page">
 
-    <!-- =========================================================
-         NAVIGATION
-    ========================================================= -->
+        <div class="project-topbar">
+    <a href="index.html#projet-03" class="project-back">← Retour aux projets</a>
 
-    <header>
+    <a href="decibelmetre.html" class="project-nav-btn project-nav-next">
+        <span>PROJET SUIVANT →</span>
+        <strong>Sonomètre</strong>
+    </a>
+</div>
 
-        <div class="container">
+        <!-- ===== CARTE 1 : PRÉSENTATION ===== -->
+        <section class="irri-card irri-intro">
 
-            <nav>
+            <div class="irri-intro-image">
+                <img src="images/irrigation/montage-global.jpg" alt="Prototype du système d'irrigation automatique">
+            </div>
 
-                <a href="index.html" class="logo">
-                    Sara Messaoudi
-                </a>
+            <div>
+                <p class="irri-category">PROJET DE LICENCE · USTHB</p>
+                <h1>Système d'irrigation automatique</h1>
+                <h2>Étude et réalisation d'un système d'irrigation à deux circuits</h2>
 
-                <div class="nav-links">
-
-                    <a href="index.html#projets">
-                        Projets
-                    </a>
-
-                    <a href="index.html#experience">
-                        Expérience
-                    </a>
-
-                    <a href="index.html#contact">
-                        Contact
-                    </a>
-
-                </div>
-
-            </nav>
-
-        </div>
-
-    </header>
-
-
-
-    <!-- =========================================================
-         CONTENU DU PROJET
-    ========================================================= -->
-
-    <main class="project-page">
-
-        <div class="container">
-
-
-            <!-- RETOUR -->
-
-            <a href="index.html#projets" class="project-back">
-                ← Retour aux projets
-            </a>
-
-
-
-            <!-- =================================================
-                 HERO
-            ================================================= -->
-
-            <section class="project-hero">
-
-                <p class="project-category">
-                    PROJET DE LICENCE / USTHB
+                <p>
+                    Système d'irrigation automatique qui adapte l'arrosage à l'humidité
+                    du sol et aux conditions météorologiques, tout en assurant le
+                    remplissage automatique du réservoir d'eau.
                 </p>
 
-                <h1>
-                    Système d'irrigation automatique
-                </h1>
-
-                <h2>
-                    Étude et réalisation d'un système d'irrigation automatique
-                </h2>
-
-                <p class="project-hero-description">
-
-                    Conception et réalisation d'un système d'irrigation
-                    automatique à deux circuits permettant d'adapter
-                    l'arrosage à l'humidité du sol et aux conditions
-                    météorologiques, tout en assurant automatiquement le
-                    remplissage du réservoir d'eau.
-
-                </p>
-
-
-                <div class="project-tags">
-
+                <div class="irri-tags">
                     <span>Arduino Uno</span>
                     <span>ATmega328P</span>
                     <span>NE555</span>
@@ -430,1279 +436,100 @@
                     <span>Capteur de pluie</span>
                     <span>Relais</span>
                     <span>Pompes DC</span>
-
                 </div>
+            </div>
 
-            </section>
-
-
-
-            <!-- =================================================
-                 IMAGE PRINCIPALE
-            ================================================= -->
-
-            <section class="project-main-image">
-
-                <!--
-                    Place ici ta vraie photo principale.
-
-                    Exemple :
-                    images/irrigation/montage-global.jpg
-                -->
-
-                <img
-                    src="images/irrigation/montage-global.jpg"
-                    alt="Montage expérimental du système d'irrigation automatique"
-                >
-
-                <p class="image-caption">
-                    Prototype du système d'irrigation automatique et de gestion du niveau du réservoir.
-                </p>
-
-            </section>
+        </section>
 
 
+        <!-- ===== CARTE 2 : CONCEPTION ET RÉALISATION ===== -->
+        <section class="irri-card irri-split">
 
-            <!-- =================================================
-                 LE PROJET
-            ================================================= -->
-
-            <section class="project-section">
-
-                <p class="project-section-label">
-                    01 — LE PROJET
-                </p>
-
-                <h2>
-                    Objectif
-                </h2>
-
+            <div class="irri-text">
+                <p class="irri-category">CONCEPTION &amp; RÉALISATION</p>
+                <h2 class="irri-title">Deux circuits complémentaires</h2>
                 <p>
-
-                    Ce projet de Licence, réalisé dans le cadre de la
-                    formation en Électronique à l'USTHB durant l'année
-                    universitaire 2022–2023, porte sur l'étude et la
-                    réalisation d'un système d'irrigation automatique à
-                    faible coût.
-
-                </p>
-
-                <p>
-
-                    L'objectif est de réduire le gaspillage de l'eau et de
-                    remplacer l'arrosage manuel par une solution capable
-                    d'adapter automatiquement l'irrigation aux besoins du
-                    sol et aux conditions météorologiques.
-
-                </p>
-
-                <p>
-
-                    Le système est composé de deux sous-ensembles
-                    indépendants : un circuit d'arrosage commandé par
-                    Arduino Uno et un circuit autonome chargé de maintenir
+                    Un circuit d'arrosage commandé par Arduino Uno selon l'humidité
+                    du sol et la pluie, et un circuit autonome à NE555 qui maintient
                     le niveau d'eau du réservoir.
-
                 </p>
+            </div>
 
-            </section>
+            <div class="irri-side">
 
-
-
-            <!-- =================================================
-                 ARCHITECTURE
-            ================================================= -->
-
-            <section class="project-section">
-
-                <p class="project-section-label">
-                    02 — ARCHITECTURE
-                </p>
-
-                <h2>
-                    Fonctionnement du système
-                </h2>
-
-                <p>
-
-                    L'architecture repose sur deux circuits complémentaires.
-                    Le premier analyse l'état du sol et la présence de pluie
-                    afin de commander l'arrosage. Le second contrôle
-                    automatiquement le niveau du réservoir.
-
-                </p>
-
-
-                <div class="architecture">
-
-                    <div class="architecture-flow">
-
-                        <div class="architecture-block">
-                            Humidité du sol
-                        </div>
-
-                        <div class="architecture-arrow">
-                            +
-                        </div>
-
-                        <div class="architecture-block">
-                            Capteur de pluie
-                        </div>
-
-                        <div class="architecture-arrow">
-                            →
-                        </div>
-
-                        <div class="architecture-block">
-                            Arduino Uno
-                        </div>
-
-                        <div class="architecture-arrow">
-                            →
-                        </div>
-
-                        <div class="architecture-block">
-                            Relais 5 V
-                        </div>
-
-                        <div class="architecture-arrow">
-                            →
-                        </div>
-
-                        <div class="architecture-block">
-                            Pompe 5 V
-                        </div>
-
+                <div class="irri-specs" style="margin-bottom:24px;">
+                    <div class="irri-spec">
+                        <span>CONTRÔLE</span>
+                        <strong>Arduino Uno</strong>
                     </div>
-
+                    <div class="irri-spec">
+                        <span>TIMER</span>
+                        <strong>NE555</strong>
+                    </div>
+                    <div class="irri-spec">
+                        <span>ARROSAGE</span>
+                        <strong>Pompe 5 V</strong>
+                    </div>
+                    <div class="irri-spec">
+                        <span>REMPLISSAGE</span>
+                        <strong>Pompe 12 V</strong>
+                    </div>
                 </div>
 
-
-                <h3>
-                    Contrôle du niveau du réservoir
-                </h3>
-
-                <div class="architecture">
-
-                    <div class="architecture-flow">
-
-                        <div class="architecture-block">
-                            Sonde basse
-                        </div>
-
-                        <div class="architecture-arrow">
-                            +
-                        </div>
-
-                        <div class="architecture-block">
-                            Sonde haute
-                        </div>
-
-                        <div class="architecture-arrow">
-                            →
-                        </div>
-
-                        <div class="architecture-block">
-                            BC548
-                        </div>
-
-                        <div class="architecture-arrow">
-                            →
-                        </div>
-
-                        <div class="architecture-block">
-                            NE555
-                        </div>
-
-                        <div class="architecture-arrow">
-                            →
-                        </div>
-
-                        <div class="architecture-block">
-                            Relais 12 V
-                        </div>
-
-                        <div class="architecture-arrow">
-                            →
-                        </div>
-
-                        <div class="architecture-block">
-                            Pompe 12 V
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-
-            <!-- =================================================
-                 DETAILS TECHNIQUES
-            ================================================= -->
-
-            <section class="project-section">
-
-                <p class="project-section-label">
-                    03 — TECHNIQUE
-                </p>
-
-                <h2>
-                    Quelques caractéristiques
-                </h2>
-
-
-                <div class="technical-grid">
-
-
-                    <div class="technical-card">
-
-                        <strong>
-                            MICROCONTRÔLEUR
-                        </strong>
-
-                        <span>
-                            Arduino Uno
-                        </span>
-
-                    </div>
-
-
-                    <div class="technical-card">
-
-                        <strong>
-                            MICROCONTRÔLEUR
-                        </strong>
-
-                        <span>
-                            ATmega328P
-                        </span>
-
-                    </div>
-
-
-                    <div class="technical-card">
-
-                        <strong>
-                            TIMER
-                        </strong>
-
-                        <span>
-                            NE555
-                        </span>
-
-                    </div>
-
-
-                    <div class="technical-card">
-
-                        <strong>
-                            ARROSAGE
-                        </strong>
-
-                        <span>
-                            Pompe 5 V
-                        </span>
-
-                    </div>
-
-
-                    <div class="technical-card">
-
-                        <strong>
-                            REMPLISSAGE
-                        </strong>
-
-                        <span>
-                            Pompe 12 V
-                        </span>
-
-                    </div>
-
-
-                    <div class="technical-card">
-
-                        <strong>
-                            ALIMENTATION
-                        </strong>
-
-                        <span>
-                            5 V / 12 V
-                        </span>
-
-                    </div>
-
-
-                </div>
-
-            </section>
-
-
-
-            <!-- =================================================
-                 CIRCUIT ARROSAGE
-            ================================================= -->
-
-            <section class="project-section">
-
-                <p class="project-section-label">
-                    04 — ARROSAGE
-                </p>
-
-                <h2>
-                    Contrôle automatique de l'irrigation
-                </h2>
-
-                <p>
-
-                    Le premier circuit utilise une carte Arduino Uno pour
-                    surveiller en temps réel l'humidité du sol et la présence
-                    de pluie.
-
-                </p>
-
-                <p>
-
-                    Lorsque le sol devient suffisamment sec et qu'aucune
-                    pluie n'est détectée, l'Arduino commande un relais 5 V
-                    qui active la pompe immergée. Lorsque les conditions
-                    d'arrosage ne sont plus réunies, la pompe est arrêtée.
-
-                </p>
-
-
-                <div class="project-gallery">
-
+                <div class="irri-gallery irri-gallery-4">
 
                     <figure>
-
-                        <img
-                            src="images/irrigation/circuit-arrosage.jpg"
-                            alt="Circuit d'arrosage automatique"
-                        >
-
-                        <figcaption>
-                            Circuit de commande automatique de l'arrosage
-                        </figcaption>
-
+                        <img src="images/irrigation/montage-arduino.jpg" alt="Montage Arduino du système d'irrigation">
+                        <figcaption>Montage du circuit Arduino</figcaption>
                     </figure>
 
+                    <figure>
+                        <img src="images/irrigation/montage-ne555.jpg" alt="Montage du circuit NE555">
+                        <figcaption>Montage du circuit de remplissage</figcaption>
+                    </figure>
 
                     <figure>
+                        <img src="images/irrigation/proteus-arrosage.jpg" alt="Simulation Proteus">
+                        <figcaption>Simulation sous Proteus</figcaption>
+                    </figure>
 
-                        <img
-                            src="images/irrigation/fritzing-arrosage.jpg"
-                            alt="Schéma Fritzing du circuit d'arrosage"
-                        >
-
-                        <figcaption>
-                            Câblage du circuit d'arrosage sous Fritzing
-                        </figcaption>
-
+                    <figure>
+                        <img src="images/irrigation/pompe.jpg" alt="Système de pompage">
+                        <figcaption>Système de pompage</figcaption>
                     </figure>
 
                 </div>
-
-
-                <h3>
-                    Logique de fonctionnement
-                </h3>
-
-                <div class="architecture">
-
-                    <div class="architecture-flow">
-
-                        <div class="architecture-block">
-                            Sol sec
-                        </div>
-
-                        <div class="architecture-arrow">
-                            +
-                        </div>
-
-                        <div class="architecture-block">
-                            Pas de pluie
-                        </div>
-
-                        <div class="architecture-arrow">
-                            →
-                        </div>
-
-                        <div class="architecture-block">
-                            Pompe ON
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <p>
-
-                    Dans le cas contraire, la pompe reste désactivée afin
-                    d'éviter un arrosage inutile.
-
-                </p>
-
-            </section>
-
-
-
-            <!-- =================================================
-                 CODE ARDUINO
-            ================================================= -->
-
-            <section class="project-section">
-
-                <p class="project-section-label">
-                    05 — PROGRAMMATION
-                </p>
-
-                <h2>
-                    Commande Arduino
-                </h2>
-
-                <p>
-
-                    Le programme développé sous Arduino IDE exploite les
-                    mesures des capteurs afin de prendre automatiquement la
-                    décision d'activer ou non la pompe d'irrigation.
-
-                </p>
-
-
-                <h3 class="code-title">
-                    Exemple C++ — logique de commande
-                </h3>
-
-
-                <div class="code-block">
-
-<pre><code>int humidity;
-int rain;
-
-humidity = analogRead(HUMIDITY_PIN);
-rain = digitalRead(RAIN_PIN);
-
-if (humidity &lt; HUMIDITY_THRESHOLD
-    &amp;&amp; rain == 0) {
-
-    digitalWrite(PUMP_PIN, HIGH);
-    digitalWrite(LED_GREEN, HIGH);
-
-}
-
-else {
-
-    digitalWrite(PUMP_PIN, LOW);
-    digitalWrite(LED_GREEN, LOW);
-
-}</code></pre>
-
-                </div>
-
-
-                <h3>
-                    Communication série
-                </h3>
-
-                <p>
-
-                    Les valeurs mesurées et l'état du système peuvent
-                    également être suivis à travers le terminal série de
-                    l'Arduino IDE.
-
-                </p>
-
-
-                <div class="code-block">
-
-<pre><code>Serial.print("Humidite : ");
-Serial.println(humidity);
-
-Serial.print("Pluie : ");
-Serial.println(rain);
-
-Serial.print("Pompe : ");
-
-if (humidity &lt; HUMIDITY_THRESHOLD
-    &amp;&amp; rain == 0) {
-
-    Serial.println("ON");
-
-}
-
-else {
-
-    Serial.println("OFF");
-
-}</code></pre>
-
-                </div>
-
-            </section>
-
-
-
-            <!-- =================================================
-                 SIMULATION
-            ================================================= -->
-
-            <section class="project-section">
-
-                <p class="project-section-label">
-                    06 — SIMULATION
-                </p>
-
-                <h2>
-                    Conception et simulation
-                </h2>
-
-                <p>
-
-                    Avant la réalisation pratique, les différents circuits
-                    ont été étudiés et modélisés afin de vérifier leur
-                    fonctionnement.
-
-                </p>
-
-                <p>
-
-                    Les schémas de câblage ont été réalisés sous Fritzing
-                    tandis que les circuits électroniques ont été simulés
-                    sous Proteus ISIS.
-
-                </p>
-
-
-                <div class="project-gallery">
-
-
-                    <figure>
-
-                        <img
-                            src="images/irrigation/proteus-arrosage.jpg"
-                            alt="Simulation Proteus du circuit d'arrosage"
-                        >
-
-                        <figcaption>
-                            Simulation Proteus du circuit d'arrosage
-                        </figcaption>
-
-                    </figure>
-
-
-                    <figure>
-
-                        <img
-                            src="images/irrigation/fritzing-global.jpg"
-                            alt="Schéma Fritzing du système"
-                        >
-
-                        <figcaption>
-                            Modélisation du système sous Fritzing
-                        </figcaption>
-
-                    </figure>
-
-                </div>
-
-            </section>
-
-
-
-            <!-- =================================================
-                 REMPLISSAGE RESERVOIR
-            ================================================= -->
-
-            <section class="project-section">
-
-                <p class="project-section-label">
-                    07 — RÉSERVOIR
-                </p>
-
-                <h2>
-                    Contrôle automatique du niveau d'eau
-                </h2>
-
-                <p>
-
-                    Le second circuit fonctionne indépendamment de
-                    l'Arduino. Il permet de maintenir automatiquement le
-                    niveau d'eau du réservoir grâce à deux sondes
-                    métalliques correspondant aux niveaux bas et haut.
-
-                </p>
-
-                <p>
-
-                    Les sondes commandent des transistors BC548 associés
-                    à un timer NE555 configuré en fonctionnement
-                    bistable. Le système mémorise ainsi l'état de la
-                    commande jusqu'à ce que la sonde de niveau haut soit
-                    atteinte.
-
-                </p>
-
-
-                <div class="project-gallery">
-
-
-                    <figure>
-
-                        <img
-                            src="images/irrigation/circuit-ne555.jpg"
-                            alt="Circuit de contrôle du niveau d'eau avec NE555"
-                        >
-
-                        <figcaption>
-                            Circuit de contrôle du niveau d'eau
-                        </figcaption>
-
-                    </figure>
-
-
-                    <figure>
-
-                        <img
-                            src="images/irrigation/proteus-ne555.jpg"
-                            alt="Simulation Proteus du circuit NE555"
-                        >
-
-                        <figcaption>
-                            Simulation du circuit NE555 sous Proteus
-                        </figcaption>
-
-                    </figure>
-
-                </div>
-
-
-                <h3>
-                    Logique de fonctionnement
-                </h3>
-
-
-                <div class="architecture">
-
-                    <div class="architecture-flow">
-
-                        <div class="architecture-block">
-                            Niveau bas
-                        </div>
-
-                        <div class="architecture-arrow">
-                            →
-                        </div>
-
-                        <div class="architecture-block">
-                            NE555 SET
-                        </div>
-
-                        <div class="architecture-arrow">
-                            →
-                        </div>
-
-                        <div class="architecture-block">
-                            Relais ON
-                        </div>
-
-                        <div class="architecture-arrow">
-                            →
-                        </div>
-
-                        <div class="architecture-block">
-                            Pompe 12 V
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="architecture">
-
-                    <div class="architecture-flow">
-
-                        <div class="architecture-block">
-                            Niveau haut
-                        </div>
-
-                        <div class="architecture-arrow">
-                            →
-                        </div>
-
-                        <div class="architecture-block">
-                            NE555 RESET
-                        </div>
-
-                        <div class="architecture-arrow">
-                            →
-                        </div>
-
-                        <div class="architecture-block">
-                            Relais OFF
-                        </div>
-
-                        <div class="architecture-arrow">
-                            →
-                        </div>
-
-                        <div class="architecture-block">
-                            Pompe arrêtée
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-
-            <!-- =================================================
-                 NE555
-            ================================================= -->
-
-            <section class="project-section">
-
-                <p class="project-section-label">
-                    08 — ÉLECTRONIQUE
-                </p>
-
-                <h2>
-                    Circuit bistable à NE555
-                </h2>
-
-                <p>
-
-                    Le NE555 est utilisé comme élément de mémorisation de
-                    l'état du système. La détection du niveau bas déclenche
-                    la pompe tandis que la détection du niveau haut provoque
-                    son arrêt.
-
-                </p>
-
-                <p>
-
-                    Des transistors BC548 assurent l'interface entre les
-                    sondes de niveau et les entrées de commande du NE555.
-                    Des diodes 1N4007 assurent la protection des circuits
-                    de commutation.
-
-                </p>
-
-
-                <h3 class="code-title">
-                    Principe de commande
-                </h3>
-
-
-                <div class="code-block">
-
-<pre><code>Niveau bas détecté
-        ↓
-Transistor BC548
-        ↓
-NE555 — SET
-        ↓
-Relais 12 V activé
-        ↓
-Pompe de remplissage ON
-        ↓
-Niveau haut détecté
-        ↓
-NE555 — RESET
-        ↓
-Relais désactivé
-        ↓
-Pompe OFF</code></pre>
-
-                </div>
-
-            </section>
-
-
-
-            <!-- =================================================
-                 COMPOSANTS
-            ================================================= -->
-
-            <section class="project-section">
-
-                <p class="project-section-label">
-                    09 — COMPOSANTS
-                </p>
-
-                <h2>
-                    Principaux composants
-                </h2>
-
-
-                <div class="technical-grid">
-
-
-                    <div class="technical-card">
-
-                        <strong>
-                            CONTRÔLE
-                        </strong>
-
-                        <span>
-                            Arduino Uno
-                        </span>
-
-                    </div>
-
-
-                    <div class="technical-card">
-
-                        <strong>
-                            TIMER
-                        </strong>
-
-                        <span>
-                            NE555
-                        </span>
-
-                    </div>
-
-
-                    <div class="technical-card">
-
-                        <strong>
-                            CAPTEUR
-                        </strong>
-
-                        <span>
-                            Humidité du sol
-                        </span>
-
-                    </div>
-
-
-                    <div class="technical-card">
-
-                        <strong>
-                            CAPTEUR
-                        </strong>
-
-                        <span>
-                            Pluie
-                        </span>
-
-                    </div>
-
-
-                    <div class="technical-card">
-
-                        <strong>
-                            COMMUTATION
-                        </strong>
-
-                        <span>
-                            Relais 5 V / 12 V
-                        </span>
-
-                    </div>
-
-
-                    <div class="technical-card">
-
-                        <strong>
-                            TRANSISTORS
-                        </strong>
-
-                        <span>
-                            BC548
-                        </span>
-
-                    </div>
-
-
-                </div>
-
-            </section>
-
-
-
-            <!-- =================================================
-                 MONTAGE
-            ================================================= -->
-
-            <section class="project-section">
-
-                <p class="project-section-label">
-                    10 — RÉALISATION
-                </p>
-
-                <h2>
-                    Montage expérimental
-                </h2>
-
-                <p>
-
-                    Après validation des simulations, les deux sous-systèmes
-                    ont été assemblés et câblés afin de vérifier leur
-                    fonctionnement dans des conditions réelles.
-
-                </p>
-
-
-                <div class="project-gallery">
-
-
-                    <figure>
-
-                        <img
-                            src="images/irrigation/montage-arduino.jpg"
-                            alt="Montage Arduino du système d'irrigation"
-                        >
-
-                        <figcaption>
-                            Montage pratique du circuit Arduino
-                        </figcaption>
-
-                    </figure>
-
-
-                    <figure>
-
-                        <img
-                            src="images/irrigation/montage-ne555.jpg"
-                            alt="Montage pratique du circuit NE555"
-                        >
-
-                        <figcaption>
-                            Montage pratique du circuit de remplissage
-                        </figcaption>
-
-                    </figure>
-
-
-                    <figure>
-
-                        <img
-                            src="images/irrigation/pompe.jpg"
-                            alt="Pompe du système d'irrigation"
-                        >
-
-                        <figcaption>
-                            Système de pompage
-                        </figcaption>
-
-                    </figure>
-
-
-                    <figure>
-
-                        <img
-                            src="images/irrigation/montage-global.jpg"
-                            alt="Montage global du système"
-                        >
-
-                        <figcaption>
-                            Prototype complet
-                        </figcaption>
-
-                    </figure>
-
-                </div>
-
-            </section>
-
-
-
-            <!-- =================================================
-                 RESULTATS
-            ================================================= -->
-
-            <section class="project-section">
-
-                <p class="project-section-label">
-                    11 — RÉSULTATS
-                </p>
-
-                <h2>
-                    Validation expérimentale
-                </h2>
-
-                <p>
-
-                    Les essais pratiques ont permis de valider le
-                    fonctionnement des deux circuits. Le système
-                    d'arrosage réagit automatiquement lorsque le sol devient
-                    sec et empêche l'arrosage lorsque la pluie est détectée.
-
-                </p>
-
-                <p>
-
-                    Le circuit de gestion du réservoir permet quant à lui
-                    de maintenir automatiquement la réserve d'eau entre les
-                    niveaux minimum et maximum définis par les sondes.
-
-                </p>
-
-
-                <div class="technical-grid">
-
-
-                    <div class="technical-card">
-
-                        <strong>
-                            ARROSAGE
-                        </strong>
-
-                        <span>
-                            Automatique
-                        </span>
-
-                    </div>
-
-
-                    <div class="technical-card">
-
-                        <strong>
-                            DÉTECTION
-                        </strong>
-
-                        <span>
-                            Sol / pluie
-                        </span>
-
-                    </div>
-
-
-                    <div class="technical-card">
-
-                        <strong>
-                            RÉSERVOIR
-                        </strong>
-
-                        <span>
-                            Niveau min / max
-                        </span>
-
-                    </div>
-
-
-                    <div class="technical-card">
-
-                        <strong>
-                            ALIMENTATION
-                        </strong>
-
-                        <span>
-                            5 V / 12 V
-                        </span>
-
-                    </div>
-
-
-                    <div class="technical-card">
-
-                        <strong>
-                            COMMANDE
-                        </strong>
-
-                        <span>
-                            Relais
-                        </span>
-
-                    </div>
-
-
-                    <div class="technical-card">
-
-                        <strong>
-                            RÉACTION
-                        </strong>
-
-                        <span>
-                            Immédiate
-                        </span>
-
-                    </div>
-
-
-                </div>
-
-            </section>
-
-
-
-            <!-- =================================================
-                 LIMITATIONS
-            ================================================= -->
-
-            <section class="project-section">
-
-                <p class="project-section-label">
-                    12 — LIMITATIONS
-                </p>
-
-                <h2>
-                    Difficultés rencontrées
-                </h2>
-
-                <p>
-
-                    L'une des principales limitations identifiées concerne
-                    le capteur d'humidité du sol de type résistif. Une
-                    exposition prolongée à l'humidité peut entraîner une
-                    oxydation des électrodes et affecter progressivement
-                    la fiabilité des mesures.
-
-                </p>
-
-                <p>
-
-                    Cette limitation constitue un point important à prendre
-                    en compte pour une utilisation à long terme du système
-                    dans un environnement réel.
-
-                </p>
-
-            </section>
-
-
-
-            <!-- =================================================
-                 PERSPECTIVES
-            ================================================= -->
-
-            <section class="project-section">
-
-                <p class="project-section-label">
-                    13 — PERSPECTIVES
-                </p>
-
-                <h2>
-                    Améliorations possibles
-                </h2>
-
-                <p>
-
-                    Plusieurs évolutions peuvent être envisagées afin
-                    d'améliorer la précision, la robustesse et les
-                    fonctionnalités du système.
-
-                </p>
-
-
-                <ul class="technical-list">
-
-                    <li>
-                        Remplacement du capteur résistif par un capteur
-                        d'humidité capacitif.
-                    </li>
-
-                    <li>
-                        Intégration d'un capteur DHT12 pour compléter la
-                        surveillance de l'environnement.
-                    </li>
-
-                    <li>
-                        Ajout de capteurs de pH et de salinité.
-                    </li>
-
-                    <li>
-                        Amélioration de la supervision et de l'acquisition
-                        des données.
-                    </li>
-
-                    <li>
-                        Migration de la commande vers un Automate
-                        Programmable Industriel (API).
-                    </li>
-
-                </ul>
-
-            </section>
-
-
-
-            <!-- =================================================
-                 RESSOURCES
-            ================================================= -->
-
-            <section class="project-section">
-
-                <p class="project-section-label">
-                    14 — RESSOURCES
-                </p>
-
-                <h2>
-                    Code et documentation
-                </h2>
-
-                <p>
-
-                    Le code source, les schémas de simulation et le mémoire
-                    complet du projet pourront être consultés à partir des
-                    ressources ci-dessous.
-
-                </p>
-
-
-                <div class="project-links">
-
-
-                    <!--
-                        Remplace # par ton futur dépôt GitHub.
-                    -->
-
-                    <a
-                        href="#"
-                        class="project-button"
-                    >
-                        GitHub — bientôt
-                    </a>
-
-
-                    <!--
-                        Place ton mémoire ici :
-                        documents/rapport-irrigation.pdf
-                    -->
-
-                    <a
-                        href="documents/rapport-irrigation.pdf"
-                        class="project-button"
-                        target="_blank"
-                    >
-                        📄 Consulter le mémoire PDF
-                    </a>
-
-
-                </div>
-
-            </section>
-
-
-
-            <!-- =================================================
-                 FIN
-            ================================================= -->
-
-            <div class="project-end">
-
-                <a
-                    href="index.html#projets"
-                    class="project-link"
-                >
-                    ← Retour à tous les projets
-                </a>
 
             </div>
 
+        </section>
 
-        </div>
+
+        <!-- ===== CARTE 5 : CODE & GITHUB ===== -->
+        <section class="irri-card">
+
+            <p class="irri-category">CODE &amp; DOCUMENTATION</p>
+
+            <div class="irri-code-head">
+
+                <h2 class="irri-title" style="margin:0;">Extraits du code</h2>
+
+                <!-- Remplace le # par le lien de ton GitHub -->
+                <a href="#" class="irri-btn" target="_blank">Voir le code sur GitHub →</a>
+
+            </div>
+
+        </section>
+
+      
+<nav class="project-nav">
+    <a href="project-leme.html" class="project-nav-btn">
+        <span>← PROJET PRÉCÉDENT</span>
+        <strong>Métasurface programmable</strong>
+    </a>
+</nav>
 
     </main>
 
-
-
 </body>
-
 </html>

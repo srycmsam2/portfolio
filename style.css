@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
+
 /* ========================================================= */
 /* RESET */
 /* ========================================================= */
@@ -9,14 +11,21 @@
 }
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f7f8fa;
+
+    font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif;
+    background-color: #edf6fa;
+    background-image: url("images/background-portfolio.png");
+    background-position: center top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     color: #182431;
     line-height: 1.6;
+    min-height: 100vh;
 }
 
 a {
@@ -61,7 +70,7 @@ img {
 }
 
 .section {
-    padding: 110px 0;
+    padding: 70px  0;
 }
 
 .section-label {
@@ -75,9 +84,9 @@ img {
 .section-title {
     display: grid;
     grid-template-columns: 60px 1fr;
-    gap: 25px;
+    gap: 60px;
     align-items: start;
-    margin-bottom: 55px;
+    margin-bottom: 20px;
 }
 
 .section-title > span {
@@ -150,99 +159,45 @@ img {
 }
 
 
-/* ========================================================= */
-/* HERO */
-/* ========================================================= */
 
-.hero {
-    min-height: 100vh;
+/* ==================================================
+   IDENTITÉ — EN-TÊTE COMPACT
+   ================================================== */
 
-    display: flex;
-    align-items: center;
-
-    padding: 130px 0 90px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #f7f8fa 0%,
-            #edf2f6 100%
-        );
+.identity {
+    padding: 125px 0 15px;
+    background: var(--background);
+    text-align: center;
 }
 
-.hero-content {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 90px;
-    align-items: center;
+.identity-main {
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--dark);
+    margin-bottom: 12px;
 }
 
+.identity-main span {
+    color: var(--blue);
+}
+
+.identity-specialties {
+    font-size: 0.82rem;
+    color: var(--grey);
+    letter-spacing: 0.04em;
+}
 .small-title {
     color: var(--blue);
+
     font-size: 0.75rem;
     letter-spacing: 0.22em;
     font-weight: 700;
-    margin-bottom: 25px;
+
+    margin-bottom: 22px;
 }
 
-.hero h1 {
-    font-size: clamp(4rem, 9vw, 8rem);
-    line-height: 0.88;
-    letter-spacing: -0.07em;
-    font-weight: 600;
-}
 
-.hero h1 span {
-    color: var(--blue);
-}
-
-.hero-description {
-    margin-top: 35px;
-
-    font-size: 1.25rem;
-    font-weight: 500;
-
-    max-width: 650px;
-}
-
-.hero-intro {
-    max-width: 650px;
-    color: var(--grey);
-    margin-top: 20px;
-    font-size: 1rem;
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 15px;
-    margin-top: 35px;
-    flex-wrap: wrap;
-}
-
-.btn {
-    padding: 13px 23px;
-    border: 1px solid var(--dark);
-    font-size: 0.85rem;
-    transition: 0.25s ease;
-}
-
-.btn.primary {
-    background: var(--dark);
-    color: white;
-}
-
-.btn.primary:hover {
-    background: var(--blue);
-    border-color: var(--blue);
-}
-
-.btn.secondary {
-    background: transparent;
-}
-
-.btn.secondary:hover {
-    background: white;
-}
 
 
 /* ========================================================= */
@@ -349,6 +304,8 @@ img {
 
 .projects-section {
     background: white;
+    padding-top: 25px;
+    padding-bottom: 2px;
 }
 
 .projects-grid {
@@ -882,4 +839,1471 @@ footer {
         flex-direction: column;
     }
 
+}
+
+/* PAGE AQUAMONITOR */
+
+.project-page {
+   
+    padding: 0 0 35px;
+    margin-top: 0;
+    position: relative;
+    top: -100px;
+
+}
+
+.project-back {
+    display: inline-block;
+    margin-bottom: 25px;
+    text-decoration: none;
+}
+
+.aqua-slide {
+    margin-bottom: 65px;
+}
+
+/* Première section : grande photo + texte */
+
+.aqua-intro {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 40px;
+}
+
+.aqua-intro-image img {
+    width: 100%;
+    height: 390px;
+    object-fit: cover;
+    display: block;
+    border-radius: 6px;
+}
+
+.aqua-intro h1 {
+    font-size: clamp(36px, 4vw, 54px);
+    line-height: 1.05;
+    margin: 12px 0;
+}
+
+.aqua-intro h2 {
+    font-size: 21px;
+    line-height: 1.4;
+    margin-bottom: 16px;
+}
+
+.aqua-intro-text > p:not(.project-category) {
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+/* Tags compacts */
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.project-tags span {
+    padding: 6px 10px;
+    border: 1px solid currentColor;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+/* Deuxième section : texte + galerie */
+
+.aqua-realisation {
+    display: grid;
+    grid-template-columns: 0.7fr 1.3fr;
+    gap: 35px;
+    align-items: start;
+}
+
+.aqua-realisation-text h2 {
+    font-size: 30px;
+    line-height: 1.2;
+    margin: 12px 0 18px;
+}
+
+.aqua-realisation-text p {
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.aqua-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.aqua-gallery figure {
+    margin: 0;
+    min-width: 0;
+}
+
+.aqua-gallery img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    display: block;
+    border-radius: 5px;
+}
+
+.aqua-gallery figcaption {
+    font-size: 12px;
+    margin-top: 8px;
+    opacity: 0.7;
+}
+
+.project-end {
+    margin-top: 0;
+    padding-top: 15px;
+}
+
+/* Téléphone et tablette */
+
+@media (max-width: 800px) {
+    .project-page {
+        padding-top: 85px;
+    }
+
+    .aqua-intro,
+    .aqua-realisation {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .aqua-intro-image img {
+        height: 300px;
+    }
+
+    .aqua-gallery img {
+        height: 160px;
+    }
+
+    .aqua-slide {
+        margin-bottom: 45px;
+    }
+}
+
+/* CARTES CLAIRES ET ARRONDIES */
+
+.aqua-card {
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 24px;
+    box-shadow: 0 12px 35px rgba(48, 91, 120, 0.09);
+    padding: 30px;
+    backdrop-filter: blur(12px);
+}
+
+/* BOUTON RETOUR */
+
+.project-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 17px;
+    border-radius: 30px;
+    background: #e1f2ff;
+    border: 1px solid #b9dff5;
+    color: #193753;
+    box-shadow: 0 3px 10px rgba(49, 93, 125, 0.08);
+    transition: 0.25s ease;
+}
+
+.project-back:hover {
+    background: #cce9fb;
+    transform: translateY(-2px);
+}
+
+/* TAGS COLORÉS */
+
+.project-tags span {
+    background: #e5f5f2;
+    border-color: #b9e5dc;
+    color: #245e60;
+}
+
+.project-tags span:nth-child(even) {
+    background: #e5f2ff;
+    border-color: #c2e0f7;
+    color: #214f75;
+}
+
+/* ========================================================= */
+/* AQUAMONITOR — COULEURS & PARAMÈTRES (comme la maquette)   */
+/* ========================================================= */
+
+/* ----- Fond doux bleu / vert ----- */
+
+body {
+    background-color: #eaf4f8;
+    background-image:
+        radial-gradient(circle at 0% 25%, rgba(190, 232, 220, 0.55) 0, transparent 28%),
+        radial-gradient(circle at 100% 15%, rgba(205, 225, 240, 0.7) 0, transparent 30%),
+        radial-gradient(circle at 100% 65%, rgba(205, 225, 240, 0.6) 0, transparent 28%),
+        url("images/background-portfolio.png");
+    background-size: auto, auto, auto, cover;
+    background-attachment: fixed;
+}
+
+/* ----- Cartes blanches arrondies ----- */
+
+.project-page .aqua-card {
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 24px;
+    box-shadow: 0 12px 35px rgba(48, 91, 120, 0.09);
+}
+
+/* ----- Textes colorés ----- */
+
+.aqua-card .project-category,
+.aqua-card .project-section-label {
+    color: #4f86ad;
+    opacity: 1;
+    font-weight: 700;
+}
+
+.aqua-intro .aqua-intro-text h1,
+.aqua-realisation .aqua-realisation-heading h2 {
+    color: #0c3a57;
+}
+
+.aqua-intro .aqua-intro-text h2 {
+    color: #12364d;
+}
+
+.aqua-intro .aqua-intro-text > p:not(.project-category),
+.aqua-realisation .aqua-realisation-heading p:not(.project-section-label) {
+    color: #5d7284;
+    opacity: 1;
+}
+
+.aqua-intro-image img {
+    border-radius: 18px;
+}
+
+/* ----- Tags verts / bleus en alternance ----- */
+
+.aqua-intro .project-tags span {
+    background: #e5f5f2;
+    border: 1px solid #b9e5dc;
+    color: #245e60;
+}
+
+.aqua-intro .project-tags span:nth-child(even) {
+    background: #e5f2ff;
+    border-color: #c2e0f7;
+    color: #214f75;
+}
+
+/* ========================================================= */
+/* PARAMÈTRES MESURÉS (pH, T°, EC, DO, NTU)                  */
+/* ========================================================= */
+
+/* Le bloc : fond dégradé vert/bleu + titre "PARAMÈTRES MESURÉS" */
+.aqua-realisation .aqua-features {
+    background: linear-gradient(135deg, #eaf6f4, #eef6fb);
+    border: 1px solid #d5ebe8;
+    border-radius: 18px;
+    padding: 18px 22px 20px;
+    gap: 0;
+}
+
+.aqua-realisation .aqua-features::before {
+    content: "PARAMÈTRES MESURÉS";
+    grid-column: 1 / -1;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.17em;
+    color: #4f86ad;
+    margin-bottom: 14px;
+}
+
+/* Chaque case : plus de cadre, juste un séparateur vertical */
+.aqua-realisation .aqua-features .aqua-feature {
+    background: transparent;
+    border: none;
+    border-right: 1px solid #d3e4ea;
+    border-radius: 0;
+    padding: 0 6px;
+}
+
+.aqua-realisation .aqua-features .aqua-feature:last-child {
+    border-right: none;
+}
+
+.aqua-realisation .aqua-features .aqua-feature strong {
+    font-size: 14px;
+    color: #12364d;
+    margin-bottom: 3px;
+}
+
+.aqua-realisation .aqua-features .aqua-feature span {
+    font-size: 12px;
+    color: #6d8392;
+    opacity: 1;
+}
+
+/* Le rond coloré avec l'icône (créé en CSS, pas besoin de HTML) */
+.aqua-realisation .aqua-features .aqua-feature::before {
+    content: "";
+    display: block;
+    width: 46px;
+    height: 46px;
+    margin: 0 auto 9px;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 22px;
+}
+
+/* 1 — pH : goutte, bleu */
+.aqua-realisation .aqua-features .aqua-feature:nth-child(1)::before {
+    background-color: #dcefff;
+    border-color: #b5d9f3;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232a7bb8' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3C12 3 5.5 10.5 5.5 14.5a6.5 6.5 0 0 0 13 0C18.5 10.5 12 3 12 3z'/%3E%3C/svg%3E");
+}
+
+/* 2 — T° : thermomètre, vert */
+.aqua-realisation .aqua-features .aqua-feature:nth-child(2)::before {
+    background-color: #dff3ea;
+    border-color: #b6e0cf;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232f8f6b' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 14.8V5a2 2 0 0 0-4 0v9.8a4 4 0 1 0 4 0z'/%3E%3Cpath d='M12 9v7'/%3E%3C/svg%3E");
+}
+
+/* 3 — EC : éclair, vert */
+.aqua-realisation .aqua-features .aqua-feature:nth-child(3)::before {
+    background-color: #d9f2e6;
+    border-color: #aedfc6;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231f9a5f' stroke='%231f9a5f' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M13 2L5 13h6l-1 9 8-11h-6l1-9z'/%3E%3C/svg%3E");
+}
+
+/* 4 — DO : bulles, bleu */
+.aqua-realisation .aqua-features .aqua-feature:nth-child(4)::before {
+    background-color: #dcefff;
+    border-color: #b5d9f3;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232a7bb8' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='9' cy='14' r='5'/%3E%3Ccircle cx='17' cy='7' r='2.5'/%3E%3Ccircle cx='18' cy='16' r='1.5'/%3E%3C/svg%3E");
+}
+
+/* 5 — NTU : particules, turquoise */
+.aqua-realisation .aqua-features .aqua-feature:nth-child(5)::before {
+    background-color: #dcf3f0;
+    border-color: #b3e2dc;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232a9a92' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='2'/%3E%3Ccircle cx='12' cy='4.5' r='1'/%3E%3Ccircle cx='12' cy='19.5' r='1'/%3E%3Ccircle cx='4.5' cy='12' r='1'/%3E%3Ccircle cx='19.5' cy='12' r='1'/%3E%3Ccircle cx='6.7' cy='6.7' r='1'/%3E%3Ccircle cx='17.3' cy='17.3' r='1'/%3E%3Ccircle cx='17.3' cy='6.7' r='1'/%3E%3Ccircle cx='6.7' cy='17.3' r='1'/%3E%3C/svg%3E");
+}
+
+/* ========================================================= */
+/* GALERIE : 4 photos sur une ligne                          */
+/* ========================================================= */
+
+.aqua-realisation .aqua-gallery {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.aqua-realisation .aqua-gallery figure {
+    padding: 0;
+    border: none;
+    background: transparent;
+}
+
+.aqua-realisation .aqua-gallery img {
+    height: 125px;
+    border-radius: 10px;
+    background: #dce8ef; /* gris-bleu tant que tes photos ne sont pas ajoutées */
+}
+
+.aqua-realisation .aqua-gallery figcaption {
+    font-weight: 400;
+    color: #5d7284;
+    padding: 9px 2px 0;
+}
+
+/* ========================================================= */
+/* RESPONSIVE                                                */
+/* ========================================================= */
+
+@media (max-width: 900px) {
+    .aqua-realisation .aqua-features .aqua-feature {
+        border-right: none;
+        padding-bottom: 12px;
+    }
+
+    .aqua-realisation .aqua-gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+/* ========================================================= */
+/* PAGE LEME                                                 */
+/* ========================================================= */
+
+.leme-page {
+    padding: 10px 0 45px;
+}
+
+.leme-page .aqua-slide {
+    margin-bottom: 28px;
+}
+
+/* ----- Cartes blanches arrondies ----- */
+
+.leme-page .aqua-card {
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 24px;
+    box-shadow: 0 12px 35px rgba(48, 91, 120, 0.09);
+    padding: 30px;
+}
+
+/* ----- Textes ----- */
+
+.leme-page .project-category,
+.leme-label {
+    color: #4f86ad;
+    font-size: 0.72rem;
+    letter-spacing: 0.17em;
+    font-weight: 700;
+}
+
+.leme-page h1,
+.leme-page h2 {
+    color: #0c3a57;
+}
+
+.leme-page .aqua-intro-text h2 {
+    color: #12364d;
+    font-weight: 500;
+}
+
+.leme-page .aqua-intro-text > p:not(.project-category),
+.leme-text p:not(.project-category) {
+    color: #5d7284;
+}
+
+.leme-page .aqua-intro-image img {
+    border-radius: 18px;
+    background: #dce8ef; /* couleur affichée tant que ta photo n'est pas ajoutée */
+}
+
+.leme-title {
+    font-size: 28px;
+    line-height: 1.2;
+    margin: 8px 0 24px;
+}
+
+/* ----- Tags verts / bleus en alternance ----- */
+
+.leme-page .project-tags span {
+    background: #e5f5f2;
+    border: 1px solid #b9e5dc;
+    color: #245e60;
+}
+
+.leme-page .project-tags span:nth-child(even) {
+    background: #e5f2ff;
+    border-color: #c2e0f7;
+    color: #214f75;
+}
+
+/* ========================================================= */
+/* CARTE 2 : texte à gauche, chaîne + caractéristiques à droite */
+/* ========================================================= */
+
+.leme-split {
+    display: grid;
+    grid-template-columns: 0.75fr 1.25fr;
+    gap: 0;
+    align-items: start;
+}
+
+.leme-text {
+    padding-right: 30px;
+    border-right: 1px solid #dfe9ef;
+}
+
+.leme-text h2 {
+    font-size: 28px;
+    line-height: 1.2;
+    margin: 8px 0 16px;
+}
+
+.leme-text p:not(.project-category) {
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.leme-side {
+    padding-left: 28px;
+    min-width: 0;
+}
+
+.leme-label {
+    margin-bottom: 14px;
+}
+
+/* Chaîne de commande */
+
+.leme-flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 26px;
+}
+
+.leme-step {
+    padding: 7px 13px;
+    border-radius: 20px;
+    font-size: 12.5px;
+    background: #e5f5f2;
+    border: 1px solid #b9e5dc;
+    color: #245e60;
+}
+
+.leme-step:nth-of-type(even) {
+    background: #e5f2ff;
+    border-color: #c2e0f7;
+    color: #214f75;
+}
+
+.leme-arrow {
+    color: #7aa6c2;
+    font-size: 15px;
+}
+
+/* Caractéristiques (même style que les paramètres d'AquaMonitor) */
+
+.leme-specs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: linear-gradient(135deg, #eaf6f4, #eef6fb);
+    border: 1px solid #d5ebe8;
+    border-radius: 18px;
+    padding: 18px 22px;
+}
+
+.leme-spec {
+    text-align: center;
+    padding: 0 6px;
+    border-right: 1px solid #d3e4ea;
+}
+
+.leme-spec:last-child {
+    border-right: none;
+}
+
+.leme-spec span {
+    display: block;
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+    color: #4f86ad;
+    margin-bottom: 6px;
+}
+
+.leme-spec strong {
+    font-size: 18px;
+    color: #0c3a57;
+}
+
+/* ========================================================= */
+/* CARTE 3 : galerie 3 colonnes                              */
+/* ========================================================= */
+
+.leme-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.leme-gallery figure {
+    margin: 0;
+    min-width: 0;
+}
+
+.leme-gallery img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 12px;
+    background: #dce8ef; /* couleur affichée tant que tes photos ne sont pas ajoutées */
+}
+
+.leme-gallery figcaption {
+    font-size: 12.5px;
+    line-height: 1.4;
+    color: #5d7284;
+    margin-top: 8px;
+}
+
+/* ========================================================= */
+/* CARTE 4 : code (menus déroulants) + boutons               */
+/* ========================================================= */
+
+.leme-code details {
+    border: 1px solid #d5e3ea;
+    border-radius: 14px;
+    background: #f4f9fb;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.leme-code summary {
+    cursor: pointer;
+    padding: 14px 18px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #193753;
+}
+
+.leme-code summary:hover {
+    background: #e9f3f8;
+}
+
+.leme-code pre {
+    margin: 0;
+    padding: 20px;
+    background: #14212c;
+    color: #e6eef4;
+    font-family: Consolas, Monaco, monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    overflow-x: auto;
+}
+
+.leme-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.leme-btn {
+    display: inline-block;
+    padding: 11px 20px;
+    border-radius: 30px;
+    background: #e1f2ff;
+    border: 1px solid #b9dff5;
+    color: #193753;
+    font-size: 14px;
+    transition: 0.25s ease;
+}
+
+.leme-btn:hover {
+    background: #cce9fb;
+    transform: translateY(-2px);
+}
+
+/* ========================================================= */
+/* TÉLÉPHONE ET TABLETTE                                     */
+/* ========================================================= */
+
+@media (max-width: 800px) {
+
+    .leme-split {
+        grid-template-columns: 1fr;
+    }
+
+    .leme-text {
+        padding-right: 0;
+        border-right: none;
+        margin-bottom: 25px;
+    }
+
+    .leme-side {
+        padding-left: 0;
+    }
+
+    .leme-specs {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px 0;
+    }
+
+    .leme-spec:nth-child(2n) {
+        border-right: none;
+    }
+
+    .leme-gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .leme-gallery img {
+        height: 130px;
+    }
+}
+
+@media (max-width: 700px) {
+    .leme-page {
+        padding-top: 10px;
+    }
+}
+
+/* Retour depuis un projet : la carte s'affiche sous la barre du haut et reste repérable */
+.project-card {
+    scroll-margin-top: 100px;
+}
+
+/* Surbrillance temporaire de la carte du projet quitté */
+.project-card:target {
+    animation: retour-surbrillance 1s ease;
+}
+
+@keyframes retour-surbrillance {
+    0%, 35% {
+        background: #2c4560;
+        border-color: #5f8fb0;
+    }
+    100% {
+        background: var(--dark);
+        border-color: var(--dark);
+    }
+}
+
+/* Bouton "Voir le projet" : même style que "Retour aux projets" */
+.project-card.featured .project-link,
+.project-card .project-link {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;      /* évite que le bouton prenne toute la largeur */
+    gap: 8px;
+    padding: 10px 17px;
+    border-radius: 30px;
+    background: #e1f2ff;
+    border: 1px solid #b9dff5;
+    color: #193753;
+    font-size: 0.85rem;
+    font-weight: 400;
+    box-shadow: 0 3px 10px rgba(49, 93, 125, 0.08);
+    transition: 0.25s ease;
+}
+
+.project-card.featured .project-link:hover,
+.project-card .project-link:hover {
+    background: #cb72e1;
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   COMPÉTENCES — DESIGN BLEU PASTEL
+   ========================================================= */
+
+/* Fond de la section : gris neutre, le même que la section du haut */
+.skills-section {
+    background: var(--background);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Espacement du titre */
+.skills-section .section-title {
+    margin-bottom: 35px;
+}
+
+/* Grille des quatre cartes */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    background: transparent;
+    border: none;
+    align-items: stretch;
+}
+
+/* Cartes */
+.skill-box {
+    position: relative;
+    min-width: 0;
+    padding: 30px 24px;
+    background: #ffffff;
+    border: 1px solid #e1edf4;
+    border-radius: 22px;
+    box-shadow: 0 10px 30px rgba(49, 93, 125, 0.07);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Effet au survol */
+.skill-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 35px rgba(49, 93, 125, 0.13);
+}
+
+/* Rond avec icône en haut de chaque carte */
+.skill-box::before {
+    content: "";
+    display: block;
+    width: 52px;
+    height: 52px;
+    margin-bottom: 16px;
+    border-radius: 50%;
+    background-color: #dcecfb;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 26px;
+    box-shadow: 0 6px 16px rgba(49, 93, 125, 0.12);
+}
+
+/* Petite barre bleue sous le titre */
+.skill-box h3::after {
+    content: "";
+    display: block;
+    width: 34px;
+    height: 3px;
+    margin-top: 12px;
+    border-radius: 10px;
+    background: #65b7ed;
+}
+
+/* 1 — Électronique : puce (rond vert) */
+.skill-box:nth-child(1)::before {
+    background-color: #d8f1ee;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23193753' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='6' y='6' width='12' height='12' rx='2'/%3E%3Crect x='9.5' y='9.5' width='5' height='5' rx='1'/%3E%3Cpath d='M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4'/%3E%3C/svg%3E");
+}
+
+/* 2 — Systèmes embarqués : code </> (rond bleu) */
+.skill-box:nth-child(2)::before {
+    background-color: #dcebfa;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23193753' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='16' rx='3'/%3E%3Cpath d='M10 9l-3 3 3 3M14 9l3 3-3 3'/%3E%3C/svg%3E");
+}
+
+/* 3 — Logiciels : écran avec graphique (rond vert) */
+.skill-box:nth-child(3)::before {
+    background-color: #d8f1ee;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23193753' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='12' rx='2'/%3E%3Cpath d='M8 20h8M12 16v4M9 12v-2M12 12V8M15 12v-3'/%3E%3C/svg%3E");
+}
+
+/* 4 — Programmation & outils : engrenage (rond bleu) */
+.skill-box:nth-child(4)::before {
+    background-color: #dcebfa;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23193753' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E");
+}
+
+/* Titres des catégories */
+.skill-box h3 {
+    font-size: 1.05rem;
+    line-height: 1.4;
+    font-weight: 700;
+    color: #193753;
+    margin-bottom: 22px;
+}
+
+/* Liste des compétences */
+.skill-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Chaque compétence */
+.skill-box li {
+    position: relative;
+    padding: 10px 0 10px 17px;
+    font-size: 0.84rem;
+    line-height: 1.45;
+    color: #64788b;
+    border-bottom: 1px solid rgba(193, 216, 232, 0.4);
+    overflow-wrap: anywhere;
+}
+
+/* Puces bleu-vert */
+.skill-box li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 17px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #55b9c2;
+}
+
+/* Dernière ligne sans séparateur */
+.skill-box li:last-child {
+    border-bottom: none;
+}
+
+/* Langues : conserver le même univers visuel */
+.languages {
+    border-top: 1px solid rgba(49, 93, 125, 0.16);
+}
+
+.language-list div {
+    background: rgba(255, 255, 255, 0.76);
+    border: 1px solid rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(49, 93, 125, 0.06);
+}
+
+/* Tablette */
+@media (max-width: 1000px) {
+    .skills-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Mobile */
+@media (max-width: 550px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .skill-box {
+        padding: 25px 22px;
+    }
+
+    .skill-box h3 {
+        font-size: 1.05rem;
+    }
+}
+
+/* ========================================================= */
+/* PAGE D'ACCUEIL : fond gris élégant sur toute la page      */
+/* (seulement la page qui contient #accueil)                 */
+/* ========================================================= */
+
+body:has(#accueil) {
+    background-color: #eceef1;
+    background-image:
+        radial-gradient(circle at 12% 8%,  rgba(255, 255, 255, 0.95) 0, transparent 38%),   /* lumière haut gauche */
+        radial-gradient(circle at 88% 40%, rgba(255, 255, 255, 0.70) 0, transparent 42%),   /* lumière droite */
+        radial-gradient(circle at 15% 92%, rgba(196, 202, 212, 0.65) 0, transparent 45%),   /* ombre douce bas gauche */
+        linear-gradient(170deg, #f4f5f7 0%, #e9ecef 55%, #dfe3e8 100%);
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Toutes les sections laissent voir ce fond gris */
+body:has(#accueil) .identity,
+body:has(#accueil) .projects-section,
+body:has(#accueil) .skills-section {
+    background: transparent;
+}
+
+/* ========================================================= */
+/* PROJETS (accueil) : grandes cartes style Canva            */
+/* ========================================================= */
+
+.projects-grid {
+    gap: 26px;
+}
+
+/* La carte */
+.projects-grid .project-card {
+    position: relative;
+    overflow: hidden;
+    min-height: 400px;
+    padding: 34px 34px 30px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 28px;
+    background: linear-gradient(145deg, #213650 0%, #172637 55%, #121c28 100%);
+    box-shadow: 0 22px 48px rgba(24, 36, 49, 0.22);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.projects-grid .project-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 30px 60px rgba(24, 36, 49, 0.30);
+}
+
+/* Halo lumineux décoratif en bas à droite */
+.projects-grid .project-card::after {
+    content: "";
+    position: absolute;
+    right: -90px;
+    bottom: -90px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(110, 215, 195, 0.22) 0, transparent 70%);
+    pointer-events: none;
+}
+
+.projects-grid .project-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* Grand numéro en filigrane */
+.projects-grid .project-number {
+    position: absolute;
+    top: 20px;
+    right: 32px;
+    margin: 0;
+    font-family: inherit;
+    font-size: 4.6rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: rgba(255, 255, 255, 0.10);
+    z-index: 0;
+}
+
+/* Catégorie en pastille */
+.projects-grid .project-card .project-category {
+    align-self: flex-start;
+    margin: 4px 0 14px;
+    padding: 6px 13px;
+    border-radius: 20px;
+    background: rgba(110, 215, 195, 0.14);
+    border: 1px solid rgba(110, 215, 195, 0.35);
+    color: #9fe9db;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+}
+
+/* Titres et texte, plus grands */
+.projects-grid .project-card h3 {
+    font-size: 2.05rem;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.projects-grid .project-card h4 {
+    font-size: 1.05rem;
+    line-height: 1.5;
+    font-weight: 500;
+    margin-bottom: 16px;
+    color: #b9c8d6;
+}
+
+.projects-grid .project-card p:not(.project-category) {
+    max-width: 580px;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin-bottom: 20px;
+    color: #cbd6e0;
+}
+
+/* Petites étiquettes (IoT, STM32...) en pastilles colorées */
+.projects-grid .project-card .tags {
+    gap: 10px;
+    padding-top: 6px;
+}
+
+.projects-grid .project-card .tags span {
+    padding: 8px 15px;
+    border-radius: 22px;
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: 600;
+    background: rgba(110, 215, 195, 0.14);
+    border: 1px solid rgba(110, 215, 195, 0.38);
+    color: #9fe9db;
+}
+
+.projects-grid .project-card .tags span:nth-child(even) {
+    background: rgba(110, 170, 235, 0.15);
+    border-color: rgba(110, 170, 235, 0.40);
+    color: #a9cdf5;
+}
+
+/* Bouton "Voir le projet" un peu plus grand */
+.projects-grid .project-card .project-link {
+    margin-top: 20px;
+    padding: 11px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Surbrillance temporaire au retour (compatible avec le dégradé) */
+.project-card:target {
+    animation: retour-surbrillance 1s ease;
+}
+
+@keyframes retour-surbrillance {
+    0%, 35% { filter: brightness(1.45); }
+    100%    { filter: brightness(1); }
+}
+
+/* Téléphone */
+@media (max-width: 700px) {
+    .projects-grid .project-card {
+        min-height: auto;
+        padding: 34px 26px 30px;
+    }
+
+    .projects-grid .project-card h3 {
+        font-size: 1.9rem;
+    }
+
+    .projects-grid .project-number {
+        font-size: 4rem;
+        right: 22px;
+    }
+}
+
+
+/* ========================================================= */
+/* ENTÊTE : barre de navigation + bloc identité              */
+/* ========================================================= */
+
+/* Barre de navigation en verre dépoli */
+.navbar {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 6px 24px rgba(24, 36, 49, 0.06);
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: #193753;
+}
+
+.navbar nav {
+    gap: 8px;
+}
+
+.navbar nav a {
+    padding: 9px 18px;
+    border-radius: 24px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #4a5f72;
+}
+
+.navbar nav a:hover {
+    background: #ffffff;
+    color: #193753;
+    box-shadow: 0 4px 14px rgba(24, 36, 49, 0.08);
+}
+
+/* Bloc identité */
+.identity {
+    padding: 100px 0 18px;
+    background: transparent;
+}
+
+/* Petite pastille au-dessus du titre */
+.identity .container::before {
+    content: "PORTFOLIO";
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 5px 13px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(49, 93, 125, 0.15);
+    box-shadow: 0 4px 14px rgba(24, 36, 49, 0.05);
+    color: #4f86ad;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+}
+
+/* Grand titre avec dégradé de texte */
+.identity-main {
+    margin-bottom: 10px;
+    font-size: clamp(1.15rem, 2.4vw, 1.6rem);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    background: linear-gradient(90deg, #193753 0%, #2f7f86 60%, #4f86ad 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+/* Spécialités dans une pastille */
+.identity-specialties {
+    display: inline-block;
+    max-width: 100%;
+    padding: 7px 18px;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.95);
+    box-shadow: 0 8px 24px rgba(49, 93, 125, 0.08);
+    color: #4a5f72;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+/* Petit trait de couleur sous l'entête */
+.identity .container::after {
+    content: "";
+    display: block;
+    width: 56px;
+    height: 3px;
+    margin: 16px auto 0;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #65b7ed, #56c5c1);
+}
+
+/* Titres de section avec la nouvelle police */
+.section-title > span {
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #4f86ad;
+}
+
+.section-title h2 {
+    font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+    font-weight: 800;
+    line-height: 1.2;
+    color: #193753;
+}
+
+.section-title {
+    margin-bottom: 14px;
+}
+
+.section-intro {
+    font-size: 0.92rem;
+    margin-bottom: 28px;
+}
+
+@media (max-width: 700px) {
+    .identity {
+        padding: 30px 0 18px;
+    }
+
+    .identity-specialties {
+        border-radius: 22px;
+        font-size: 0.82rem;
+    }
+}
+
+/* ========================================================= */
+/* BANNIÈRE ULTRA COMPACTE : les projets d'abord             */
+/* ========================================================= */
+
+/* Barre de navigation plus fine */
+.nav-container {
+    height: 62px;
+}
+
+/* Bannière : deux petites lignes seulement */
+.identity {
+    padding: 78px 0 6px;
+}
+
+.identity .container::before,
+.identity .container::after {
+    display: none;
+}
+
+.identity-main {
+    margin-bottom: 8px;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    line-height: 1.2;
+}
+
+.identity-specialties {
+    padding: 5px 14px;
+    font-size: 0.72rem;
+}
+
+/* Section Projets : on remonte tout */
+.projects-section {
+    padding-top: 6px;
+}
+
+.section-title {
+    gap: 20px;
+    margin-bottom: 8px;
+}
+
+.section-title h2 {
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+}
+
+.section-intro {
+    max-width: 700px;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.project-card {
+    scroll-margin-top: 80px;
+}
+
+@media (max-width: 700px) {
+    .identity {
+        padding: 20px 0 6px;
+    }
+}
+
+/* ========================================================= */
+/* TITRES DE SECTION : l'étiquette passe au-dessus du titre  */
+/* (corrige le chevauchement "COMPÉTENCES" / titre)          */
+/* ========================================================= */
+
+.section-title {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6px;
+    margin-bottom: 14px;
+}
+
+.section-title > span {
+    padding-top: 0;
+    white-space: normal;
+}
+
+.skills-section .section-title {
+    margin-bottom: 22px;
+}
+
+/* Étiquettes "PROJETS" et "COMPÉTENCES" : plus grandes et en gras */
+.section-title > span {
+    font-size: 1.05rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+}
+
+/* ========================================================= */
+/* NAVIGATION ENTRE PROJETS                                  */
+/* ========================================================= */
+
+/* Ligne du haut : retour à gauche, suivant à droite, même hauteur */
+.project-topbar {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 25px;
+}
+
+.project-topbar .project-back {
+    margin-bottom: 0;
+}
+
+/* Bloc du bas (projet précédent) */
+.project-nav {
+    display: flex;
+    margin: 6px 0 24px;
+}
+
+/* Boutons précédent / suivant : même style clair que "Retour aux projets" */
+.project-nav-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+    flex: 0 0 auto;
+    max-width: 340px;
+    padding: 9px 20px;
+    border-radius: 24px;
+    background: #e1f2ff;
+    border: 1px solid #b9dff5;
+    color: #193753;
+    box-shadow: 0 3px 10px rgba(49, 93, 125, 0.08);
+    transition: 0.25s ease;
+}
+
+.project-nav-btn span {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: #4f86ad;
+}
+
+.project-nav-btn strong {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #193753;
+}
+
+.project-nav-btn:hover {
+    background: #cce9fb;
+    transform: translateY(-2px);
+}
+
+/* Bouton "suivant" : texte aligné à droite */
+.project-nav-next {
+    align-items: flex-end;
+    text-align: right;
+}
+
+@media (max-width: 700px) {
+    .project-nav-btn {
+        flex: 1 1 100%;
+        max-width: none;
+    }
+
+    .project-nav-next {
+        align-items: flex-start;
+        text-align: left;
+    }
+}
+.project-nav-prev {
+    background: #9FA8DA;
+    border-color: #8791C9;
+    color: #25264F;
+}
+
+.project-nav-prev span,
+.project-nav-prev strong {
+    color: #25264F;
+}
+
+.project-nav-prev:hover {
+    background: #B3B9E8;
+
+}
+
+/* Bouton PROJET PRÉCÉDENT uniquement */
+.project-nav .project-nav-btn {
+    background: #9FA8DA !important;
+    border-color: #8791C9 !important;
+    color: #25264F !important;
+}
+
+.project-nav .project-nav-btn span,
+.project-nav .project-nav-btn strong {
+    color: #25264F !important;
+}
+
+.project-nav .project-nav-btn:hover {
+    background: #B3B9E8 !important;
+}
+
+/* Transition douce lors du chargement des pages */
+@view-transition {
+    navigation: auto;
+}
+
+::view-transition-old(root) {
+    animation: 180ms ease-out both page-out;
+}
+
+::view-transition-new(root) {
+    animation: 250ms ease-in both page-in;
+}
+
+@keyframes page-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes page-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }

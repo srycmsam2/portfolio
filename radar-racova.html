@@ -1,1467 +1,178 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Radar CW / Doppler RaCoVa | Sara Messaoudi</title>
-
+    <title>Radar CW / Doppler RaCoVa — Sara Messaoudi</title>
     <link rel="stylesheet" href="style.css">
-
-    <style>
-
-        /* ==================================================
-           PAGE PROJET
-        ================================================== */
-
-        .project-page {
-            padding: 70px 0 100px;
-        }
-
-        .project-page .container {
-            max-width: 1100px;
-            margin: auto;
-            padding: 0 25px;
-        }
-
-
-        /* ==================================================
-           RETOUR
-        ================================================== */
-
-        .back-link {
-            display: inline-block;
-            margin-bottom: 45px;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-
-        /* ==================================================
-           HERO
-        ================================================== */
-
-        .project-hero {
-            margin-bottom: 50px;
-        }
-
-        .project-hero .project-category {
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            margin-bottom: 12px;
-        }
-
-        .project-hero h1 {
-            font-size: 3rem;
-            line-height: 1.15;
-            margin-bottom: 15px;
-        }
-
-        .project-hero h2 {
-            font-size: 1.35rem;
-            font-weight: 500;
-            margin-bottom: 25px;
-        }
-
-        .project-intro {
-            max-width: 850px;
-            font-size: 1.05rem;
-            line-height: 1.8;
-        }
-
-
-        /* ==================================================
-           TAGS
-        ================================================== */
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 25px;
-        }
-
-        .project-tags span {
-            padding: 7px 13px;
-            border: 1px solid currentColor;
-            border-radius: 20px;
-            font-size: 0.85rem;
-        }
-
-
-        /* ==================================================
-           IMAGE PRINCIPALE
-        ================================================== */
-
-        .project-main-image {
-            margin: 45px 0 70px;
-        }
-
-        .project-main-image img {
-            width: 100%;
-            max-height: 500px;
-            object-fit: cover;
-            border-radius: 12px;
-            display: block;
-        }
-
-        .image-caption {
-            margin-top: 10px;
-            font-size: 0.85rem;
-            opacity: 0.7;
-            text-align: center;
-        }
-
-
-        /* ==================================================
-           SECTIONS
-        ================================================== */
-
-        .project-section {
-            margin-bottom: 70px;
-        }
-
-        .project-section-number {
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-            opacity: 0.7;
-        }
-
-        .project-section h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-
-        .project-section p {
-            line-height: 1.8;
-            margin-bottom: 18px;
-        }
-
-
-        /* ==================================================
-           ARCHITECTURE
-        ================================================== */
-
-        .architecture {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 35px;
-        }
-
-        .architecture-block {
-            padding: 18px 20px;
-            border: 1px solid currentColor;
-            border-radius: 10px;
-            text-align: center;
-            min-width: 140px;
-            font-weight: 600;
-        }
-
-        .architecture-arrow {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-
-        /* ==================================================
-           CARDS TECHNIQUES
-        ================================================== */
-
-        .technical-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .technical-card {
-            border: 1px solid rgba(128,128,128,0.35);
-            border-radius: 12px;
-            padding: 25px;
-        }
-
-        .technical-card h3 {
-            margin-bottom: 12px;
-            font-size: 1.1rem;
-        }
-
-        .technical-card p {
-            font-size: 0.95rem;
-            line-height: 1.65;
-        }
-
-
-        /* ==================================================
-           RÉSULTATS
-        ================================================== */
-
-        .results-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .result-card {
-            padding: 28px;
-            border-radius: 12px;
-            border: 1px solid rgba(128,128,128,0.35);
-        }
-
-        .result-value {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .result-label {
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-
-        /* ==================================================
-           GALERIE
-        ================================================== */
-
-        .project-gallery {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .project-gallery img {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            border-radius: 10px;
-            display: block;
-        }
-
-
-        /* ==================================================
-           LISTES
-        ================================================== */
-
-        .project-list {
-            padding-left: 20px;
-            line-height: 1.8;
-        }
-
-        .project-list li {
-            margin-bottom: 10px;
-        }
-
-
-        /* ==================================================
-           CODE / FORMULES
-        ================================================== */
-
-        .formula {
-            padding: 22px;
-            margin: 25px 0;
-            border-radius: 10px;
-            border: 1px solid rgba(128,128,128,0.35);
-            font-family: "Courier New", monospace;
-            text-align: center;
-            font-size: 1.05rem;
-        }
-
-
-        /* ==================================================
-           RESSOURCES
-        ================================================== */
-
-        .project-resources {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 25px;
-        }
-
-        .resource-link {
-            display: inline-block;
-            padding: 12px 18px;
-            border: 1px solid currentColor;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-
-        /* ==================================================
-           FIN DE PAGE
-        ================================================== */
-
-        .project-end {
-            margin-top: 80px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(128,128,128,0.3);
-        }
-
-
-        /* ==================================================
-           RESPONSIVE
-        ================================================== */
-
-        @media (max-width: 800px) {
-
-            .project-hero h1 {
-                font-size: 2.2rem;
-            }
-
-            .technical-grid,
-            .results-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .project-gallery {
-                grid-template-columns: 1fr;
-            }
-
-            .architecture {
-                flex-direction: column;
-            }
-
-            .architecture-arrow {
-                transform: rotate(90deg);
-            }
-
-        }
-
-    </style>
-
 </head>
-
 
 <body>
 
+    <main class="container leme-page">
 
-    <!-- ==================================================
-         PAGE PROJET
-    ================================================== -->
+    <div class="project-topbar">
+    <a href="index.html#projet-10" class="project-back">← Retour aux projets</a>
 
-    <main class="project-page">
+   <!--<a href="LIEN-DU-SUIVANT.html" class="project-nav-btn project-nav-next">
+        <span>PROJET SUIVANT →</span>
+        <strong>NOM DU PROJET SUIVANT</strong>
+    </a>-->
+</div>
 
-        <div class="container">
+        <!-- ===== CARTE 1 : PRÉSENTATION ===== -->
+        <section class="aqua-slide aqua-card aqua-intro">
 
+            <div class="aqua-intro-image">
+                <img src="images/radar-racova/montage-global.jpg" alt="Système radar CW Doppler RaCoVa">
+            </div>
 
-            <!-- ==================================================
-                 RETOUR
-            ================================================== -->
+            <div class="aqua-intro-text">
+                <p class="project-category">HYPERFRÉQUENCES · RADAR</p>
+                <h1>Radar CW / Doppler</h1>
+                <h2>Caractérisation modulaire et intégration d'un radar à 2,45 GHz</h2>
 
-            <a href="index.html#projets" class="back-link">
-                ← Retour aux projets
-            </a>
-
-
-            <!-- ==================================================
-                 HERO
-            ================================================== -->
-
-            <section class="project-hero">
-
-                <p class="project-category">
-                    HYPERFRÉQUENCES & RADAR
+                <p>
+                    Caractérisation de chaque sous-ensemble RF, puis intégration dans
+                    une chaîne radar complète permettant de détecter le déplacement
+                    d'une cible grâce à sa fréquence Doppler.
                 </p>
-
-                <h1>
-                    Radar CW / Doppler RaCoVa
-                </h1>
-
-                <h2>
-                    Caractérisation modulaire et intégration d'un système radar
-                    à 2,45 GHz
-                </h2>
-
-                <p class="project-intro">
-
-                    Ce projet porte sur la caractérisation expérimentale
-                    et l'intégration progressive d'un système radar à onde
-                    continue (CW) et à effet Doppler fonctionnant à
-                    2,45 GHz.
-
-                    L'objectif était de caractériser individuellement les
-                    différents sous-ensembles hyperfréquences avant leur
-                    intégration dans une chaîne complète
-                    émetteur/récepteur, puis de détecter expérimentalement
-                    le déplacement d'une cible à partir de sa fréquence
-                    Doppler.
-
-                </p>
-
 
                 <div class="project-tags">
-
                     <span>Radar Doppler</span>
                     <span>2,45 GHz</span>
                     <span>VNA</span>
                     <span>Paramètres S</span>
                     <span>VCO</span>
                     <span>RF</span>
-
                 </div>
+            </div>
 
-            </section>
-
-
-
-            <!-- ==================================================
-                 IMAGE PRINCIPALE
-            ================================================== -->
-
-            <section class="project-main-image">
-
-                <img
-                    src="images/radar-racova/montage-global.jpg"
-                    alt="Système radar CW Doppler RaCoVa"
-                >
-
-                <p class="image-caption">
-                    Intégration globale de la chaîne radar CW / Doppler
-                </p>
-
-            </section>
+        </section>
 
 
+        <!-- ===== CARTE 2 : FONCTIONNEMENT ===== -->
+        <section class="aqua-slide aqua-card leme-split">
 
-            <!-- ==================================================
-                 01 - LE PROJET
-            ================================================== -->
-
-            <section class="project-section">
-
-                <div class="project-section-number">
-                    01 — LE PROJET
-                </div>
-
-                <h2>
-                    De la caractérisation des modules à la recette radar
-                </h2>
-
+            <div class="leme-text">
+                <p class="project-category">LE PROJET</p>
+                <h2>Du signal RF au battement Doppler</h2>
                 <p>
-
-                    Le projet a été réalisé dans le cadre des travaux
-                    pratiques de mesures hyperfréquences du Master 1
-                    Électronique / Instrumentation à l'Université Paris
-                    Nanterre durant l'année universitaire 2025-2026.
-
+                    Un VCO génère la porteuse à 2,45 GHz. Le signal réfléchi par une
+                    cible mobile est reçu, amplifié puis mélangé avec la voie de
+                    référence. Le battement Doppler obtenu est observé à l'oscilloscope.
                 </p>
+            </div>
 
-                <p>
+            <div class="leme-side">
 
-                    L'approche adoptée repose sur une caractérisation
-                    modulaire : chaque composant RF est d'abord mesuré
-                    individuellement afin de vérifier ses performances
-                    et de déterminer son comportement réel avant son
-                    intégration dans le système complet.
+                <p class="leme-label">CHAÎNE RADAR</p>
 
-                </p>
-
-                <p>
-
-                    Le système final utilise un VCO à 2,45 GHz, un
-                    coupleur directionnel, un isolateur, des
-                    amplificateurs RF, un mélangeur et deux antennes.
-                    Le signal Doppler obtenu en sortie du mélangeur est
-                    ensuite observé à l'oscilloscope.
-
-                </p>
-
-            </section>
-
-
-
-            <!-- ==================================================
-                 02 - ARCHITECTURE
-            ================================================== -->
-
-            <section class="project-section">
-
-                <div class="project-section-number">
-                    02 — ARCHITECTURE
+                <div class="leme-flow">
+                    <span class="leme-step">VCO</span>
+                    <span class="leme-arrow">→</span>
+                    <span class="leme-step">Coupleur</span>
+                    <span class="leme-arrow">→</span>
+                    <span class="leme-step">Antenne Tx</span>
+                    <span class="leme-arrow">→</span>
+                    <span class="leme-step">Cible mobile</span>
+                    <span class="leme-arrow">→</span>
+                    <span class="leme-step">Antenne Rx + LNA</span>
+                    <span class="leme-arrow">→</span>
+                    <span class="leme-step">Mélangeur</span>
+                    <span class="leme-arrow">→</span>
+                    <span class="leme-step">Oscilloscope</span>
                 </div>
 
-                <h2>
-                    Chaîne fonctionnelle du radar
-                </h2>
-
-                <p>
-
-                    Le VCO génère la porteuse RF à 2,45 GHz. Un coupleur
-                    directionnel sépare ensuite le signal en deux voies :
-                    la voie d'émission vers l'antenne Tx et la voie de
-                    référence utilisée pour générer l'oscillateur local
-                    du mélangeur.
-
-                </p>
-
-
-                <div class="architecture">
-
-                    <div class="architecture-block">
-                        VCO
-                        <br>
-                        2,45 GHz
+                <div class="leme-specs">
+                    <div class="leme-spec">
+                        <span>FRÉQUENCE</span>
+                        <strong>2,45 GHz</strong>
                     </div>
-
-                    <div class="architecture-arrow">
-                        →
+                    <div class="leme-spec">
+                        <span>SENSIBILITÉ VCO</span>
+                        <strong>95,56 MHz/V</strong>
                     </div>
-
-                    <div class="architecture-block">
-                        Coupleur
-                        <br>
-                        20 dB
+                    <div class="leme-spec">
+                        <span>GAIN AMPLIFICATEUR</span>
+                        <strong>18,3 → 19,1 dB</strong>
                     </div>
-
-                    <div class="architecture-arrow">
-                        →
+                    <div class="leme-spec">
+                        <span>FRÉQUENCE DOPPLER</span>
+                        <strong>0,31 Hz</strong>
                     </div>
-
-                    <div class="architecture-block">
-                        Isolateur
-                    </div>
-
-                    <div class="architecture-arrow">
-                        →
-                    </div>
-
-                    <div class="architecture-block">
-                        Antenne Tx
-                    </div>
-
                 </div>
-
-
-                <div class="architecture">
-
-                    <div class="architecture-block">
-                        Coupleur
-                        <br>
-                        voie LO
-                    </div>
-
-                    <div class="architecture-arrow">
-                        →
-                    </div>
-
-                    <div class="architecture-block">
-                        Amplificateur
-                        <br>
-                        ZX60-3018G+
-                    </div>
-
-                    <div class="architecture-arrow">
-                        →
-                    </div>
-
-                    <div class="architecture-block">
-                        LO
-                        <br>
-                        Mélangeur
-                    </div>
-
-                </div>
-
-
-                <div class="architecture">
-
-                    <div class="architecture-block">
-                        Cible mobile
-                    </div>
-
-                    <div class="architecture-arrow">
-                        →
-                    </div>
-
-                    <div class="architecture-block">
-                        Antenne Rx
-                    </div>
-
-                    <div class="architecture-arrow">
-                        →
-                    </div>
-
-                    <div class="architecture-block">
-                        LNA
-                    </div>
-
-                    <div class="architecture-arrow">
-                        →
-                    </div>
-
-                    <div class="architecture-block">
-                        Mélangeur
-                    </div>
-
-                    <div class="architecture-arrow">
-                        →
-                    </div>
-
-                    <div class="architecture-block">
-                        FI
-                        <br>
-                        Oscilloscope
-                    </div>
-
-                </div>
-
-            </section>
-
-
-
-            <!-- ==================================================
-                 03 - CARACTÉRISATION
-            ================================================== -->
-
-            <section class="project-section">
-
-                <div class="project-section-number">
-                    03 — CARACTÉRISATION MODULAIRE
-                </div>
-
-                <h2>
-                    Qualification des sous-ensembles hyperfréquences
-                </h2>
-
-                <div class="technical-grid">
-
-
-                    <div class="technical-card">
-
-                        <h3>
-                            Isolateur RF
-                        </h3>
-
-                        <p>
-
-                            Caractérisation de l'isolateur à ferrite
-                            JQL JIC2000T4000S1R sur la bande 2–4 GHz.
-                            Les pertes d'insertion et l'isolation inverse
-                            ont été mesurées afin de vérifier la protection
-                            de la source contre les réflexions parasites.
-
-                        </p>
-
-                    </div>
-
-
-                    <div class="technical-card">
-
-                        <h3>
-                            VCO
-                        </h3>
-
-                        <p>
-
-                            Relevé expérimental de la fréquence de sortie
-                            en fonction de la tension de commande
-                            V<sub>tune</sub>, ainsi que de la puissance
-                            disponible en sortie du ZX95-2705-S+.
-
-                        </p>
-
-                    </div>
-
-
-                    <div class="technical-card">
-
-                        <h3>
-                            Amplificateur RF
-                        </h3>
-
-                        <p>
-
-                            Caractérisation du ZX60-3018G+ avec un VNA
-                            après calibration SOLT deux ports.
-                            Les paramètres S ont été mesurés afin d'évaluer
-                            le gain, l'adaptation et l'isolation.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-
-            <!-- ==================================================
-                 04 - ISOLATEUR
-            ================================================== -->
-
-            <section class="project-section">
-
-                <div class="project-section-number">
-                    04 — ISOLATEUR RF
-                </div>
-
-                <h2>
-                    Protection de la source contre les réflexions
-                </h2>
-
-                <p>
-
-                    L'isolateur JQL a été caractérisé à l'aide d'un
-                    générateur RF et d'un powermeter. La mesure permet
-                    de vérifier que le composant introduit peu de pertes
-                    dans le sens direct tout en présentant une isolation
-                    importante dans le sens inverse.
-
-                </p>
-
-                <div class="formula">
-
-                    IL = 0,34 dB
-                    &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
-                    Isolation = 20,84 à 24,87 dB
-
-                </div>
-
-                <p>
-
-                    Les résultats obtenus respectent les performances
-                    attendues : les pertes d'insertion restent inférieures
-                    à 0,5 dB et l'isolation est supérieure à 18 dB.
-
-                </p>
-
-            </section>
-
-
-
-            <!-- ==================================================
-                 05 - VCO
-            ================================================== -->
-
-            <section class="project-section">
-
-                <div class="project-section-number">
-                    05 — VCO
-                </div>
-
-                <h2>
-                    Génération de la porteuse à 2,45 GHz
-                </h2>
-
-                <p>
-
-                    Le ZX95-2705-S+ constitue la source RF du radar.
-                    Sa fréquence de sortie est commandée par une tension
-                    V<sub>tune</sub>. Une série de mesures a permis de
-                    déterminer expérimentalement la relation entre cette
-                    tension et la fréquence générée.
-
-                </p>
-
-                <div class="formula">
-
-                    f(V<sub>tune</sub>) =
-                    f<sub>0</sub> +
-                    K<sub>v</sub>(V<sub>tune</sub> − V<sub>0</sub>)
-
-                </div>
-
-                <p>
-
-                    La pente de sensibilité mesurée est d'environ
-                    <strong>95,56 MHz/V</strong>, avec une puissance
-                    de sortie située entre 5,5 et 6,9 dBm.
-
-                </p>
-
-            </section>
-
-
-
-            <!-- ==================================================
-                 06 - AMPLIFICATEUR
-            ================================================== -->
-
-            <section class="project-section">
-
-                <div class="project-section-number">
-                    06 — AMPLIFICATEUR RF
-                </div>
-
-                <h2>
-                    Mesure des paramètres S
-                </h2>
-
-                <p>
-
-                    Le ZX60-3018G+ a été caractérisé avec un analyseur
-                    de réseau vectoriel après calibration SOLT deux ports.
-                    Les paramètres S<sub>11</sub>, S<sub>21</sub>,
-                    S<sub>22</sub> et S<sub>12</sub> ont été relevés
-                    pour vérifier le gain et les conditions d'adaptation
-                    du composant.
-
-                </p>
-
-                <div class="technical-grid">
-
-                    <div class="technical-card">
-
-                        <h3>
-                            Gain S21
-                        </h3>
-
-                        <p>
-                            Environ 18,3 à 19,1 dB
-                        </p>
-
-                    </div>
-
-
-                    <div class="technical-card">
-
-                        <h3>
-                            Adaptation entrée
-                        </h3>
-
-                        <p>
-                            S11 &lt; −19,6 dB
-                        </p>
-
-                    </div>
-
-
-                    <div class="technical-card">
-
-                        <h3>
-                            Adaptation sortie
-                        </h3>
-
-                        <p>
-                            S22 &lt; −21,5 dB
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-
-            <!-- ==================================================
-                 07 - CALIBRATION VNA
-            ================================================== -->
-
-            <section class="project-section">
-
-                <div class="project-section-number">
-                    07 — CALIBRATION ET MESURES
-                </div>
-
-                <h2>
-                    Calibration SOLT et bilan de puissance
-                </h2>
-
-                <p>
-
-                    Une calibration vectorielle SOLT
-                    (Short-Open-Load-Thru) a été réalisée avant les
-                    mesures sur le VNA. Cette étape permet de compenser
-                    l'influence des câbles et des connecteurs présents
-                    entre les ports de mesure et le dispositif sous test.
-
-                </p>
-
-                <p>
-
-                    Les bilans de puissance ont également intégré les
-                    pertes expérimentales de la chaîne RF. Les pertes
-                    cumulées de câblage et d'accessoires ont été évaluées
-                    à environ <strong>20,39 dB</strong>.
-
-                </p>
-
-                <p>
-
-                    Ces corrections étaient indispensables pour déterminer
-                    la puissance réellement disponible à chaque point
-                    de la chaîne.
-
-                </p>
-
-            </section>
-
-
-
-            <!-- ==================================================
-                 08 - INTÉGRATION
-            ================================================== -->
-
-            <section class="project-section">
-
-                <div class="project-section-number">
-                    08 — INTÉGRATION
-                </div>
-
-                <h2>
-                    Assemblage progressif de la chaîne radar
-                </h2>
-
-                <p>
-
-                    Après validation des différents modules, le système
-                    a été assemblé progressivement. Le coupleur permet
-                    de créer une voie principale d'émission et une voie
-                    de référence destinée au mélangeur.
-
-                </p>
-
-                <p>
-
-                    La voie LO est amplifiée afin d'obtenir le niveau
-                    nécessaire au port local du mélangeur. La puissance
-                    mesurée sur cette voie est d'environ
-                    <strong>5,3 dBm</strong>.
-
-                </p>
-
-                <p>
-
-                    La puissance disponible au niveau de l'antenne Tx
-                    a également été vérifiée et estimée à environ
-                    <strong>6,24 dBm</strong>.
-
-                </p>
-
-            </section>
-
-
-
-            <!-- ==================================================
-                 09 - RÉCEPTION ET DOPPLER
-            ================================================== -->
-
-            <section class="project-section">
-
-                <div class="project-section-number">
-                    09 — RÉCEPTION & EFFET DOPPLER
-                </div>
-
-                <h2>
-                    Extraction du signal de battement
-                </h2>
-
-                <p>
-
-                    Lorsqu'une cible se déplace devant le radar, le signal
-                    réfléchi est capté par l'antenne Rx puis amplifié
-                    par le LNA.
-
-                </p>
-
-                <p>
-
-                    Le signal reçu est ensuite appliqué au port RF du
-                    mélangeur, tandis que le signal de référence est
-                    appliqué à son port LO. Le mélange des deux signaux
-                    produit une composante basse fréquence correspondant
-                    au battement Doppler.
-
-                </p>
-
-                <div class="formula">
-
-                    f<sub>D</sub> =
-                    <span>
-                        2 v f<sub>0</sub> / c
-                    </span>
-
-                </div>
-
-                <p>
-
-                    Cette fréquence est directement liée à la vitesse
-                    radiale de la cible par rapport au radar.
-
-                </p>
-
-            </section>
-
-
-
-            <!-- ==================================================
-                 10 - RECETTE FINALE
-            ================================================== -->
-
-            <section class="project-section">
-
-                <div class="project-section-number">
-                    10 — RECETTE FINALE
-                </div>
-
-                <h2>
-                    Validation expérimentale du radar
-                </h2>
-
-                <p>
-
-                    Une cible mobile a été déplacée devant les antennes
-                    Tx/Rx afin de vérifier expérimentalement la présence
-                    du signal Doppler.
-
-                </p>
-
-                <p>
-
-                    Pour une vitesse radiale expérimentale de
-                    <strong>0,019 m/s</strong>, correspondant à un
-                    déplacement de 39,5 cm en 20 secondes, la fréquence
-                    Doppler théorique est d'environ
-                    <strong>0,31 Hz</strong>.
-
-                </p>
-
-                <p>
-
-                    La période correspondante est d'environ
-                    <strong>3,2 secondes</strong>, valeur retrouvée
-                    expérimentalement sur l'oscilloscope.
-
-                </p>
-
-            </section>
-
-
-
-            <!-- ==================================================
-                 11 - RÉSULTATS
-            ================================================== -->
-
-            <section class="project-section">
-
-                <div class="project-section-number">
-                    11 — RÉSULTATS
-                </div>
-
-                <h2>
-                    Principales performances mesurées
-                </h2>
-
-                <div class="results-grid">
-
-
-                    <div class="result-card">
-
-                        <div class="result-value">
-                            0,34 dB
-                        </div>
-
-                        <div class="result-label">
-                            Pertes d'insertion mesurées
-                            sur l'isolateur RF
-                        </div>
-
-                    </div>
-
-
-                    <div class="result-card">
-
-                        <div class="result-value">
-                            95,56 MHz/V
-                        </div>
-
-                        <div class="result-label">
-                            Sensibilité expérimentale
-                            du VCO
-                        </div>
-
-                    </div>
-
-
-                    <div class="result-card">
-
-                        <div class="result-value">
-                            18,3–19,1 dB
-                        </div>
-
-                        <div class="result-label">
-                            Gain S21 mesuré
-                            sur l'amplificateur RF
-                        </div>
-
-                    </div>
-
-
-                    <div class="result-card">
-
-                        <div class="result-value">
-                            5,3 dBm
-                        </div>
-
-                        <div class="result-label">
-                            Puissance LO appliquée
-                            au mélangeur
-                        </div>
-
-                    </div>
-
-
-                    <div class="result-card">
-
-                        <div class="result-value">
-                            0,31 Hz
-                        </div>
-
-                        <div class="result-label">
-                            Fréquence Doppler calculée
-                            pour la cible mobile
-                        </div>
-
-                    </div>
-
-
-                    <div class="result-card">
-
-                        <div class="result-value">
-                            3,2 s
-                        </div>
-
-                        <div class="result-label">
-                            Période observée
-                            expérimentalement
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-
-            <!-- ==================================================
-                 12 - DIFFICULTÉS
-            ================================================== -->
-
-            <section class="project-section">
-
-                <div class="project-section-number">
-                    12 — DIFFICULTÉS & LIMITATIONS
-                </div>
-
-                <h2>
-                    Contraintes rencontrées
-                </h2>
-
-                <ul class="project-list">
-
-                    <li>
-                        Échauffement thermique du premier module VCO
-                        provoquant une dérive en fréquence et nécessitant
-                        son remplacement.
-                    </li>
-
-                    <li>
-                        Pertes importantes liées au câblage et aux
-                        accessoires RF, atteignant environ 20,39 dB,
-                        nécessitant une compensation dans les bilans.
-                    </li>
-
-                    <li>
-                        Nécessité d'utiliser des atténuateurs et des
-                        DC blocks afin de protéger les ports des
-                        instruments de mesure.
-                    </li>
-
-                    <li>
-                        Sensibilité des mesures hyperfréquences à la
-                        qualité des connexions, aux câbles et aux
-                        conditions de calibration.
-                    </li>
-
-                </ul>
-
-            </section>
-
-
-
-            <!-- ==================================================
-                 13 - PERSPECTIVES
-            ================================================== -->
-
-            <section class="project-section">
-
-                <div class="project-section-number">
-                    13 — PERSPECTIVES
-                </div>
-
-                <h2>
-                    Vers une mesure Doppler automatisée
-                </h2>
-
-                <p>
-
-                    Une évolution naturelle du système consiste à
-                    numériser directement le signal de fréquence
-                    intermédiaire afin d'automatiser l'extraction de
-                    la fréquence Doppler.
-
-                </p>
-
-                <p>
-
-                    Un microcontrôleur ou un DSP pourrait effectuer
-                    une FFT sur le signal FI afin d'obtenir
-                    automatiquement la fréquence dominante et d'en
-                    déduire la vitesse de la cible.
-
-                </p>
-
-                <p>
-
-                    Une architecture I/Q pourrait également être ajoutée
-                    afin d'obtenir des informations supplémentaires sur
-                    le sens de déplacement de la cible.
-
-                </p>
-
-            </section>
-
-
-
-            <!-- ==================================================
-                 14 - COMPÉTENCES
-            ================================================== -->
-
-            <section class="project-section">
-
-                <div class="project-section-number">
-                    14 — COMPÉTENCES MOBILISÉES
-                </div>
-
-                <h2>
-                    Compétences techniques
-                </h2>
-
-                <div class="technical-grid">
-
-
-                    <div class="technical-card">
-
-                        <h3>
-                            Hyperfréquences
-                        </h3>
-
-                        <p>
-                            Chaînes RF, VCO, coupleurs, isolateurs,
-                            amplificateurs, LNA, mélangeurs et antennes.
-                        </p>
-
-                    </div>
-
-
-                    <div class="technical-card">
-
-                        <h3>
-                            Instrumentation RF
-                        </h3>
-
-                        <p>
-                            VNA, analyseur de spectre, powermeter,
-                            générateur RF et oscilloscope.
-                        </p>
-
-                    </div>
-
-
-                    <div class="technical-card">
-
-                        <h3>
-                            Analyse expérimentale
-                        </h3>
-
-                        <p>
-                            Calibration SOLT, paramètres S,
-                            bilans de puissance, correction des pertes
-                            et analyse des écarts.
-                        </p>
-
-                    </div>
-
-
-                    <div class="technical-card">
-
-                        <h3>
-                            Effet Doppler
-                        </h3>
-
-                        <p>
-                            Relation vitesse/fréquence Doppler,
-                            détection du battement et validation
-                            expérimentale.
-                        </p>
-
-                    </div>
-
-
-                    <div class="technical-card">
-
-                        <h3>
-                            Traitement de données
-                        </h3>
-
-                        <p>
-                            Exploitation des mesures, modélisation
-                            des courbes et analyse sous Excel.
-                        </p>
-
-                    </div>
-
-
-                    <div class="technical-card">
-
-                        <h3>
-                            Intégration système
-                        </h3>
-
-                        <p>
-                            Assemblage progressif, vérification des
-                            niveaux RF et validation de la chaîne complète.
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-
-            <!-- ==================================================
-                 15 - GALERIE
-            ================================================== -->
-
-            <section class="project-section">
-
-                <div class="project-section-number">
-                    15 — GALERIE
-                </div>
-
-                <h2>
-                    Bancs de mesure et résultats expérimentaux
-                </h2>
-
-                <div class="project-gallery">
-
-                    <img
-                        src="images/radar-racova/banc-vna.jpg"
-                        alt="Calibration du VNA"
-                    >
-
-                    <img
-                        src="images/radar-racova/mesure-vco.jpg"
-                        alt="Caractérisation du VCO"
-                    >
-
-                    <img
-                        src="images/radar-racova/parametres-s.jpg"
-                        alt="Mesure des paramètres S"
-                    >
-
-                    <img
-                        src="images/radar-racova/analyseur-spectre.jpg"
-                        alt="Mesure avec analyseur de spectre"
-                    >
-
-                    <img
-                        src="images/radar-racova/chaine-radar.jpg"
-                        alt="Chaîne radar intégrée"
-                    >
-
-                    <img
-                        src="images/radar-racova/signal-doppler.jpg"
-                        alt="Signal Doppler observé à l'oscilloscope"
-                    >
-
-                </div>
-
-            </section>
-
-
-
-            <!-- ==================================================
-                 16 - RESSOURCES
-            ================================================== -->
-
-            <section class="project-section">
-
-                <div class="project-section-number">
-                    16 — RESSOURCES
-                </div>
-
-                <h2>
-                    Documentation du projet
-                </h2>
-
-                <p>
-
-                    Le rapport présente les étapes de caractérisation
-                    des composants, les calibrations, les mesures des
-                    paramètres S, les bilans de puissance et la recette
-                    finale du radar Doppler.
-
-                </p>
-
-                <div class="project-resources">
-
-                    <a
-                        href="documents/rapport-radar-racova.pdf"
-                        class="resource-link"
-                        target="_blank"
-                    >
-                        Voir le rapport PDF →
-                    </a>
-
-                    <a
-                        href="#"
-                        class="resource-link"
-                        target="_blank"
-                    >
-                        GitHub →
-                    </a>
-
-                </div>
-
-            </section>
-
-
-
-            <!-- ==================================================
-                 FIN
-            ================================================== -->
-
-            <div class="project-end">
-
-                <a href="index.html#projets" class="back-link">
-                    ← Retour aux projets
-                </a>
 
             </div>
 
+        </section>
 
-        </div>
+
+        <!-- ===== CARTE 3 : MONTAGE ET RÉSULTATS ===== -->
+        <section class="aqua-slide aqua-card">
+
+            <p class="project-category">MONTAGE &amp; RÉSULTATS</p>
+            <h2 class="leme-title">Des mesures de modules à la recette radar</h2>
+
+            <div class="leme-gallery">
+
+                <figure>
+                    <img src="images/radar-racova/banc-vna.jpg" alt="Calibration du VNA">
+                    <figcaption>Calibration du VNA</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="images/radar-racova/mesure-vco.jpg" alt="Caractérisation du VCO">
+                    <figcaption>Caractérisation du VCO</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="images/radar-racova/parametres-s.jpg" alt="Mesure des paramètres S">
+                    <figcaption>Mesure des paramètres S</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="images/radar-racova/analyseur-spectre.jpg" alt="Mesure avec analyseur de spectre">
+                    <figcaption>Mesure à l'analyseur de spectre</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="images/radar-racova/chaine-radar.jpg" alt="Chaîne radar intégrée">
+                    <figcaption>Chaîne radar intégrée</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="images/radar-racova/signal-doppler.jpg" alt="Signal Doppler observé à l'oscilloscope">
+                    <figcaption>Signal Doppler à l'oscilloscope</figcaption>
+                </figure>
+
+            </div>
+
+        </section>
+
+
+        <!-- ===== CARTE 4 : CODE ===== -->
+        <section class="aqua-slide aqua-card">
+
+            <p class="project-category">CODE &amp; DOCUMENTATION</p>
+
+            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+                <h2 class="leme-title" style="margin:0;">Extraits du code</h2>
+
+                <!-- Remplace le # par le lien de ton GitHub -->
+                <a href="#" class="leme-btn" target="_blank">Voir le code sur GitHub →</a>
+            </div>
+
+        </section>
+
+        <nav class="project-nav">
+    <a href="antennas-hfss.html" class="project-nav-btn">
+        <span>← PROJET PRÉCÉDENT</span>
+        <strong> Antennes patch et réseaux 2 2</strong>
+    </a>
+</nav>
 
     </main>
 
-
 </body>
-
 </html>
