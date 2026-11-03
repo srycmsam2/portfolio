@@ -1,10 +1,408 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Horloge numérique FPGA — Sara Messaoudi</title>
+
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =========================================================
+           PAGE HORLOGE NUMÉRIQUE — tout le style est ici, rien à ajouter
+           dans style.css
+        ========================================================= */
+
+        body {
+            background-color: #eaf4f8;
+            background-image:
+                radial-gradient(circle at 0% 25%, rgba(190, 232, 220, 0.55) 0, transparent 28%),
+                radial-gradient(circle at 100% 15%, rgba(205, 225, 240, 0.7) 0, transparent 30%),
+                radial-gradient(circle at 100% 65%, rgba(205, 225, 240, 0.6) 0, transparent 28%),
+                url("images/background-portfolio.png");
+            background-size: auto, auto, auto, cover;
+            background-attachment: fixed;
+        }
+
+        /* Page plus étroite : moins "énorme" sur grand écran */
+        .container.leme-page {
+            max-width: 1040px;
+        }
+
+        /* Cartes */
+
+        .proj-card {
+            margin-bottom: 14px;
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 18px;
+            box-shadow: 0 8px 24px rgba(48, 91, 120, 0.08);
+            color: #182431;
+        }
+
+        .proj-category {
+            color: #4f86ad;
+            font-size: 0.66rem;
+            letter-spacing: 0.15em;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .proj-card h1,
+        .proj-card h2 {
+            color: #0c3a57;
+        }
+
+        .proj-title {
+            font-size: 18px;
+            line-height: 1.2;
+            margin: 2px 0 8px;
+        }
+
+        .proj-card p {
+            color: #5d7284;
+            font-size: 13px;
+            line-height: 1.55;
+            margin-bottom: 8px;
+        }
+
+        .proj-card strong {
+            color: #0c3a57;
+        }
+
+        /* =========================
+           CARTE 1 : PRÉSENTATION (compacte)
+        ========================= */
+
+        .proj-intro {
+            display: grid;
+            grid-template-columns: 0.7fr 1.3fr;
+            gap: 22px;
+            align-items: center;
+        }
+
+        .proj-intro-image img {
+            width: 100%;
+            height: auto;
+            max-height: 190px;
+            object-fit: contain;            /* image entière, sans recadrage */
+            display: block;
+            border-radius: 12px;
+            background: #f3f8fb;
+        }
+
+        .proj-intro .proj-category {
+            margin-bottom: 4px;
+        }
+
+        .proj-intro h1 {
+            font-size: clamp(22px, 2.5vw, 28px);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin: 2px 0 6px;
+        }
+
+        .proj-intro h2 {
+            font-size: 14px;
+            line-height: 1.4;
+            font-weight: 500;
+            color: #12364d;
+            margin-bottom: 8px;
+        }
+
+        .proj-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .proj-tags span {
+            padding: 4px 9px;
+            border-radius: 20px;
+            font-size: 11px;
+            background: #e5f5f2;
+            border: 1px solid #b9e5dc;
+            color: #245e60;
+        }
+
+        .proj-tags span:nth-child(even) {
+            background: #e5f2ff;
+            border-color: #c2e0f7;
+            color: #214f75;
+        }
+
+        .proj-meta {
+            font-size: 12px !important;
+            margin-top: 10px;
+            margin-bottom: 0 !important;
+        }
+
+        /* =========================
+           TEXTE À GAUCHE / SCHÉMAS À DROITE
+        ========================= */
+
+        .proj-split {
+            display: grid;
+            grid-template-columns: 0.7fr 1.3fr;
+            align-items: start;
+        }
+
+        .proj-text {
+            padding-right: 22px;
+            border-right: 1px solid #dfe9ef;
+        }
+
+        .proj-side {
+            padding-left: 22px;
+            min-width: 0;
+        }
+
+        .proj-specs {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            background: linear-gradient(135deg, #eaf6f4, #eef6fb);
+            border: 1px solid #d5ebe8;
+            border-radius: 14px;
+            padding: 9px 12px;
+        }
+
+        .proj-spec {
+            text-align: center;
+            padding: 0 6px;
+            border-right: 1px solid #d3e4ea;
+        }
+
+        .proj-spec:last-child {
+            border-right: none;
+        }
+
+        .proj-spec span {
+            display: block;
+            font-size: 9.5px;
+            letter-spacing: 0.12em;
+            font-weight: 700;
+            color: #4f86ad;
+            margin-bottom: 4px;
+        }
+
+        .proj-spec strong {
+            font-size: 13px;
+            color: #0c3a57;
+        }
+
+        .proj-spec small {
+            display: block;
+            margin-top: 3px;
+            font-size: 11px;
+            line-height: 1.35;
+            color: #5d7284;
+        }
+
+        /* =========================
+           GALERIES
+        ========================= */
+
+        .proj-gallery {
+            display: grid;
+            gap: 12px;
+        }
+
+        .proj-gallery-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .proj-gallery-4 {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .proj-gallery figure {
+            margin: 0;
+            min-width: 0;
+        }
+
+        .proj-gallery img {
+            width: 100%;
+            height: auto;
+            max-height: 190px;
+            object-fit: contain;            /* image entière, sans recadrage */
+            display: block;
+            border-radius: 10px;
+            background: #fff;
+            border: 1px solid #dfe9ef;
+        }
+
+        .proj-gallery figcaption {
+            font-size: 11.5px;
+            line-height: 1.4;
+            color: #5d7284;
+            margin-top: 6px;
+        }
+
+        .proj-video {
+            width: 100%;
+            max-height: 230px;
+            display: block;
+            border-radius: 12px;
+            background: #000;
+        }
+
+        .proj-note {
+            font-size: 11.5px !important;
+            line-height: 1.4 !important;
+            margin: 6px 0 0 !important;
+        }
+
+        .proj-figure img {
+            width: 100%;
+            height: auto;
+            max-height: 250px;
+            object-fit: contain;
+            display: block;
+            border-radius: 12px;
+            background: #fff;
+            border: 1px solid #dfe9ef;
+        }
+
+        /* =========================
+           LISTES / DEUX COLONNES
+        ========================= */
+
+        .proj-two {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            align-items: start;
+        }
+
+        .proj-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .proj-list li {
+            position: relative;
+            padding: 5px 0 5px 18px;
+            color: #5d7284;
+            font-size: 12.5px;
+            line-height: 1.5;
+            border-bottom: 1px solid #e3edf2;
+        }
+
+        .proj-list li:last-child {
+            border-bottom: none;
+        }
+
+        .proj-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 11px;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #7fc8b8;
+        }
+
+        .proj-list li:nth-child(even)::before {
+            background: #7fb6e3;
+        }
+
+        /* Démonstration + Comportement attendu : côte à côte */
+        .proj-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 14px;
+            align-items: stretch;
+        }
+
+        .proj-row .proj-card {
+            margin-bottom: 0;
+            min-width: 0;
+        }
+
+        .proj-row .proj-two {
+            grid-template-columns: 1fr;
+            gap: 14px;
+        }
+
+        .proj-row .proj-video {
+            max-height: 240px;
+        }
+
+        .proj-row .proj-figure img {
+            max-height: 300px;
+        }
+
+        .proj-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 30px;
+            background: #e1f2ff;
+            border: 1px solid #b9dff5;
+            color: #193753;
+            font-size: 13px;
+            transition: 0.25s ease;
+        }
+
+        .proj-btn:hover {
+            background: #cce9fb;
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           TÉLÉPHONE ET TABLETTE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            .proj-intro,
+            .proj-split,
+            .proj-two {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .proj-intro-image img {
+                max-height: 220px;
+            }
+
+            .proj-text {
+                padding-right: 0;
+                border-right: none;
+            }
+
+            .proj-side {
+                padding-left: 0;
+            }
+
+            .proj-specs {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 14px 0;
+            }
+
+            .proj-spec:nth-child(2n) {
+                border-right: none;
+            }
+
+            .proj-row {
+                grid-template-columns: 1fr;
+            }
+
+            .proj-gallery-4 {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .proj-gallery img,
+            .proj-figure img {
+                max-height: none;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -12,165 +410,177 @@
     <main class="container leme-page">
 
         <div class="project-topbar">
-    <a href="index.html#projet-08" class="project-back">← Retour aux projets</a>
+            <a href="index.html#projet-08" class="project-back">← Retour aux projets</a>
 
-    <a href="antennas-hfss.html" class="project-nav-btn project-nav-next">
-        <span>PROJET SUIVANT →</span>
-        <strong>Antennes patch et réseaux 2 2</strong>
-    </a>
-</div>
+            <a href="antennas-hfss.html" class="project-nav-btn project-nav-next">
+                <span>PROJET SUIVANT →</span>
+                <strong>Antennes patch et réseaux 2×2</strong>
+            </a>
+        </div>
 
-        <!-- ===== CARTE 1 : PRÉSENTATION ===== -->
-        <section class="aqua-slide aqua-card aqua-intro">
 
-            <div class="aqua-intro-image">
-                <img src="images/digital-clock/fpga-horloge.jpg" alt="Horloge numérique VHDL sur carte FPGA">
+        <!-- ===== CARTE 1 : PRÉSENTATION (compacte) ===== -->
+        <section class="proj-card proj-intro">
+
+            <div class="proj-intro-image">
+                <!-- PHOTO : fpga-horloge.jpg -->
+                <img src="images/digital-clock/fpga-horloge.jpg" alt="Horloge numérique VHDL affichée sur la carte FPGA">
             </div>
 
-            <div class="aqua-intro-text">
-                <p class="project-category">FPGA · VHDL · MASTER 1 INSTRUMENTATION</p>
+            <div>
+                <p class="proj-category">FPGA · VHDL · MASTER 1 INSTRUMENTATION</p>
                 <h1>Horloge numérique</h1>
-                <h2>Horloge 24 heures en VHDL avec afficheurs 7 segments sur FPGA Xilinx</h2>
+                <h2>Horloge en VHDL avec afficheurs 7 segments sur carte FPGA</h2>
 
                 <p>
-                    Conception, simulation et synthèse d'une horloge numérique en VHDL.
-                    Un diviseur ramène l'horloge système de 50 MHz à 1 Hz, des compteurs
-                    BCD en cascade comptent le temps et un multiplexage pilote les
-                    afficheurs.
+                    <strong>Objectif :</strong> concevoir une horloge numérique affichée sur des
+                    afficheurs 7 segments et la tester sur une carte FPGA.<br>
+                    <strong>Réalisé :</strong> description du circuit en VHDL, synthèse sous
+                    Xilinx ISE et implémentation sur la carte.
                 </p>
 
-                <div class="project-tags">
+                <div class="proj-tags">
                     <span>VHDL</span>
                     <span>FPGA</span>
                     <span>Xilinx ISE</span>
-                    <span>RTL</span>
                     <span>Compteurs BCD</span>
                     <span>7 segments</span>
                     <span>Multiplexage</span>
                 </div>
+
+                <p class="proj-meta">
+                    <strong>USTHB</strong> · Projet FPGA, Master 1 Instrumentation · Projet en binôme
+                </p>
             </div>
 
         </section>
 
 
         <!-- ===== CARTE 2 : FONCTIONNEMENT ===== -->
-        <section class="aqua-slide aqua-card leme-split">
+        <section class="proj-card">
 
-            <div class="leme-text">
-                <p class="project-category">LE PROJET</p>
-                <h2>Du code VHDL à l'affichage</h2>
-                <p>
-                    L'horloge de 50 MHz est divisée pour obtenir une base de temps de
-                    1 Hz qui fait avancer les compteurs des secondes, minutes et heures.
-                    Chaque digit est décodé en 7 segments, puis affiché sur quatre
-                    afficheurs par multiplexage temporel.
-                </p>
-            </div>
+            <div class="proj-split">
 
-            <div class="leme-side">
-
-                <p class="leme-label">ARCHITECTURE</p>
-
-                <div class="leme-flow">
-                    <span class="leme-step">Horloge 50 MHz</span>
-                    <span class="leme-arrow">→</span>
-                    <span class="leme-step">Diviseur 1 Hz</span>
-                    <span class="leme-arrow">→</span>
-                    <span class="leme-step">Compteurs BCD</span>
-                    <span class="leme-arrow">→</span>
-                    <span class="leme-step">Décodeur 7 segments</span>
-                    <span class="leme-arrow">→</span>
-                    <span class="leme-step">Multiplexage</span>
-                    <span class="leme-arrow">→</span>
-                    <span class="leme-step">4 afficheurs</span>
+                <div class="proj-text">
+                    <p class="proj-category">FONCTIONNEMENT</p>
+                    <h2 class="proj-title">Du code VHDL à l'affichage</h2>
+                    <p>
+                        <strong>1.</strong> Un compteur divise l'horloge de 50 MHz pour obtenir un
+                        signal de 1 Hz.<br>
+                        <strong>2.</strong> Des compteurs BCD en cascade comptent les secondes, les
+                        minutes et les heures.<br>
+                        <strong>3.</strong> Un décodeur 7 segments et un multiplexage des anodes
+                        affichent les chiffres sur 4 afficheurs. L'entrée <em>hour</em> choisit
+                        l'affichage minutes/secondes ou heures/minutes.
+                    </p>
                 </div>
 
-                <div class="leme-specs">
-                    <div class="leme-spec">
-                        <span>HORLOGE</span>
-                        <strong>50 MHz</strong>
-                    </div>
-                    <div class="leme-spec">
-                        <span>BASE DE TEMPS</span>
-                        <strong>1 Hz</strong>
-                    </div>
-                    <div class="leme-spec">
-                        <span>FORMAT</span>
-                        <strong>24 heures</strong>
-                    </div>
-                    <div class="leme-spec">
-                        <span>AFFICHAGE</span>
-                        <strong>4 × 7 segments</strong>
+                <div class="proj-side">
+                    <div class="proj-gallery proj-gallery-2">
+
+                        <figure>
+                            <!-- SCHÉMA : organigramme.png -->
+                            <img src="images/digital-clock/organigramme.png" alt="Organigramme du comptage : secondes, minutes, heures">
+                            <figcaption>Comptage : 60 s → minute, 60 min → heure</figcaption>
+                        </figure>
+
+                        <figure>
+                            <!-- SCHÉMA : multiplexage.jpg -->
+                            <img src="images/digital-clock/multiplexage.jpg" alt="Schéma du multiplexage : compteur, décodeur 7 segments, décodeur 2:4 et 4 afficheurs">
+                            <figcaption>Multiplexage : compteur, décodeur 7 segments, décodeur 2:4</figcaption>
+                        </figure>
+
                     </div>
                 </div>
 
             </div>
 
+            <div class="proj-specs" style="margin-top:12px;">
+                <div class="proj-spec">
+                    <span>ENTRÉES</span>
+                    <strong>clk · reset · hour</strong>
+                </div>
+                <div class="proj-spec">
+                    <span>SORTIES</span>
+                    <strong>anode · segments</strong>
+                </div>
+                <div class="proj-spec">
+                    <span>BASE DE TEMPS</span>
+                    <strong>50 MHz → 1 Hz</strong>
+                </div>
+                <div class="proj-spec">
+                    <span>AFFICHAGE</span>
+                    <strong>4 × 7 segments</strong>
+                </div>
+            </div>
+
         </section>
 
 
-        <!-- ===== CARTE 3 : MONTAGE ET RÉSULTATS ===== -->
-        <section class="aqua-slide aqua-card">
+        <!-- ===== RANGÉE : DÉMONSTRATION + COMPORTEMENT ATTENDU (côte à côte) ===== -->
+        <div class="proj-row">
 
-            <p class="project-category">SIMULATION &amp; RÉSULTATS</p>
-            <h2 class="leme-title">De la synthèse à l'implémentation</h2>
+        <!-- ===== CARTE 3 : DÉMONSTRATION ET CODE ===== -->
+        <section class="proj-card">
 
-            <div class="leme-gallery">
+            <p class="proj-category">DÉMONSTRATION &amp; CODE</p>
 
-                <figure>
-                    <img src="images/digital-clock/bloc-vhdl.jpg" alt="Schéma bloc du composant VHDL">
-                    <figcaption>Architecture du composant VHDL</figcaption>
-                </figure>
+            <div class="proj-two">
 
-                <figure>
-                    <img src="images/digital-clock/rtl-schematic.jpg" alt="Schéma RTL de l'horloge numérique">
-                    <figcaption>Schéma RTL généré par Xilinx ISE</figcaption>
-                </figure>
+                <div>
+                    <!-- VIDÉO : demo-horloge.mp4 (mets ta vidéo dans images/digital-clock/) -->
+                    <video class="proj-video" controls muted playsinline preload="metadata"
+                           poster="images/digital-clock/fpga-horloge.jpg">
+                        <source src="images/digital-clock/Video-Project.mp4" type="video/mp4">
+                        Votre navigateur ne peut pas lire cette vidéo.
+                    </video>
+                    <p class="proj-note">L'horloge en fonctionnement sur la carte FPGA.</p>
+                </div>
 
-                <figure>
-                    <img src="images/digital-clock/simulation.jpg" alt="Chronogramme de simulation VHDL">
-                    <figcaption>Chronogramme de simulation</figcaption>
-                </figure>
+                <div>
+                    <ul class="proj-list">
+                        <li><strong>Base de temps :</strong> un compteur inverse un signal interne toutes les 25 000 000 périodes de l'horloge 50 MHz, ce qui donne 1 Hz.</li>
+                        <li><strong>Comptage :</strong> 6 chiffres BCD en cascade (secondes, minutes, heures), remis à zéro par <em>reset</em>.</li>
+                        <li><strong>Affichage :</strong> table de conversion chiffre → 7 segments, et un diviseur interne qui choisit l'afficheur actif.</li>
+                    </ul>
 
-                <figure>
-                    <img src="images/digital-clock/multiplexage.jpg" alt="Schéma du multiplexage des afficheurs">
-                    <figcaption>Principe du multiplexage</figcaption>
-                </figure>
+                    <p style="margin-top:10px;">
+                        Fichier source : <strong>digital_clock.vhd</strong>
+                    </p>
 
-                <figure>
-                    <img src="images/digital-clock/fpga-board.jpg" alt="Carte FPGA utilisée pour le projet">
-                    <figcaption>Carte FPGA utilisée</figcaption>
-                </figure>
-
-                <figure>
-                    <img src="images/digital-clock/affichage-7segments.jpg" alt="Affichage de l'horloge sur afficheurs 7 segments">
-                    <figcaption>Affichage sur les 7 segments</figcaption>
-                </figure>
+                    <!-- Remplace le # par le lien de ton GitHub -->
+                    <a href="#" class="proj-btn" target="_blank">Voir le code sur GitHub →</a>
+                </div>
 
             </div>
 
         </section>
 
 
-        <!-- ===== CARTE 4 : CODE ===== -->
-        <section class="aqua-slide aqua-card">
+        <!-- ===== CARTE 4 : COMPORTEMENT ATTENDU ===== -->
+        <section class="proj-card">
 
-            <p class="project-category">CODE &amp; DOCUMENTATION</p>
+            <p class="proj-category">COMPORTEMENT ATTENDU</p>
 
-            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
-                <h2 class="leme-title" style="margin:0;">Extraits du code</h2>
-
-                <!-- Remplace le # par le lien de ton GitHub -->
-                <a href="#" class="leme-btn" target="_blank">Voir le code sur GitHub →</a>
-            </div>
+            <figure class="proj-figure" style="margin:0;">
+                <!-- IMAGE : chronogramme-attendu.png -->
+                <img src="images/digital-clock/chronogramme-attendu.png" alt="Chronogramme théorique : multiplexage des afficheurs et comptage des secondes">
+                <figcaption class="proj-note" style="color:#5d7284;">
+                    Chronogramme théorique tracé à partir du code VHDL : en haut, les 4 afficheurs
+                    s'allument à tour de rôle ; en bas, une impulsion de clk1 par seconde fait avancer le compteur.
+                </figcaption>
+            </figure>
 
         </section>
-<div class="project-nav">
-    <a href="bioimpedance.html" class="project-nav-btn project-nav-prev">
-        <span>← PROJET PRÉCÉDENT</span>
-        <strong>Système de mesure d'impédance</strong>
-    </a>
-</div>
+
+        </div>
+
+        <div class="project-nav">
+            <a href="bioimpedance.html" class="project-nav-btn project-nav-prev">
+                <span>← PROJET PRÉCÉDENT</span>
+                <strong>Système de mesure d'impédance</strong>
+            </a>
+        </div>
 
     </main>
 

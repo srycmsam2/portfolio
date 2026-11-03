@@ -1,10 +1,461 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bio-impédance 4 électrodes — Sara Messaoudi</title>
+
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =========================================================
+           PAGE BIO-IMPÉDANCE — tout le style est ici, rien à ajouter
+           dans style.css
+        ========================================================= */
+
+        body {
+            background-color: #eaf4f8;
+            background-image:
+                radial-gradient(circle at 0% 25%, rgba(190, 232, 220, 0.55) 0, transparent 28%),
+                radial-gradient(circle at 100% 15%, rgba(205, 225, 240, 0.7) 0, transparent 30%),
+                radial-gradient(circle at 100% 65%, rgba(205, 225, 240, 0.6) 0, transparent 28%),
+                url("images/background-portfolio.png");
+            background-size: auto, auto, auto, cover;
+            background-attachment: fixed;
+        }
+
+        /* Cartes */
+
+        .proj-card {
+            margin-bottom: 18px;
+            padding: 22px 26px;
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 24px;
+            box-shadow: 0 12px 35px rgba(48, 91, 120, 0.09);
+            color: #182431;
+        }
+
+        .proj-category {
+            color: #4f86ad;
+            font-size: 0.72rem;
+            letter-spacing: 0.17em;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .proj-card h1,
+        .proj-card h2 {
+            color: #0c3a57;
+        }
+
+        .proj-title {
+            font-size: 22px;
+            line-height: 1.2;
+            margin: 4px 0 10px;
+        }
+
+        .proj-card p {
+            color: #5d7284;
+            font-size: 14.5px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        /* =========================
+           CARTE 1 : PRÉSENTATION (compacte)
+        ========================= */
+
+        .proj-intro {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 28px;
+            align-items: center;
+            padding: 22px 26px;
+        }
+
+        .proj-intro-image img {
+            width: 100%;
+            height: auto;
+            max-height: 260px;
+            object-fit: contain;            /* image entière, sans recadrage */
+            display: block;
+            border-radius: 16px;
+            background: #f3f8fb;
+        }
+
+        .proj-intro .proj-category {
+            margin-bottom: 6px;
+        }
+
+        .proj-intro h1 {
+            font-size: clamp(26px, 3vw, 36px);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin: 4px 0 8px;
+        }
+
+        .proj-intro h2 {
+            font-size: 16px;
+            line-height: 1.4;
+            font-weight: 500;
+            color: #12364d;
+            margin-bottom: 10px;
+        }
+
+        .proj-intro p {
+            font-size: 14.5px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .proj-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 12px;
+        }
+
+        .proj-tags span {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            background: #e5f5f2;
+            border: 1px solid #b9e5dc;
+            color: #245e60;
+        }
+
+        .proj-tags span:nth-child(even) {
+            background: #e5f2ff;
+            border-color: #c2e0f7;
+            color: #214f75;
+        }
+
+        .proj-meta {
+            font-size: 13px;
+            color: #5d7284;
+            margin-top: 12px;
+            line-height: 1.5;
+        }
+
+        .proj-meta strong {
+            color: #0c3a57;
+            font-weight: 600;
+        }
+
+        /* =========================
+           CARTES AVEC TEXTE À GAUCHE / CONTENU À DROITE
+        ========================= */
+
+        .proj-split {
+            display: grid;
+            grid-template-columns: 0.75fr 1.25fr;
+            align-items: start;
+        }
+
+        .proj-split-wide {
+            grid-template-columns: 0.6fr 1.4fr;   /* plus de place pour le schéma */
+        }
+
+        .proj-text {
+            padding-right: 30px;
+            border-right: 1px solid #dfe9ef;
+        }
+
+        .proj-side {
+            padding-left: 28px;
+            min-width: 0;
+        }
+
+        .proj-flow {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+
+        .proj-step {
+            padding: 7px 13px;
+            border-radius: 20px;
+            font-size: 12.5px;
+            background: #e5f5f2;
+            border: 1px solid #b9e5dc;
+            color: #245e60;
+        }
+
+        .proj-step:nth-of-type(even) {
+            background: #e5f2ff;
+            border-color: #c2e0f7;
+            color: #214f75;
+        }
+
+        .proj-arrow {
+            color: #7aa6c2;
+            font-size: 15px;
+            font-style: normal;
+        }
+
+        .proj-specs {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            background: linear-gradient(135deg, #eaf6f4, #eef6fb);
+            border: 1px solid #d5ebe8;
+            border-radius: 18px;
+            padding: 12px 16px;
+        }
+
+        .proj-spec {
+            text-align: center;
+            padding: 0 6px;
+            border-right: 1px solid #d3e4ea;
+        }
+
+        .proj-spec:last-child {
+            border-right: none;
+        }
+
+        .proj-spec span {
+            display: block;
+            font-size: 10.5px;
+            letter-spacing: 0.12em;
+            font-weight: 700;
+            color: #4f86ad;
+            margin-bottom: 6px;
+        }
+
+        .proj-spec strong {
+            font-size: 16px;
+            color: #0c3a57;
+        }
+
+        .proj-spec small {
+            display: block;
+            margin-top: 4px;
+            font-size: 11.5px;
+            line-height: 1.35;
+            color: #5d7284;
+        }
+
+        .proj-figure {
+            margin: 0;
+        }
+
+        .proj-figure img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 14px;
+            background: #fff;
+            border: 1px solid #dfe9ef;
+        }
+
+        .proj-figure figcaption {
+            font-size: 12.5px;
+            line-height: 1.4;
+            color: #5d7284;
+            margin-top: 8px;
+        }
+
+        /* =========================
+           GALERIES
+        ========================= */
+
+        .proj-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .proj-gallery figure {
+            margin: 0;
+            min-width: 0;
+        }
+
+        .proj-gallery img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 4 / 3;
+            object-fit: contain;            /* image entière, sans recadrage */
+            display: block;
+            border-radius: 12px;
+            background: #f3f8fb;
+            border: 1px solid #dfe9ef;
+        }
+
+        .proj-gallery figcaption {
+            font-size: 12.5px;
+            line-height: 1.4;
+            color: #5d7284;
+            margin-top: 8px;
+        }
+
+        .proj-gallery-4 {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .proj-gallery-4 img {
+            height: auto;
+        }
+
+        /* =========================
+           LISTES / DEUX COLONNES
+        ========================= */
+
+        .proj-two {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .proj-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .proj-list li {
+            position: relative;
+            padding: 6px 0 6px 20px;
+            color: #5d7284;
+            font-size: 14px;
+            line-height: 1.5;
+            border-bottom: 1px solid #e3edf2;
+        }
+
+        .proj-list li:last-child {
+            border-bottom: none;
+        }
+
+        .proj-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 13px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #7fc8b8;
+        }
+
+        .proj-list li:nth-child(even)::before {
+            background: #7fb6e3;
+        }
+
+        .proj-subtitle {
+            font-size: 17px;
+            margin: 0 0 8px;
+        }
+
+        /* =========================
+           VIDÉO DE DÉMONSTRATION
+        ========================= */
+
+        .proj-video {
+            width: 100%;
+            max-height: 260px;
+            display: block;
+            border-radius: 14px;
+            background: #000;
+        }
+
+        .proj-note {
+            font-size: 12.5px !important;
+            line-height: 1.4 !important;
+            margin: 8px 0 0 !important;
+        }
+
+        /* =========================
+           CODE & GITHUB
+        ========================= */
+
+        .proj-code-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+
+        .proj-btn {
+            display: inline-block;
+            padding: 11px 20px;
+            border-radius: 30px;
+            background: #e1f2ff;
+            border: 1px solid #b9dff5;
+            color: #193753;
+            font-size: 14px;
+            transition: 0.25s ease;
+        }
+
+        .proj-btn:hover {
+            background: #cce9fb;
+            transform: translateY(-2px);
+        }
+
+        .proj-gallery-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .proj-gallery-2 img {
+            height: auto;
+        }
+
+        /* =========================
+           TÉLÉPHONE ET TABLETTE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            .proj-intro,
+            .proj-split,
+            .proj-two {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .proj-intro-image img {
+                height: auto;
+                max-height: 240px;
+            }
+
+            .proj-text {
+                padding-right: 0;
+                border-right: none;
+            }
+
+            .proj-side {
+                padding-left: 0;
+            }
+
+            .proj-specs {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 18px 0;
+            }
+
+            .proj-spec:nth-child(2n) {
+                border-right: none;
+            }
+
+            .proj-gallery,
+            .proj-gallery-4 {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .proj-gallery-4 img,
+            .proj-gallery img {
+                height: auto;
+            }
+
+            .proj-gallery-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -12,140 +463,135 @@
     <main class="container leme-page">
 
         <div class="project-topbar">
-    <a href="index.html#projet-07" class="project-back">← Retour aux projets</a>
+            <a href="index.html#projet-07" class="project-back">← Retour aux projets</a>
 
-    <a href="digital-clock.html" class="project-nav-btn project-nav-next">
-        <span>PROJET SUIVANT →</span>
-        <strong> Horloge numérique</strong>
-    </a>
-</div>
+            <a href="digital-clock.html" class="project-nav-btn project-nav-next">
+                <span>PROJET SUIVANT →</span>
+                <strong>Horloge numérique</strong>
+            </a>
+        </div>
 
-        <!-- ===== CARTE 1 : PRÉSENTATION ===== -->
-        <section class="aqua-slide aqua-card aqua-intro">
 
-            <div class="aqua-intro-image">
-                <img src="images/bioimpedance/systeme-complet.jpg" alt="Système de mesure de bio-impédance à quatre électrodes">
+        <!-- ===== CARTE 1 : PRÉSENTATION (compacte) ===== -->
+        <section class="proj-card proj-intro">
+
+            <div class="proj-intro-image">
+                <!-- PHOTO : systeme-complet.jpg -->
+                <img src="images/bioimpedance/systeme-complet.jpg" alt="Système de mesure de bio-impédance à quatre électrodes posé sur le bras">
             </div>
 
-            <div class="aqua-intro-text">
-                <p class="project-category">MINI-PROJET · MASTER 1 INSTRUMENTATION · USTHB</p>
+            <div>
+                <p class="proj-category">GÉNIE ÉLECTRIQUE · INSTRUMENTATION · USTHB</p>
                 <h1>Bio-impédance</h1>
                 <h2>Système portable de mesure tétrapolaire à 4 électrodes</h2>
 
                 <p>
-                    Mesure de la bio-impédance par balayage fréquentiel avec le circuit
-                    AD5933. La méthode à quatre électrodes sépare l'injection du courant
-                    de la mesure de tension et limite l'effet de la résistance de contact
-                    avec la peau.
+                    <strong>Objectif :</strong> mesurer l'impédance électrode/peau de façon
+                    non invasive, avec un système portable et peu coûteux.
+                    <strong>Méthode :</strong> balayage en fréquence avec le circuit AD5933 et
+                    4 électrodes, dont 2 injectent le courant et 2 mesurent la tension.
                 </p>
 
-                <div class="project-tags">
+                <div class="proj-tags">
                     <span>AD5933</span>
                     <span>AFE</span>
                     <span>INA111</span>
                     <span>VCCS</span>
-                    <span>I2C</span>
-                    <span>Arduino</span>
-                    <span>Python</span>
+                    <span>Arduino · Python</span>
                     <span>Ag/AgCl</span>
                 </div>
-            </div>
 
-        </section>
-
-
-        <!-- ===== CARTE 2 : FONCTIONNEMENT ===== -->
-        <section class="aqua-slide aqua-card leme-split">
-
-            <div class="leme-text">
-                <p class="project-category">LE PROJET</p>
-                <h2>De l'excitation à l'impédance</h2>
-                <p>
-                    L'AD5933 génère un signal sinusoïdal qui est converti en courant
-                    puis injecté dans le tissu. La tension différentielle mesurée est
-                    amplifiée, numérisée et analysée par DFT pour obtenir la magnitude
-                    et la phase de l'impédance.
+                <p class="proj-meta">
+                    <strong>USTHB</strong> · Mini-projet · 2024/2025 ·
+                    Encadrantes : Pr. H. Khelladi et Pr. N. Meziane · Projet en groupe
                 </p>
             </div>
 
-            <div class="leme-side">
+        </section>
 
-                <p class="leme-label">CHAÎNE DE MESURE</p>
 
-                <div class="leme-flow">
-                    <span class="leme-step">AD5933</span>
-                    <span class="leme-arrow">→</span>
-                    <span class="leme-step">Filtre HPF</span>
-                    <span class="leme-arrow">→</span>
-                    <span class="leme-step">VCCS</span>
-                    <span class="leme-arrow">→</span>
-                    <span class="leme-step">4 électrodes</span>
-                    <span class="leme-arrow">→</span>
-                    <span class="leme-step">INA111</span>
-                    <span class="leme-arrow">→</span>
-                    <span class="leme-step">ADC + DFT</span>
+        <!-- ===== CARTE 2 : PRINCIPE DE MESURE ===== -->
+        <section class="proj-card">
+
+            <div class="proj-split proj-split-wide">
+
+                <div class="proj-text">
+                    <p class="proj-category">PRINCIPE DE MESURE</p>
+                    <h2 class="proj-title">Du signal à l'impédance</h2>
+                    <p>
+                        <strong>1.</strong> L'AD5933 génère un signal sinusoïdal.<br>
+                        <strong>2.</strong> Le VCCS le convertit en courant constant (1 mA), injecté par
+                        2 électrodes. Les 2 autres mesurent la tension, amplifiée par l'INA111.<br>
+                        <strong>3.</strong> L'AD5933 calcule l'impédance par DFT : magnitude et phase.
+                    </p>
                 </div>
 
-                <div class="leme-specs">
-                    <div class="leme-spec">
-                        <span>FRÉQUENCE</span>
-                        <strong>5 → 100 kHz</strong>
-                    </div>
-                    <div class="leme-spec">
-                        <span>ADC</span>
-                        <strong>12 bits</strong>
-                    </div>
-                    <div class="leme-spec">
-                        <span>ÉLECTRODES</span>
-                        <strong>4 Ag/AgCl</strong>
-                    </div>
-                    <div class="leme-spec">
-                        <span>COURANT</span>
-                        <strong>&lt; 1 mA</strong>
-                    </div>
+                <div class="proj-side">
+                    <figure class="proj-figure">
+                        <!-- SCHÉMA : schema-systeme.png -->
+                        <img src="images/bioimpedance/schema-systeme.png" alt="Chaîne de mesure : carte AD5933, filtre HPF, VCCS, INA111 et zone sous test">
+                        <figcaption>Chaîne de mesure : AD5933 → filtre HPF → VCCS (TL071) → 4 électrodes → INA111 → AD5933</figcaption>
+                    </figure>
                 </div>
 
+            </div>
+
+            <div class="proj-specs" style="margin-top:16px;">
+                <div class="proj-spec">
+                    <span>FRÉQUENCE</span>
+                    <strong>5 → 100 kHz</strong>
+                </div>
+                <div class="proj-spec">
+                    <span>COURANT</span>
+                    <strong>1 mA</strong>
+                </div>
+                <div class="proj-spec">
+                    <span>ÉLECTRODES</span>
+                    <strong>4 Ag/AgCl</strong>
+                </div>
+                <div class="proj-spec">
+                    <span>ALIMENTATION</span>
+                    <strong>LiPo 1800 mAh</strong>
+                </div>
             </div>
 
         </section>
 
 
-        <!-- ===== CARTE 3 : MONTAGE ET RÉSULTATS ===== -->
-        <section class="aqua-slide aqua-card">
+        <!-- ===== CARTE 3 : RÉALISATION ===== -->
+        <section class="proj-card">
 
-            <p class="project-category">MONTAGE &amp; RÉSULTATS</p>
-            <h2 class="leme-title">Du prototype à la validation</h2>
+            <p class="proj-category">RÉALISATION</p>
+            <p>
+                Un premier prototype analogique s'étant montré instable, le système repose sur la
+                carte d'évaluation AD5933EBZ et un circuit analogique (AFE), intégrés dans un
+                boîtier à 3 étages : alimentation, AFE, carte AD5933.
+            </p>
 
-            <div class="leme-gallery">
+            <div class="proj-gallery proj-gallery-4">
 
                 <figure>
+                    <!-- PHOTO : ad5933ebz.jpg -->
                     <img src="images/bioimpedance/ad5933ebz.jpg" alt="Carte d'évaluation AD5933EBZ">
-                    <figcaption>Carte d'évaluation AD5933EBZ</figcaption>
+                    <figcaption>Carte AD5933EBZ : génère le signal et calcule l'impédance</figcaption>
                 </figure>
 
                 <figure>
-                    <img src="images/bioimpedance/afe.jpg" alt="Circuit analogique AFE">
-                    <figcaption>Front-end analogique : filtre, VCCS et INA111</figcaption>
+                    <!-- PHOTO : afe.jpg -->
+                    <img src="images/bioimpedance/afe.jpg" alt="Circuit imprimé du front-end analogique">
+                    <figcaption>AFE : filtre HPF, source de courant et INA111</figcaption>
                 </figure>
 
                 <figure>
-                    <img src="images/bioimpedance/boitier.jpg" alt="Boîtier du système de mesure">
-                    <figcaption>Intégration dans le boîtier portable</figcaption>
+                    <!-- PHOTO : alimentation.jpg -->
+                    <img src="images/bioimpedance/alimentation.jpg" alt="Alimentation rechargeable avec batterie LiPo">
+                    <figcaption>Alimentation : batterie LiPo et élévateur XL6009</figcaption>
                 </figure>
 
                 <figure>
-                    <img src="images/bioimpedance/test-bras.jpg" alt="Mesure de bio-impédance sur le bras">
-                    <figcaption>Essai expérimental sur le bras humain</figcaption>
-                </figure>
-
-                <figure>
-                    <img src="images/bioimpedance/courbe-impedance.jpg" alt="Courbe d'impédance en fonction de la fréquence">
-                    <figcaption>Évolution de la magnitude de l'impédance</figcaption>
-                </figure>
-
-                <figure>
-                    <img src="images/bioimpedance/courbe-phase.jpg" alt="Courbe de phase en fonction de la fréquence">
-                    <figcaption>Évolution de la phase avec la fréquence</figcaption>
+                    <!-- PHOTO : chargeTP4056.png -->
+                    <img src="images/bioimpedance/chargeTP4056.png" alt="Module de charge TP4056">
+                    <figcaption>Module de charge TP4056</figcaption>
                 </figure>
 
             </div>
@@ -153,27 +599,107 @@
         </section>
 
 
-        <!-- ===== CARTE 4 : CODE ===== -->
-        <section class="aqua-slide aqua-card">
+        <!-- ===== CARTE 4 : TESTS ET RÉSULTATS ===== -->
+        <section class="proj-card">
 
-            <p class="project-category">CODE &amp; DOCUMENTATION</p>
+            <p class="proj-category">TESTS &amp; RÉSULTATS</p>
 
-            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
-                <h2 class="leme-title" style="margin:0;">Extraits du code</h2>
+            <div class="proj-gallery proj-gallery-4" style="margin-bottom:16px;">
+
+                <figure>
+                    <!-- PHOTO : test-bras.jpg -->
+                    <img src="images/bioimpedance/test-bras.jpg" alt="Mesure de bio-impédance sur le bras avec 4 électrodes à gel">
+                    <figcaption>Essai sur le bras (4 électrodes à gel)</figcaption>
+                </figure>
+
+                <figure>
+                    <!-- IMAGE : courbe-impedance.png -->
+                    <img src="images/bioimpedance/courbe-impedance.png" alt="Courbe d'impédance en fonction de la fréquence">
+                    <figcaption>Impédance mesurée (logiciel AD5933)</figcaption>
+                </figure>
+
+                <figure>
+                    <!-- IMAGE : courbe-phase.jpg -->
+                    <img src="images/bioimpedance/courbe-phase.jpg" alt="Courbe de phase en fonction de la fréquence">
+                    <figcaption>Phase mesurée (logiciel AD5933)</figcaption>
+                </figure>
+
+                <figure>
+                    <!-- IMAGE : courbe-electrode.jpg -->
+                    <img src="images/bioimpedance/courbe-electrode.jpg" alt="Impédance de l'électrode en fonction de la fréquence">
+                    <figcaption>Caractérisation d'électrode (Arduino + Python)</figcaption>
+                </figure>
+
+            </div>
+
+            <div class="proj-two">
+
+                <ul class="proj-list">
+                    <li><strong>Calibrage :</strong> résistance de 10 kΩ (RFB = 200 kΩ), balayage de 5 à 100 kHz.</li>
+                    <li><strong>Sur le bras :</strong> l'impédance d'environ 60 kΩ descend vers 47 kΩ quand la fréquence augmente.</li>
+                    <li><strong>Caractérisation d'électrode :</strong> d'environ 500 kΩ à basse fréquence à environ 9 kΩ vers 2 kHz.</li>
+                </ul>
+
+                <ul class="proj-list">
+                    <li><strong>Perspectives :</strong> mesurer à plus basse fréquence, avec des électrodes et un filtrage adaptés.</li>
+                    <li>Miniaturiser le circuit et le rendre autonome.</li>
+                    <li>Ajouter une communication sans fil (Bluetooth ou Wi-Fi).</li>
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- ===== CARTE 5 : DÉMONSTRATION (vidéo + commentaires) ===== -->
+        <section class="proj-card">
+
+            <p class="proj-category">DÉMONSTRATION</p>
+
+            <div class="proj-two">
+
+                <div>
+                    <!-- VIDÉO : mets ta vidéo dans images/bioimpedance/ sous le nom demo-bioimpedance.mp4 -->
+                    <video class="proj-video" controls muted playsinline preload="metadata"
+                           poster="images/bioimpedance/systeme-complet.jpg">
+                        <source src="images/bioimpedance/bioimpedance.mp4" type="video/mp4">
+                        Votre navigateur ne peut pas lire cette vidéo.
+                    </video>
+                    <p class="proj-note">Le système en fonctionnement : mesure sur le bras avec 4 électrodes.</p>
+                </div>
+
+                <ul class="proj-list">
+                    <li><strong>Mise en place :</strong> 4 électrodes à gel sur le bras : 2 injectent le courant (1 mA), 2 mesurent la tension.</li>
+                    <li><strong>Mesure :</strong> l'AD5933 balaye les fréquences de 5 à 100 kHz.</li>
+                    <li><strong>Résultat :</strong> le logiciel AD5933 affiche l'impédance et la phase en fonction de la fréquence.</li>
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- ===== CARTE 6 : CODE ===== -->
+        <section class="proj-card">
+
+            <div class="proj-code-head" style="margin-bottom:0;">
+                <div>
+                    <p class="proj-category" style="margin-bottom:4px;">CODE &amp; DOCUMENTATION</p>
+                    <h2 class="proj-title" style="margin:0;">Extraits du code (Arduino · Python)</h2>
+                </div>
 
                 <!-- Remplace le # par le lien de ton GitHub -->
-                <a href="#" class="leme-btn" target="_blank">Voir le code sur GitHub →</a>
+                <a href="#" class="proj-btn" target="_blank">Voir le code sur GitHub →</a>
             </div>
 
         </section>
+
         <div class="project-nav">
-
-
-       <a href="spot-welder.html" class="project-nav-btn project-nav-next">
-        <span>PROJET SUIVANT →</span>
-        <strong>Machine à soudure par points</strong>
-    </a>
-    </div>
+            <a href="spot-welder.html" class="project-nav-btn">
+                <span>←PROJET PRÉCÉDENT</span>
+                <strong>Machine à souder par points</strong>
+            </a>
+        </div>
 
     </main>
 

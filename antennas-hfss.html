@@ -5,173 +5,308 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Antennes patch &amp; HFSS — Sara Messaoudi</title>
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* ===== BASE (même style qu'AquaMonitor) ===== */
+        .project-page { padding: 100px 0 40px; }
+        .project-page .container { max-width: 1040px; }
+        .an-slide { margin-bottom: 16px; scroll-margin-top: 90px; }
+        .an-card {
+            background: var(--card-bg, #fff); color: var(--text-color, #202733);
+            border: 1px solid rgba(128,128,128,.16); border-radius: 16px;
+            box-shadow: 0 6px 22px rgba(0,0,0,.04); overflow: hidden;
+        }
+        .an-block { padding: 16px 20px; }
+        .an-label { font-size: 10.5px; letter-spacing: 1.6px; text-transform: uppercase; opacity: .65; margin: 0 0 10px; }
+        .an-img { width: 100%; height: auto; display: block; object-fit: contain; border-radius: 8px; background: #fff; }
+
+        .an-part { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+        .an-num { flex: none; width: 34px; height: 34px; border-radius: 50%; background: #0c3a57; color: #fff; font-size: 13.5px; font-weight: 600; display: grid; place-items: center; }
+        .an-part h2 { font-size: clamp(18px, 2vw, 22px); line-height: 1.2; letter-spacing: -.3px; margin: 0; }
+        .an-part p { margin: 2px 0 0; font-size: 12.5px; opacity: .72; }
+
+        /* ===== INTRO ===== */
+        .an-intro { display: grid; grid-template-columns: 1.3fr 1fr; align-items: center; }
+        .an-intro-text { padding: 20px 24px; }
+        .an-intro-text h1 { font-size: clamp(26px, 3vw, 34px); line-height: 1.1; letter-spacing: -.8px; margin: 0 0 6px; }
+        .an-intro-text h2 { font-size: 15px; line-height: 1.4; font-weight: 400; margin: 0 0 10px; }
+        .an-intro-text > p:not(.an-label) { font-size: 13px; line-height: 1.65; opacity: .82; margin: 0; }
+        .an-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+        .an-tags span { padding: 5px 9px; border-radius: 20px; font-size: 11px; white-space: nowrap; background: rgba(85,115,150,.09); border: 1px solid rgba(85,115,150,.15); }
+        .an-tags .k { background: #e1f2ff; border-color: #b9dff5; color: #193753; font-weight: 600; }
+        .an-mini { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; padding: 16px 20px 16px 0; }
+        .an-mini figure { margin: 0; text-align: center; font-size: 11px; line-height: 1.3; }
+        .an-mini img { aspect-ratio: 1; border: 1px solid rgba(128,128,128,.14); margin-bottom: 5px; }
+        .an-mini figcaption b { display: block; font-size: 11.5px; color: #0c3a57; }
+
+        /* ===== MÉTHODE ===== */
+        .an-meth { display: grid; grid-template-columns: 1.5fr 1fr; gap: 14px; align-items: stretch; }
+        .an-ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; counter-reset: m; align-content: space-between; }
+        .an-ol li { counter-increment: m; position: relative; padding: 7px 10px 7px 42px; border: 1px solid rgba(128,128,128,.16); border-radius: 12px; font-size: 12px; line-height: 1.45; }
+        .an-ol li::before { content: counter(m); position: absolute; left: 11px; top: 7px; width: 22px; height: 22px; border-radius: 50%; background: #0c3a57; color: #fff; font-size: 11.5px; font-weight: 600; display: grid; place-items: center; }
+        .an-ol b { color: #0c3a57; }
+        .an-mimg { display: grid; gap: 8px; max-width: 300px; align-content: start; }
+        .an-mimg figure { margin: 0; padding: 6px; border: 1px solid rgba(128,128,128,.16); border-radius: 12px; }
+        .an-mimg img { max-height: 120px; }
+        .an-mimg figcaption { padding-top: 4px; font-size: 11px; line-height: 1.4; opacity: .78; }
+        .an-mimg figcaption b { color: #0c3a57; }
+
+        /* ===== ONGLETS ===== */
+        .an-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 10px; }
+        .an-tab {
+            cursor: pointer; font-family: inherit; font-size: 12.5px;
+            padding: 8px 14px; border-radius: 30px;
+            border: 1px solid #b9dff5; background: #e1f2ff; color: #193753;
+            transition: .2s ease;
+        }
+        .an-tab b { margin-right: 6px; }
+        .an-tab small { opacity: .75; margin-left: 4px; }
+        .an-tab:hover { background: #cce9fb; }
+        .an-tab.on { background: #0c3a57; border-color: #0c3a57; color: #fff; }
+        .an-tab:focus-visible { outline: 3px solid #5aa9d6; outline-offset: 2px; }
+        .an-panel[hidden] { display: none; }
+        .an-specs { margin: 0 0 4px; font-size: 11.5px; line-height: 1.5; opacity: .75; }
+
+        /* Chaque étape : figure à gauche (petite), commentaire à droite */
+        .an-step { display: grid; grid-template-columns: minmax(0, 320px) 1fr; grid-template-areas: "h h" "f c"; gap: 6px 20px; padding: 10px 0; border-top: 1px solid rgba(128,128,128,.2); align-items: start; }
+        .an-step.big { grid-template-columns: minmax(0, 400px) 1fr; }
+        .an-sh { grid-area: h; display: flex; align-items: center; gap: 9px; }
+        .an-sh b { flex: none; width: 24px; height: 24px; border-radius: 50%; background: #0c3a57; color: #fff; font-size: 12px; display: grid; place-items: center; }
+        .an-sh strong { font-size: 13.5px; color: #0c3a57; }
+        .an-figs { grid-area: f; display: grid; gap: 8px; }
+        .an-f { margin: 0; }
+        .an-f img { border: 1px solid rgba(128,128,128,.14); max-height: 170px; }
+        .an-f.model img { width: auto; max-width: 100%; max-height: 150px; margin: 0 auto; }
+        .an-f.meas3 img { width: auto; max-width: 100%; max-height: 250px; margin: 0 auto; }
+        .an-f figcaption { margin-top: 3px; font-size: 10.5px; letter-spacing: .6px; text-transform: uppercase; font-weight: 600; color: #0c3a57; opacity: .85; }
+        .an-com { grid-area: c; font-size: 12.5px; line-height: 1.58; }
+        .an-com p { margin: 0 0 6px; }
+        .an-com p:last-child { margin-bottom: 0; }
+        .an-com b { color: #0c3a57; }
+        .an-com .an-why { padding: 7px 11px; border-left: 3px solid #b9dff5; border-radius: 0 10px 10px 0; background: rgba(85,115,150,.06); font-size: 11.5px; line-height: 1.5; }
+
+        /* ===== CONCLUSION ===== */
+        .an-concl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+        .an-concl p { margin: 0; padding: 8px 12px; border-left: 3px solid #b9dff5; border-radius: 0 10px 10px 0; background: rgba(85,115,150,.06); font-size: 12px; line-height: 1.55; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .an-intro, .an-meth { grid-template-columns: 1fr; }
+            .an-mini { padding: 0 20px 18px; }
+            .an-mimg { max-width: none; }
+            .an-step, .an-step.big { grid-template-columns: 1fr; grid-template-areas: "h" "f" "c"; }
+            .an-f img { max-height: none; }
+            .an-concl { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 650px) {
+            .project-page { padding-top: 85px; }
+            .an-intro-text { padding: 18px; }
+            .an-block { padding: 16px; }
+        }
+    </style>
 </head>
 
 <body>
-
-    <main class="container leme-page">
+<main class="project-page">
+    <div class="container">
 
         <div class="project-topbar">
-    <a href="index.html#projet-09" class="project-back">← Retour aux projets</a>
+            <a href="index.html#projet-09" class="project-back">← Retour aux projets</a>
+            <a href="radar-racova.html" class="project-nav-btn project-nav-next">
+                <span>PROJET SUIVANT →</span>
+                <strong>Radar CW / Doppler RaCoVa</strong>
+            </a>
+        </div>
 
-    <a href="radar-racova.html " class="project-nav-btn project-nav-next">
-        <span>PROJET SUIVANT →</span>
-        <strong> Radar CW / Doppler RaCoVa</strong>
-    </a>
-</div>
-
-        <!-- ===== CARTE 1 : PRÉSENTATION ===== -->
-        <section class="aqua-slide aqua-card aqua-intro">
-
-            <div class="aqua-intro-image">
-                <img src="images/antennas-hfss/ensemble-antennes.jpg" alt="Antennes patch simulées et caractérisées expérimentalement">
-            </div>
-
-            <div class="aqua-intro-text">
-                <p class="project-category">ANTENNES · HYPERFRÉQUENCES · 2025–2026</p>
+        <!-- INTRO -->
+        <section class="an-slide an-card an-intro">
+            <div class="an-intro-text">
+                <p class="an-label">ANTENNES · HYPERFRÉQUENCES · TP 2025–2026 · UNIVERSITÉ PARIS NANTERRE</p>
                 <h1>Antennes patch &amp; HFSS</h1>
                 <h2>Patch élémentaire, réseau 2×2 et polarisation circulaire</h2>
-
                 <p>
-                    Conception et simulation 3D de plusieurs antennes imprimées sous
-                    Ansys HFSS, puis caractérisation en chambre anéchoïde pour comparer
-                    les performances simulées et mesurées.
+                    Conception de trois antennes sous Ansys HFSS, puis comparaison des diagrammes simulés
+                    avec les mesures du TP en chambre anéchoïde, exploitées sous Ant32 : plans E et H,
+                    directivité, angle d'ouverture.
                 </p>
-
-                <div class="project-tags">
-                    <span>Ansys HFSS</span>
-                    <span>Antennes patch</span>
-                    <span>Réseau 2×2</span>
-                    <span>RHCP</span>
-                    <span>S11</span>
-                    <span>Chambre anéchoïde</span>
-                    <span>Ant32</span>
+                <div class="an-tags">
+                    <span class="k">10,15 GHz</span><span class="k">10,06 GHz</span><span class="k">2,48 GHz</span>
+                    <span>Ansys HFSS</span><span>Ant32</span><span>S11</span><span>RHCP</span>
                 </div>
             </div>
-
+            <div class="an-mini">
+                <figure><img class="an-img" src="images/antennas-hfss/patch-modele.jpg" alt="Modèle HFSS du patch élémentaire"><figcaption><b>Patch X</b>10,15 GHz</figcaption></figure>
+                <figure><img class="an-img" src="images/antennas-hfss/reseau-modele.jpg" alt="Modèle HFSS du réseau 2×2"><figcaption><b>Réseau 2×2</b>10,06 GHz</figcaption></figure>
+                <figure><img class="an-img" src="images/antennas-hfss/cp-modele.jpg" alt="Modèle HFSS du patch à polarisation circulaire"><figcaption><b>Patch RHCP</b>2,48 GHz</figcaption></figure>
+            </div>
         </section>
 
-
-        <!-- ===== CARTE 2 : FONCTIONNEMENT ===== -->
-        <section class="aqua-slide aqua-card leme-split">
-
-            <div class="leme-text">
-                <p class="project-category">LE PROJET</p>
-                <h2>De la simulation à la mesure</h2>
-                <p>
-                    Trois antennes ont été étudiées : un patch élémentaire en bande X,
-                    un réseau de quatre patchs et un patch à polarisation circulaire à
-                    2,4 GHz. Chaque structure est modélisée sous HFSS, puis mesurée et
-                    comparée à la simulation.
-                </p>
+        <!-- 01 MÉTHODE -->
+        <section class="an-slide an-card an-block">
+            <div class="an-part">
+                <div class="an-num">01</div>
+                <div><h2>Méthode HFSS</h2><p>Les étapes de modélisation, dans l'ordre.</p></div>
             </div>
-
-            <div class="leme-side">
-
-                <p class="leme-label">CHAÎNE D'ÉTUDE</p>
-
-                <div class="leme-flow">
-                    <span class="leme-step">Modélisation 3D</span>
-                    <span class="leme-arrow">→</span>
-                    <span class="leme-step">Simulation HFSS</span>
-                    <span class="leme-arrow">→</span>
-                    <span class="leme-step">Paramètres S</span>
-                    <span class="leme-arrow">→</span>
-                    <span class="leme-step">Champ lointain</span>
-                    <span class="leme-arrow">→</span>
-                    <span class="leme-step">Mesure en chambre</span>
-                    <span class="leme-arrow">→</span>
-                    <span class="leme-step">Comparaison</span>
+            <div class="an-meth">
+                <ol class="an-ol">
+                    <li><b>Paramètres.</b> On commence par définir les variables (G, T, lp, d…).</li>
+                    <li><b>Substrat et plan de masse.</b> Patch sur la couche de cuivre de la face supérieure, face inférieure en métallisation continue. Substrat Arlon DiClad 880, εr = 2,2.</li>
+                    <li><b>PEC.</b> Il représente un métal parfait : un conducteur qui réfléchit totalement le champ électrique, où le courant circule sans pertes.</li>
+                    <li><b>Excitation.</b> Câble coaxial, alimentation décalée du centre (x₀ = 6 mm) : le centre est un nœud de tension.</li>
+                    <li><b>Conditions aux limites.</b> « Radiation » simule un espace libre : les ondes sortantes sont absorbées sans réflexions parasites.</li>
+                    <li><b>Analyse.</b> Balayage fast sweep (9 à 11 GHz ; 2,3 à 2,7 GHz pour l'antenne circulaire) jusqu'à Max ΔS ≤ 0,01, puis S11, champ lointain et diagrammes E / H.</li>
+                </ol>
+                <div class="an-mimg">
+                    <figure><img class="an-img" src="images/antennas-hfss/methode-excitation.jpg" alt="Excitation par câble coaxial"><figcaption><b>④ Excitation</b> coaxiale</figcaption></figure>
+                    <figure><img class="an-img" src="images/antennas-hfss/methode-limites.jpg" alt="Conditions aux limites Radiation"><figcaption><b>⑤ Espace libre</b> : boîte Radiation</figcaption></figure>
                 </div>
+            </div>
+        </section>
 
-                <div class="leme-specs">
-                    <div class="leme-spec">
-                        <span>PATCH BANDE X</span>
-                        <strong>10,15 GHz</strong>
-                    </div>
-                    <div class="leme-spec">
-                        <span>RÉSEAU 2×2</span>
-                        <strong>10,06 GHz</strong>
-                    </div>
-                    <div class="leme-spec">
-                        <span>POLARISATION RHCP</span>
-                        <strong>2,48 GHz</strong>
-                    </div>
-                    <div class="leme-spec">
-                        <span>SUBSTRAT</span>
-                        <strong>εr = 2,2</strong>
-                    </div>
+        <!-- 02 LES TROIS ANTENNES -->
+        <section class="an-slide an-card an-block">
+            <div class="an-part">
+                <div class="an-num">02</div>
+                <div><h2>Trois antennes, du modèle à la mesure</h2><p>Pour chacune, le même parcours : modèle, S11, diagramme 2D, rayonnement 3D, comparaison avec la mesure.</p></div>
+            </div>
+
+            <div class="an-tabs" role="tablist">
+                <button class="an-tab on" type="button" data-target="ant-a"><b>A</b>Patch élémentaire<small>10,15 GHz</small></button>
+                <button class="an-tab" type="button" data-target="ant-b"><b>B</b>Réseau 2×2<small>10,06 GHz</small></button>
+                <button class="an-tab" type="button" data-target="ant-c"><b>C</b>Polarisation circulaire<small>2,48 GHz</small></button>
+            </div>
+
+            <article class="an-panel" id="ant-a">
+                <p class="an-specs">Paramètres : G = 70 mm · T = 1,5 mm · lp = 8,6 mm · d = 0</p>
+                <div class="an-step">
+                    <div class="an-sh"><b>1</b><strong>Modèle HFSS</strong></div>
+                    <div class="an-figs"><figure class="an-f model"><img class="an-img" src="images/antennas-hfss/patch-modele.jpg" alt="Modèle HFSS du patch élémentaire"></figure></div>
+                    <div class="an-com"><p><b>Patch élémentaire en bande X.</b> Le substrat est configuré de manière à placer le patch sur la couche de cuivre de la face supérieure, tandis que la face inférieure est recouverte d'une métallisation continue constituant le plan de masse.</p></div>
                 </div>
+                <div class="an-step">
+                    <div class="an-sh"><b>2</b><strong>Adaptation : S11</strong></div>
+                    <div class="an-figs"><figure class="an-f plot"><img class="an-img" src="images/antennas-hfss/patch-s11.jpg" alt="S11 du patch élémentaire"></figure></div>
+                    <div class="an-com"><p><b>Bien adaptée lorsque S11 &lt; −10 dB.</b> La bande où l'antenne est bien adaptée va de 9,8 à 10,5 GHz : c'est la bande passante de l'antenne.</p><p>Le minimum de S11 autour de <b>10,15 GHz</b> indique la fréquence optimale de fonctionnement.</p></div>
+                </div>
+                <div class="an-step">
+                    <div class="an-sh"><b>3</b><strong>Diagramme 2D · plans E et H</strong></div>
+                    <div class="an-figs"><figure class="an-f plot"><img class="an-img" src="images/antennas-hfss/patch-2d-sim.jpg" alt="Diagramme 2D simulé du patch"><figcaption>Tracé à 10,15 GHz</figcaption></figure></div>
+                    <div class="an-com"><p><b>Lobe principal centré autour de θ = 0°</b> : rayonnement broadside, typique d'une antenne patch micro-ruban.</p><p>Le plan E présente une ouverture plus étroite que le plan H, ce qui traduit une concentration plus importante du champ dans cette direction. Les lobes secondaires restent faibles : directivité modérée.</p></div>
+                </div>
+                <div class="an-step">
+                    <div class="an-sh"><b>4</b><strong>Rayonnement 3D</strong></div>
+                    <div class="an-figs"><figure class="an-f three"><img class="an-img" src="images/antennas-hfss/patch-3d.jpg" alt="Rayonnement 3D du patch"></figure></div>
+                    <div class="an-com"><p><b>Un lobe principal unique</b>, orienté perpendiculairement au plan du patch. L'énergie est concentrée dans cette direction, les niveaux restent faibles hors axe : directivité limitée, cohérente avec un patch isolé.</p><p>La directivité dépend uniquement de la forme du diagramme, alors que le gain prend aussi en compte les pertes de l'antenne.</p></div>
+                </div>
+                <div class="an-step">
+                    <div class="an-sh"><b>5</b><strong>Comparaison avec la mesure</strong></div>
+                    <div class="an-figs"><figure class="an-f meas"><img class="an-img" src="images/antennas-hfss/patch-2d-mes.jpg" alt="Diagramme 2D mesuré du patch"><figcaption>Mesure du TP · plans E et H</figcaption></figure></div>
+                    <div class="an-com"><p><b>Même forme, mais lobe plus large et gain plus faible.</b> Le maximum est bien dans l'axe principal. Une légère asymétrie apparaît sur certaines orientations : influence du montage réel et du positionnement de l'antenne.</p><p class="an-why">Écarts dus aux pertes du substrat, aux tolérances de fabrication, au câble RF et aux imperfections de la chambre anéchoïde, absents de la simulation idéale.</p></div>
+                </div>
+            </article>
 
-            </div>
+            <article class="an-panel" id="ant-b">
+                <p class="an-specs">Paramètres : G = 140 mm · lp = 9,2 mm · espacement entre patchs a = 75 mm (λ = 2,5) · 13 variables</p>
+                <div class="an-step">
+                    <div class="an-sh"><b>1</b><strong>Modèle HFSS</strong></div>
+                    <div class="an-figs"><figure class="an-f model"><img class="an-img" src="images/antennas-hfss/reseau-modele.jpg" alt="Modèle HFSS du réseau 2×2"><figcaption>Schéma obtenu</figcaption></figure></div>
+                    <div class="an-com"><p><b>Réseau de quatre patchs (2×2).</b> On commence par changer les paramètres, avec λ = 2,5.</p><p>Objectif du TP : mettre en évidence l'influence de l'espacement inter-éléments sur le diagramme de rayonnement.</p></div>
+                </div>
+                <div class="an-step">
+                    <div class="an-sh"><b>2</b><strong>Adaptation : S11</strong></div>
+                    <div class="an-figs"><figure class="an-f plot"><img class="an-img" src="images/antennas-hfss/reseau-s11.jpg" alt="S11 du réseau 2×2"></figure></div>
+                    <div class="an-com"><p><b>Bien adaptée entre 9,87 et 10,23 GHz</b> (S11 &lt; −10 dB) : c'est la bande passante de l'antenne.</p><p>Le minimum de S11 autour de <b>10,06 GHz</b> indique la fréquence optimale de fonctionnement.</p></div>
+                </div>
+                <div class="an-step">
+                    <div class="an-sh"><b>3</b><strong>Diagramme 2D · Φ = 0° et Φ = 90°</strong></div>
+                    <div class="an-figs"><figure class="an-f plot"><img class="an-img" src="images/antennas-hfss/reseau-2d-sim.jpg" alt="Diagramme 2D simulé du réseau"><figcaption>Tracé à 10,06 GHz</figcaption></figure></div>
+                    <div class="an-com"><p><b>Les diagrammes montrent comment l'antenne émet ou capte l'énergie dans différentes directions.</b> Radiation directionnelle, avec des zones de fort gain (pics) et de faible gain (creux) : l'antenne est optimisée pour émettre ou capter dans certaines directions.</p><p>Les valeurs de gain varient périodiquement selon l'orientation.</p></div>
+                </div>
+                <div class="an-step">
+                    <div class="an-sh"><b>4</b><strong>Rayonnement 3D</strong></div>
+                    <div class="an-figs"><figure class="an-f three"><img class="an-img" src="images/antennas-hfss/reseau-3d.jpg" alt="Rayonnement 3D du réseau"></figure></div>
+                    <div class="an-com"><p><b>Un lobe principal marqué :</b> concentration accrue de l'énergie dans la direction principale, ce qui confirme l'augmentation du gain par rapport au patch élémentaire.</p><p>Les lobes secondaires deviennent plus visibles : conséquence directe du couplage entre les différents patchs du réseau. Les zones de faible gain indiquent une efficacité réduite hors axe, donc un caractère fortement directionnel.</p></div>
+                </div>
+                <div class="an-step">
+                    <div class="an-sh"><b>5</b><strong>Comparaison avec la mesure</strong></div>
+                    <div class="an-figs"><figure class="an-f meas"><img class="an-img" src="images/antennas-hfss/reseau-2d-mes.jpg" alt="Diagramme 2D mesuré du réseau"><figcaption>Mesure du TP · 10,06 GHz</figcaption></figure></div>
+                    <div class="an-com"><p><b>Directivité plus élevée que le patch élémentaire</b>, en simulation comme en mesure.</p><p>Toutefois, le gain expérimental reste inférieur à celui prédit par HFSS et les lobes secondaires sont plus marqués, en raison des pertes réelles et du désalignement des éléments.</p></div>
+                </div>
+            </article>
 
+            <article class="an-panel" id="ant-c">
+                <p class="an-specs">Paramètres : Arlon DiClad 880 (εr = 2,2) · G = 120 mm · T = 1,5 mm · lp = 39,5 mm · d = 3,25 mm · alimentation x₀ = 6 mm</p>
+                <div class="an-step">
+                    <div class="an-sh"><b>1</b><strong>Modèle HFSS</strong></div>
+                    <div class="an-figs"><figure class="an-f model"><img class="an-img" src="images/antennas-hfss/cp-modele.jpg" alt="Modèle HFSS du patch à coins tronqués"></figure></div>
+                    <div class="an-com"><p><b>Patch en polarisation circulaire droite</b> autour de 2,46 GHz, alimenté par un connecteur RF de 50 Ω. Les troncatures modifient légèrement la fréquence d'un des deux modes : elles introduisent le déphasage de 90° indispensable à la polarisation circulaire. Sans troncature, le patch resterait en polarisation linéaire.</p><p>L'alimentation n'est pas au centre, qui est un nœud de tension (impédance très élevée). La position x₀ = 6 mm donne une impédance proche de 50 Ω et une excitation équilibrée des deux modes orthogonaux.</p></div>
+                </div>
+                <div class="an-step">
+                    <div class="an-sh"><b>2</b><strong>Adaptation : S11</strong></div>
+                    <div class="an-figs"><figure class="an-f plot"><img class="an-img" src="images/antennas-hfss/cp-s11.jpg" alt="S11 du patch circulaire"></figure></div>
+                    <div class="an-com"><p><b>Le S11 indique la part d'énergie réfléchie à l'entrée du port.</b> La condition S11 &lt; −10 dB est satisfaite entre 2,44 et 2,49 GHz.</p><p>Minimum à <b>2,48 GHz</b> : c'est la résonance optimale du patch.</p></div>
+                </div>
+                <div class="an-step">
+                    <div class="an-sh"><b>3</b><strong>Diagramme 2D · RHCP et LHCP</strong></div>
+                    <div class="an-figs"><figure class="an-f plot"><img class="an-img" src="images/antennas-hfss/cp-2d-sim.jpg" alt="Gain RHCP et LHCP simulés"><figcaption>Tracé à 2,47 GHz · RHCP en vert, LHCP en rouge</figcaption></figure></div>
+                    <div class="an-com"><p><b>Un lobe principal bien défini</b> dans les plans E (Φ = 0°) et H (Φ = 90°), de largeur comparable : rayonnement quasi symétrique.</p><p>La composante RHCP domine clairement dans l'axe principal, tandis que la LHCP reste fortement atténuée : les troncatures génèrent bien une polarisation circulaire droite.</p></div>
+                </div>
+                <div class="an-step">
+                    <div class="an-sh"><b>4</b><strong>Rayonnement 3D</strong></div>
+                    <div class="an-figs"><figure class="an-f three"><img class="an-img" src="images/antennas-hfss/cp-3d.jpg" alt="Rayonnement 3D du patch circulaire"></figure></div>
+                    <div class="an-com"><p><b>Lobe principal perpendiculaire au patch</b> : fonctionnement en mode fondamental. Pas de lobes secondaires marqués.</p><p>La distribution énergétique est symétrique, ce qui valide la géométrie du patch et le positionnement de l'alimentation. La largeur du faisceau indique une directivité modérée.</p></div>
+                </div>
+                <div class="an-step big">
+                    <div class="an-sh"><b>5</b><strong>Comparaison avec la mesure · Φ = 0° et Φ = 90°</strong></div>
+                    <div class="an-figs"><figure class="an-f meas3"><img class="an-img" src="images/antennas-hfss/cp-mesures-phi.jpg" alt="LHCP et RHCP mesurés pour Φ = 0° et Φ = 90°"><figcaption>Mesure du TP · LHCP et RHCP</figcaption></figure></div>
+                    <div class="an-com"><p><b>La forme du lobe est confirmée</b>, avec un maximum dans la direction normale au patch.</p><p>Mais le lobe est plus large, le gain plus faible et la séparation RHCP/LHCP moins marquée.</p></div>
+                </div>
+                <div class="an-step">
+                    <div class="an-sh"><b>6</b><strong>Axial ratio mesuré</strong></div>
+                    <div class="an-figs"><figure class="an-f meas"><img class="an-img" src="images/antennas-hfss/cp-axial-ratio.jpg" alt="Axial ratio mesuré"><figcaption>Axial ratio · Φ = 0° et Φ = 90°</figcaption></figure></div>
+                    <div class="an-com"><p><b>L'axial ratio mesuré est supérieur à celui simulé</b> : la polarisation circulaire se dégrade en conditions réelles.</p><p class="an-why">Écarts dus aux pertes du substrat, au câble RF, aux tolérances de fabrication et à l'alignement en chambre anéchoïde, absents du modèle idéal HFSS.</p></div>
+                </div>
+            </article>
         </section>
 
-
-        <!-- ===== CARTE 3 : MONTAGE ET RÉSULTATS ===== -->
-        <section class="aqua-slide aqua-card">
-
-            <p class="project-category">MODÈLES &amp; RÉSULTATS</p>
-            <h2 class="leme-title">Des modèles HFSS à la chambre anéchoïde</h2>
-
-            <div class="leme-gallery">
-
-                <figure>
-                    <img src="images/antennas-hfss/patch-hfss.jpg" alt="Modèle HFSS du patch élémentaire">
-                    <figcaption>Patch élémentaire sous HFSS</figcaption>
-                </figure>
-
-                <figure>
-                    <img src="images/antennas-hfss/reseau-2x2-hfss.jpg" alt="Modèle HFSS du réseau 2x2">
-                    <figcaption>Réseau de quatre patchs</figcaption>
-                </figure>
-
-                <figure>
-                    <img src="images/antennas-hfss/patch-circulaire-hfss.jpg" alt="Patch à polarisation circulaire">
-                    <figcaption>Patch à polarisation circulaire</figcaption>
-                </figure>
-
-                <figure>
-                    <img src="images/antennas-hfss/s11-hfss.jpg" alt="Courbe S11 sous HFSS">
-                    <figcaption>Courbe S11 simulée</figcaption>
-                </figure>
-
-                <figure>
-                    <img src="images/antennas-hfss/chambre-anechoide.jpg" alt="Mesure d'une antenne en chambre anéchoïde">
-                    <figcaption>Mesure en chambre anéchoïde</figcaption>
-                </figure>
-
-                <figure>
-                    <img src="images/antennas-hfss/comparaison-mesure-simulation.jpg" alt="Comparaison simulation et mesure">
-                    <figcaption>Comparaison simulation / mesure</figcaption>
-                </figure>
-
+        <!-- 03 CONCLUSION -->
+        <section class="an-slide an-card an-block">
+            <div class="an-part">
+                <div class="an-num">03</div>
+                <div><h2>Conclusion</h2></div>
             </div>
-
+            <div class="an-concl">
+                <p>La simulation et les mesures confirment le bon fonctionnement de l'antenne autour de la fréquence de résonance.</p>
+                <p>La polarisation circulaire est validée par la dominance RHCP.</p>
+                <p>Les résultats expérimentaux restent cohérents avec la simulation malgré des écarts liés aux conditions réelles.</p>
+                <p>Le réseau d'antennes montre une augmentation de directivité au prix de lobes secondaires.</p>
+            </div>
         </section>
 
-
-        <!-- ===== CARTE 4 : CODE ===== -->
-        <section class="aqua-slide aqua-card">
-
-            <p class="project-category">CODE &amp; DOCUMENTATION</p>
-
-            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
-                <h2 class="leme-title" style="margin:0;">Extraits du code</h2>
-
-                <!-- Remplace le # par le lien de ton GitHub -->
-                <a href="#" class="leme-btn" target="_blank">Voir le code sur GitHub →</a>
-            </div>
-
-        </section>
         <nav class="project-nav">
-    <a href="digital-clock.html" class="project-nav-btn">
-        <span>← PROJET PRÉCÉDENT</span>
-        <strong>Horloge numérique</strong>
-    </a>
-</nav>
+            <a href="digital-clock.html" class="project-nav-btn">
+                <span>← PROJET PRÉCÉDENT</span>
+                <strong>Horloge numérique</strong>
+            </a>
+        </nav>
 
-    </main>
+    </div>
+</main>
 
+<script>
+    /* Onglets A / B / C : une seule antenne affichée à la fois */
+    (function () {
+        var tabs = document.querySelectorAll('.an-tab');
+        var panels = document.querySelectorAll('.an-panel');
+        function show(id) {
+            panels.forEach(function (p) { p.hidden = (p.id !== id); });
+            tabs.forEach(function (t) { t.classList.toggle('on', t.getAttribute('data-target') === id); });
+        }
+        tabs.forEach(function (t) {
+            t.addEventListener('click', function () { show(t.getAttribute('data-target')); });
+        });
+        show('ant-a');
+    })();
+</script>
 </body>
 </html>

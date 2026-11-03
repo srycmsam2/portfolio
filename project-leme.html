@@ -5,175 +5,284 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Métasurface programmable — Sara Messaoudi</title>
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* ===== BASE (même style qu'AquaMonitor) ===== */
+        .project-page { padding: 105px 0 45px; }
+        .project-page .container { max-width: 1180px; }
+        .lm-slide { margin-bottom: 20px; scroll-margin-top: 90px; }
+        .lm-card {
+            background: var(--card-bg, #fff); color: var(--text-color, #202733);
+            border: 1px solid rgba(128,128,128,.16); border-radius: 18px;
+            box-shadow: 0 8px 30px rgba(0,0,0,.045); overflow: hidden;
+        }
+        .lm-block { padding: 22px 26px; }
+        .lm-label { font-size: 11px; letter-spacing: 1.8px; text-transform: uppercase; opacity: .65; margin: 0 0 12px; }
+        .lm-img { width: 100%; display: block; object-fit: contain; border-radius: 8px; background: #fff; }
+
+        .lm-part { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+        .lm-num { flex: none; width: 40px; height: 40px; border-radius: 50%; background: #0c3a57; color: #fff; font-size: 15px; font-weight: 600; display: grid; place-items: center; }
+        .lm-part h2 { font-size: clamp(20px, 2.4vw, 26px); line-height: 1.2; letter-spacing: -.4px; margin: 0; }
+        .lm-part p { margin: 3px 0 0; font-size: 13px; opacity: .72; }
+
+        /* ===== INTRO ===== */
+        .lm-intro { display: grid; grid-template-columns: .95fr 1.05fr; }
+        .lm-intro-img { padding: 14px; background: #fff; display: grid; place-items: center; }
+        .lm-intro-img img { width: 100%; max-height: 300px; object-fit: contain; display: block; }
+        .lm-intro-text { padding: 24px 28px; align-self: center; }
+        .lm-intro-text h1 { font-size: clamp(30px, 3.4vw, 42px); line-height: 1.1; letter-spacing: -1px; margin: 0 0 8px; }
+        .lm-intro-text h2 { font-size: 17px; line-height: 1.4; font-weight: 400; margin: 0 0 12px; }
+        .lm-intro-text > p:not(.lm-label) { font-size: 13.5px; line-height: 1.7; opacity: .82; margin: 0; }
+        .lm-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+        .lm-tags span { padding: 6px 10px; border-radius: 20px; font-size: 11px; white-space: nowrap; background: rgba(85,115,150,.09); border: 1px solid rgba(85,115,150,.15); }
+        .lm-tags .k { background: #e1f2ff; border-color: #b9dff5; color: #193753; font-weight: 600; }
+
+        /* ===== TUILES / NOTES ===== */
+        .lm-tile { margin: 0; padding: 9px; border: 1px solid rgba(128,128,128,.16); border-radius: 13px; background: var(--card-bg, #fff); }
+        .lm-tile strong { display: block; margin: 9px 3px 2px; font-size: 13.5px; }
+        .lm-tile span { display: block; margin: 0 3px 3px; font-size: 12px; line-height: 1.5; opacity: .8; }
+        .lm-why { margin: 0; padding: 10px 14px; border-left: 3px solid #b9dff5; border-radius: 0 10px 10px 0; background: rgba(85,115,150,.06); font-size: 12.5px; line-height: 1.55; }
+        .lm-why b { color: #0c3a57; }
+        .lm-col { display: grid; gap: 10px; align-content: start; }
+        pre.lm-mat { margin: 0; padding: 10px 12px; border-radius: 10px; background: #0f2a3d; color: #d6ecff; font: 12px/1.55 ui-monospace, Menlo, Consolas, monospace; overflow-x: auto; }
+        .lm-kpis { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+        .lm-kpi { padding: 6px 13px; border-radius: 20px; background: #e1f2ff; border: 1px solid #b9dff5; font-size: 12px; color: #193753; }
+        .lm-kpi b { font-weight: 700; }
+
+        /* ===== VISION ===== */
+        .lm-vis { display: grid; grid-template-columns: .85fr 1.2fr 1fr; gap: 12px; align-items: start; }
+        .lm-vis .lm-flowfig img { max-height: 430px; }
+        .lm-vis .lm-ph img { aspect-ratio: 3/2; }
+
+        /* ===== COMMANDE (condensée : comment et pourquoi) ===== */
+        .lm-chain { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 0 0 12px; font-size: 12.5px; }
+        .lm-chain span { padding: 6px 12px; border-radius: 20px; background: rgba(128,128,128,.09); }
+        .lm-chain i { font-style: normal; opacity: .4; }
+        .lm-three { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; align-items: start; }
+        .lm-three .lm-tile img { max-height: 200px; }
+        .lm-whys { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 12px; }
+        .lm-split { display: grid; grid-template-columns: 1.25fr 1fr; gap: 12px; align-items: start; }
+
+        /* ===== BANC ===== */
+        .lm-ant { padding: 12px 14px; border-radius: 13px; border: 1px solid rgba(128,128,128,.16); }
+        .lm-ant strong { display: block; font-size: 14px; color: #0c3a57; margin-bottom: 3px; }
+        .lm-ant p { margin: 0; font-size: 12.5px; line-height: 1.55; opacity: .85; }
+        .lm-ants { display: grid; gap: 10px; align-content: start; }
+        .lm-two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+        .fr { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; font-size: .92em; margin: 0 3px; line-height: 1.25; }
+        .fr > span:first-child { border-bottom: 1px solid currentColor; padding: 0 4px 1px; }
+        .fr > span:last-child { padding: 1px 4px 0; }
+
+        /* ===== CODE ===== */
+        .lm-codebar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+        .lm-codebar h2 { font-size: 26px; line-height: 1.2; margin: 0; color: #0c3a57; }
+        .lm-btn { display: inline-block; padding: 11px 20px; border-radius: 30px; text-decoration: none; background: #e1f2ff; border: 1px solid #b9dff5; color: #193753; font-size: 14px; transition: .25s ease; }
+        .lm-btn:hover { background: #cce9fb; transform: translateY(-2px); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1000px) {
+            .lm-vis { grid-template-columns: 1fr 1fr; }
+            .lm-vis .lm-col:last-child { grid-column: 1 / -1; grid-template-columns: 1fr 1fr; }
+            .lm-vis .lm-col:last-child .lm-why { grid-column: 1 / -1; }
+        }
+        @media (max-width: 900px) {
+            .lm-intro, .lm-split, .lm-two, .lm-three, .lm-whys { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 650px) {
+            .project-page { padding-top: 85px; }
+            .lm-intro-text { padding: 20px; }
+            .lm-block { padding: 18px; }
+            .lm-vis, .lm-vis .lm-col:last-child { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 
 <body>
+<main class="project-page">
+    <div class="container">
 
-    <main class="container leme-page">
+        <div class="project-topbar">
+            <a href="index.html#projet-04" class="project-back">← Retour aux projets</a>
+            <a href="irrigation.html" class="project-nav-btn project-nav-next">
+                <span>PROJET SUIVANT →</span>
+                <strong>Système d'irrigation automatique</strong>
+            </a>
+        </div>
 
-       <div class="project-topbar">
-    <a href="index.html#projet-04" class="project-back">← Retour aux projets</a>
-
-    <a href="irrigation.html" class="project-nav-btn project-nav-next">
-        <span>PROJET SUIVANT →</span>
-        <strong>Système d irrigation automatique</strong>
-    </a>
-</div>
-
-        <!-- ===== CARTE 1 : PRÉSENTATION ===== -->
-        <section class="aqua-slide aqua-card aqua-intro">
-
-            <div class="aqua-intro-image">
-                <img src="images/leme/montage-global.jpg" alt="Montage expérimental du projet LEME">
+        <!-- INTRO (compacte) -->
+        <section class="lm-slide lm-card lm-intro">
+            <div class="lm-intro-img">
+                <img src="images/leme/Image_garde.png" alt="Vue globale : robot, caméra, système de commande et métasurface">
             </div>
-
-            <div class="aqua-intro-text">
-                <p class="project-category">RECHERCHE · LEME</p>
+            <div class="lm-intro-text">
+                <p class="lm-label">STAGE DE RECHERCHE · LEME · UNIVERSITÉ PARIS NANTERRE · 2026</p>
                 <h1>Métasurface programmable</h1>
                 <h2>Guidage d'une machine mobile en entrepôt par vision par ordinateur</h2>
-
                 <p>
-                    Système combinant vision par ordinateur, calcul de profils de phase
-                    et commande électronique d'une métasurface afin d'orienter un faisceau
-                    électromagnétique vers une cible mobile.
+                    Chaîne complète : une caméra localise un robot (marqueur ArUco), un calcul de profil
+                    de phase parabolique donne une tension par colonne, et une métasurface à diodes
+                    varactor réoriente le faisceau réfléchi à 10 GHz.
                 </p>
+                <div class="lm-tags">
+                    <span class="k">10 GHz</span><span class="k">30 × 30 cellules</span><span class="k">0 → 20 V</span>
+                    <span>Python</span><span>OpenCV</span><span>Raspberry Pi</span><span>DAC · SPI</span>
+                </div>
+            </div>
+        </section>
 
-                <div class="project-tags">
-                    <span>Python</span>
-                    <span>OpenCV</span>
-                    <span>ArUco</span>
-                    <span>Raspberry Pi</span>
-                    <span>DAC</span>
-                    <span>RF</span>
-                    <span>10 GHz</span>
+        <!-- 01 VISION -->
+        <section class="lm-slide lm-card lm-block">
+            <div class="lm-part">
+                <div class="lm-num">01</div>
+                <div><h2>Vision par ordinateur</h2><p>De l'image à la position (X, Y, Z) et à l'angle θ. L'étape clé : la calibration de la caméra.</p></div>
+            </div>
+
+            <div class="lm-vis">
+                <figure class="lm-tile lm-flowfig">
+                    <img class="lm-img" src="images/leme/code detdction3d.png" alt="Organigramme du script de calibration de la caméra">
+                    <strong>Organigramme de calibration</strong>
+                    <span>Photos du damier, détection des coins, calcul de la matrice caméra et de la distorsion, sauvegarde des réglages.</span>
+                </figure>
+
+                <div class="lm-col">
+                    <figure class="lm-tile lm-ph">
+                        <img class="lm-img" src="images/leme/coins internes du damier.png" alt="Détection automatique des coins du damier">
+                        <strong>Calibration par damier</strong>
+                        <span>10 × 7 carrés (9 × 6 coins), carrés de 29 mm, photos sous plusieurs angles.</span>
+                    </figure>
+                    <pre class="lm-mat">K = [ 640,73    0     361,56 ]
+    [   0     640,51  235,04 ]
+    [   0       0       1    ]
+D = [−0,377  0,132  0,0012  0,0004  0,0165]</pre>
+                    <p class="lm-why"><b>Pourquoi calibrer ?</b> La détection ne donne que des pixels. Pour obtenir (X, Y, Z) en mètres, il faut la focale, le centre optique et la distorsion de l'objectif.</p>
+                </div>
+
+                <div class="lm-col">
+                    <figure class="lm-tile lm-ph">
+                        <img class="lm-img" src="images/leme/capture_6.png" alt="Marqueur ArUco détecté">
+                        <strong>Détection ArUco</strong>
+                        <span>DICT_6X6_50, marqueur de 7,9 cm, OpenCV.</span>
+                    </figure>
+                    <figure class="lm-tile lm-ph">
+                        <img class="lm-img" src="images/leme/capture_16.png" alt="Pose 3D du marqueur">
+                        <strong>Pose 3D</strong>
+                        <span>Position (X, Y, Z) puis θ = arctan(X / Z).</span>
+                    </figure>
+                    <p class="lm-why"><b>Pourquoi ArUco ?</b> Coins détectés précisément, pose directe, intégration facile à OpenCV. Un QR code sert surtout à stocker des données.</p>
+                </div>
+            </div>
+            <div class="lm-kpis">
+                <span class="lm-kpi">Vérifié à <b>42, 79,5, 235,8 et 288 cm</b></span>
+                <span class="lm-kpi">Erreur angulaire moyenne <b>0,23° → 1,03°</b></span>
+                <span class="lm-kpi">Plusieurs cibles : choix par <b>identifiant ArUco</b></span>
+            </div>
+        </section>
+
+        <!-- 02 COMMANDE (condensée) -->
+        <section class="lm-slide lm-card lm-block">
+            <div class="lm-part">
+                <div class="lm-num">02</div>
+                <div><h2>Commande de la métasurface</h2><p>Comment l'angle devient une tension par colonne, et pourquoi ces choix.</p></div>
+            </div>
+
+            <div class="lm-chain">
+                <span>Angle θ de la cible</span><i>→</i>
+                <span>Profil de phase parabolique</span><i>→</i>
+                <span>Phase voulue par colonne</span><i>→</i>
+                <span>Tension par colonne (0 → 20 V)</span>
+            </div>
+
+            <div class="lm-three">
+                <figure class="lm-tile">
+                    <img class="lm-img" src="images/leme/profil_phase_x0_-20.png" alt="Profil de phase calculé pour une cible à environ +20°">
+                    <strong>Profil de phase (θ ≈ +20°)</strong>
+                    <span>Décaler le profil déplace la direction du faisceau.</span>
+                </figure>
+
+                <figure class="lm-tile">
+                    <img class="lm-img" src="images/leme/organigramme_phase_voltage.jpg" alt="Organigramme de conversion phase-tension">
+                    <strong>Conversion phase → tension</strong>
+                    <span>Pour chaque colonne, on prend la tension dont la phase mesurée est la plus proche.</span>
+                </figure>
+
+                <div class="lm-col">
+                    <pre class="lm-mat">θ = 20°
+Φ = [−115,1  120,1  2,5  −107,9 …]°
+V = [  4,8    20,0  7,0    2,4  …] V</pre>
+                    <p class="lm-why"><b>Extrait :</b> pour θ = 20°, les phases voulues et les tensions qui en découlent.</p>
                 </div>
             </div>
 
+            <div class="lm-whys">
+                <p class="lm-why"><b>Pourquoi un profil parabolique ?</b> Une surface plane se comporte comme un réflecteur parabolique, sans mouvement mécanique.</p>
+                <p class="lm-why"><b>Pourquoi mesurer phase et tension ?</b> La réponse de la diode n'est pas analytique : on la relève à 10 GHz sur la cellule.</p>
+                <p class="lm-why"><b>Pourquoi des varactors ?</b> Phase quasi continue de 0 à 20 V ; une diode PIN n'a que 2 états.</p>
+            </div>
         </section>
 
-
-        <!-- ===== CARTE 2 : FONCTIONNEMENT ===== -->
-        <section class="aqua-slide aqua-card leme-split">
-
-            <div class="leme-text">
-                <p class="project-category">LE PROJET</p>
-                <h2>De l'image à la commande</h2>
-                <p>
-                    Une caméra détecte une cible munie d'un marqueur ArUco. Sa position
-                    donne l'angle de réflexion θ, qui sert à calculer le profil de phase
-                    de la métasurface, puis les tensions appliquées à ses cellules.
-                </p>
+        <!-- 03 BANC & MATÉRIEL -->
+        <section class="lm-slide lm-card lm-block">
+            <div class="lm-part">
+                <div class="lm-num">03</div>
+                <div><h2>Banc d'essai et matériel</h2><p>Emplacement des pièces, antennes et électronique de commande.</p></div>
             </div>
 
-            <div class="leme-side">
+            <div class="lm-split">
+                <figure class="lm-tile">
+                    <img class="lm-img" src="images/leme/set.global.png" alt="Banc de mesure annoté">
+                    <strong>Le banc, vu d'ensemble</strong>
+                    <span>PC client et serveur, VNA, métasurface (30 colonnes) avec antenne patch, caméra et carte DAC. Chariot mobile : antenne cornet, analyseur de spectre et marqueur ArUco, à 3 m.</span>
+                </figure>
 
-                <p class="leme-label">CHAÎNE DE COMMANDE</p>
-
-                <div class="leme-flow">
-                    <span class="leme-step">Caméra</span>
-                    <span class="leme-arrow">→</span>
-                    <span class="leme-step">ArUco</span>
-                    <span class="leme-arrow">→</span>
-                    <span class="leme-step">Angle θ</span>
-                    <span class="leme-arrow">→</span>
-                    <span class="leme-step">Profil de phase</span>
-                    <span class="leme-arrow">→</span>
-                    <span class="leme-step">Tension</span>
-                    <span class="leme-arrow">→</span>
-                    <span class="leme-step">Raspberry Pi + DAC</span>
-                    <span class="leme-arrow">→</span>
-                    <span class="leme-step">Métasurface</span>
-                </div>
-
-                <div class="leme-specs">
-                    <div class="leme-spec">
-                        <span>FRÉQUENCE</span>
-                        <strong>10 GHz</strong>
+                <div class="lm-ants">
+                    <div class="lm-ant">
+                        <strong>Antenne patch · source</strong>
+                        <p>Accordée à 10 GHz, placée au foyer de la métasurface (F = 30 mm), elle l'éclaire sous incidence normale. Alimentée par le VNA.</p>
                     </div>
-                    <div class="leme-spec">
-                        <span>MÉTASURFACE</span>
-                        <strong>30 colonnes</strong>
+                    <div class="lm-ant">
+                        <strong>Antenne cornet · réception</strong>
+                        <p>Bande 10 GHz, forte directivité et gain élevé : mesure précise du faisceau réfléchi. Reliée à l'analyseur de spectre, le marqueur ArUco définit la direction cible.</p>
                     </div>
-                    <div class="leme-spec">
-                        <span>COMMANDE</span>
-                        <strong>0 → 20 V</strong>
-                    </div>
-                    <div class="leme-spec">
-                        <span>PAS DE TENSION</span>
-                        <strong>0,2 V</strong>
+                    <div class="lm-ant">
+                        <strong>Champ lointain</strong>
+                        <p class="f" style="font:italic 15px/1.7 Georgia,serif;color:#0c3a57">R &gt; <span class="fr"><span>2D²</span><span>λ</span></span> = <span class="fr"><span>2 · 0,18²</span><span>0,03</span></span> = 2,16 m</p>
+                        <p>La mesure à 3 m respecte la condition.</p>
                     </div>
                 </div>
-
             </div>
 
-        </section>
-
-
-        <!-- ===== CARTE 3 : MONTAGE ET RÉSULTATS ===== -->
-        <section class="aqua-slide aqua-card">
-
-            <p class="project-category">MONTAGE &amp; RÉSULTATS</p>
-            <h2 class="leme-title">Du banc expérimental à la validation</h2>
-
-            <div class="leme-gallery">
-
-                <figure>
-                    <img src="images/leme/metasurface.jpg" alt="Métasurface programmable">
-                    <figcaption>Métasurface programmable</figcaption>
+            <div class="lm-two">
+                <figure class="lm-tile">
+                    <img class="lm-img" src="images/leme/logigrame-dac.png" alt="Schéma bloc de l'architecture de commande">
+                    <strong>Électronique de commande</strong>
+                    <span>Raspberry Pi 3 → bus SPI → 2 DAC de 16 voies (30 utilisées) → amplificateurs → 30 diodes varactor. Vérifié au multimètre : 4,8 V commandé = 4,8 V mesuré.</span>
                 </figure>
-
-                <figure>
-                    <img src="images/leme/raspberry-dac.jpg" alt="Raspberry Pi et électronique de commande">
-                    <figcaption>Raspberry Pi et électronique de commande</figcaption>
+                <figure class="lm-tile">
+                    <img class="lm-img" src="images/leme/global.png" alt="Architecture client PC et serveur Raspberry Pi">
+                    <strong>Calcul déporté sur le PC</strong>
+                    <span>Le PC fait vision, profil de phase et conversion en tension, puis envoie les 30 tensions par TCP/IP au Raspberry Pi, qui pilote les DAC. Le Pi est limité en calcul.</span>
                 </figure>
-
-                <figure>
-                    <img src="images/leme/camera-aruco.jpg" alt="Détection du marqueur ArUco">
-                    <figcaption>Détection de la cible par caméra</figcaption>
-                </figure>
-
-                <figure>
-                    <img src="images/leme/banc-experimental.jpg" alt="Banc expérimental">
-                    <figcaption>Banc expérimental</figcaption>
-                </figure>
-
-                <figure>
-                    <img src="images/leme/resultat-angle.jpg" alt="Résultat expérimental selon l'angle">
-                    <figcaption>Résultat selon l'angle de la cible</figcaption>
-                </figure>
-
-                <figure>
-                    <img src="images/leme/resultat-bits.jpg" alt="Comparaison des commandes quantifiées">
-                    <figcaption>Comparaison des commandes quantifiées</figcaption>
-                </figure>
-
             </div>
-
         </section>
 
-
-        <!-- ===== CARTE 4 : CODE ===== -->
-        <section class="aqua-slide aqua-card">
-
-            <p class="project-category">CODE &amp; DOCUMENTATION</p>
-
-            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
-                <h2 class="leme-title" style="margin:0;">Extraits du code</h2>
-
+        <!-- CODE -->
+        <section class="lm-slide lm-card lm-block">
+            <p class="lm-label">CODE &amp; DOCUMENTATION</p>
+            <div class="lm-codebar">
+                <h2>Extraits du code</h2>
                 <!-- Remplace le # par le lien de ton GitHub -->
-                <a href="#" class="leme-btn" target="_blank">Voir le code sur GitHub →</a>
+                <a href="#" class="lm-btn" target="_blank">Voir le code sur GitHub →</a>
             </div>
-
         </section>
 
         <nav class="project-nav">
-    <a href="project-aquamonitor.html" class="project-nav-btn">
-        <span>← PROJET PRÉCÉDENT</span>
-        <strong>AquaMonitor</strong>
-    </a>
-</nav>
+            <a href="project-aquamonitor.html" class="project-nav-btn">
+                <span>← PROJET PRÉCÉDENT</span>
+                <strong>AquaMonitor</strong>
+            </a>
+        </nav>
 
-    </main>
-
+    </div>
+</main>
 </body>
 </html>

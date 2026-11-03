@@ -2307,3 +2307,70 @@ body:has(#accueil) .skills-section {
         opacity: 1;
     }
 }
+
+/* ========================================================= */
+/* INVERSION : précédent / suivant en haut, retour en bas    */
+/* (s'applique à toutes les pages qui ont une .project-topbar) */
+/* ========================================================= */
+
+/* Le conteneur de la page devient une grille à 2 colonnes */
+:has(> .project-topbar) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: 14px;
+    align-items: start;
+}
+
+/* Toutes les cartes restent sur toute la largeur */
+:has(> .project-topbar) > * {
+    grid-column: 1 / -1;
+}
+
+/* Les deux barres deviennent "transparentes" : leurs boutons
+   se placent directement dans la grille (couleurs inchangées) */
+.project-topbar,
+.project-nav {
+    display: contents;
+}
+
+/* EN HAUT : précédent à gauche, suivant à droite */
+.project-nav .project-nav-btn {
+    grid-row: 1;
+    grid-column: 1;
+    justify-self: start;
+    margin-bottom: 25px;
+}
+
+.project-topbar .project-nav-next {
+    grid-row: 1;
+    grid-column: 2;
+    justify-self: end;
+    margin-bottom: 25px;
+}
+
+.project-nav-btn {
+    min-width: 0;
+    max-width: min(340px, 100%);
+}
+
+/* EN BAS : retour aux projets */
+.project-topbar .project-back {
+    order: 1;
+    grid-column: 1;
+    justify-self: start;
+    margin: 6px 0 24px;
+}
+
+/* Téléphone : les deux boutons du haut s'empilent */
+@media (max-width: 700px) {
+    .project-nav .project-nav-btn,
+    .project-topbar .project-nav-next {
+        grid-column: 1 / -1;
+        justify-self: stretch;
+        max-width: none;
+        margin-bottom: 12px;
+    }
+
+    .project-nav .project-nav-btn { grid-row: 1; }
+    .project-topbar .project-nav-next { grid-row: 2; }
+}

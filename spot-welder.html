@@ -28,7 +28,7 @@
         .proj-page {
             width: min(1180px, 90%);
             margin: 0 auto;
-            padding: 40px 0 45px; /* ← 1er chiffre = espace entre le haut du site et « Retour aux projets » */
+            padding: 40px 0 45px;
         }
 
         /* Bouton retour */
@@ -93,49 +93,60 @@
         }
 
         /* =========================
-           CARTE 1 : PRÉSENTATION
+           CARTE 1 : PRÉSENTATION (compacte)
         ========================= */
 
         .proj-intro {
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 40px;
+            grid-template-columns: 0.8fr 1.2fr;   /* image plus petite */
+            gap: 28px;
             align-items: center;
+            padding: 22px 26px;                    /* moins de marge interne */
         }
 
         .proj-intro-image img {
             width: 100%;
-            height: 390px;
+            height: 230px;                         /* était 390px */
             object-fit: cover;
             display: block;
-            border-radius: 18px;
-            background: #dce8ef; /* gris-bleu tant que la photo n'est pas ajoutée */
+            border-radius: 16px;
+            background: #dce8ef;
+        }
+
+        .proj-intro .proj-category {
+            margin-bottom: 6px;
         }
 
         .proj-intro h1 {
-            font-size: clamp(34px, 4vw, 50px);
-            line-height: 1.05;
-            letter-spacing: -0.03em;
-            margin: 10px 0 14px;
+            font-size: clamp(26px, 3vw, 36px);     /* était jusqu'à 50px */
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin: 4px 0 8px;
         }
 
         .proj-intro h2 {
-            font-size: 20px;
+            font-size: 16px;
             line-height: 1.4;
             font-weight: 500;
             color: #12364d;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
+        }
+
+        .proj-intro p {
+            font-size: 14.5px;
+            line-height: 1.6;
+            margin-bottom: 10px;
         }
 
         .proj-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 20px;
+            gap: 6px;
+            margin-top: 12px;
         }
 
         .proj-tags span {
-            padding: 6px 11px;
+            padding: 5px 10px;
             border-radius: 20px;
             font-size: 12px;
             background: #e5f5f2;
@@ -149,8 +160,22 @@
             color: #214f75;
         }
 
+        /* Petite ligne d'infos (encadrant, équipe, année) */
+
+        .proj-meta {
+            font-size: 13px;
+            color: #5d7284;
+            margin-top: 12px;
+            line-height: 1.5;
+        }
+
+        .proj-meta strong {
+            color: #0c3a57;
+            font-weight: 600;
+        }
+
         /* =========================
-           CARTE 2 : FONCTIONNEMENT
+           CARTES 2 ET 3 : TEXTE À GAUCHE / CONTENU À DROITE
         ========================= */
 
         .proj-split {
@@ -195,6 +220,7 @@
         .proj-arrow {
             color: #7aa6c2;
             font-size: 15px;
+            font-style: normal;
         }
 
         .proj-specs {
@@ -230,8 +256,60 @@
             color: #0c3a57;
         }
 
+        .proj-spec small {
+            display: block;
+            margin-top: 4px;
+            font-size: 11.5px;
+            line-height: 1.35;
+            color: #5d7284;
+        }
+
+        /* Cycle de soudage : 4 phases */
+
+        .proj-phases {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .proj-phases li {
+            padding: 8px 0;
+            border-bottom: 1px solid #e3edf2;
+            color: #5d7284;
+            font-size: 14.5px;
+            line-height: 1.55;
+        }
+
+        .proj-phases li:last-child {
+            border-bottom: none;
+        }
+
+        .proj-phases strong {
+            color: #0c3a57;
+        }
+
+        .proj-figure {
+            margin: 0;
+        }
+
+        .proj-figure img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 14px;
+            background: #dce8ef;
+            min-height: 150px;
+        }
+
+        .proj-figure figcaption {
+            font-size: 12.5px;
+            line-height: 1.4;
+            color: #5d7284;
+            margin-top: 8px;
+        }
+
         /* =========================
-           CARTE 3 : GALERIE
+           GALERIE
         ========================= */
 
         .proj-gallery {
@@ -261,8 +339,17 @@
             margin-top: 8px;
         }
 
+        .proj-gallery-4 {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .proj-gallery-4 img {
+            height: 105px;
+        }
+
         /* =========================
-           CARTE 4 : RÉSULTATS / PERSPECTIVES
+           CARTE 4 : RÉSULTATS / LIMITES
         ========================= */
 
         .proj-two {
@@ -307,6 +394,24 @@
         }
 
         /* =========================
+           CARTE DÉMONSTRATION : VIDÉO + COMMENTAIRES
+        ========================= */
+
+        .proj-video {
+            width: 100%;
+            max-height: 280px;
+            display: block;
+            border-radius: 14px;
+            background: #000;
+        }
+
+        .proj-note {
+            font-size: 12.5px !important;
+            line-height: 1.4 !important;
+            margin: 8px 0 0 !important;
+        }
+
+        /* =========================
            CARTE 5 : CODE & GITHUB
         ========================= */
 
@@ -334,15 +439,6 @@
             transform: translateY(-2px);
         }
 
-        .proj-gallery-4 {
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 14px;
-        }
-
-        .proj-gallery-4 img {
-            height: 105px;
-        }
-
         /* =========================
            TÉLÉPHONE ET TABLETTE
         ========================= */
@@ -357,7 +453,7 @@
             }
 
             .proj-intro-image img {
-                height: 300px;
+                height: 200px;
             }
 
             .proj-text {
@@ -383,10 +479,7 @@
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
 
-            .proj-gallery-4 img {
-                height: 130px;
-            }
-
+            .proj-gallery-4 img,
             .proj-gallery img {
                 height: 130px;
             }
@@ -399,18 +492,21 @@
     <main class="container leme-page">
 
         <div class="project-topbar">
-    <a href="index.html#projet-06" class="project-back">← Retour aux projets</a>
+            <a href="index.html#projet-06" class="project-back">← Retour aux projets</a>
 
-    <a href="bioimpedance.html" class="project-nav-btn project-nav-next">
-        <span>PROJET SUIVANT →</span>
-        <strong>Système de mesure d impédance</strong>
-    </a>
-</div>
-        <!-- ===== CARTE 1 : PRÉSENTATION ===== -->
+            <a href="bioimpedance.html" class="project-nav-btn project-nav-next">
+                <span>PROJET SUIVANT →</span>
+                <strong>Système de mesure d'impédance</strong>
+            </a>
+        </div>
+
+
+        <!-- ===== CARTE 1 : PRÉSENTATION (compacte) ===== -->
         <section class="proj-card proj-intro">
 
             <div class="proj-intro-image">
-                <img src="images/spot-welder/machine-complete.jpg" alt="Machine à souder par pointe réalisée au laboratoire">
+                <!-- PHOTO : sodure.jpg -->
+                <img src="images/spot-welder/sodure.jpg" alt="Soudure par points réalisée avec la machine">
             </div>
 
             <div>
@@ -419,23 +515,23 @@
                 <h2>Étude et réalisation d'un poste de soudage par résistance</h2>
 
                 <p>
-                    Prototype de machine à souder par points réalisé à partir d'un
-                    transformateur de four à micro-ondes modifié : une très basse
-                    tension et un courant très élevé produisent des points de
-                    soudure par effet Joule.
+                    Prototype de soudeuse par points construit à partir d'un transformateur
+                    de four à micro-ondes modifié : une très basse tension et un fort courant
+                    font fondre localement les tôles par effet Joule.
                 </p>
 
                 <div class="proj-tags">
                     <span>Soudage par points</span>
-                    <span>Transformateur</span>
-                    <span>220 V AC</span>
-                    <span>Très basse tension</span>
-                    <span>Fort courant</span>
+                    <span>Transformateur à fuite</span>
                     <span>Effet Joule</span>
                     <span>Électrodes cuivre</span>
-                    <span>Instrumentation</span>
-                    <span>Génie électrique</span>
+                    <span>Fort courant</span>
                 </div>
+
+                <p class="proj-meta">
+                    <strong>USTHB</strong> · Mini-projet S2/M1 · 2023/2024 · Encadrant : Prof. M. Attari ·
+                    Projet en groupe de 4
+                </p>
             </div>
 
         </section>
@@ -448,14 +544,30 @@
                 <p class="proj-category">CONCEPTION &amp; RÉALISATION</p>
                 <h2 class="proj-title">Du transformateur au point de soudure</h2>
                 <p>
-                    Le secondaire d'un transformateur de micro-ondes est remplacé
-                    par un câble de cuivre de forte section. Des électrodes en
-                    cuivre, commandées par une pédale, appliquent le courant sur
-                    les tôles pour former le point de soudure.
+                    Le transformateur d'un vieux micro-ondes a été démonté et son
+                    enroulement secondaire retiré. Il a ensuite été rebobiné avec un câble
+                    de plus forte section : moins de spires, donc une tension de sortie
+                    plus basse et un courant beaucoup plus élevé.
+                </p>
+                <p>
+                    Des électrodes en cuivre, montées sur un support à deux bras et
+                    commandées par une pédale, appliquent le courant sur les tôles.
                 </p>
             </div>
 
             <div class="proj-side">
+
+                <div class="proj-flow">
+                    <span class="proj-step">Récupération du transfo</span>
+                    <em class="proj-arrow">→</em>
+                    <span class="proj-step">Retrait du secondaire</span>
+                    <em class="proj-arrow">→</em>
+                    <span class="proj-step">Rebobinage gros câble</span>
+                    <em class="proj-arrow">→</em>
+                    <span class="proj-step">Électrodes &amp; support</span>
+                    <em class="proj-arrow">→</em>
+                    <span class="proj-step">Pédale &amp; tests</span>
+                </div>
 
                 <div class="proj-specs" style="margin-bottom:24px;">
                     <div class="proj-spec">
@@ -479,23 +591,27 @@
                 <div class="proj-gallery proj-gallery-4">
 
                     <figure>
-                        <img src="images/spot-welder/transformateur.jpg" alt="Transformateur de micro-ondes">
-                        <figcaption>Transformateur de micro-ondes</figcaption>
+                        <!-- PHOTO : transformateur.jpg -->
+                        <img src="images/spot-welder/transformateur.jpg" alt="Transformateur de micro-ondes à fuite de flux">
+                        <figcaption>Transformateur à fuite de flux</figcaption>
                     </figure>
 
                     <figure>
+                        <!-- PHOTO : electrodes-cuivre.jpg -->
                         <img src="images/spot-welder/electrodes-cuivre.jpg" alt="Électrodes en cuivre">
                         <figcaption>Électrodes en cuivre</figcaption>
                     </figure>
 
                     <figure>
-                        <img src="images/spot-welder/poste-final.jpg" alt="Poste de soudage finalisé">
-                        <figcaption>Poste de soudage finalisé</figcaption>
+                        <!-- PHOTO : pedale.jpg -->
+                        <img src="images/spot-welder/pedale.jpg" alt="Pédale de commande">
+                        <figcaption>Pédale de commande</figcaption>
                     </figure>
 
                     <figure>
-                        <img src="images/spot-welder/point-soudure.jpg" alt="Point de soudure sur tôle inox">
-                        <figcaption>Point de soudure sur tôle inox</figcaption>
+                        <!-- PHOTO : cable-50mm.jpg -->
+                        <img src="images/spot-welder/cable-50mm.jpg" alt="Câble de masse 50 mm²">
+                        <figcaption>Câble de masse 50 mm²</figcaption>
                     </figure>
 
                 </div>
@@ -505,27 +621,133 @@
         </section>
 
 
-        <!-- ===== CARTE 3 : DOCUMENTATION & GITHUB ===== -->
-        <section class="proj-card">
+        <!-- ===== CARTE 3 : PRINCIPE ET CYCLE DE SOUDAGE ===== -->
+        <section class="proj-card proj-split">
 
-            <p class="proj-category">CODE &amp; DOCUMENTATION</p>
+            <div class="proj-text">
+                <p class="proj-category">PRINCIPE DE SOUDAGE</p>
+                <h2 class="proj-title">Le cycle d'un point de soudure</h2>
+                <p>
+                    Deux tôles sont serrées entre les électrodes. Le courant traverse
+                    l'assemblage et la chaleur dégagée, proportionnelle au carré de
+                    l'intensité (effet Joule), fait fondre une petite zone à l'interface.
+                </p>
+            </div>
 
-            <div class="proj-code-head">
+            <div class="proj-side">
 
-                <h2 class="proj-title" style="margin:0;">Fichiers du projet</h2>
+                <div class="proj-specs" style="margin-bottom:24px;">
+                    <div class="proj-spec">
+                        <span>INTENSITÉ</span>
+                        <strong>Q ∝ I²</strong>
+                        <small>fixe la taille du point</small>
+                    </div>
+                    <div class="proj-spec">
+                        <span>DURÉE</span>
+                        <strong>90–300 ms</strong>
+                        <small>cycle court</small>
+                    </div>
+                    <div class="proj-spec">
+                        <span>EFFORT</span>
+                        <strong>Serrage</strong>
+                        <small>puis forgeage</small>
+                    </div>
+                    <div class="proj-spec">
+                        <span>ÉLECTRODE</span>
+                        <strong>D = 2e + 3 mm</strong>
+                        <small>e = épaisseur des tôles</small>
+                    </div>
+                </div>
 
-                <!-- Remplace le # par le lien de ton GitHub -->
-                <a href="#" class="proj-btn" target="_blank">Voir le projet sur GitHub →</a>
+                <div class="proj-two" style="gap:28px;">
+
+                    <ol class="proj-phases">
+                        <li><strong>1. Accostage</strong> : les électrodes serrent les tôles.</li>
+                        <li><strong>2. Soudage</strong> : le courant fait fondre l'interface.</li>
+                        <li><strong>3. Forgeage</strong> : la pression est maintenue, la soudure se solidifie.</li>
+                        <li><strong>4. Remontée</strong> : les électrodes se relèvent.</li>
+                    </ol>
+
+                    <figure class="proj-figure">
+                        <!-- PHOTO / SCHÉMA : cycle-soudage.png -->
+                        <img src="images/spot-welder/cycle-soudage.png" alt="Schéma des phases du cycle de soudage par points">
+                        <figcaption>Phases du cycle : accostage, soudage, forgeage, remontée</figcaption>
+                    </figure>
+
+                </div>
 
             </div>
 
         </section>
+
+
+        <!-- ===== CARTE 4 : TEST ET RÉSULTATS ===== -->
+        <section class="proj-card">
+
+            <p class="proj-category">TEST &amp; RÉSULTATS</p>
+            <h2 class="proj-title">Le dispositif soude bien</h2>
+
+            <div class="proj-two">
+
+                <div class="proj-gallery" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+                    <figure>
+                        <!-- PHOTO : presntation-material-ensemble.jpg -->
+                        <img src="images/spot-welder/presntation-material-ensemble.jpg" alt="Ensemble du matériel du poste de soudage">
+                        <figcaption>Ensemble du matériel du poste</figcaption>
+                    </figure>
+
+                    <figure>
+                        <!-- PHOTO : machine-complete.jpg -->
+                        <img src="images/spot-welder/machine-complete.jpg" alt="Machine à souder par pointe complète">
+                        <figcaption>Machine complète</figcaption>
+                    </figure>
+                </div>
+
+                <ul class="proj-list">
+                    <li>Test sur de fines tôles d'inox soudées ensemble, avec étincelles visibles.</li>
+                    <li>Assemblage final correctement soudé : le prototype fonctionne.</li>
+                    <li>Le courant, la durée et l'effort des électrodes restent les paramètres clés de la qualité.</li>
+                    <li>Limite : procédé adapté aux tôles fines, avec accès aux deux faces du joint.</li>
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- ===== CARTE 5 : DÉMONSTRATION (vidéo + commentaires) ===== -->
+        <section class="proj-card">
+
+            <p class="proj-category">DÉMONSTRATION</p>
+
+            <div class="proj-two">
+
+                <div>
+                    <!-- VIDÉO : mets ta vidéo dans images/spot-welder/ sous le nom demo-soudeuse.mp4 -->
+                    <video class="proj-video" controls muted playsinline preload="metadata"
+                           poster="images/spot-welder/machine-complete.jpg">
+                        <source src="images/spot-welder/soudure.mp4" type="video/mp4">
+                        Votre navigateur ne peut pas lire cette vidéo.
+                    </video>
+                    <p class="proj-note">La machine en fonctionnement : soudure de deux tôles d'inox.</p>
+                </div>
+
+                <ul class="proj-list">
+                    <li><strong>Mise en place :</strong> les deux tôles sont serrées entre les électrodes en cuivre.</li>
+                    <li><strong>Soudage :</strong> l'appui sur la pédale envoie le courant, avec des étincelles visibles à l'interface.</li>
+                    <li><strong>Résultat :</strong> les tôles restent assemblées par un point de soudure.</li>
+                </ul>
+
+            </div>
+
+        </section>
+
         <div class="project-nav">
-       <a href="ads-amplificateur.html" class="project-nav-btn project-nav-next">
-        <span>PROJET SUIVANT →</span>
-        <strong> Amplificateur hyperfréquence</strong>
-    </a>
-</div>
+            <a href="ads-amplificateur.html" class="project-nav-btn">
+                <span>←PROJET PRÉCÉDENT</span>
+                <strong>Amplificateur hyperfréquence</strong>
+            </a>
+        </div>
     </main>
 
 </body>

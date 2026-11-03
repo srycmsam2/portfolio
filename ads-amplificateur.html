@@ -10,8 +10,8 @@
 
     <style>
         /* =========================================================
-           PAGE AMPLIFICATEUR HF — tout le style est ici, rien à ajouter
-           dans style.css
+           PAGE AMPLIFICATEUR HF — tout le style est ici,
+           rien à ajouter dans style.css
         ========================================================= */
 
         body {
@@ -25,39 +25,11 @@
             background-attachment: fixed;
         }
 
-        .proj-page {
-            width: min(1180px, 90%);
-            margin: 0 auto;
-            padding: 40px 0 45px;
-        }
+        /* ---------- Cartes ---------- */
 
-        /* Bouton retour */
-
-        .proj-back {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 25px;
-            padding: 10px 17px;
-            border-radius: 30px;
-            background: #e1f2ff;
-            border: 1px solid #b9dff5;
-            color: #193753;
-            font-size: 14px;
-            box-shadow: 0 3px 10px rgba(49, 93, 125, 0.08);
-            transition: 0.25s ease;
-        }
-
-        .proj-back:hover {
-            background: #cce9fb;
-            transform: translateY(-2px);
-        }
-
-        /* Cartes */
-
-        .proj-card {
-            margin-bottom: 28px;
-            padding: 30px;
+        .ads-card {
+            margin-bottom: 20px;
+            padding: 26px;
             background: rgba(255, 255, 255, 0.85);
             border: 1px solid rgba(255, 255, 255, 0.9);
             border-radius: 24px;
@@ -65,76 +37,73 @@
             color: #182431;
         }
 
-        .proj-category,
-        .proj-label {
-            color: #4f86ad;
-            font-size: 0.72rem;
-            letter-spacing: 0.17em;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-
-        .proj-card h1,
-        .proj-card h2 {
+        .ads-card h1,
+        .ads-card h2 {
             color: #0c3a57;
         }
 
-        .proj-title {
-            font-size: 28px;
-            line-height: 1.2;
-            margin: 8px 0 16px;
-        }
-
-        .proj-card p {
+        .ads-card p {
             color: #5d7284;
             font-size: 15px;
             line-height: 1.7;
             margin-bottom: 14px;
         }
 
-        /* =========================
-           CARTE 1 : PRÉSENTATION
-        ========================= */
+        .ads-card p.ads-category {
+            color: #4f86ad;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.17em;
+            margin-bottom: 10px;
+        }
 
-        .proj-intro {
+        .ads-title {
+            font-size: 26px;
+            line-height: 1.25;
+            margin: 6px 0 14px;
+        }
+
+        /* ---------- Carte 1 : présentation (compacte) ---------- */
+
+        .ads-intro {
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 40px;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
             align-items: center;
         }
 
-        .proj-intro-image img {
+        .ads-intro-image img {
             width: 100%;
-            height: 390px;
-            object-fit: cover;
+            height: 250px;
+            object-fit: contain;
             display: block;
             border-radius: 18px;
-            background: #dce8ef; /* gris-bleu tant que la photo n'est pas ajoutée */
+            background: #eef2f5;
         }
 
-        .proj-intro h1 {
-            font-size: clamp(34px, 4vw, 50px);
+        .ads-intro h1 {
+            font-size: clamp(32px, 3.6vw, 46px);
             line-height: 1.05;
             letter-spacing: -0.03em;
-            margin: 10px 0 14px;
+            margin: 8px 0 10px;
         }
 
-        .proj-intro h2 {
-            font-size: 20px;
+        .ads-intro h2 {
+            font-size: 19px;
             line-height: 1.4;
             font-weight: 500;
             color: #12364d;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
 
-        .proj-tags {
+        .ads-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-top: 20px;
+            margin-top: 16px;
         }
 
-        .proj-tags span {
+        .ads-tags span {
             padding: 6px 11px;
             border-radius: 20px;
             font-size: 12px;
@@ -143,252 +112,214 @@
             color: #245e60;
         }
 
-        .proj-tags span:nth-child(even) {
+        .ads-tags span:nth-child(even) {
             background: #e5f2ff;
             border-color: #c2e0f7;
             color: #214f75;
         }
 
-        /* =========================
-           CARTE 2 : FONCTIONNEMENT
-        ========================= */
+        /* ---------- Chiffres clés ---------- */
 
-        .proj-split {
+        .ads-strip {
+            padding: 18px 22px;
+        }
+
+        .ads-specs {
             display: grid;
-            grid-template-columns: 0.75fr 1.25fr;
-            align-items: start;
+            grid-template-columns: repeat(4, 1fr);
         }
 
-        .proj-text {
-            padding-right: 30px;
-            border-right: 1px solid #dfe9ef;
+        .ads-spec {
+            padding: 0 8px;
+            text-align: center;
+            border-right: 1px solid #d3e4ea;
         }
 
-        .proj-side {
-            padding-left: 28px;
-            min-width: 0;
+        .ads-spec:last-child {
+            border-right: none;
         }
 
-        .proj-flow {
+        .ads-spec span {
+            display: block;
+            margin-bottom: 5px;
+            color: #4f86ad;
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+        }
+
+        .ads-spec strong {
+            font-size: 22px;
+            color: #0c3a57;
+        }
+
+        /* ---------- Démarche ---------- */
+
+        .ads-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+
+        .ads-head p.ads-note {
+            margin: 0 0 6px;
+            font-size: 13px;
+        }
+
+        .ads-process {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-bottom: 22px;
+        }
+
+        .ads-step {
+            padding: 16px 18px;
+            border-radius: 18px;
+            border: 1px solid #d5ebe8;
+            background: linear-gradient(135deg, #eaf6f4, #eef6fb);
+        }
+
+        .ads-step-number {
+            width: 30px;
+            height: 30px;
+            display: grid;
+            place-items: center;
+            margin-bottom: 10px;
+            border-radius: 50%;
+            background: #dcecfb;
+            color: #214f75;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .ads-step:nth-child(even) .ads-step-number {
+            background: #d8f1ee;
+            color: #245e60;
+        }
+
+        .ads-step h3 {
+            margin: 0 0 4px;
+            color: #0c3a57;
+            font-size: 16px;
+        }
+
+        .ads-card .ads-step p {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* ---------- Boîtes image + texte ---------- */
+
+        .ads-boxes {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .ads-box {
+            overflow: hidden;
+            border-radius: 18px;
+            background: #ffffff;
+            border: 1px solid #e1edf4;
+            box-shadow: 0 8px 22px rgba(49, 93, 125, 0.08);
+        }
+
+        .ads-box img {
+            width: 100%;
+            height: 220px;
+            object-fit: contain;
+            display: block;
+            padding: 8px;
+            background: #ffffff;
+            border-bottom: 1px solid #e8f0f4;
+        }
+
+        .ads-box-text {
+            padding: 14px 18px 16px;
+        }
+
+        .ads-box-text strong {
+            display: block;
+            margin-bottom: 4px;
+            color: #0c3a57;
+            font-size: 15px;
+        }
+
+        .ads-box-text span {
+            color: #5d7284;
+            font-size: 13.5px;
+            line-height: 1.55;
+        }
+
+        .ads-box.before { border-top: 5px solid #cfd8de; }
+        .ads-box.after  { border-top: 5px solid #7fc8a0; }
+
+        /* ---------- Bas de page : réalisé + compétences ---------- */
+
+        .ads-bottom {
+            display: grid;
+            grid-template-columns: 1.4fr 0.8fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .ads-bottom .ads-card {
+            margin-bottom: 0;
+        }
+
+        .ads-skills {
             display: flex;
             flex-wrap: wrap;
-            align-items: center;
             gap: 8px;
-            margin-bottom: 24px;
         }
 
-        .proj-step {
-            padding: 7px 13px;
+        .ads-skills span {
+            padding: 6px 11px;
             border-radius: 20px;
-            font-size: 12.5px;
+            font-size: 12px;
             background: #e5f5f2;
             border: 1px solid #b9e5dc;
             color: #245e60;
         }
 
-        .proj-step:nth-of-type(even) {
+        .ads-skills span:nth-child(even) {
             background: #e5f2ff;
             border-color: #c2e0f7;
             color: #214f75;
         }
 
-        .proj-arrow {
-            color: #7aa6c2;
-            font-size: 15px;
-        }
-
-        .proj-specs {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            background: linear-gradient(135deg, #eaf6f4, #eef6fb);
-            border: 1px solid #d5ebe8;
-            border-radius: 18px;
-            padding: 18px 22px;
-        }
-
-        .proj-spec {
-            text-align: center;
-            padding: 0 6px;
-            border-right: 1px solid #d3e4ea;
-        }
-
-        .proj-spec:last-child {
-            border-right: none;
-        }
-
-        .proj-spec span {
-            display: block;
-            font-size: 10.5px;
-            letter-spacing: 0.12em;
-            font-weight: 700;
-            color: #4f86ad;
-            margin-bottom: 6px;
-        }
-
-        .proj-spec strong {
-            font-size: 16px;
-            color: #0c3a57;
-        }
-
-        /* =========================
-           CARTE 3 : GALERIE
-        ========================= */
-
-        .proj-gallery {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 16px;
-        }
-
-        .proj-gallery figure {
-            margin: 0;
-            min-width: 0;
-        }
-
-        .proj-gallery img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            display: block;
-            border-radius: 12px;
-            background: #dce8ef;
-        }
-
-        .proj-gallery figcaption {
-            font-size: 12.5px;
-            line-height: 1.4;
-            color: #5d7284;
-            margin-top: 8px;
-        }
-
-        /* =========================
-           CARTE 4 : RÉSULTATS / PERSPECTIVES
-        ========================= */
-
-        .proj-two {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: start;
-        }
-
-        .proj-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .proj-list li {
-            position: relative;
-            padding: 9px 0 9px 22px;
-            color: #5d7284;
-            font-size: 15px;
-            line-height: 1.6;
-            border-bottom: 1px solid #e3edf2;
-        }
-
-        .proj-list li:last-child {
-            border-bottom: none;
-        }
-
-        .proj-list li::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 17px;
-            width: 9px;
-            height: 9px;
-            border-radius: 50%;
-            background: #7fc8b8;
-        }
-
-        .proj-list li:nth-child(even)::before {
-            background: #7fb6e3;
-        }
-
-        /* =========================
-           CARTE 5 : CODE & GITHUB
-        ========================= */
-
-        .proj-code-head {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-
-        .proj-btn {
-            display: inline-block;
-            padding: 11px 20px;
-            border-radius: 30px;
-            background: #e1f2ff;
-            border: 1px solid #b9dff5;
-            color: #193753;
-            font-size: 14px;
-            transition: 0.25s ease;
-        }
-
-        .proj-btn:hover {
-            background: #cce9fb;
-            transform: translateY(-2px);
-        }
-
-        .proj-gallery-4 {
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 14px;
-        }
-
-        .proj-gallery-4 img {
-            height: 105px;
-        }
-
-        /* =========================
-           TÉLÉPHONE ET TABLETTE
-        ========================= */
+        /* ---------- Téléphone et tablette ---------- */
 
         @media (max-width: 800px) {
 
-            .proj-intro,
-            .proj-split,
-            .proj-two {
+            .ads-intro {
                 grid-template-columns: 1fr;
-                gap: 25px;
+                gap: 20px;
             }
 
-            .proj-intro-image img {
-                height: 300px;
+            .ads-intro-image img {
+                height: 220px;
             }
 
-            .proj-text {
-                padding-right: 0;
-                border-right: none;
-            }
-
-            .proj-side {
-                padding-left: 0;
-            }
-
-            .proj-specs {
+            .ads-specs {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 18px 0;
+                gap: 16px 0;
             }
 
-            .proj-spec:nth-child(2n) {
+            .ads-spec:nth-child(2n) {
                 border-right: none;
             }
 
-            .proj-gallery,
-            .proj-gallery-4 {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
-            .proj-gallery-4 img {
-                height: 130px;
-            }
-
-            .proj-gallery img {
-                height: 130px;
+            .ads-process,
+            .ads-boxes,
+            .ads-bottom {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -396,137 +327,247 @@
 
 <body>
 
-    <main class="container leme-page">
+<main class="container leme-page">
 
-       <div class="project-topbar">
-    <a href="index.html#projet-05" class="project-back">← Retour aux projets</a>
+    <!-- NAVIGATION DU HAUT -->
+    <div class="project-topbar">
+        <a href="index.html#projet-05" class="project-back">← Retour aux projets</a>
 
-    <a href="spot-welder.html" class="project-nav-btn project-nav-next">
-        <span>PROJET SUIVANT →</span>
-        <strong> Machine à soudure par points</strong>
-    </a>
-</div>
-        <!-- ===== CARTE 1 : PRÉSENTATION ===== -->
-        <section class="proj-card proj-intro">
+        <a href="spot-welder.html" class="project-nav-btn project-nav-next">
+            <span>PROJET SUIVANT →</span>
+            <strong>Machine à soudure par points</strong>
+        </a>
+    </div>
 
-            <div class="proj-intro-image">
-                <img src="images/ads-amplificateur/schema-global.jpg" alt="Amplificateur hyperfréquence simulé sous ADS">
+
+    <!-- ===== CARTE 1 : PRÉSENTATION ===== -->
+    <section class="ads-card ads-intro">
+
+        <div class="ads-intro-image">
+            <img src="images/Amplificateur HF/amplificateur sous ads.jpg"
+                 alt="Schéma de l'amplificateur HF sous ADS">
+        </div>
+
+        <div>
+            <p class="ads-category">PROJET ACADÉMIQUE · RF / HF · ADS</p>
+            <h1>Amplificateur HF sous ADS</h1>
+            <h2>Concevoir un amplificateur de 10 dB à 6 GHz</h2>
+
+            <p>
+                J'ai étudié le comportement d'un transistor GaAs FET
+                <strong>ATF-13284</strong>, analysé sa stabilité, choisi les
+                conditions d'adaptation puis validé le circuit sous ADS.
+            </p>
+
+            <div class="ads-tags">
+                <span>ADS 2009</span>
+                <span>Paramètres S</span>
+                <span>Abaque de Smith</span>
+                <span>Adaptation LC</span>
+                <span>RF / HF</span>
             </div>
+        </div>
 
+    </section>
+
+
+    <!-- ===== CHIFFRES CLÉS ===== -->
+    <section class="ads-card ads-strip">
+        <div class="ads-specs">
+            <div class="ads-spec">
+                <span>FRÉQUENCE</span>
+                <strong>6 GHz</strong>
+            </div>
+            <div class="ads-spec">
+                <span>GAIN VISÉ</span>
+                <strong>10 dB</strong>
+            </div>
+            <div class="ads-spec">
+                <span>GAIN MAX</span>
+                <strong>15,5 dB</strong>
+            </div>
+            <div class="ads-spec">
+                <span>STABILITÉ K</span>
+                <strong>0,78</strong>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ===== CARTE 2 : DÉMARCHE ET RÉSULTATS ===== -->
+    <section class="ads-card">
+
+        <div class="ads-head">
             <div>
-                <p class="proj-category">HYPERFRÉQUENCES · ADS · MASTER 1</p>
-                <h1>Amplificateur HF sous ADS</h1>
-                <h2>Conception et simulation d'un amplificateur hyperfréquence à 6 GHz</h2>
-
-                <p>
-                    Étude et conception assistée par ordinateur d'un amplificateur
-                    basé sur un transistor GaAs FET ATF-13284, avec des réseaux
-                    d'adaptation LC pour obtenir un gain de 10 dB à 6 GHz.
-                </p>
-
-                <div class="proj-tags">
-                    <span>ADS 2009</span>
-                    <span>Hyperfréquences</span>
-                    <span>6 GHz</span>
-                    <span>Paramètres S</span>
-                    <span>Abaque de Smith</span>
-                    <span>Facteur de Rollet</span>
-                    <span>ATF-13284</span>
-                    <span>Adaptation LC</span>
-                    <span>S-Parameters</span>
-                </div>
+                <p class="ads-category">MA DÉMARCHE</p>
+                <h2 class="ads-title" style="margin:0;">Du transistor au circuit validé</h2>
             </div>
 
-        </section>
+            <p class="ads-note">3 étapes principales</p>
+        </div>
 
+        <div class="ads-process">
 
-        <!-- ===== CARTE 2 : CONCEPTION ET SIMULATION ===== -->
-        <section class="proj-card proj-split">
-
-            <div class="proj-text">
-                <p class="proj-category">CONCEPTION &amp; SIMULATION</p>
-                <h2 class="proj-title">De la stabilité à l'adaptation</h2>
+            <div class="ads-step">
+                <div class="ads-step-number">01</div>
+                <h3>Analyser</h3>
                 <p>
-                    À partir des paramètres S du transistor, l'étude porte sur la
-                    stabilité (K &lt; 1 : stabilité conditionnelle), les cercles de
-                    stabilité et de gain sur l'abaque de Smith, puis la synthèse
-                    des réseaux d'adaptation LC, validée par simulation sous ADS.
+                    J'ai étudié les paramètres S du transistor et vérifié sa
+                    stabilité avant de réaliser l'amplificateur.
                 </p>
             </div>
 
-            <div class="proj-side">
-
-                <div class="proj-specs" style="margin-bottom:24px;">
-                    <div class="proj-spec">
-                        <span>TRANSISTOR</span>
-                        <strong>ATF-13284</strong>
-                    </div>
-                    <div class="proj-spec">
-                        <span>FRÉQUENCE</span>
-                        <strong>6 GHz</strong>
-                    </div>
-                    <div class="proj-spec">
-                        <span>GAIN OBTENU</span>
-                        <strong>10 dB</strong>
-                    </div>
-                    <div class="proj-spec">
-                        <span>GAIN MAX</span>
-                        <strong>15,5 dB</strong>
-                    </div>
-                </div>
-
-                <div class="proj-gallery proj-gallery-4">
-
-                    <figure>
-                        <img src="images/ads-amplificateur/abaque-smith.jpg" alt="Abaque de Smith avec cercles de stabilité">
-                        <figcaption>Abaque de Smith et cercles de stabilité</figcaption>
-                    </figure>
-
-                    <figure>
-                        <img src="images/ads-amplificateur/schema-ads.jpg" alt="Schéma complet sous ADS">
-                        <figcaption>Schéma complet sous ADS</figcaption>
-                    </figure>
-
-                    <figure>
-                        <img src="images/ads-amplificateur/sparameters.jpg" alt="Simulation S-Parameters sous ADS">
-                        <figcaption>Simulation S-Parameters</figcaption>
-                    </figure>
-
-                    <figure>
-                        <img src="images/ads-amplificateur/courbe-gain.jpg" alt="Courbe du gain à 6 GHz">
-                        <figcaption>Courbe du gain à 6 GHz</figcaption>
-                    </figure>
-
-                </div>
-
+            <div class="ads-step">
+                <div class="ads-step-number">02</div>
+                <h3>Adapter</h3>
+                <p>
+                    J'ai choisi ΓL et ΓS sur l'abaque de Smith puis réalisé
+                    les réseaux d'adaptation LC.
+                </p>
             </div>
 
-        </section>
-
-
-        <!-- ===== CARTE 3 : DOCUMENTATION & GITHUB ===== -->
-        <section class="proj-card">
-
-            <p class="proj-category">CODE &amp; DOCUMENTATION</p>
-
-            <div class="proj-code-head">
-
-                <h2 class="proj-title" style="margin:0;">Fichiers du projet</h2>
-
-                <!-- Remplace le # par le lien de ton GitHub -->
-                <a href="#" class="proj-btn" target="_blank">Voir le projet sur GitHub →</a>
-
+            <div class="ads-step">
+                <div class="ads-step-number">03</div>
+                <h3>Valider</h3>
+                <p>
+                    J'ai simulé le circuit sous ADS et comparé le gain avant
+                    et après adaptation.
+                </p>
             </div>
 
-        </section>
-        <div class="project-nav">
+        </div>
 
-       <a href="decibelmetre.html" class="project-nav-btn project-nav-next">
-        <span>PROJET SUIVANT →</span>
-        <strong>Décibelmètre numérique</strong>
-    </a>
-</div>
-    </main>
+
+        <!-- Analyse et choix des impédances -->
+        <div class="ads-boxes">
+
+            <div class="ads-box">
+                <img src="images/Amplificateur HF/les cercle de stabilité .jpg"
+                     alt="Cercles de stabilité du transistor">
+                <div class="ads-box-text">
+                    <strong>Analyse de stabilité</strong>
+                    <span>
+                        Le facteur K = 0,78 indique un fonctionnement
+                        conditionnellement stable.
+                    </span>
+                </div>
+            </div>
+
+            <div class="ads-box">
+                <img src="images/Amplificateur HF/l'ajout du GammaS au smith .jpg"
+                     alt="Choix de Gamma L et Gamma S sur l'abaque de Smith">
+                <div class="ads-box-text">
+                    <strong>Choix des conditions d'adaptation</strong>
+                    <span>
+                        ΓL = 0,727 ∠ 14,1° et ΓS = 0,376 ∠ 130,5°.
+                    </span>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Réseaux LC et signaux -->
+        <div class="ads-boxes">
+
+            <div class="ads-box">
+                <img src="images/Amplificateur HF/LC.jpg"
+                     alt="Schéma final avec réseaux d'adaptation LC">
+                <div class="ads-box-text">
+                    <strong>Réseaux LC réalisés</strong>
+                    <span>
+                        Entrée : C1 = 502,9 fF · L1 = 1,129 nH<br>
+                        Sortie : C2 = 130,8 fF · L2 = 3,036 nH
+                    </span>
+                </div>
+            </div>
+
+            <div class="ads-box">
+                <img src="images/Amplificateur HF/signaux.png"
+                     alt="Tensions d'entrée et de sortie en simulation AC">
+                <div class="ads-box-text">
+                    <strong>Validation du fonctionnement</strong>
+                    <span>
+                        Simulation AC de 1 à 10 GHz : la tension de sortie
+                        (bleu) reste supérieure à la tension d'entrée (rouge).
+                    </span>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Avant / après -->
+        <div class="ads-head" style="margin-top:24px;">
+            <div>
+                <p class="ads-category">RÉSULTAT</p>
+                <h2 class="ads-title" style="margin:0;">Avant / après adaptation</h2>
+            </div>
+        </div>
+
+        <div class="ads-boxes" style="margin-bottom:0;">
+
+            <div class="ads-box before">
+                <img src="images/Amplificateur HF/le trace du gain sans adaptation.jpg"
+                     alt="Gain sans adaptation">
+                <div class="ads-box-text">
+                    <strong>Avant adaptation</strong>
+                    <span>Gain simulé : 10,96 dB à 6 GHz.</span>
+                </div>
+            </div>
+
+            <div class="ads-box after">
+                <img src="images/Amplificateur HF/tracer du gain avec adapation.png"
+                     alt="Gain avec adaptation">
+                <div class="ads-box-text">
+                    <strong>Après adaptation</strong>
+                    <span>Gain obtenu : 10,000 dB à 6 GHz. Objectif atteint.</span>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===== CARTE 3 : CE QUE J'AI RÉALISÉ + COMPÉTENCES ===== -->
+    <section class="ads-bottom">
+
+        <div class="ads-card">
+            <p class="ads-category">CE QUE J'AI RÉALISÉ</p>
+            <h2 class="ads-title">Une chaîne complète de conception RF</h2>
+            <p style="margin:0;">
+                À partir des paramètres S du transistor, j'ai réalisé l'analyse
+                de stabilité, le choix des coefficients d'adaptation, la
+                conception des réseaux LC et la validation du gain sous ADS.
+            </p>
+        </div>
+
+        <div class="ads-card">
+            <p class="ads-category">COMPÉTENCES MOBILISÉES</p>
+            <div class="ads-skills">
+                <span>ADS</span>
+                <span>RF / HF</span>
+                <span>Paramètres S</span>
+                <span>Smith Chart</span>
+                <span>Adaptation d'impédance</span>
+                <span>Simulation</span>
+                <span>Analyse de stabilité</span>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- NAVIGATION DU BAS -->
+    <nav class="project-nav">
+        <a href="decibelmetre.html" class="project-nav-btn">
+            <span>← PROJET PRÉCÉDENT</span>
+            <strong>Décibelmètre numérique</strong>
+        </a>
+    </nav>
+
+</main>
 
 </body>
 </html>

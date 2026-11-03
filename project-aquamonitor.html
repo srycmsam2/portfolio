@@ -1,541 +1,369 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AquaMonitor — Sara Messaoudi</title>
-
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* =========================
-           DESIGN GÉNÉRAL
-        ========================= */
-
-        .project-page {
-            padding: 105px 0 45px;
-        }
-
-        .project-page .container {
-            max-width: 1180px;
-        }
-
+        /* ===== BASE ===== */
+        .project-page { padding: 105px 0 45px; }
+        .project-page .container { max-width: 1180px; }
         .project-back {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin: 0 0 25px;
-            padding: 10px 16px;
-            border: 1px solid rgba(128,128,128,.25);
-            border-radius: 30px;
-            text-decoration: none;
-            font-size: 14px;
-            transition: .25s ease;
+            display: inline-flex; align-items: center; gap: 8px;
+            margin: 0 0 25px; padding: 10px 16px;
+            border: 1px solid rgba(128,128,128,.25); border-radius: 30px;
+            text-decoration: none; font-size: 14px; transition: .25s ease;
         }
+        .project-back:hover { transform: translateX(-3px); background: rgba(128,128,128,.08); }
 
-        .project-back:hover {
-            transform: translateX(-3px);
-            background: rgba(128,128,128,.08);
-        }
-
-        .aqua-slide {
-            margin-bottom: 35px;
-        }
-
+        .aqua-slide { margin-bottom: 20px; scroll-margin-top: 90px; }
         .aqua-card {
-            background: var(--card-bg, #ffffff);
-            color: var(--text-color, #202733);
-            border: 1px solid rgba(128,128,128,.16);
-            border-radius: 18px;
-            box-shadow: 0 8px 30px rgba(0,0,0,.045);
-            overflow: hidden;
+            background: var(--card-bg, #fff); color: var(--text-color, #202733);
+            border: 1px solid rgba(128,128,128,.16); border-radius: 18px;
+            box-shadow: 0 8px 30px rgba(0,0,0,.045); overflow: hidden;
+        }
+        .aqua-block { padding: 24px 28px; }
+        .project-category, .aqua-label {
+            font-size: 11px; letter-spacing: 1.8px; text-transform: uppercase;
+            opacity: .65; margin: 0 0 12px;
         }
 
-        .project-category,
-        .project-section-label {
-            font-size: 11px;
-            letter-spacing: 1.8px;
-            text-transform: uppercase;
-            opacity: .65;
-            margin: 0 0 14px;
+        /* Photos : jamais recadrées, jamais zoomées */
+        .aqua-img { width: 100%; display: block; object-fit: contain; border-radius: 8px; background: #f3f5f8; }
+
+        /* ===== EN-TÊTE DE PARTIE ===== */
+        .aqua-part { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+        .aqua-part-num {
+            flex: none; width: 42px; height: 42px; border-radius: 50%;
+            background: #0c3a57; color: #fff; font-size: 16px; font-weight: 600;
+            display: grid; place-items: center;
         }
+        .aqua-part h2 { font-size: clamp(21px, 2.6vw, 28px); line-height: 1.2; letter-spacing: -.5px; margin: 0; }
+        .aqua-part p { margin: 3px 0 0; font-size: 13.5px; opacity: .72; }
 
-        /* =========================
-           PREMIÈRE BOX
-        ========================= */
-
-        .aqua-intro {
-            display: grid;
-            grid-template-columns: 1.05fr .95fr;
-            align-items: stretch;
+        .aqua-sub {
+            font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600;
+            color: #0c3a57; margin: 26px 0 12px; display: flex; align-items: center; gap: 10px;
         }
+        .aqua-sub::after { content: ""; flex: 1; height: 1px; background: rgba(128,128,128,.22); }
 
-        .aqua-intro-image {
-            min-height: 440px;
-            overflow: hidden;
+        /* ===== BOX 1 ===== */
+        .aqua-intro { display: grid; grid-template-columns: .8fr 1.2fr; }
+        .aqua-intro-image { min-height: 280px; background: #f3f5f8; }
+        .aqua-intro-image img { width: 100%; height: 100%; min-height: 280px; object-fit: cover; display: block; }
+        .aqua-intro-text { padding: 26px 30px; align-self: center; }
+        .aqua-intro-text h1 { font-size: clamp(30px, 3.4vw, 42px); line-height: 1.1; letter-spacing: -1px; margin: 0 0 8px; }
+        .aqua-intro-text h2 { font-size: 17px; line-height: 1.4; font-weight: 400; margin: 0 0 12px; }
+        .aqua-intro-text > p:not(.project-category) { font-size: 13.5px; line-height: 1.7; opacity: .82; margin: 0; }
+        .project-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 16px; }
+        .project-tags span, .aqua-jump a {
+            padding: 6px 10px; border-radius: 20px; font-size: 11px; white-space: nowrap;
+            background: rgba(85,115,150,.09); border: 1px solid rgba(85,115,150,.15);
         }
+        .aqua-jump { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+        .aqua-jump a { text-decoration: none; color: inherit; background: #e1f2ff; border-color: #b9dff5; font-size: 12px; transition: .2s; }
+        .aqua-jump a:hover { background: #cce9fb; }
 
-        .aqua-intro-image img {
-            width: 100%;
-            height: 100%;
-            min-height: 440px;
-            display: block;
-            object-fit: cover;
-            transition: transform .5s ease;
+        /* ===== PARTIE 1 ===== */
+        .aqua-cycle { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; margin: 0 0 20px; font-size: 12px; }
+        .aqua-cycle span { padding: 6px 13px; border-radius: 20px; background: rgba(128,128,128,.09); }
+        .aqua-cycle .on-blue { background: rgba(110,170,230,.25); font-weight: 600; }
+        .aqua-cycle .on-green { background: rgba(120,190,120,.28); font-weight: 600; }
+        .aqua-cycle i { font-style: normal; opacity: .4; }
+
+        .aqua-filters { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+        .aqua-filter { --tint: rgba(110,170,230,.16); --accent: #2f6fb0; padding: 18px; border-radius: 22px; background: var(--tint); border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent); }
+        .aqua-filter.is-bio { --tint: rgba(120,190,120,.17); --accent: #3f8a45; }
+        .aqua-filter-tag { display: inline-block; padding: 4px 11px; border-radius: 20px; background: var(--accent); color: #fff; font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase; }
+        .aqua-filter h3 { font-size: 22px; line-height: 1.15; letter-spacing: -.4px; margin: 10px 0 4px; }
+        .aqua-filter > p { margin: 0 0 12px; font-size: 13px; line-height: 1.55; opacity: .8; }
+        .aqua-filter-body { display: grid; grid-template-columns: 1.4fr 1fr; gap: 12px; align-items: stretch; }
+        .aqua-filter-photo { padding: 7px; border-radius: 16px; background: #fff; box-shadow: 0 6px 18px rgba(0,0,0,.07); }
+        .aqua-filter-photo img { aspect-ratio: 4/3; background: #fff; }
+        .aqua-mat-list { display: grid; gap: 7px; align-content: space-between; }
+        .aqua-mat-title { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; color: var(--accent); }
+        .aqua-mat { display: flex; align-items: center; gap: 9px; padding: 5px; border-radius: 12px; background: #fff; }
+        .aqua-mat img { width: 50px; height: 50px; flex: none; background: #fff; }
+        .aqua-mat span { font-size: 12px; line-height: 1.3; color: #202733; }
+
+        .aqua-fig { margin: 0; padding: 9px; border: 1px solid rgba(128,128,128,.16); border-radius: 12px; }
+        .aqua-fig figcaption { padding: 9px 3px 2px; font-size: 12px; opacity: .72; }
+
+        /* ===== PARTIE 2 ===== */
+        .aqua-arch { display: grid; grid-template-columns: 1.15fr 1fr; gap: 20px; align-items: center; }
+        .aqua-flow { display: grid; gap: 10px; }
+        .aqua-step {
+            padding: 11px 14px 11px 50px; position: relative;
+            background: rgba(85,115,150,.06); border: 1px solid rgba(85,115,150,.16); border-radius: 12px;
         }
-
-        .aqua-intro-image:hover img {
-            transform: scale(1.035);
+        .aqua-step::before {
+            content: attr(data-n); position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+            width: 24px; height: 24px; border-radius: 50%; background: #0c3a57; color: #fff;
+            font-size: 12px; line-height: 24px; text-align: center;
         }
+        .aqua-step strong { display: block; font-size: 13.5px; margin-bottom: 2px; }
+        .aqua-step span { display: block; font-size: 12px; line-height: 1.5; opacity: .78; }
 
-        .aqua-intro-text {
-            padding: 38px 34px;
-            align-self: center;
-        }
+        .aqua-hs { display: grid; grid-template-columns: 1.35fr 1fr; gap: 14px; margin-top: 18px; }
+        .aqua-tile { padding: 14px; border: 1px solid rgba(128,128,128,.16); border-radius: 14px; }
+        .aqua-tile .aqua-sub { margin: 0 0 12px; }
+        .aqua-tri { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+        .aqua-tri figure { margin: 0; }
+        .aqua-tri img { aspect-ratio: 1; background: #fff; border: 1px solid rgba(128,128,128,.14); }
+        .aqua-tri figcaption { padding-top: 6px; font-size: 11.5px; line-height: 1.4; opacity: .75; text-align: center; }
+        .aqua-sw { display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: center; }
+        .aqua-sw img { width: auto; height: 210px; max-width: 100%; }
+        .aqua-sw ul { margin: 0; padding-left: 16px; font-size: 12.5px; line-height: 1.7; }
 
-        .aqua-intro-text h1 {
-            font-size: clamp(36px, 4vw, 52px);
-            line-height: 1.08;
-            letter-spacing: -1.5px;
-            margin: 0 0 14px;
-        }
+        /* ===== RÉSULTATS ===== */
+        .aqua-badge { display: inline-block; margin-top: 8px; padding: 5px 12px; border-radius: 20px; font-size: 12px; background: #e1f2ff; border: 1px solid #b9dff5; color: #193753; }
+        .aqua-results { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+        .aqua-result { display: grid; align-content: start; padding: 12px; border: 1px solid rgba(128,128,128,.16); border-radius: 14px; background: rgba(128,128,128,.04); }
+        .aqua-result small { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; opacity: .65; }
+        .aqua-result strong { font-size: 22px; line-height: 1.15; color: #0c3a57; margin: 2px 0 1px; }
+        .aqua-result em { font-style: normal; font-size: 11.5px; opacity: .72; }
+        .aqua-result img { aspect-ratio: 3/2; margin: 8px 0; }
+        .aqua-result span { font-size: 11.5px; line-height: 1.45; }
+        .aqua-result b { margin-top: 4px; font-size: 10.5px; font-weight: 500; opacity: .6; }
 
-        .aqua-intro-text h2 {
-            font-size: 20px;
-            line-height: 1.45;
-            font-weight: 400;
-            margin: 0 0 18px;
-        }
+        .aqua-points { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 14px 0 10px; }
+        .aqua-point { padding: 11px 14px; font-size: 12.5px; line-height: 1.5; border-left: 3px solid #b9dff5; background: rgba(85,115,150,.05); border-radius: 0 10px 10px 0; }
+        .aqua-point strong { display: block; margin-bottom: 2px; font-size: 13px; }
+        .aqua-note { margin: 0; font-size: 12px; line-height: 1.6; opacity: .65; }
 
-        .aqua-intro-text > p:not(.project-category) {
-            font-size: 14px;
-            line-height: 1.8;
-            opacity: .82;
-            margin-bottom: 20px;
-        }
-
-        /* Tags */
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 22px;
-        }
-
-        .project-tags span {
-            display: inline-block;
-            padding: 7px 11px;
-            border-radius: 20px;
-            background: rgba(85,115,150,.09);
-            border: 1px solid rgba(85,115,150,.15);
-            font-size: 11px;
-            white-space: nowrap;
-        }
-
-        /* =========================
-           DEUXIÈME BOX
-        ========================= */
-
-        .aqua-realisation {
-            padding: 32px;
-        }
-
-        .aqua-realisation-heading {
-            max-width: 680px;
-            margin-bottom: 25px;
-        }
-
-        .aqua-realisation-heading h2 {
-            font-size: clamp(25px, 3vw, 34px);
-            line-height: 1.2;
-            letter-spacing: -.7px;
-            margin: 0 0 12px;
-        }
-
-        .aqua-realisation-heading p:not(.project-section-label) {
-            font-size: 14px;
-            line-height: 1.8;
-            opacity: .8;
-            margin: 0;
-        }
-
-        /* Petites informations techniques */
-
-        .aqua-features {
-            display: grid;
-            grid-template-columns: repeat(5, minmax(0, 1fr));
-            gap: 10px;
-            margin: 25px 0 30px;
-        }
-
-        .aqua-feature {
-            padding: 15px 10px;
-            text-align: center;
-            background: rgba(128,128,128,.055);
-            border: 1px solid rgba(128,128,128,.13);
-            border-radius: 12px;
-        }
-
-        .aqua-feature strong {
-            display: block;
-            font-size: 16px;
-            margin-bottom: 6px;
-        }
-
-        .aqua-feature span {
-            display: block;
-            font-size: 11px;
-            line-height: 1.5;
-            opacity: .7;
-        }
-
-        /* Galerie */
-
-        .aqua-gallery {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 16px;
-        }
-
-        .aqua-gallery figure {
-            margin: 0;
-            padding: 10px;
-            border: 1px solid rgba(128,128,128,.16);
-            border-radius: 13px;
-            background: var(--card-bg, #ffffff);
-            transition: transform .25s ease, box-shadow .25s ease;
-        }
-
-        .aqua-gallery figure:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(0,0,0,.08);
-        }
-
-        .aqua-gallery img {
-            width: 100%;
-            height: 220px;
-            display: block;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-
-        .aqua-gallery figcaption {
-            padding: 12px 5px 5px;
-            font-size: 12px;
-            line-height: 1.5;
-            font-weight: 500;
-        }
-
-        /* =========================
-           TROISIÈME BOX : CODE & GITHUB
-        ========================= */
-
-        .aqua-code-head {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-
-        .aqua-code-title {
-            font-size: 28px;
-            line-height: 1.2;
-            margin: 0;
-            color: #0c3a57;
-        }
-
+        /* ===== CODE ===== */
+        .aqua-code-head { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+        .aqua-code-title { font-size: 26px; line-height: 1.2; margin: 0; color: #0c3a57; }
         .aqua-code-btn {
-            display: inline-block;
-            padding: 11px 20px;
-            border-radius: 30px;
-            background: #e1f2ff;
-            border: 1px solid #b9dff5;
-            color: #193753;
-            font-size: 14px;
-            transition: .25s ease;
+            display: inline-block; padding: 11px 20px; border-radius: 30px; text-decoration: none;
+            background: #e1f2ff; border: 1px solid #b9dff5; color: #193753; font-size: 14px; transition: .25s ease;
         }
+        .aqua-code-btn:hover { background: #cce9fb; transform: translateY(-2px); }
 
-        .aqua-code-btn:hover {
-            background: #cce9fb;
-            transform: translateY(-2px);
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1050px) {
+            .aqua-results { grid-template-columns: 1fr; }
+            .aqua-result { grid-template-columns: 170px 1fr; column-gap: 14px; align-items: center; }
+            .aqua-result img { grid-column: 1; grid-row: 1 / span 6; margin: 0; }
+            .aqua-result > :not(img) { grid-column: 2; }
         }
-
-        /* =========================
-           RETOUR FINAL
-        ========================= */
-
-        .project-end {
-            text-align: center;
-            padding-top: 5px;
-        }
-
-        .project-end .project-back {
-            margin-bottom: 0;
-        }
-
-        /* =========================
-           RESPONSIVE
-        ========================= */
-
         @media (max-width: 900px) {
-            .aqua-intro {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .aqua-intro-image,
-            .aqua-intro-image img {
-                min-height: 400px;
-            }
-
-            .aqua-intro-text {
-                padding: 25px;
-            }
-
-            .aqua-features {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-            }
+            .aqua-intro, .aqua-filters, .aqua-arch, .aqua-hs { grid-template-columns: 1fr; }
+            .aqua-points { grid-template-columns: 1fr; }
         }
-
         @media (max-width: 650px) {
-            .project-page {
-                padding-top: 85px;
-            }
-
-            .aqua-intro {
-                grid-template-columns: 1fr;
-            }
-
-            .aqua-intro-image,
-            .aqua-intro-image img {
-                height: 290px;
-                min-height: 290px;
-            }
-
-            .aqua-intro-text {
-                padding: 25px;
-            }
-
-            .aqua-realisation {
-                padding: 22px;
-            }
-
-            .aqua-features {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
-            .aqua-gallery {
-                gap: 10px;
-            }
-
-            .aqua-gallery img {
-                height: 155px;
-            }
-
-            .aqua-gallery figure {
-                padding: 7px;
-            }
+            .project-page { padding-top: 85px; }
+            .aqua-intro-image, .aqua-intro-image img { height: 210px; min-height: 210px; }
+            .aqua-intro-text { padding: 22px; }
+            .aqua-block { padding: 20px; }
+            .aqua-result { grid-template-columns: 120px 1fr; }
+            .aqua-sw { grid-template-columns: 1fr; }
+            .aqua-sw img { margin: 0 auto; }
         }
-
-        @media (max-width: 400px) {
-            .aqua-gallery {
-                grid-template-columns: 1fr;
-            }
-
-            .aqua-gallery img {
-                height: 220px;
-            }
-        }
+        @media (max-width: 420px) { .aqua-filter-body { grid-template-columns: 1fr; } .aqua-tri { grid-template-columns: 1fr 1fr; } }
     </style>
 </head>
 
 <body>
+<main class="project-page">
+    <div class="container">
 
-    <main class="project-page">
-        <div class="container">
-
-            <!-- RETOUR TOUT EN HAUT -->
-
-            <div class="project-topbar">
-    <a href="index.html#projet-01" class="project-back">← Retour aux projets</a>
-
-    <a href="project-leme.html" class="project-nav-btn project-nav-next">
-        <span>PROJET SUIVANT →</span>
-        <strong>Métasurface programmable</strong>
-    </a>
-</div>
-    
-
-            <!-- BOX 1 : PRÉSENTATION -->
-
-            <section class="aqua-slide aqua-card aqua-intro">
-
-                <div class="aqua-intro-image">
-                    <img
-                        src="images/aquamonitor/installation-serre.jpg"
-                        alt="Installation de la micro-ferme aquaponique">
-                </div>
-
-                <div class="aqua-intro-text">
-
-                    <p class="project-category">
-                        PROJET DE FIN D'ÉTUDES · USTHB
-                    </p>
-
-                    <h1>AquaMonitor</h1>
-
-                    <h2>
-                        Micro-ferme aquaponique autonome
-                        et télécommandée en serre
-                    </h2>
-
-                    <p>
-                        Conception et réalisation d'une micro-ferme
-                        aquaponique associant aquaculture et culture
-                        hydroponique NFT. Le système mesure les
-                        paramètres de l'eau et permet une supervision
-                        locale et à distance par Wi-Fi.
-                    </p>
-
-                    <div class="project-tags">
-                        <span>Aquaponie NFT</span>
-                        <span>ESP32</span>
-                        <span>ATMega328P</span>
-                        <span>IoT</span>
-                        <span>I2C</span>
-                        <span>Wi-Fi</span>
-                        <span>EasyEDA</span>
-                        <span>PCB</span>
-                        <span>Arduino C/C++</span>
-                        <span>Impression 3D</span>
-                    </div>
-
-                </div>
-            </section>
-
-            <!-- BOX 2 : TECHNIQUE ET PHOTOS -->
-
-            <section class="aqua-slide aqua-card aqua-realisation">
-
-                <div class="aqua-realisation-heading">
-
-                    <p class="project-section-label">
-                        CONCEPTION &amp; RÉALISATION
-                    </p>
-
-                    <h2>De la mesure au prototype</h2>
-
-                    <p>
-                        L'ATMega328P traite les mesures et communique
-                        avec l'ESP32, qui assure la transmission des
-                        données et leur consultation depuis une
-                        interface Web. Le prototype associe
-                        électronique de mesure, conception PCB
-                        et boîtier réalisé en impression 3D.
-                    </p>
-
-                </div>
-
-                <!-- PARAMÈTRES MESURÉS -->
-
-                <div class="aqua-features">
-
-                    <div class="aqua-feature">
-                        <strong>pH</strong>
-                        <span>Acidité de l'eau</span>
-                    </div>
-
-                    <div class="aqua-feature">
-                        <strong>T°</strong>
-                        <span>Température</span>
-                    </div>
-
-                    <div class="aqua-feature">
-                        <strong>EC</strong>
-                        <span>Conductivité</span>
-                    </div>
-
-                    <div class="aqua-feature">
-                        <strong>DO</strong>
-                        <span>Oxygène dissous</span>
-                    </div>
-
-                    <div class="aqua-feature">
-                        <strong>NTU</strong>
-                        <span>Turbidité</span>
-                    </div>
-
-                </div>
-
-                <!-- GALERIE -->
-
-                <div class="aqua-gallery">
-
-                    <figure>
-                        <img
-                            src="images/aquamonitor/ferme-aquaponique.jpg"
-                            alt="Structure de la micro-ferme aquaponique">
-                        <figcaption>
-                            Structure de la micro-ferme aquaponique
-                        </figcaption>
-                    </figure>
-
-                    <figure>
-                        <img
-                            src="images/aquamonitor/pcb.jpg"
-                            alt="Carte électronique de contrôle">
-                        <figcaption>
-                            Carte électronique de contrôle
-                        </figcaption>
-                    </figure>
-
-                    <figure>
-                        <img
-                            src="images/aquamonitor/pcb-3d.jpg"
-                            alt="Conception 3D du circuit imprimé">
-                        <figcaption>
-                            Conception du PCB sous EasyEDA
-                        </figcaption>
-                    </figure>
-
-                    <figure>
-                        <img
-                            src="images/aquamonitor/boitier-3d.jpg"
-                            alt="Boîtier électronique conçu en 3D">
-                        <figcaption>
-                            Conception du boîtier électronique
-                        </figcaption>
-                    </figure>
-
-                </div>
-
-            </section>
-
-            <!-- BOX 3 : CODE & GITHUB -->
-
-            <section class="aqua-slide aqua-card" style="padding: 30px;">
-
-                <p class="project-category">
-                    CODE &amp; DOCUMENTATION
-                </p>
-
-                <div class="aqua-code-head">
-
-                    <h2 class="aqua-code-title">Extraits du code</h2>
-
-                    <!-- Remplace le # par le lien de ton GitHub -->
-                    <a href="#" class="aqua-code-btn" target="_blank">
-                        Voir le code sur GitHub →
-                    </a>
-
-                </div>
-
-            </section>
-
+        <div class="project-topbar">
+            <a href="index.html#projet-01" class="project-back">← Retour aux projets</a>
+            <a href="project-leme.html" class="project-nav-btn project-nav-next">
+                <span>PROJET SUIVANT →</span>
+                <strong>Métasurface programmable</strong>
+            </a>
         </div>
-    </main>
 
+        <!-- INTRO -->
+        <section class="aqua-slide aqua-card aqua-intro">
+            <div class="aqua-intro-image">
+                <img src="images/aquamonitor/installation-serre.jpg" alt="Micro-ferme aquaponique équipée du boîtier de mesure, en serre">
+            </div>
+            <div class="aqua-intro-text">
+                <p class="project-category">PROJET DE FIN D'ÉTUDES · MASTER INSTRUMENTATION · USTHB · 2024/2025</p>
+                <h1>AquaMonitor</h1>
+                <h2>Micro-ferme aquaponique autonome et télécommandée en serre</h2>
+                <p>
+                    Deux travaux menés en binôme au laboratoire LINS : construire une micro-ferme
+                    aquaponique (culture NFT), puis l'instrumenter pour surveiller la qualité de l'eau
+                    en local et à distance par Wi-Fi.
+                </p>
+                <div class="project-tags">
+                    <span>Aquaponie NFT</span><span>ESP32</span><span>ATMega328P</span><span>I²C</span><span>EasyEDA · PCB</span><span>Impression 3D</span>
+                </div>
+                <div class="aqua-jump">
+                    <a href="#mecanique">01 · Mécanique</a>
+                    <a href="#instrumentation">02 · Instrumentation</a>
+                    <a href="#resultats">Résultats</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- PARTIE 1 : MÉCANIQUE -->
+        <section id="mecanique" class="aqua-slide aqua-card aqua-block">
+            <div class="aqua-part">
+                <div class="aqua-part-num">01</div>
+                <div>
+                    <h2>Partie mécanique</h2>
+                    <p>Deux filtres conçus et fabriqués pour garder une eau saine dans la boucle.</p>
+                </div>
+            </div>
+
+            <div class="aqua-cycle">
+                <span>Eau du bac</span><i>→</i>
+                <span class="on-blue">Filtre mécanique</span><i>→</i>
+                <span class="on-green">Filtre biologique</span><i>→</i>
+                <span>Plantes (NFT)</span>
+            </div>
+
+            <div class="aqua-filters">
+
+                <article class="aqua-filter">
+                    <span class="aqua-filter-tag">Filtre 1</span>
+                    <h3>Filtre mécanique</h3>
+                    <p>Retient les déchets solides avant que l'eau n'atteigne le reste du circuit.</p>
+                    <div class="aqua-filter-body">
+                        <div class="aqua-filter-photo"><img class="aqua-img" src="images/aquamonitor/filtre-mecanique.jpg" alt="Filtre mécanique réalisé"></div>
+                        <div class="aqua-mat-list">
+                            <div class="aqua-mat-title">Matériel utilisé</div>
+                            <div class="aqua-mat"><img class="aqua-img" src="images/aquamonitor/materiel-eponge.jpg" alt="Éponge"><span>Éponge</span></div>
+                            <div class="aqua-mat"><img class="aqua-img" src="images/aquamonitor/materiel-tube-pvc.png" alt="Tube PVC"><span>Tube PVC</span></div>
+                            <div class="aqua-mat"><img class="aqua-img" src="images/aquamonitor/materiel-bouchon.png" alt="Bouchon adapté"><span>Bouchon adapté</span></div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="aqua-filter is-bio">
+                    <span class="aqua-filter-tag">Filtre 2</span>
+                    <h3>Filtre biologique</h3>
+                    <p>Des bactéries nitrifiantes transforment l'ammoniac toxique en nitrates assimilables par les plantes.</p>
+                    <div class="aqua-filter-body">
+                        <div class="aqua-filter-photo"><img class="aqua-img" src="images/aquamonitor/filtre-biologique.jpg" alt="Filtre biologique réalisé"></div>
+                        <div class="aqua-mat-list">
+                            <div class="aqua-mat-title">Matériel utilisé</div>
+                            <div class="aqua-mat"><img class="aqua-img" src="images/aquamonitor/materiel-morceaux-pvc.jpg" alt="Morceaux de PVC"><span>Morceaux de PVC</span></div>
+                            <div class="aqua-mat"><img class="aqua-img" src="images/aquamonitor/materiel-tube-pvc.png" alt="Tube PVC"><span>Tube PVC</span></div>
+                            <div class="aqua-mat"><img class="aqua-img" src="images/aquamonitor/materiel-bouchon.png" alt="Bouchon adapté"><span>Bouchon adapté</span></div>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- PARTIE 2 : INSTRUMENTATION -->
+        <section id="instrumentation" class="aqua-slide aqua-card aqua-block">
+            <div class="aqua-part">
+                <div class="aqua-part-num">02</div>
+                <div>
+                    <h2>Partie instrumentation</h2>
+                    <p>Mesurer 5 paramètres de l'eau, les afficher, et commander des équipements.</p>
+                </div>
+            </div>
+
+            <div class="aqua-arch">
+                <figure class="aqua-fig">
+                    <img class="aqua-img" src="images/aquamonitor/chaine-mesure.jpg" alt="Schéma de la chaîne de mesure">
+                    <figcaption>Chaîne de mesure complète</figcaption>
+                </figure>
+
+                <div class="aqua-flow">
+                    <div class="aqua-step" data-n="1"><strong>Mesure</strong><span>pH, température, conductivité, oxygène dissous, turbidité</span></div>
+                    <div class="aqua-step" data-n="2"><strong>Traitement</strong><span>ATMega328P : conversion et courbes d'étalonnage</span></div>
+                    <div class="aqua-step" data-n="3"><strong>Affichage</strong><span>Écran OLED en local, ESP32 + interface web en Wi-Fi</span></div>
+                    <div class="aqua-step" data-n="4"><strong>Commande</strong><span>2e ESP32 qui pilote des relais (ex. résistance chauffante)</span></div>
+                </div>
+            </div>
+
+            <div class="aqua-hs">
+                <div class="aqua-tile">
+                    <h3 class="aqua-sub">Hardware</h3>
+                    <div class="aqua-tri">
+                        <figure><img class="aqua-img" src="images/aquamonitor/pcb.jpg" alt="PCB conçu sous EasyEDA"><figcaption>PCB sous EasyEDA</figcaption></figure>
+                        <figure><img class="aqua-img" src="images/aquamonitor/pcb2.jpg" alt="Carte électronique réalisée"><figcaption>Carte réalisée</figcaption></figure>
+                        <figure><img class="aqua-img" src="images/aquamonitor/boitier.jpg" alt="Boîtier imprimé en 3D"><figcaption>Boîtier imprimé en 3D</figcaption></figure>
+                    </div>
+                </div>
+                <div class="aqua-tile">
+                    <h3 class="aqua-sub">Software</h3>
+                    <div class="aqua-sw">
+                        <img class="aqua-img" src="images/aquamonitor/interface-web.jpg" alt="Interface web de supervision">
+                        <ul>
+                            <li>Code Arduino C/C++ (ATMega328P et 2 ESP32)</li>
+                            <li>Communication I²C entre les cartes</li>
+                            <li>Interface web de supervision à distance par Wi-Fi</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RÉSULTATS -->
+        <section id="resultats" class="aqua-slide aqua-card aqua-block">
+            <div class="aqua-part">
+                <div class="aqua-part-num">✓</div>
+                <div>
+                    <h2>Tests &amp; résultats</h2>
+                    <p>Valeurs relevées sur le prototype, dans la serre expérimentale du laboratoire LINS.</p>
+                    <span class="aqua-badge">Chaque mesure est comparée à un instrument étalon pour garantir une bonne calibration</span>
+                </div>
+            </div>
+
+            <div class="aqua-results">
+                <div class="aqua-result">
+                    <small>pH</small><strong>6,34</strong><em>favorable aux nitrifiantes</em>
+                    <img class="aqua-img" src="images/aquamonitor/test-ph.jpg" alt="Test du pH face au pH-mètre étalon">
+                    <span>Comparé au pH-mètre étalon</span><b>Idéal : 6,5 – 7,0</b>
+                </div>
+                <div class="aqua-result">
+                    <small>Température</small><strong>28 °C</strong><em>adaptée à la tomate</em>
+                    <img class="aqua-img" src="images/aquamonitor/test-temperature.jpg" alt="Test de température face au thermomètre étalon">
+                    <span>Comparée au thermomètre étalon</span><b>Plantes 18–26 °C · tilapia 24–30 °C</b>
+                </div>
+                <div class="aqua-result">
+                    <small>Conductivité</small><strong>700 µS/cm</strong><em>nutriments adaptés</em>
+                    <img class="aqua-img" src="images/aquamonitor/test-conductivite.jpg" alt="Test de conductivité face au conductimètre étalon">
+                    <span>Comparée au conductimètre étalon</span><b>Idéal : 300 – 1200 µS/cm</b>
+                </div>
+                <div class="aqua-result">
+                    <small>Oxygène dissous</small><strong>80 %</strong><em>saturation</em>
+                    <img class="aqua-img" src="images/aquamonitor/test-oxygene.jpg" alt="Test de l'oxygène dissous dans le bac">
+                    <span>Courbe d'étalonnage intégrée · valeur stable</span><b>Idéal : &gt; 5 mg/L</b>
+                </div>
+                <div class="aqua-result">
+                    <small>Turbidité</small><strong>6 NTU</strong><em>eau peu trouble</em>
+                    <img class="aqua-img" src="images/aquamonitor/test-turbidite.jpg" alt="Test de turbidité dans le bac">
+                    <span>Courbe d'étalonnage intégrée · suivi de la clarté</span><b>Idéal : &lt; 5 NTU</b>
+                </div>
+            </div>
+
+            <div class="aqua-points">
+                <div class="aqua-point"><strong>Calibration sur étalons</strong>Courbes d'étalonnage obtenues face à des instruments de référence, puis intégrées au microcontrôleur.</div>
+                <div class="aqua-point"><strong>Calibration pH automatique</strong>Sonde plongée dans des solutions tampons (pH 4, 7 et 10).</div>
+                <div class="aqua-point"><strong>Prototype fini</strong>PCB conçu sous EasyEDA, intégré dans un boîtier imprimé en 3D.</div>
+            </div>
+
+            <p class="aqua-note">
+                Essais menés avec des tomates et des poissons d'ornement (tilapia et laitue non disponibles à ce moment) :
+                l'objectif était de valider la chaîne de mesure.
+            </p>
+        </section>
+
+        <!-- CODE & GITHUB -->
+        <section class="aqua-slide aqua-card aqua-block">
+            <p class="project-category">CODE &amp; DOCUMENTATION</p>
+            <div class="aqua-code-head">
+                <h2 class="aqua-code-title">Extraits du code</h2>
+                <!-- Remplace le # par le lien de ton GitHub -->
+                <a href="#" class="aqua-code-btn" target="_blank">Voir le code sur GitHub →</a>
+            </div>
+        </section>
+
+    </div>
+</main>
 </body>
 </html>

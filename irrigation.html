@@ -10,8 +10,8 @@
 
     <style>
         /* =========================================================
-           PAGE IRRIGATION — tout le style est ici, rien à ajouter
-           dans style.css
+           PAGE IRRIGATION — tout le style est ici,
+           rien à ajouter dans style.css
         ========================================================= */
 
         body {
@@ -25,39 +25,11 @@
             background-attachment: fixed;
         }
 
-        .irri-page {
-            width: min(1180px, 90%);
-            margin: 0 auto;
-            padding: 40px 0 45px;
-        }
-
-        /* Bouton retour */
-
-        .irri-back {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 25px;
-            padding: 10px 17px;
-            border-radius: 30px;
-            background: #e1f2ff;
-            border: 1px solid #b9dff5;
-            color: #193753;
-            font-size: 14px;
-            box-shadow: 0 3px 10px rgba(49, 93, 125, 0.08);
-            transition: 0.25s ease;
-        }
-
-        .irri-back:hover {
-            background: #cce9fb;
-            transform: translateY(-2px);
-        }
-
-        /* Cartes */
+        /* ---------- Cartes ---------- */
 
         .irri-card {
-            margin-bottom: 28px;
-            padding: 30px;
+            margin-bottom: 20px;
+            padding: 26px;
             background: rgba(255, 255, 255, 0.85);
             border: 1px solid rgba(255, 255, 255, 0.9);
             border-radius: 24px;
@@ -65,24 +37,9 @@
             color: #182431;
         }
 
-        .irri-category,
-        .irri-label {
-            color: #4f86ad;
-            font-size: 0.72rem;
-            letter-spacing: 0.17em;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-
         .irri-card h1,
         .irri-card h2 {
             color: #0c3a57;
-        }
-
-        .irri-title {
-            font-size: 28px;
-            line-height: 1.2;
-            margin: 8px 0 16px;
         }
 
         .irri-card p {
@@ -92,46 +49,69 @@
             margin-bottom: 14px;
         }
 
-        /* =========================
-           CARTE 1 : PRÉSENTATION
-        ========================= */
+        .irri-card p.irri-category {
+            color: #4f86ad;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.17em;
+            margin-bottom: 10px;
+        }
+
+        .irri-card p.irri-sub {
+            color: #4f86ad;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            margin: 0 0 10px;
+        }
+
+        .irri-title {
+            font-size: 26px;
+            line-height: 1.25;
+            margin: 6px 0 14px;
+        }
+
+        /* ---------- Carte 1 : présentation (compacte) ---------- */
 
         .irri-intro {
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 40px;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
             align-items: center;
         }
 
-        .irri-intro-image img {
-            width: 100%;
-            height: 390px;
-            object-fit: cover;
-            display: block;
-            border-radius: 18px;
-            background: #dce8ef; /* gris-bleu tant que la photo n'est pas ajoutée */
-        }
+
+.irri-intro-image img {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    border-radius: 18px;
+    background: #f1f6f8;
+}
+
 
         .irri-intro h1 {
-            font-size: clamp(34px, 4vw, 50px);
+            font-size: clamp(32px, 3.6vw, 46px);
             line-height: 1.05;
             letter-spacing: -0.03em;
-            margin: 10px 0 14px;
+            margin: 8px 0 12px;
         }
 
         .irri-intro h2 {
-            font-size: 20px;
+            font-size: 19px;
             line-height: 1.4;
             font-weight: 500;
             color: #12364d;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
 
         .irri-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-top: 20px;
+            margin-top: 16px;
         }
 
         .irri-tags span {
@@ -149,66 +129,146 @@
             color: #214f75;
         }
 
-        /* =========================
-           CARTE 2 : FONCTIONNEMENT
-        ========================= */
+        /* ---------- Cartes circuits ---------- */
 
-        .irri-split {
+        .irri-circuit {
             display: grid;
-            grid-template-columns: 0.75fr 1.25fr;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px 34px;
             align-items: start;
         }
 
-        .irri-text {
-            padding-right: 30px;
-            border-right: 1px solid #dfe9ef;
+        .irri-circuit-full {
+            grid-column: 1 / -1;
         }
 
-        .irri-side {
-            padding-left: 28px;
-            min-width: 0;
+        /* Étapes numérotées */
+
+        .irri-steps {
+            list-style: none;
+            counter-reset: step;
+            padding: 0;
+            margin: 6px 0 0;
         }
 
-        .irri-flow {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 24px;
+        .irri-steps li {
+            counter-increment: step;
+            position: relative;
+            padding: 0 0 14px 44px;
+            color: #5d7284;
+            font-size: 15px;
+            line-height: 1.65;
         }
 
-        .irri-step {
-            padding: 7px 13px;
-            border-radius: 20px;
-            font-size: 12.5px;
-            background: #e5f5f2;
-            border: 1px solid #b9e5dc;
+        .irri-steps li::before {
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 29px;
+            height: 29px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: #dcecfb;
+            color: #214f75;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .irri-steps li:nth-child(even)::before {
+            background: #d8f1ee;
             color: #245e60;
         }
 
-        .irri-step:nth-of-type(even) {
-            background: #e5f2ff;
-            border-color: #c2e0f7;
-            color: #214f75;
+        .irri-steps strong {
+            color: #0c3a57;
         }
 
-        .irri-arrow {
-            color: #7aa6c2;
-            font-size: 15px;
+        /* Tableau de fonctionnement */
+
+        .irri-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border: 1px solid #d5ebe8;
+            border-radius: 14px;
+            overflow: hidden;
+            font-size: 14px;
         }
+
+        .irri-table th {
+            padding: 10px 14px;
+            text-align: left;
+            background: linear-gradient(135deg, #eaf6f4, #eef6fb);
+            color: #4f86ad;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+        }
+
+        .irri-table td {
+            padding: 10px 14px;
+            border-top: 1px solid #e3edf2;
+            color: #5d7284;
+        }
+
+        .irri-pill {
+            display: inline-block;
+            padding: 3px 11px;
+            border-radius: 20px;
+            font-size: 12.5px;
+            font-weight: 700;
+        }
+
+        .irri-pill.on {
+            background: #dff3ea;
+            border: 1px solid #b6e0cf;
+            color: #1f7a5a;
+        }
+
+        .irri-pill.off {
+            background: #eef2f5;
+            border: 1px solid #d9e2e8;
+            color: #5d7284;
+        }
+
+        .irri-note {
+            margin-top: 10px;
+            font-size: 13px !important;
+            line-height: 1.55 !important;
+        }
+
+        /* Bloc de code */
+
+        .irri-code {
+            margin: 14px 0 0;
+            padding: 16px 18px;
+            background: #14212c;
+            color: #e6eef4;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 12.5px;
+            line-height: 1.6;
+            border-radius: 14px;
+            overflow-x: auto;
+            white-space: pre;
+        }
+
+        /* Caractéristiques */
 
         .irri-specs {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
+            margin: 8px 0 20px;
+            padding: 16px 20px;
             background: linear-gradient(135deg, #eaf6f4, #eef6fb);
             border: 1px solid #d5ebe8;
             border-radius: 18px;
-            padding: 18px 22px;
         }
 
         .irri-spec {
+            padding: 0 8px;
             text-align: center;
-            padding: 0 6px;
             border-right: 1px solid #d3e4ea;
         }
 
@@ -218,26 +278,31 @@
 
         .irri-spec span {
             display: block;
-            font-size: 10.5px;
-            letter-spacing: 0.12em;
-            font-weight: 700;
+            margin-bottom: 5px;
             color: #4f86ad;
-            margin-bottom: 6px;
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
         }
 
         .irri-spec strong {
-            font-size: 16px;
+            font-size: 15px;
             color: #0c3a57;
         }
 
-        /* =========================
-           CARTE 3 : GALERIE
-        ========================= */
+        /* Galeries */
 
         .irri-gallery {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 16px;
+        }
+
+        .irri-gallery.two {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .irri-gallery.three {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
         }
 
         .irri-gallery figure {
@@ -247,23 +312,28 @@
 
         .irri-gallery img {
             width: 100%;
-            height: 150px;
-            object-fit: cover;
+            height: 190px;
+            object-fit: contain;
             display: block;
+            padding: 6px;
             border-radius: 12px;
-            background: #dce8ef;
+            background: #ffffff;
+            border: 1px solid #e1edf4;
+        }
+
+        .irri-gallery img.photo {
+            object-fit: cover;
+            padding: 0;
         }
 
         .irri-gallery figcaption {
+            margin-top: 8px;
+            color: #5d7284;
             font-size: 12.5px;
             line-height: 1.4;
-            color: #5d7284;
-            margin-top: 8px;
         }
 
-        /* =========================
-           CARTE 4 : RÉSULTATS / PERSPECTIVES
-        ========================= */
+        /* Méthode / résultats */
 
         .irri-two {
             display: grid;
@@ -306,9 +376,7 @@
             background: #7fb6e3;
         }
 
-        /* =========================
-           CARTE 5 : CODE & GITHUB
-        ========================= */
+        /* Code & GitHub */
 
         .irri-code-head {
             display: flex;
@@ -334,61 +402,37 @@
             transform: translateY(-2px);
         }
 
-        .irri-gallery-4 {
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 14px;
-        }
-
-        .irri-gallery-4 img {
-            height: 105px;
-        }
-
-        /* =========================
-           TÉLÉPHONE ET TABLETTE
-        ========================= */
+        /* ---------- Téléphone et tablette ---------- */
 
         @media (max-width: 800px) {
 
             .irri-intro,
-            .irri-split,
+            .irri-circuit,
             .irri-two {
                 grid-template-columns: 1fr;
-                gap: 25px;
+                gap: 20px;
             }
 
             .irri-intro-image img {
-                height: 300px;
-            }
-
-            .irri-text {
-                padding-right: 0;
-                border-right: none;
-            }
-
-            .irri-side {
-                padding-left: 0;
+                height: 220px;
             }
 
             .irri-specs {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 18px 0;
+                gap: 16px 0;
             }
 
             .irri-spec:nth-child(2n) {
                 border-right: none;
             }
 
-            .irri-gallery,
-            .irri-gallery-4 {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
-            .irri-gallery-4 img {
-                height: 130px;
+            .irri-gallery.two,
+            .irri-gallery.three {
+                grid-template-columns: 1fr;
             }
 
             .irri-gallery img {
-                height: 130px;
+                height: 200px;
             }
         }
     </style>
@@ -396,140 +440,333 @@
 
 <body>
 
-    <main class="container leme-page">
+<main class="container leme-page">
 
-        <div class="project-topbar">
-    <a href="index.html#projet-03" class="project-back">← Retour aux projets</a>
+    <!-- NAVIGATION DU HAUT -->
+    <div class="project-topbar">
+        <a href="index.html#projet-03" class="project-back">← Retour aux projets</a>
 
-    <a href="decibelmetre.html" class="project-nav-btn project-nav-next">
-        <span>PROJET SUIVANT →</span>
-        <strong>Sonomètre</strong>
-    </a>
-</div>
+        <a href="decibelmetre.html" class="project-nav-btn project-nav-next">
+            <span>PROJET SUIVANT →</span>
+            <strong>Sonomètre</strong>
+        </a>
+    </div>
 
-        <!-- ===== CARTE 1 : PRÉSENTATION ===== -->
-        <section class="irri-card irri-intro">
 
-            <div class="irri-intro-image">
-                <img src="images/irrigation/montage-global.jpg" alt="Prototype du système d'irrigation automatique">
+    <!-- ===== CARTE 1 : PRÉSENTATION ===== -->
+    <section class="irri-card irri-intro">
+
+        <div class="irri-intro-image">
+            <img src="images/irrigation/montage-global1.jpg"
+                 alt="Prototype d'arrosage automatique avec capteur de pluie et plante">
+        </div>
+
+        <div>
+            <p class="irri-category">PROJET DE LICENCE · USTHB</p>
+            <h1>Système d'irrigation automatique</h1>
+            <h2>Arroser au bon moment et garder la réserve d'eau pleine</h2>
+
+            <p>
+                Deux montages indépendants : l'un décide quand arroser selon
+                l'humidité du sol et la pluie, l'autre remplit le réservoir
+                tout seul grâce à des sondes de niveau.
+            </p>
+
+            <div class="irri-tags">
+                <span>Arduino Uno · ATmega328P</span>
+                <span>NE555</span>
+                <span>Capteurs à sortie numérique</span>
+                <span>Transistors BC548</span>
+                <span>Relais 5 V / 12 V</span>
+                <span>Pompes 5 V / 12 V</span>
             </div>
+        </div>
 
-            <div>
-                <p class="irri-category">PROJET DE LICENCE · USTHB</p>
-                <h1>Système d'irrigation automatique</h1>
-                <h2>Étude et réalisation d'un système d'irrigation à deux circuits</h2>
+    </section>
 
-                <p>
-                    Système d'irrigation automatique qui adapte l'arrosage à l'humidité
-                    du sol et aux conditions météorologiques, tout en assurant le
-                    remplissage automatique du réservoir d'eau.
-                </p>
 
-                <div class="irri-tags">
-                    <span>Arduino Uno</span>
-                    <span>ATmega328P</span>
-                    <span>NE555</span>
-                    <span>C++</span>
-                    <span>Proteus</span>
-                    <span>Fritzing</span>
-                    <span>Capteur d'humidité</span>
-                    <span>Capteur de pluie</span>
-                    <span>Relais</span>
-                    <span>Pompes DC</span>
+    <!-- ===== CARTE 2 : CIRCUIT 1 — ARROSAGE ===== -->
+    <section class="irri-card irri-circuit">
+
+        <div>
+            <p class="irri-category">CIRCUIT 1 · ARROSAGE</p>
+            <h2 class="irri-title">
+                Arroser seulement quand le sol est sec et qu'il ne pleut pas
+            </h2>
+
+            <ol class="irri-steps">
+                <li>
+                    <strong>Mesure.</strong> Le capteur d'humidité (deux électrodes
+                    plantées dans le sol, comparateur LM393) et le capteur de pluie
+                    envoient chacun un niveau logique 0 ou 1. Ils sont alimentés en
+                    5 V et lus sur les broches 6 et 9 de la carte.
+                </li>
+                <li>
+                    <strong>Décision.</strong> Un sol sec fait monter la résistance
+                    entre les électrodes : la sortie passe à 1. Le capteur de pluie,
+                    lui, passe à 0 dès qu'une goutte le mouille. Le programme ne
+                    déclenche l'arrosage que si le sol est sec <em>et</em> qu'il ne
+                    pleut pas.
+                </li>
+                <li>
+                    <strong>Commande.</strong> La sortie 3 pilote un relais 5 V. Il
+                    permet à un simple signal logique de commander la pompe, une
+                    charge de puissance, sans la brancher directement sur la carte :
+                    la pompe est alimentée par les contacts du relais.
+                </li>
+            </ol>
+        </div>
+
+        <div>
+            <p class="irri-sub">FONCTIONNEMENT</p>
+
+            <table class="irri-table">
+                <thead>
+                    <tr>
+                        <th>SOL</th>
+                        <th>PLUIE</th>
+                        <th>POMPE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Sec</td>
+                        <td>Pas de pluie</td>
+                        <td><span class="irri-pill on">Marche</span></td>
+                    </tr>
+                    <tr>
+                        <td>Sec</td>
+                        <td>Averse</td>
+                        <td><span class="irri-pill off">Arrêt</span></td>
+                    </tr>
+                    <tr>
+                        <td>Humide</td>
+                        <td>Pas de pluie</td>
+                        <td><span class="irri-pill off">Arrêt</span></td>
+                    </tr>
+                    <tr>
+                        <td>Humide</td>
+                        <td>Averse</td>
+                        <td><span class="irri-pill off">Arrêt</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <pre class="irri-code">if (water == HIGH &amp;&amp; rain == HIGH) {
+    digitalWrite(3, HIGH);   // relais activé : la pompe arrose
+} else {
+    digitalWrite(3, LOW);    // relais au repos : la pompe s'arrête
+}</pre>
+        </div>
+
+        <div class="irri-circuit-full">
+
+            <div class="irri-specs">
+                <div class="irri-spec">
+                    <span>CAPTEURS</span>
+                    <strong>5 V · sortie 0/1</strong>
+                </div>
+                <div class="irri-spec">
+                    <span>RELAIS</span>
+                    <strong>5 V · 10 A max</strong>
+                </div>
+                <div class="irri-spec">
+                    <span>POMPE</span>
+                    <strong>Immergée 3–5 V</strong>
+                </div>
+                <div class="irri-spec">
+                    <span>COMMANDE</span>
+                    <strong>Programme C++</strong>
                 </div>
             </div>
 
-        </section>
+            <div class="irri-gallery two">
+                <figure>
+                    <img src="images/irrigation/technique-irrigation.png"
+                         alt="Schéma de câblage du circuit d'arrosage sous Fritzing">
+                    <figcaption>Schéma de câblage : capteurs, relais et pompe</figcaption>
+                </figure>
 
-
-        <!-- ===== CARTE 2 : CONCEPTION ET RÉALISATION ===== -->
-        <section class="irri-card irri-split">
-
-            <div class="irri-text">
-                <p class="irri-category">CONCEPTION &amp; RÉALISATION</p>
-                <h2 class="irri-title">Deux circuits complémentaires</h2>
-                <p>
-                    Un circuit d'arrosage commandé par Arduino Uno selon l'humidité
-                    du sol et la pluie, et un circuit autonome à NE555 qui maintient
-                    le niveau d'eau du réservoir.
-                </p>
+                <figure>
+                    <img src="images/irrigation/simulation-proteuse1.png"
+                         alt="Simulation du circuit d'arrosage sous Proteus">
+                    <figcaption>Simulation du circuit sous Proteus</figcaption>
+                </figure>
             </div>
 
-            <div class="irri-side">
+        </div>
 
-                <div class="irri-specs" style="margin-bottom:24px;">
-                    <div class="irri-spec">
-                        <span>CONTRÔLE</span>
-                        <strong>Arduino Uno</strong>
-                    </div>
-                    <div class="irri-spec">
-                        <span>TIMER</span>
-                        <strong>NE555</strong>
-                    </div>
-                    <div class="irri-spec">
-                        <span>ARROSAGE</span>
-                        <strong>Pompe 5 V</strong>
-                    </div>
-                    <div class="irri-spec">
-                        <span>REMPLISSAGE</span>
-                        <strong>Pompe 12 V</strong>
-                    </div>
+    </section>
+
+
+    <!-- ===== CARTE 3 : CIRCUIT 2 — NIVEAU D'EAU ===== -->
+    <section class="irri-card irri-circuit">
+
+        <div>
+            <p class="irri-category">CIRCUIT 2 · NIVEAU D'EAU</p>
+            <h2 class="irri-title">
+                Remplir le réservoir sans microcontrôleur, avec deux sondes
+            </h2>
+
+            <ol class="irri-steps">
+                <li>
+                    <strong>Détection.</strong> Trois sondes en cuivre plongent dans
+                    le réservoir : une sonde de référence reliée au +12 V, une sonde
+                    basse et une sonde haute. L'eau conduit le courant et ferme le
+                    contact entre la référence et chaque sonde qu'elle touche.
+                </li>
+                <li>
+                    <strong>Remplissage.</strong> Tant que la sonde basse est hors
+                    de l'eau, la sortie du NE555 est active. Elle polarise un
+                    transistor BC548 qui alimente le relais 12 V : la pompe remplit
+                    le réservoir et continue même quand le niveau repasse la sonde
+                    basse.
+                </li>
+                <li>
+                    <strong>Arrêt.</strong> Quand l'eau atteint la sonde haute, le
+                    circuit change d'état : le transistor de sortie se bloque, le
+                    relais retombe et la pompe s'arrête. Deux niveaux évitent de
+                    démarrer et d'arrêter la pompe à chaque petite variation.
+                </li>
+            </ol>
+        </div>
+
+        <div>
+            <p class="irri-sub">FONCTIONNEMENT</p>
+
+            <table class="irri-table">
+                <thead>
+                    <tr>
+                        <th>NIVEAU D'EAU</th>
+                        <th>POMPE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Sous la sonde basse</td>
+                        <td><span class="irri-pill on">Marche</span></td>
+                    </tr>
+                    <tr>
+                        <td>Entre les deux sondes (en montée)</td>
+                        <td><span class="irri-pill on">Marche</span></td>
+                    </tr>
+                    <tr>
+                        <td>Sonde haute atteinte</td>
+                        <td><span class="irri-pill off">Arrêt</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="irri-note">
+                Le transistor de sortie est utilisé en commutation : bloqué ou
+                saturé, jamais en régime linéaire. Une diode 1N4007 montée en
+                inverse aux bornes de la bobine du relais protège le transistor
+                à chaque coupure.
+            </p>
+        </div>
+
+        <div class="irri-circuit-full">
+
+            <div class="irri-specs">
+                <div class="irri-spec">
+                    <span>ALIMENTATION</span>
+                    <strong>12 V continu</strong>
                 </div>
-
-                <div class="irri-gallery irri-gallery-4">
-
-                    <figure>
-                        <img src="images/irrigation/montage-arduino.jpg" alt="Montage Arduino du système d'irrigation">
-                        <figcaption>Montage du circuit Arduino</figcaption>
-                    </figure>
-
-                    <figure>
-                        <img src="images/irrigation/montage-ne555.jpg" alt="Montage du circuit NE555">
-                        <figcaption>Montage du circuit de remplissage</figcaption>
-                    </figure>
-
-                    <figure>
-                        <img src="images/irrigation/proteus-arrosage.jpg" alt="Simulation Proteus">
-                        <figcaption>Simulation sous Proteus</figcaption>
-                    </figure>
-
-                    <figure>
-                        <img src="images/irrigation/pompe.jpg" alt="Système de pompage">
-                        <figcaption>Système de pompage</figcaption>
-                    </figure>
-
+                <div class="irri-spec">
+                    <span>TRANSISTORS</span>
+                    <strong>BC548 · NPN</strong>
                 </div>
-
+                <div class="irri-spec">
+                    <span>RELAIS</span>
+                    <strong>12 V · inverseur</strong>
+                </div>
+                <div class="irri-spec">
+                    <span>POMPE</span>
+                    <strong>Non immergée 12 V</strong>
+                </div>
             </div>
 
-        </section>
+            <div class="irri-gallery three">
+                <figure>
+                    <img src="images/irrigation/technique-niveau-irrigation.png"
+                         alt="Schéma de câblage du circuit de niveau d'eau sous Fritzing">
+                    <figcaption>Schéma de câblage : sondes, circuit intégré, relais</figcaption>
+                </figure>
 
+                <figure>
+                    <img src="images/irrigation/simulation-protesue2.png"
+                         alt="Simulation du circuit de niveau d'eau sous Proteus">
+                    <figcaption>Simulation du circuit sous Proteus</figcaption>
+                </figure>
 
-        <!-- ===== CARTE 5 : CODE & GITHUB ===== -->
-        <section class="irri-card">
-
-            <p class="irri-category">CODE &amp; DOCUMENTATION</p>
-
-            <div class="irri-code-head">
-
-                <h2 class="irri-title" style="margin:0;">Extraits du code</h2>
-
-                <!-- Remplace le # par le lien de ton GitHub -->
-                <a href="#" class="irri-btn" target="_blank">Voir le code sur GitHub →</a>
-
+                <figure>
+                    <img class="photo"
+                         src="images/irrigation/test-pratique.jpg"
+                         alt="Test pratique du circuit de niveau d'eau avec réservoir et pompe">
+                    <figcaption>Test pratique : réservoir, pompe et carte</figcaption>
+                </figure>
             </div>
 
-        </section>
+        </div>
 
-      
-<nav class="project-nav">
-    <a href="project-leme.html" class="project-nav-btn">
-        <span>← PROJET PRÉCÉDENT</span>
-        <strong>Métasurface programmable</strong>
-    </a>
-</nav>
+    </section>
 
-    </main>
+
+    <!-- ===== CARTE 4 : MÉTHODE ET RÉSULTATS ===== -->
+    <section class="irri-card irri-two">
+
+        <div>
+            <p class="irri-category">MÉTHODE</p>
+            <h2 class="irri-title">De l'étude au prototype</h2>
+
+            <ul class="irri-list">
+                <li>Choix des capteurs, des relais et des pompes selon la charge à commander</li>
+                <li>Schémas de câblage sous Fritzing</li>
+                <li>Simulation des deux circuits sous Proteus</li>
+                <li>Programmation en C++ avec Arduino IDE</li>
+                <li>Montage sur plaque de cuivre perforée, puis essais pratiques</li>
+            </ul>
+        </div>
+
+        <div>
+            <p class="irri-category">RÉSULTATS</p>
+            <h2 class="irri-title">Ce que le prototype réalise</h2>
+
+            <ul class="irri-list">
+                <li>Arrosage déclenché uniquement par un sol sec sans pluie</li>
+                <li>Pompe commandée par relais à partir d'un signal logique</li>
+                <li>Remplissage du réservoir démarré et arrêté automatiquement par les sondes</li>
+                <li>Essais pratiques réalisés sur les deux circuits</li>
+            </ul>
+        </div>
+
+    </section>
+
+
+    <!-- ===== CARTE 5 : CODE & GITHUB ===== -->
+    <section class="irri-card">
+
+        <p class="irri-category">CODE &amp; DOCUMENTATION</p>
+
+        <div class="irri-code-head">
+            <h2 class="irri-title" style="margin:0;">Extraits du code</h2>
+
+            <!-- Remplace le # par le lien de ton GitHub -->
+            <a href="#" class="irri-btn" target="_blank">Voir le code sur GitHub →</a>
+        </div>
+
+    </section>
+
+
+    <!-- NAVIGATION DU BAS -->
+    <nav class="project-nav">
+        <a href="project-leme.html" class="project-nav-btn">
+            <span>← PROJET PRÉCÉDENT</span>
+            <strong>Métasurface programmable</strong>
+        </a>
+    </nav>
+
+</main>
 
 </body>
 </html>

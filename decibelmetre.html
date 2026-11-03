@@ -1,231 +1,903 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Décibelmètre — Sara Messaoudi</title>
+    <title>Décibelmètre numérique — Sara Messaoudi</title>
+
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =========================================================
+           PAGE DÉCIBELMÈTRE — tout le style est ici,
+           rien à ajouter dans style.css
+        ========================================================= */
+
+        body {
+            background-color: #eaf4f8;
+            background-image:
+                radial-gradient(circle at 0% 25%, rgba(190, 232, 220, 0.55) 0, transparent 28%),
+                radial-gradient(circle at 100% 15%, rgba(205, 225, 240, 0.7) 0, transparent 30%),
+                radial-gradient(circle at 100% 65%, rgba(205, 225, 240, 0.6) 0, transparent 28%),
+                url("images/background-portfolio.png");
+            background-size: auto, auto, auto, cover;
+            background-attachment: fixed;
+        }
+
+        /* ---------- Cartes ---------- */
+
+        .db-card {
+            margin-bottom: 20px;
+            padding: 26px;
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 24px;
+            box-shadow: 0 12px 35px rgba(48, 91, 120, 0.09);
+            color: #182431;
+        }
+
+        .db-card h1,
+        .db-card h2 {
+            color: #0c3a57;
+        }
+
+        .db-card p {
+            color: #5d7284;
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 14px;
+        }
+
+        .db-card p.db-category {
+            color: #4f86ad;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.17em;
+            margin-bottom: 10px;
+        }
+
+        .db-card p.db-sub {
+            color: #4f86ad;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            margin: 0 0 10px;
+        }
+
+        .db-title {
+            font-size: 26px;
+            line-height: 1.25;
+            margin: 6px 0 14px;
+        }
+
+        /* ---------- Carte 1 : présentation (compacte) ---------- */
+
+        .db-intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            align-items: center;
+        }
+
+
+.db-intro-image img {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    border-radius: 14px;
+}
+
+
+        .db-intro h1 {
+            font-size: clamp(32px, 3.6vw, 46px);
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            margin: 8px 0 10px;
+        }
+
+        .db-intro h2 {
+            font-size: 19px;
+            line-height: 1.4;
+            font-weight: 500;
+            color: #12364d;
+            margin-bottom: 12px;
+        }
+
+        .db-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .db-tags span {
+            padding: 6px 11px;
+            border-radius: 20px;
+            font-size: 12px;
+            background: #e5f5f2;
+            border: 1px solid #b9e5dc;
+            color: #245e60;
+        }
+
+        .db-tags span:nth-child(even) {
+            background: #e5f2ff;
+            border-color: #c2e0f7;
+            color: #214f75;
+        }
+
+        /* ---------- Carte 2 : contexte et zones sonores ---------- */
+
+        .db-split {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 10px 34px;
+            align-items: start;
+        }
+
+        .db-formula {
+            display: inline-block;
+            margin: 2px 0 14px;
+            padding: 8px 16px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #eaf6f4, #eef6fb);
+            border: 1px solid #d5ebe8;
+            color: #0c3a57;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 14px;
+        }
+
+        .db-scalebar {
+            height: 10px;
+            margin-bottom: 14px;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #7fc8a0 0%, #7fc8a0 33%, #f0cf63 33%, #f0cf63 66%, #e5675d 66%, #e5675d 100%);
+        }
+
+        .db-zones {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .db-zone {
+            padding: 14px 14px 10px;
+            border-radius: 16px;
+            border: 1px solid;
+        }
+
+        .db-zone.low {
+            background: #eaf7f0;
+            border-color: #b6e0cf;
+        }
+
+        .db-zone.mid {
+            background: #fdf6df;
+            border-color: #f1dc9b;
+        }
+
+        .db-zone.high {
+            background: #fdeceb;
+            border-color: #f3b9b4;
+        }
+
+        .db-zone span {
+            display: block;
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+        }
+
+        .db-zone strong {
+            display: block;
+            margin: 4px 0 8px;
+            font-size: 21px;
+        }
+
+        .db-zone.low span,
+        .db-zone.low strong { color: #1f7a5a; }
+
+        .db-zone.mid span,
+        .db-zone.mid strong { color: #8a6a10; }
+
+        .db-zone.high span,
+        .db-zone.high strong { color: #a3322b; }
+
+        .db-zone ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .db-zone li {
+            padding: 4px 0;
+            border-top: 1px solid rgba(24, 36, 49, 0.08);
+            color: #5d7284;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        /* ---------- Carte 3 : principe de fonctionnement ---------- */
+
+        .db-steps {
+            list-style: none;
+            counter-reset: step;
+            padding: 0;
+            margin: 6px 0 0;
+        }
+
+        .db-steps li {
+            counter-increment: step;
+            position: relative;
+            padding: 0 0 13px 44px;
+            color: #5d7284;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .db-steps li::before {
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 29px;
+            height: 29px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: #dcecfb;
+            color: #214f75;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .db-steps li:nth-child(even)::before {
+            background: #d8f1ee;
+            color: #245e60;
+        }
+
+        .db-steps strong {
+            color: #0c3a57;
+        }
+
+        .db-compare {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .db-compare > div {
+            padding: 14px 16px;
+            border-radius: 16px;
+            border: 1px solid #d5ebe8;
+            background: linear-gradient(135deg, #eaf6f4, #eef6fb);
+        }
+
+        .db-compare > div.custom {
+            background: #ffffff;
+            border-color: #b9dff5;
+            box-shadow: 0 6px 16px rgba(49, 93, 125, 0.08);
+        }
+
+        .db-compare h3 {
+            margin: 0 0 6px;
+            color: #0c3a57;
+            font-size: 15px;
+        }
+
+        .db-card .db-compare p {
+            margin: 0;
+            font-size: 13.5px;
+            line-height: 1.55;
+        }
+
+        .db-full {
+            grid-column: 1 / -1;
+        }
+
+        .db-specs {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            margin: 8px 0 20px;
+            padding: 16px 20px;
+            background: linear-gradient(135deg, #eaf6f4, #eef6fb);
+            border: 1px solid #d5ebe8;
+            border-radius: 18px;
+        }
+
+        .db-spec {
+            padding: 0 8px;
+            text-align: center;
+            border-right: 1px solid #d3e4ea;
+        }
+
+        .db-spec:last-child {
+            border-right: none;
+        }
+
+        .db-spec span {
+            display: block;
+            margin-bottom: 5px;
+            color: #4f86ad;
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+        }
+
+        .db-spec strong {
+            font-size: 15px;
+            color: #0c3a57;
+        }
+
+        .db-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .db-gallery figure {
+            margin: 0;
+            min-width: 0;
+        }
+        .db-gallery img {
+            width: 100%;
+            height: 210px;
+            object-fit: contain;
+            display: block;
+            padding: 6px;
+            border-radius: 12px;
+            background: #ffffff;
+            border: 1px solid #e1edf4;
+        }
+
+        /* Photo du module capteur de son */
+        .db-gallery img.photo {
+            width: 100%;
+            height: 210px;
+            object-fit: contain;
+            object-position: center;
+            padding: 6px;
+            background: #ffffff;
+        }
+
+
+
+
+        .db-gallery figcaption {
+            margin-top: 8px;
+            color: #5d7284;
+            font-size: 12.5px;
+            line-height: 1.4;
+        }
+
+        /* ---------- Carte 4 : résultats ---------- */
+
+        .db-results {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 6px;
+        }
+
+        .db-result {
+            overflow: hidden;
+            border-radius: 18px;
+            background: #ffffff;
+            border: 1px solid #e1edf4;
+            border-top: 5px solid;
+            box-shadow: 0 8px 22px rgba(49, 93, 125, 0.08);
+        }
+
+        .db-result.low  { border-top-color: #7fc8a0; }
+        .db-result.mid  { border-top-color: #f0cf63; }
+        .db-result.high { border-top-color: #e5675d; }
+/* Les trois photos du décibelmètre */
+.db-result img {
+    width: 100%;
+    height: 215px;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    background: #ffffff;
+}
+
+        .db-result-body {
+            padding: 14px 16px 16px;
+        }
+
+        .db-result-body span {
+            display: block;
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+        }
+
+        .db-result-body strong {
+            display: block;
+            margin: 2px 0 4px;
+            font-size: 30px;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .db-card .db-result-body p {
+            margin: 0;
+            font-size: 13.5px;
+            line-height: 1.5;
+        }
+
+        .db-result.low  span, .db-result.low  strong { color: #1f7a5a; }
+        .db-result.mid  span, .db-result.mid  strong { color: #8a6a10; }
+        .db-result.high span, .db-result.high strong { color: #a3322b; }
+
+        /* ---------- Carte démonstration : vidéo + commentaires ---------- */
+
+        .db-demo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            align-items: start;
+        }
+
+        .db-video {
+            width: 100%;
+            max-height: 280px;
+            display: block;
+            border-radius: 14px;
+            background: #000;
+        }
+
+        .db-card p.db-note {
+            margin: 8px 0 0;
+            font-size: 12.5px;
+            line-height: 1.4;
+        }
+
+        .db-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .db-list li {
+            position: relative;
+            padding: 9px 0 9px 22px;
+            color: #5d7284;
+            font-size: 15px;
+            line-height: 1.6;
+            border-bottom: 1px solid #e3edf2;
+        }
+
+        .db-list li:last-child {
+            border-bottom: none;
+        }
+
+        .db-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 17px;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #7fc8b8;
+        }
+
+        .db-list li:nth-child(even)::before {
+            background: #7fb6e3;
+        }
+
+        .db-list strong {
+            color: #0c3a57;
+        }
+
+        /* ---------- Carte 5 : conclusion ---------- */
+
+        .db-conclusion {
+            border-left: 5px solid #65b7ed;
+        }
+
+        .db-card .db-quote {
+            margin: 0;
+            color: #0c3a57;
+            font-size: 19px;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        /* ---------- Code & GitHub ---------- */
+
+        .db-code-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .db-btn {
+            display: inline-block;
+            padding: 11px 20px;
+            border-radius: 30px;
+            background: #e1f2ff;
+            border: 1px solid #b9dff5;
+            color: #193753;
+            font-size: 14px;
+            transition: 0.25s ease;
+        }
+
+        .db-btn:hover {
+            background: #cce9fb;
+            transform: translateY(-2px);
+        }
+
+        /* ---------- Téléphone et tablette ---------- */
+
+        @media (max-width: 800px) {
+
+            .db-intro,
+            .db-split,
+            .db-demo {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .db-intro-image img {
+                height: 220px;
+            }
+
+            .db-zones,
+            .db-results,
+            .db-compare,
+            .db-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .db-specs {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px 0;
+            }
+
+            .db-spec:nth-child(2n) {
+                border-right: none;
+            }
+
+            .db-result img {
+                height: 240px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <main class="container leme-page">
+<main class="container leme-page">
 
-        <div class="project-topbar">
-            <a href="index.html#projet-04" class="project-back">← Retour aux projets</a>
+    <!-- NAVIGATION DU HAUT -->
+    <div class="project-topbar">
+        <a href="index.html#projet-04" class="project-back">← Retour aux projets</a>
 
-            <a href="ads-amplificateur.html" class="project-nav-btn project-nav-next">
-                <span>PROJET SUIVANT →</span>
-                <strong>Amplificateur hyperfréquence</strong>
-            </a>
+        <a href="ads-amplificateur.html" class="project-nav-btn project-nav-next">
+            <span>PROJET SUIVANT →</span>
+            <strong>Amplificateur hyperfréquence</strong>
+        </a>
+    </div>
+
+
+    <!-- ===== CARTE 1 : PRÉSENTATION ===== -->
+    <section class="db-card db-intro">
+
+        <div class="db-intro-image">
+            <img src="images/decibelmetre/garde.jpg"
+                 alt="Prototype du décibelmètre : écran LCD, trois LED et plaque perforée dans un boîtier transparent">
         </div>
 
+        <div>
+            <p class="db-category">MINI-PROJET · ÉLECTROACOUSTIQUE · USTHB · 2023-2024</p>
+            <h1>Décibelmètre numérique</h1>
+            <h2>Rendre le son visible</h2>
 
-        <!-- ===== CARTE 1 : PRÉSENTATION ===== -->
-        <section class="aqua-slide aqua-card aqua-intro">
-
-            <div class="aqua-intro-image">
-                <img src="images/decibelmetre/montage-global.jpg"
-                     alt="Prototype du décibelmètre">
-            </div>
-
-            <div class="aqua-intro-text">
-
-                <p class="project-category">
-                    MINI-PROJET · ÉLECTROACOUSTIQUE · USTHB
-                </p>
-
-                <h1>Décibelmètre numérique</h1>
-
-                <h2>
-                    Conception et réalisation d'un décibelmètre
-                    numérique portable
-                </h2>
-
-                <p>
-                    Réalisation d'un sonomètre numérique portable
-                    permettant de mesurer le niveau sonore ambiant,
-                    d'afficher la mesure en décibels et de signaler
-                    visuellement les niveaux sonores élevés.
-                </p>
-
-                <div class="project-tags">
-                    <span>Arduino Uno</span>
-                    <span>ATmega328P</span>
-                    <span>C/C++</span>
-                    <span>Arduino IDE</span>
-                    <span>Microphone électret</span>
-                    <span>Préamplificateur</span>
-                    <span>LCD 16×2</span>
-                    <span>I2C</span>
-                    <span>Traitement du signal</span>
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ===== CARTE 2 : FONCTIONNEMENT ===== -->
-        <section class="aqua-slide aqua-card leme-split">
-
-            <div class="leme-text">
-
-                <p class="project-category">
-                    CONCEPTION &amp; RÉALISATION
-                </p>
-
-                <h2>De la mesure à l'alerte</h2>
-
-                <p>
-                    Un microphone électret capte le son ambiant.
-                    Le signal est amplifié par un préamplificateur,
-                    puis traité par l'Arduino Uno. La mesure est
-                    affichée sur un écran LCD et représentée par
-                    trois LED correspondant aux niveaux de risque
-                    sonore.
-                </p>
-
-            </div>
-
-            <div class="leme-side">
-
-                <p class="leme-label">CHAÎNE DE MESURE</p>
-
-                <div class="leme-flow">
-                    <span class="leme-step">Son ambiant</span>
-                    <span class="leme-arrow">→</span>
-                    <span class="leme-step">Microphone</span>
-                    <span class="leme-arrow">→</span>
-                    <span class="leme-step">Préamplification</span>
-                    <span class="leme-arrow">→</span>
-                    <span class="leme-step">Arduino Uno</span>
-                    <span class="leme-arrow">→</span>
-                    <span class="leme-step">Mesure en dB</span>
-                    <span class="leme-arrow">→</span>
-                    <span class="leme-step">LCD + LED</span>
-                </div>
-
-                <div class="leme-specs">
-
-                    <div class="leme-spec">
-                        <span>CONTRÔLE</span>
-                        <strong>Arduino Uno</strong>
-                    </div>
-
-                    <div class="leme-spec">
-                        <span>AFFICHAGE</span>
-                        <strong>LCD 16×2</strong>
-                    </div>
-
-                    <div class="leme-spec">
-                        <span>PLAGE INDICATIVE</span>
-                        <strong>20–100+ dB</strong>
-                    </div>
-
-                    <div class="leme-spec">
-                        <span>SEUIL D'ALERTE</span>
-                        <strong>85 dB</strong>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ===== CARTE 3 : MONTAGE ET RÉSULTATS ===== -->
-        <section class="aqua-slide aqua-card">
-
-            <p class="project-category">
-                MONTAGE &amp; RÉSULTATS
+            <p>
+                À partir de quel niveau un son devient-il du bruit ? Un microphone,
+                un préamplificateur et une carte Arduino Uno mesurent le niveau
+                sonore, l'affichent en décibels et le traduisent en couleur.
             </p>
 
-            <h2 class="leme-title">
-                Du circuit électronique au prototype
-            </h2>
-
-            <div class="leme-gallery">
-
-                <figure>
-                    <img src="images/decibelmetre/preamplificateur.jpg"
-                         alt="Préamplificateur analogique">
-                    <figcaption>
-                        Préamplificateur analogique
-                    </figcaption>
-                </figure>
-
-                <figure>
-                    <img src="images/decibelmetre/montage-interne.jpg"
-                         alt="Montage électronique interne">
-                    <figcaption>
-                        Montage électronique interne
-                    </figcaption>
-                </figure>
-
-                <figure>
-                    <img src="images/decibelmetre/prototype.jpg"
-                         alt="Prototype du décibelmètre">
-                    <figcaption>
-                        Prototype dans son boîtier
-                    </figcaption>
-                </figure>
-
-                <figure>
-                    <img src="images/decibelmetre/test-86db.jpg"
-                         alt="Test du décibelmètre à 86 dB">
-                    <figcaption>
-                        Test à 86 dB : alerte rouge
-                    </figcaption>
-                </figure>
-
+            <div class="db-tags">
+                <span>Arduino Uno · ATmega328</span>
+                <span>Microphone + préamplificateur</span>
+                <span>Écran LCD 16×2</span>
+                <span>3 LED de niveau</span>
+                <span>Plaque perforée</span>
+                <span>Projet d'équipe</span>
             </div>
+        </div>
 
-        </section>
+    </section>
 
 
-        <!-- ===== CARTE 4 : CODE ET GITHUB ===== -->
-        <section class="aqua-slide aqua-card">
+    <!-- ===== CARTE 2 : CONTEXTE — LES ZONES SONORES ===== -->
+    <section class="db-card db-split">
 
-            <p class="project-category">
-                CODE &amp; DOCUMENTATION
+        <div>
+            <p class="db-category">CONTEXTE</p>
+            <h2 class="db-title">Du silence aux dommages auditifs</h2>
+
+            <p>
+                Le décibel est une échelle logarithmique : chaque fois que
+                l'intensité sonore est multipliée par 2, le niveau augmente de 3 dB.
             </p>
 
-            <div style="
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                flex-wrap: wrap;
-                gap: 16px;
-            ">
+            <span class="db-formula">IL = 10 · log(I / I₀) &nbsp; avec I₀ = 10⁻¹² W/m²</span>
 
-                <h2 class="leme-title" style="margin: 0;">
-                    Extraits du code
-                </h2>
+            <p>
+                La limite d'exposition considérée comme sûre est de 85 dB pendant
+                8 heures par jour. Au-delà, l'audition peut se dégrader de façon
+                irréversible. Ce seuil de 85 dB sert de limite haute au décibelmètre.
+            </p>
+        </div>
 
-                <!-- Remplacer # par le lien réel du dépôt GitHub -->
-                <a href="#"
-                   class="leme-btn"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                    Voir le code sur GitHub →
-                </a>
+        <div>
+            <p class="db-sub">TROIS ZONES D'INTENSITÉ</p>
+
+            <div class="db-scalebar"></div>
+
+            <div class="db-zones">
+
+                <div class="db-zone low">
+                    <span>FAIBLE</span>
+                    <strong>&lt; 60 dB</strong>
+                    <ul>
+                        <li>Silence · 1–15 dB</li>
+                        <li>Calme · 20–40 dB</li>
+                        <li>Conversation · 40–60 dB</li>
+                    </ul>
+                </div>
+
+                <div class="db-zone mid">
+                    <span>MODÉRÉE</span>
+                    <strong>60 – 85 dB</strong>
+                    <ul>
+                        <li>Environnement bruyant · 60–70 dB</li>
+                    </ul>
+                </div>
+
+                <div class="db-zone high">
+                    <span>ÉLEVÉE</span>
+                    <strong>&gt; 85 dB</strong>
+                    <ul>
+                        <li>Perte auditive · 90–100 dB</li>
+                        <li>Dommages importants · 100+ dB</li>
+                    </ul>
+                </div>
 
             </div>
+        </div>
 
-        </section>
+    </section>
 
 
-        <!-- ===== PROJET PRÉCÉDENT ===== -->
-        <nav class="project-nav">
-            <a href="irrigation.html" class="project-nav-btn">
-                <span>← PROJET PRÉCÉDENT</span>
-                <strong>Système d'irrigation automatique</strong>
-            </a>
-        </nav>
+    <!-- ===== CARTE 3 : PRINCIPE DE FONCTIONNEMENT ===== -->
+    <section class="db-card db-split">
 
-    </main>
+        <div>
+            <p class="db-category">PRINCIPE DE FONCTIONNEMENT</p>
+            <h2 class="db-title">Capter, amplifier, convertir, afficher</h2>
+
+            <ol class="db-steps">
+                <li>
+                    <strong>Capter.</strong> Le microphone transforme les variations
+                    de pression acoustique en signal électrique, très faible.
+                </li>
+                <li>
+                    <strong>Amplifier.</strong> Le préamplificateur renforce ce signal
+                    sans le déformer, pour qu'il soit exploitable.
+                </li>
+                <li>
+                    <strong>Convertir.</strong> La carte Arduino Uno lit le signal et
+                    le convertit en niveau sonore, en décibels.
+                </li>
+                <li>
+                    <strong>Afficher.</strong> L'écran LCD indique le niveau en dB
+                    et sa catégorie.
+                </li>
+                <li>
+                    <strong>Alerter.</strong> Trois LED traduisent le niveau en couleur :
+                    vert, jaune ou rouge.
+                </li>
+            </ol>
+        </div>
+
+        <div>
+            <p class="db-sub">DU MODULE KY-038 AU MODULE SUR MESURE</p>
+
+            <div class="db-compare">
+                <div>
+                    <h3>Premiers essais : KY-038</h3>
+                    <p>
+                        Module du commerce avec microphone, potentiomètre de
+                        sensibilité et comparateur : il convertit le signal en niveau
+                        logique selon un seuil réglable.
+                    </p>
+                </div>
+
+                <div class="custom">
+                    <h3>Module réalisé</h3>
+                    <p>
+                        Construit sur plaque perforée d'après le KY-038, avec un
+                        préamplificateur ajouté pour disposer d'un signal analogique
+                        amplifié, exploitable par le microcontrôleur.
+                    </p>
+                </div>
+            </div>
+
+            <p class="db-sub">CARTE ARDUINO UNO</p>
+
+            <div class="db-specs" style="margin-bottom:0;">
+                <div class="db-spec">
+                    <span>MICROCONTRÔLEUR</span>
+                    <strong>ATmega328</strong>
+                </div>
+                <div class="db-spec">
+                    <span>ALIMENTATION</span>
+                    <strong>7–12 V</strong>
+                </div>
+                <div class="db-spec">
+                    <span>ENTRÉES ANALOG.</span>
+                    <strong>6</strong>
+                </div>
+                <div class="db-spec">
+                    <span>COURANT / BROCHE</span>
+                    <strong>40 mA max</strong>
+                </div>
+            </div>
+        </div>
+
+<div class="db-full">
+    <div class="db-gallery">
+
+        <!-- À gauche : chaîne de mesure -->
+        <figure>
+            <img src="images/decibelmetre/chaine-mesure.jpg"
+                 alt="Chaîne de mesure d'un sonomètre">
+            <figcaption>
+                Chaîne de mesure d'un sonomètre : le principe suivi par le projet
+            </figcaption>
+        </figure>
+
+        <!-- À droite : module capteur de son -->
+        <figure>
+            <img class="photo"
+                 src="images/decibelmetre/capteur-son.jpg"
+                 alt="Module capteur de son réalisé sur plaque perforée">
+            <figcaption>
+                Module capteur de son réalisé sur plaque perforée
+            </figcaption>
+        </figure>
+
+    </div>
+</div>
+
+    </section>
+
+
+    <!-- ===== CARTE 4 : RÉSULTATS ===== -->
+    <section class="db-card">
+
+        <p class="db-category">RÉSULTATS</p>
+        <h2 class="db-title">Trois niveaux, trois couleurs</h2>
+
+        <p>
+            Au lieu d'afficher seulement un nombre, le système réagit visuellement :
+            la LED allumée indique tout de suite dans quelle zone se situe le bruit.
+        </p>
+
+        <div class="db-results">
+
+            <div class="db-result low">
+                <img src="images/decibelmetre/Image1.jpg"
+                     alt="Décibelmètre indiquant environ 49 dB, LED verte allumée">
+                <div class="db-result-body">
+                    <span>LED VERTE</span>
+                    <strong>≈ 49 dB</strong>
+                    <p>Niveau faible, inférieur à 60 dB.</p>
+                </div>
+            </div>
+
+            <div class="db-result mid">
+                <img src="images/decibelmetre/Image2.jpg"
+                     alt="Décibelmètre indiquant 72 dB, LED jaune allumée">
+                <div class="db-result-body">
+                    <span>LED JAUNE</span>
+                    <strong>72 dB</strong>
+                    <p>Niveau modéré, entre 60 et 85 dB.</p>
+                </div>
+            </div>
+
+            <div class="db-result high">
+                <img src="images/decibelmetre/Image3.jpg"
+                     alt="Décibelmètre indiquant 86 dB, LED rouge allumée">
+                <div class="db-result-body">
+                    <span>LED ROUGE</span>
+                    <strong>86 dB</strong>
+                    <p>Niveau élevé, au-dessus de 85 dB : alerte.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===== CARTE 5 : DÉMONSTRATION (vidéo + commentaires) ===== -->
+    <section class="db-card">
+
+        <p class="db-category">DÉMONSTRATION</p>
+
+        <div class="db-demo">
+
+            <div>
+                <!-- VIDÉO : mets ta vidéo dans images/decibelmetre/ sous le nom demo-decibelmetre.mp4 -->
+                <video class="db-video" controls muted playsinline preload="metadata"
+                       poster="images/decibelmetre/garde.jpg">
+                    <source src="images/decibelmetre/decibel.mp4" type="video/mp4">
+                    Votre navigateur ne peut pas lire cette vidéo.
+                </video>
+                <p class="db-note">Le décibelmètre en fonctionnement : affichage du niveau et LED de couleur.</p>
+            </div>
+
+            <ul class="db-list">
+                <li><strong>Mesure :</strong> le microphone capte le son et le préamplificateur renforce le signal avant sa lecture par l'Arduino.</li>
+                <li><strong>Affichage :</strong> l'écran LCD indique le niveau en dB et sa catégorie.</li>
+                <li><strong>Alerte :</strong> la LED verte s'allume sous 60 dB, la jaune entre 60 et 85 dB, la rouge au-dessus de 85 dB.</li>
+            </ul>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===== CARTE 6 : CONCLUSION ===== -->
+    <section class="db-card db-conclusion">
+
+        <p class="db-category">EN RÉSUMÉ</p>
+
+        <p class="db-quote">
+            Le système capte, amplifie, traite et traduit le son en quelque chose
+            qu'on comprend instantanément : la technologie rend visible ce qui
+            était invisible.
+        </p>
+
+    </section>
+
+
+    <!-- ===== CARTE 7 : CODE & GITHUB ===== -->
+    <section class="db-card">
+
+        <p class="db-category">CODE &amp; DOCUMENTATION</p>
+
+        <div class="db-code-head">
+            <h2 class="db-title" style="margin:0;">Extraits du code</h2>
+
+            <!-- Remplace le # par le lien de ton GitHub -->
+            <a href="#" class="db-btn" target="_blank" rel="noopener noreferrer">Voir le code sur GitHub →</a>
+        </div>
+
+    </section>
+
+
+    <!-- NAVIGATION DU BAS -->
+    <nav class="project-nav">
+        <a href="irrigation.html" class="project-nav-btn">
+            <span>← PROJET PRÉCÉDENT</span>
+            <strong>Système d'irrigation automatique</strong>
+        </a>
+    </nav>
+
+</main>
 
 </body>
 </html>

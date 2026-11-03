@@ -5,174 +5,367 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Radar CW / Doppler RaCoVa — Sara Messaoudi</title>
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* ===== BASE (même style qu'AquaMonitor) ===== */
+        .project-page { padding: 105px 0 45px; }
+        .project-page .container { max-width: 1180px; }
+        .rc-slide { margin-bottom: 20px; scroll-margin-top: 90px; }
+        .rc-card {
+            background: var(--card-bg, #fff); color: var(--text-color, #202733);
+            border: 1px solid rgba(128,128,128,.16); border-radius: 18px;
+            box-shadow: 0 8px 30px rgba(0,0,0,.045); overflow: hidden;
+        }
+        .rc-block { padding: 22px 26px; }
+        .rc-label { font-size: 11px; letter-spacing: 1.8px; text-transform: uppercase; opacity: .65; margin: 0 0 12px; }
+        .rc-img { width: 100%; display: block; object-fit: contain; border-radius: 8px; background: #fff; }
+
+        .rc-part { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+        .rc-num { flex: none; width: 40px; height: 40px; border-radius: 50%; background: #0c3a57; color: #fff; font-size: 15px; font-weight: 600; display: grid; place-items: center; }
+        .rc-part h2 { font-size: clamp(20px, 2.4vw, 26px); line-height: 1.2; letter-spacing: -.4px; margin: 0; }
+        .rc-part p { margin: 3px 0 0; font-size: 13px; opacity: .72; }
+
+        /* ===== INTRO ===== */
+        .rc-intro { display: grid; grid-template-columns: .95fr 1.05fr; align-items: stretch; }
+        .rc-intro-img { padding: 12px; background: #fff; display: grid; place-items: center; }
+        .rc-intro-img img { width: 100%; max-height: 290px; object-fit: contain; display: block; }
+        .rc-intro-text { padding: 24px 28px; align-self: center; }
+        .rc-intro-text h1 { font-size: clamp(30px, 3.4vw, 42px); line-height: 1.1; letter-spacing: -1px; margin: 0 0 8px; }
+        .rc-intro-text h2 { font-size: 17px; line-height: 1.4; font-weight: 400; margin: 0 0 12px; }
+        .rc-intro-text > p:not(.rc-label) { font-size: 13.5px; line-height: 1.7; opacity: .82; margin: 0; }
+        .rc-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+        .rc-tags span { padding: 6px 10px; border-radius: 20px; font-size: 11px; white-space: nowrap; background: rgba(85,115,150,.09); border: 1px solid rgba(85,115,150,.15); }
+        .rc-tags .k { background: #e1f2ff; border-color: #b9dff5; color: #193753; font-weight: 600; }
+
+        /* ===== SCHÉMA ===== */
+        .rc-schema { display: grid; grid-template-columns: 1.7fr 1fr; gap: 16px; align-items: center; }
+        .rc-diagram { width: 100%; height: auto; display: block; color: inherit; }
+        .rc-diagram text { fill: currentColor; font-family: inherit; }
+        .rc-why { display: grid; gap: 8px; }
+        .rc-why p { margin: 0; padding: 9px 13px; border-left: 3px solid #b9dff5; border-radius: 0 10px 10px 0; background: rgba(85,115,150,.06); font-size: 12.5px; line-height: 1.55; }
+        .rc-why b { color: #0c3a57; }
+
+        /* ===== ÉTAPES ===== */
+        .rc-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+        .rc-step { margin: 0; padding: 9px; border: 1px solid rgba(128,128,128,.16); border-radius: 14px; display: grid; gap: 7px; align-content: start; background: var(--card-bg, #fff); }
+        .rc-step img { aspect-ratio: 4/3; }
+        .rc-step-h { display: flex; align-items: center; gap: 8px; }
+        .rc-step-h b { flex: none; width: 24px; height: 24px; border-radius: 50%; background: #0c3a57; color: #fff; font-size: 12px; display: grid; place-items: center; }
+        .rc-step-h strong { font-size: 14px; line-height: 1.25; }
+        .rc-link { margin: 0; font-size: 11.5px; line-height: 1.45; opacity: .75; }
+        .rc-chips { display: flex; flex-wrap: wrap; gap: 5px; }
+        .rc-chips span { padding: 3px 9px; border-radius: 20px; background: #e1f2ff; border: 1px solid #b9dff5; font-size: 11px; color: #193753; font-weight: 600; }
+        .rc-pk { margin: 0; padding: 7px 10px; border-left: 3px solid #b9dff5; border-radius: 0 9px 9px 0; background: rgba(85,115,150,.06); font-size: 11.5px; line-height: 1.5; }
+        .rc-pk b { color: #0c3a57; }
+        .rc-note { border: 1px dashed rgba(85,115,150,.4); border-radius: 14px; padding: 14px 16px; background: rgba(85,115,150,.05); font-size: 12.5px; line-height: 1.6; align-self: stretch; }
+        .rc-note strong { display: block; margin-bottom: 6px; font-size: 14px; color: #0c3a57; }
+        .rc-note ul { margin: 6px 0 0; padding-left: 17px; }
+
+        /* ===== RÉSULTAT ===== */
+        .rc-res { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; align-items: stretch; }
+        .rc-tile { margin: 0; padding: 8px; border: 1px solid rgba(128,128,128,.16); border-radius: 14px; }
+        .rc-tile img, .rc-tile video { width: 100%; aspect-ratio: 16/9; object-fit: contain; border-radius: 8px; background: #000; display: block; }
+        .rc-tile img { background: #fff; }
+        .rc-tile figcaption { padding: 8px 3px 2px; font-size: 12px; line-height: 1.45; opacity: .78; }
+        .rc-calc { padding: 14px 16px; border-radius: 14px; background: linear-gradient(135deg, #eaf6f4, #eef6fb); border: 1px solid #d5ebe8; display: grid; gap: 6px; align-content: center; color: #202733; }
+        .rc-big { font-size: 40px; font-weight: 800; line-height: 1; color: #0c3a57; }
+        .rc-form { font: italic 17px/1.5 Georgia, "Times New Roman", serif; color: #0c3a57; }
+        .rc-calc p { margin: 0; font-size: 12px; line-height: 1.55; }
+
+        .rc-verdicts { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; margin-top: 12px; }
+        .rc-v { padding: 12px 10px; text-align: center; border: 1px solid rgba(128,128,128,.16); border-radius: 13px; background: rgba(128,128,128,.04); }
+        .rc-v small { display: block; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; opacity: .65; }
+        .rc-v strong { display: block; margin: 3px 0 2px; font-size: 15px; color: #0c3a57; }
+        .rc-v span { display: block; font-size: 11.5px; line-height: 1.4; opacity: .78; }
+        .rc-v em { display: block; margin-top: 6px; font-style: normal; font-size: 12px; font-weight: 700; color: #2e9d5b; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1000px) {
+            .rc-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .rc-res { grid-template-columns: 1fr 1fr; }
+            .rc-calc { grid-column: 1 / -1; }
+            .rc-verdicts { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        }
+        @media (max-width: 900px) {
+            .rc-intro, .rc-schema { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 650px) {
+            .project-page { padding-top: 85px; }
+            .rc-intro-text { padding: 20px; }
+            .rc-block { padding: 18px; }
+            .rc-res { grid-template-columns: 1fr; }
+            .rc-verdicts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (max-width: 520px) { .rc-steps { grid-template-columns: 1fr; } }
+    </style>
 </head>
 
 <body>
+<main class="project-page">
+    <div class="container">
 
-    <main class="container leme-page">
+        <div class="project-topbar">
+            <a href="index.html#projet-10" class="project-back">← Retour aux projets</a>
+            <!-- <a href="LIEN-DU-SUIVANT.html" class="project-nav-btn project-nav-next">
+                <span>PROJET SUIVANT →</span>
+                <strong>NOM DU PROJET SUIVANT</strong>
+            </a> -->
+        </div>
 
-    <div class="project-topbar">
-    <a href="index.html#projet-10" class="project-back">← Retour aux projets</a>
-
-   <!--<a href="LIEN-DU-SUIVANT.html" class="project-nav-btn project-nav-next">
-        <span>PROJET SUIVANT →</span>
-        <strong>NOM DU PROJET SUIVANT</strong>
-    </a>-->
-</div>
-
-        <!-- ===== CARTE 1 : PRÉSENTATION ===== -->
-        <section class="aqua-slide aqua-card aqua-intro">
-
-            <div class="aqua-intro-image">
-                <img src="images/radar-racova/montage-global.jpg" alt="Système radar CW Doppler RaCoVa">
+        <!-- INTRO (compacte) -->
+        <section class="rc-slide rc-card rc-intro">
+            <div class="rc-intro-img">
+                <img src="images/radar-racova/montage-annote.jpg" alt="Montage du radar : VCO, coupleur, antennes, amplificateur faible bruit, mélangeur, analyseur de spectre">
             </div>
-
-            <div class="aqua-intro-text">
-                <p class="project-category">HYPERFRÉQUENCES · RADAR</p>
+            <div class="rc-intro-text">
+                <p class="rc-label">TP HYPERFRÉQUENCES · INTÉGRATION · UNIVERSITÉ PARIS NANTERRE · 2026</p>
                 <h1>Radar CW / Doppler</h1>
-                <h2>Caractérisation modulaire et intégration d'un radar à 2,45 GHz</h2>
-
+                <h2>Intégration d'un radar à 2,45 GHz, bloc par bloc</h2>
                 <p>
-                    Caractérisation de chaque sous-ensemble RF, puis intégration dans
-                    une chaîne radar complète permettant de détecter le déplacement
-                    d'une cible grâce à sa fréquence Doppler.
+                    Chaque bloc RF est branché, mesuré et comparé aux valeurs attendues avant d'ajouter
+                    le suivant. Le radar complet détecte le mouvement d'une cible par effet Doppler.
+                    TP réalisé en groupe.
                 </p>
+                <div class="rc-tags">
+                    <span class="k">2,45 GHz</span><span class="k">7 étapes</span><span class="k">f<sub>D</sub> = 0,31 Hz</span>
+                    <span>VCO</span><span>Analyseur de spectre</span><span>Oscilloscope</span>
+                </div>
+            </div>
+        </section>
 
-                <div class="project-tags">
-                    <span>Radar Doppler</span>
-                    <span>2,45 GHz</span>
-                    <span>VNA</span>
-                    <span>Paramètres S</span>
-                    <span>VCO</span>
-                    <span>RF</span>
+        <!-- 01 SCHÉMA D'INTÉGRATION -->
+        <section class="rc-slide rc-card rc-block">
+            <div class="rc-part">
+                <div class="rc-num">01</div>
+                <div><h2>Le schéma d'intégration</h2><p>Les 7 blocs, leurs références et les valeurs mesurées. Les numéros sont ceux des étapes.</p></div>
+            </div>
+
+            <div class="rc-schema">
+                <svg class="rc-diagram" viewBox="0 0 900 330" role="img" aria-label="Schéma du radar : VCO, coupleur, isolateur, antenne Tx, cible, antenne Rx, LNA, mélangeur, amplificateur LO, oscilloscope">
+                    <defs>
+                        <marker id="rc-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                            <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+                        </marker>
+                    </defs>
+
+                    <!-- liaisons pleines -->
+                    <g stroke="currentColor" stroke-width="1.6" fill="none" marker-end="url(#rc-ar)">
+                        <line x1="130" y1="55" x2="188" y2="55"/>
+                        <line x1="320" y1="55" x2="378" y2="55"/>
+                        <line x1="510" y1="55" x2="568" y2="55"/>
+                        <line x1="255" y1="80" x2="255" y2="168"/>
+                        <line x1="320" y1="195" x2="378" y2="195"/>
+                        <line x1="750" y1="195" x2="692" y2="195"/>
+                        <line x1="570" y1="195" x2="512" y2="195"/>
+                        <line x1="445" y1="220" x2="445" y2="268"/>
+                    </g>
+                    <!-- liaisons en pointillés : l'air -->
+                    <g stroke="currentColor" stroke-width="1.6" fill="none" stroke-dasharray="6 5" marker-end="url(#rc-ar)">
+                        <line x1="690" y1="55" x2="748" y2="55"/>
+                        <line x1="815" y1="80" x2="815" y2="168"/>
+                    </g>
+
+                    <!-- blocs -->
+                    <g stroke="currentColor" stroke-width="1.6" fill="rgba(128,128,128,0.10)">
+                        <rect x="10"  y="30"  width="120" height="50" rx="8"/>
+                        <rect x="190" y="30"  width="130" height="50" rx="8"/>
+                        <rect x="380" y="30"  width="130" height="50" rx="8"/>
+                        <rect x="570" y="30"  width="120" height="50" rx="8"/>
+                        <rect x="750" y="30"  width="130" height="50" rx="8" stroke-dasharray="6 5"/>
+                        <rect x="190" y="170" width="130" height="50" rx="8"/>
+                        <rect x="380" y="170" width="130" height="50" rx="8"/>
+                        <rect x="570" y="170" width="120" height="50" rx="8"/>
+                        <rect x="750" y="170" width="130" height="50" rx="8"/>
+                        <rect x="380" y="270" width="130" height="46" rx="8"/>
+                    </g>
+
+                    <!-- noms -->
+                    <g text-anchor="middle" font-weight="700" font-size="15">
+                        <text x="70"  y="52">VCO</text>
+                        <text x="255" y="52">Coupleur</text>
+                        <text x="445" y="52">Isolateur</text>
+                        <text x="630" y="52">Antenne Tx</text>
+                        <text x="815" y="52">Cible mobile</text>
+                        <text x="255" y="192">Ampli LO</text>
+                        <text x="445" y="192">Mélangeur</text>
+                        <text x="630" y="192">LNA</text>
+                        <text x="815" y="192">Antenne Rx</text>
+                        <text x="445" y="290">Oscilloscope</text>
+                    </g>
+                    <!-- références -->
+                    <g text-anchor="middle" font-size="11.5" opacity="0.72">
+                        <text x="70"  y="70">ZX95-270S</text>
+                        <text x="255" y="70">CS20-05-436-10</text>
+                        <text x="445" y="70">JIC2000T4000</text>
+                        <text x="630" y="70">5 dBi</text>
+                        <text x="255" y="210">ZX60-3018G+</text>
+                        <text x="445" y="210">X2L-10-411</text>
+                        <text x="630" y="210">ZX60-3018G+</text>
+                        <text x="815" y="210">5 dBi</text>
+                        <text x="445" y="307">entrée 50 Ω</text>
+                    </g>
+                    <!-- valeurs mesurées -->
+                    <g text-anchor="middle" font-size="12.5" font-weight="700" fill="#0c3a57">
+                        <text x="70"  y="100" style="fill:#2f6fa3">2448 MHz</text>
+                        <text x="70"  y="116" style="fill:#2f6fa3">6,94 dBm</text>
+                        <text x="268" y="102" text-anchor="start" style="fill:#2f6fa3">C = 19,9 dB</text>
+                        <text x="445" y="106" style="fill:#2f6fa3">perte 0,34 dB</text>
+                        <text x="255" y="242" style="fill:#2f6fa3">gain 18,3 dB</text>
+                    </g>
+                    <!-- étiquettes de liaison -->
+                    <g font-size="11.5" opacity="0.75">
+                        <text x="268" y="134">voie couplée</text>
+                        <text x="342" y="186" text-anchor="middle">LO</text>
+                        <text x="540" y="186" text-anchor="middle">RF</text>
+                        <text x="456" y="250">FI</text>
+                        <text x="822" y="130">écho</text>
+                        <text x="62" y="140" text-anchor="middle" opacity="0.9">Vtune = 5,81 V</text>
+                    </g>
+
+                    <!-- numéros d'étapes -->
+                    <g font-size="12" font-weight="700" text-anchor="middle">
+                        <circle cx="10"  cy="30"  r="12" fill="#0c3a57"/><text x="10"  y="34" style="fill:#fff">1</text>
+                        <circle cx="190" cy="30"  r="12" fill="#0c3a57"/><text x="190" y="34" style="fill:#fff">2</text>
+                        <circle cx="380" cy="30"  r="12" fill="#0c3a57"/><text x="380" y="34" style="fill:#fff">3</text>
+                        <circle cx="190" cy="170" r="12" fill="#0c3a57"/><text x="190" y="174" style="fill:#fff">4</text>
+                        <circle cx="570" cy="170" r="12" fill="#0c3a57"/><text x="570" y="174" style="fill:#fff">5</text>
+                        <circle cx="380" cy="170" r="12" fill="#0c3a57"/><text x="380" y="174" style="fill:#fff">6</text>
+                        <circle cx="570" cy="30"  r="12" fill="#0c3a57"/><text x="570" y="34" style="fill:#fff">7</text>
+                        <circle cx="750" cy="170" r="12" fill="#0c3a57"/><text x="750" y="174" style="fill:#fff">7</text>
+                    </g>
+                </svg>
+
+                <div class="rc-why">
+                    <p><b>Le trajet du signal.</b> Le VCO alimente le coupleur. La voie principale part vers l'antenne Tx en passant par l'isolateur. La voie couplée, amplifiée, devient la référence LO du mélangeur.</p>
+                    <p><b>À la réception.</b> L'écho capté par l'antenne Rx est amplifié par le LNA, puis mélangé au LO. La sortie FI est le battement Doppler, observé à l'oscilloscope.</p>
+                    <p><b>Pourquoi un coupleur ?</b> Il prélève une partie du signal du VCO pour le LO, sans interrompre la voie d'émission.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02 INTÉGRATION PAS À PAS -->
+        <section class="rc-slide rc-card rc-block">
+            <div class="rc-part">
+                <div class="rc-num">02</div>
+                <div><h2>Intégration pas à pas</h2><p>À chaque étape : le branchement réel, les valeurs mesurées et la raison du montage.</p></div>
+            </div>
+
+            <div class="rc-steps">
+
+                <figure class="rc-step">
+                    <div class="rc-step-h"><b>1</b><strong>VCO</strong></div>
+                    <img class="rc-img" src="images/radar-racova/mesure-vco.png" alt="VCO branché à l'alimentation et à l'analyseur de spectre">
+                    <p class="rc-link">VCO → DC block + atténuateur 10 dB → analyseur de spectre</p>
+                    <div class="rc-chips"><span>V<sub>tune</sub> 5,81 V</span><span>2448 MHz</span><span>6,94 dBm</span></div>
+                    <p class="rc-pk"><b>Pourquoi corriger ?</b> Câbles, DC block et atténuateur ajoutent 20,39 dB : −13,45 dBm lus donnent 6,94 dBm réels.</p>
+                </figure>
+
+                <figure class="rc-step">
+                    <div class="rc-step-h"><b>2</b><strong>Coupleur</strong></div>
+                    <img class="rc-img" src="images/radar-racova/etape2-coupleur.jpg" alt="Coupleur branché en sortie du VCO">
+                    <p class="rc-link">VCO → coupleur. Voie principale et voie couplée mesurées tour à tour, l'autre sur 50 Ω.</p>
+                    <div class="rc-chips"><span>Couplage 19,9 dB</span><span>Perte 0,36 dB</span></div>
+                    <p class="rc-pk"><b>Pourquoi 50 Ω ?</b> Une voie laissée ouverte provoquerait des réflexions et fausserait la mesure.</p>
+                </figure>
+
+                <figure class="rc-step">
+                    <div class="rc-step-h"><b>3</b><strong>Isolateur</strong></div>
+                    <img class="rc-img" src="images/radar-racova/etape3-isolateur.png" alt="Isolateur placé après la voie principale du coupleur">
+                    <p class="rc-link">VCO → coupleur → isolateur → analyseur de spectre</p>
+                    <div class="rc-chips"><span>Perte 0,34 dB</span><span>Datasheet 0,5 dB</span><span>P<sub>Tx</sub> 6,24 dBm</span></div>
+                    <p class="rc-pk"><b>Pourquoi ?</b> Il protège le VCO des réflexions renvoyées par l'antenne et l'environnement.</p>
+                </figure>
+
+                <figure class="rc-step">
+                    <div class="rc-step-h"><b>4</b><strong>Ampli LO</strong></div>
+                    <img class="rc-img" src="images/radar-racova/etape4-ampli-lo.png" alt="Amplificateur sur la voie couplée, avec charge 50 ohms">
+                    <p class="rc-link">Voie couplée → ZX60-3018G+ → analyseur. Voie principale sur 50 Ω.</p>
+                    <div class="rc-chips"><span>Gain 18,3 dB</span><span>P<sub>LO</sub> 5,4 dBm</span><span>P<sub>1dB</sub> ≈ 18 dBm</span></div>
+                    <p class="rc-pk"><b>Pourquoi ?</b> Le mélangeur demande environ 7 dBm au port LO, avec un ampli resté linéaire (P<sub>LO</sub> ≪ P<sub>1dB</sub>).</p>
+                </figure>
+
+                <figure class="rc-step">
+                    <div class="rc-step-h"><b>5</b><strong>Rebouclage + LNA</strong></div>
+                    <img class="rc-img" src="images/radar-racova/etape5-lna.jpg" alt="Atténuateur variable et LNA">
+                    <p class="rc-link">Isolateur → atténuateur variable → LNA → analyseur de spectre</p>
+                    <div class="rc-chips"><span>Atténuation ≈ 21 dB</span><span>P<sub>RF</sub> &lt; 0 dBm</span><span>P<sub>LO</sub> 5,2 dBm</span></div>
+                    <p class="rc-pk"><b>Pourquoi ?</b> L'atténuateur simule l'affaiblissement du trajet dans l'air, avant de passer aux antennes.</p>
+                </figure>
+
+                <figure class="rc-step">
+                    <div class="rc-step-h"><b>6</b><strong>Mélangeur</strong></div>
+                    <img class="rc-img" src="images/radar-racova/etape6-melangeur.png" alt="Mélangeur relié au LNA, à l'ampli LO et à l'oscilloscope">
+                    <p class="rc-link">RF ← LNA · LO ← ampli · FI → oscilloscope (entrée 50 Ω)</p>
+                    <div class="rc-chips"><span>FI ↑ quand l'atténuation ↓</span></div>
+                    <p class="rc-pk"><b>Précaution :</b> jamais d'analyseur de spectre sur la FI. Le signal est continu et pourrait l'endommager.</p>
+                </figure>
+
+                <figure class="rc-step">
+                    <div class="rc-step-h"><b>7</b><strong>Antennes + cible</strong></div>
+                    <img class="rc-img" src="images/radar-racova/etape7-antennes.jpg" alt="Antennes Tx et Rx reliées à la chaîne">
+                    <p class="rc-link">Atténuateur retiré · Tx ← isolateur · Rx → LNA · cible mobile devant les antennes</p>
+                    <div class="rc-chips"><span>Antennes 5 dBi</span><span>Battement Doppler</span></div>
+                    <p class="rc-pk"><b>Pourquoi ?</b> Avec une vraie cible, la FI devient le battement Doppler.</p>
+                </figure>
+
+                <div class="rc-note">
+                    <strong>Pourquoi cet ordre ?</strong>
+                    On ajoute un bloc, on le mesure, on le compare à l'attendu, puis seulement on continue. En cas de défaut, on sait quel bloc est en cause.
+                    <ul>
+                        <li>DC block + atténuateur à l'entrée de l'analyseur</li>
+                        <li>Reflevel réglé pour ne pas saturer</li>
+                        <li>Voies non mesurées fermées sur 50 Ω</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 03 RÉSULTAT -->
+        <section class="rc-slide rc-card rc-block">
+            <div class="rc-part">
+                <div class="rc-num">03</div>
+                <div><h2>Résultat : le Doppler observé</h2><p>Une main déplacée devant les antennes, et le battement apparaît à l'oscilloscope.</p></div>
+            </div>
+
+            <div class="rc-res">
+                <figure class="rc-tile">
+                    <video controls preload="metadata" poster="images/radar-racova/test-cible.jpg">
+                        <source src="images/radar-racova/demo-doppler.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>La manipulation : cible mobile, antennes Tx et Rx.</figcaption>
+                </figure>
+
+                <figure class="rc-tile">
+                    <img class="rc-img" src="images/radar-racova/signal-doppler.jpg" alt="Battement Doppler observé à l'oscilloscope">
+                    <figcaption>Le signal FI à l'oscilloscope : une sinusoïde lente.</figcaption>
+                </figure>
+
+                <div class="rc-calc">
+                    <div class="rc-big">0,31 Hz</div>
+                    <div class="rc-form">f<sub>D</sub> = 2 · v · f<sub>0</sub> / c</div>
+                    <p>Cible : 39,5 cm parcourus en 20 s, soit v ≈ 0,019 m/s. Avec f<sub>0</sub> = 2,45 GHz : f<sub>D</sub> ≈ 0,31 Hz, soit T ≈ 3,2 s.</p>
+                    <p>À l'oscilloscope : 2 carreaux pour une demi-période à 1,6 s/div, soit T = 3,2 s. <b>Calcul et mesure concordent.</b></p>
                 </div>
             </div>
 
-        </section>
-
-
-        <!-- ===== CARTE 2 : FONCTIONNEMENT ===== -->
-        <section class="aqua-slide aqua-card leme-split">
-
-            <div class="leme-text">
-                <p class="project-category">LE PROJET</p>
-                <h2>Du signal RF au battement Doppler</h2>
-                <p>
-                    Un VCO génère la porteuse à 2,45 GHz. Le signal réfléchi par une
-                    cible mobile est reçu, amplifié puis mélangé avec la voie de
-                    référence. Le battement Doppler obtenu est observé à l'oscilloscope.
-                </p>
+            <div class="rc-verdicts">
+                <div class="rc-v"><small>VCO</small><strong>2448 MHz</strong><span>6,94 dBm · typique 5 à 10 dBm</span><em>Cohérent</em></div>
+                <div class="rc-v"><small>Coupleur</small><strong>19,9 dB</strong><span>couplage attendu ≈ 20 dB</span><em>Conforme</em></div>
+                <div class="rc-v"><small>Isolateur</small><strong>0,34 dB</strong><span>datasheet : 0,5 dB</span><em>Conforme</em></div>
+                <div class="rc-v"><small>Amplificateur</small><strong>18,3 dB</strong><span>nominal : 18 à 20 dB</span><em>Conforme</em></div>
+                <div class="rc-v"><small>Radar complet</small><strong>0,31 Hz</strong><span>calcul = oscilloscope</span><em>Fonctionnel</em></div>
             </div>
-
-            <div class="leme-side">
-
-                <p class="leme-label">CHAÎNE RADAR</p>
-
-                <div class="leme-flow">
-                    <span class="leme-step">VCO</span>
-                    <span class="leme-arrow">→</span>
-                    <span class="leme-step">Coupleur</span>
-                    <span class="leme-arrow">→</span>
-                    <span class="leme-step">Antenne Tx</span>
-                    <span class="leme-arrow">→</span>
-                    <span class="leme-step">Cible mobile</span>
-                    <span class="leme-arrow">→</span>
-                    <span class="leme-step">Antenne Rx + LNA</span>
-                    <span class="leme-arrow">→</span>
-                    <span class="leme-step">Mélangeur</span>
-                    <span class="leme-arrow">→</span>
-                    <span class="leme-step">Oscilloscope</span>
-                </div>
-
-                <div class="leme-specs">
-                    <div class="leme-spec">
-                        <span>FRÉQUENCE</span>
-                        <strong>2,45 GHz</strong>
-                    </div>
-                    <div class="leme-spec">
-                        <span>SENSIBILITÉ VCO</span>
-                        <strong>95,56 MHz/V</strong>
-                    </div>
-                    <div class="leme-spec">
-                        <span>GAIN AMPLIFICATEUR</span>
-                        <strong>18,3 → 19,1 dB</strong>
-                    </div>
-                    <div class="leme-spec">
-                        <span>FRÉQUENCE DOPPLER</span>
-                        <strong>0,31 Hz</strong>
-                    </div>
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ===== CARTE 3 : MONTAGE ET RÉSULTATS ===== -->
-        <section class="aqua-slide aqua-card">
-
-            <p class="project-category">MONTAGE &amp; RÉSULTATS</p>
-            <h2 class="leme-title">Des mesures de modules à la recette radar</h2>
-
-            <div class="leme-gallery">
-
-                <figure>
-                    <img src="images/radar-racova/banc-vna.jpg" alt="Calibration du VNA">
-                    <figcaption>Calibration du VNA</figcaption>
-                </figure>
-
-                <figure>
-                    <img src="images/radar-racova/mesure-vco.jpg" alt="Caractérisation du VCO">
-                    <figcaption>Caractérisation du VCO</figcaption>
-                </figure>
-
-                <figure>
-                    <img src="images/radar-racova/parametres-s.jpg" alt="Mesure des paramètres S">
-                    <figcaption>Mesure des paramètres S</figcaption>
-                </figure>
-
-                <figure>
-                    <img src="images/radar-racova/analyseur-spectre.jpg" alt="Mesure avec analyseur de spectre">
-                    <figcaption>Mesure à l'analyseur de spectre</figcaption>
-                </figure>
-
-                <figure>
-                    <img src="images/radar-racova/chaine-radar.jpg" alt="Chaîne radar intégrée">
-                    <figcaption>Chaîne radar intégrée</figcaption>
-                </figure>
-
-                <figure>
-                    <img src="images/radar-racova/signal-doppler.jpg" alt="Signal Doppler observé à l'oscilloscope">
-                    <figcaption>Signal Doppler à l'oscilloscope</figcaption>
-                </figure>
-
-            </div>
-
-        </section>
-
-
-        <!-- ===== CARTE 4 : CODE ===== -->
-        <section class="aqua-slide aqua-card">
-
-            <p class="project-category">CODE &amp; DOCUMENTATION</p>
-
-            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
-                <h2 class="leme-title" style="margin:0;">Extraits du code</h2>
-
-                <!-- Remplace le # par le lien de ton GitHub -->
-                <a href="#" class="leme-btn" target="_blank">Voir le code sur GitHub →</a>
-            </div>
-
         </section>
 
         <nav class="project-nav">
-    <a href="antennas-hfss.html" class="project-nav-btn">
-        <span>← PROJET PRÉCÉDENT</span>
-        <strong> Antennes patch et réseaux 2 2</strong>
-    </a>
-</nav>
+            <a href="antennas-hfss.html" class="project-nav-btn">
+                <span>← PROJET PRÉCÉDENT</span>
+                <strong>Antennes patch et réseaux 2×2</strong>
+            </a>
+        </nav>
 
-    </main>
-
+    </div>
+</main>
 </body>
 </html>
